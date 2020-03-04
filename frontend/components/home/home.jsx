@@ -11,7 +11,7 @@ export default () => (
             <h1 id="head-4">Support</h1>
             <div className="header-session">
                 <h1><Link to="/login" id="sign-in-home">Log In</Link></h1>
-                <h1 id="head-6">Sign Up</h1>
+                <h1><Link to="/signup" id="signup-home">Sign Up</Link></h1>
             </div>
         </header>
 
@@ -27,7 +27,7 @@ export default () => (
         <div className="break-free">
             <h2>Break Free from Commission Fees</h2>
             <p>Make unlimited commission-free stock trades with Robinhood Financial.</p>
-            <p>Commissions Disclosure</p>
+            <p><Link to="/" id="com-disclosure">Commissions Disclosure</Link></p>
         </div>
         <img className="home-temp-img" src="https://www.stupidgag.com/wp-content/uploads/2019/09/wolf-of-wall-street-movie-poster.jpg" />
     </div>

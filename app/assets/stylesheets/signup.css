@@ -1,0 +1,31 @@
+#signup-demo {
+    margin-top: 50px;
+}
+
+.sign-up {
+    margin-top: 50px;
+    left: inherit;
+    background-color: #21CE99;
+    color: white;
+    width: 140px;
+    height: 50px;
+    font-size: 12px;
+    border-radius: 4px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#signup-names {
+    display: flex;
+    width: 500px;
+}
+#signup-names > * {
+    padding-right: 50px;
+}
+
+.signup-right > h3 {
+    width: 800px;
+}
+
+.signup-right {
+    margin-top: 10%;
+}
