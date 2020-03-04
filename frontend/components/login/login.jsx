@@ -27,22 +27,25 @@ class Login extends React.Component {
             <div className="session-form">
                 <img className='login-left' src="https://cdn.robinhood.com/assets/generated_assets/94977d34f99015525dcd0fc9987fcbe6.png" />
                 <div className='login-right'>
-                <h2>Welcome to Robinhood</h2>
+                <h2>Welcome to iTrade</h2>
                 <form>
-                    <label>Username:
+                    <label>Email
+                        <br/>
                     <input type="text"
                         value={this.state.username}
                         onChange={this.handleInput('username')} />
                     </label>
                     <br/>
-                    <label>Password:
+                    <label>Password
+                        <br/>
                         <input type="password"
                             value={this.state.password}
                             onChange={this.handleInput('password')} />
-                            <br/>
+                            <p>Forgot your password?</p>
+                        <br/>
                         <button className='sign-in' onClick={this.handleSubmit}>Sign In</button>
                     </label>
-                </form>
+                </form> 
                 </div>
             </div>
         )
