@@ -30,7 +30,7 @@ class Signup extends React.Component {
                 <br/>
                 <div className='signup-right'>
                     <h2>Make Your Money Move</h2>
-                    <h3>Robinhood lets you invest in companies you love, commission-free.</h3>
+                    <h3>iTrade lets you invest in companies you love, commission-free.</h3>
                     <form>
                         <div id="signup-names">
                         <label>First name:
@@ -38,25 +38,27 @@ class Signup extends React.Component {
                                 value={this.state.username}
                                 onChange={this.handleInput('username')} />
                         </label>
-                        <label>Last Name
+                        <label>Last Name:
                             <input type="last-name"
                                 value={this.state.username}
                                 onChange={this.handleInput('username')} />
                         </label>
                         </div>
-                        <label>Email
-                        <br />
+                        <label>Email:
+                            <br/>
                             <input type="text"
                                 value={this.state.username}
                                 onChange={this.handleInput('username')} />
                         </label>
                         <br />
-                        <label>Password
+                        <label>Password:
+                            <br/>
                             <input type="password"
                                 value={this.state.password}
                                 onChange={this.handleInput('password')} />
-                            <button className='sign-up' onClick={this.handleSubmit}>Continue</button>
                         </label>
+                        <br/>
+                        <button className='sign-up' onClick={this.handleSubmit}>Continue</button>
                         <p id="signup-demo">Want to use a demo account? Click here</p>
                     </form>
                 </div>

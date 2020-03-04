@@ -52,7 +52,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-input {
+.login-right > form > label > input {
     height: 40px;
     width: 420px;
     background-color: #E8F0FE;
