@@ -12,6 +12,7 @@ class Login extends React.Component {
     }
 
     handleInput(type) {
+        
  
 
     }
@@ -42,6 +43,7 @@ class Login extends React.Component {
                             value={this.state.password}
                             onChange={this.handleInput('password')} />
                             <p>Forgot your password?</p>
+                            <p>Demo User Login</p>
                         <br/>
                         <button className='sign-in' onClick={this.handleSubmit}>Sign In</button>
                     </label>
