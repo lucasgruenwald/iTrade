@@ -1,5 +1,44 @@
 {
-  "name": "iTrade",
-  "private": true,
-  "dependencies": {}
+  "name": "itrade",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "webpack.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.8.3",
+    "@babel/runtime": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "babel-preset-env": "^1.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasgruenwald/iTrade.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasgruenwald/iTrade/issues"
+  },
+  "homepage": "https://github.com/lucasgruenwald/iTrade#readme"
 }

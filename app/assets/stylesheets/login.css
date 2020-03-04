@@ -1,0 +1,29 @@
+.session-form {
+    display: flex
+}
+
+.login-left {
+    width: 50%;
+}
+
+.login-right {
+    width: 400px;
+    top: 20px;
+    left: 20px;
+}
+
+.login-right > * {
+    margin: 15px;
+    margin-top: 35%;
+}
+
+.sign-in {
+    position: absolute;
+    top: 60%;
+    left: 55%;
+    background-color: #21CE99;
+    color: wheat;
+    width: 140px;
+    height: 50px;
+    font-size: 16px;
+}
