@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER } from '../actions/session';
+import { RECEIVE_CURRENT_USER, RECEIVE_SESSION_ERRORS } from '../actions/session';
 
 const _nullState = [];
 
