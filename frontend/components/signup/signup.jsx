@@ -1,10 +1,13 @@
 import React from 'react';
 
+
 class Signup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            firstName: "",
+            lastName: "",
+            email: "",
             password: "",
         };
 
@@ -12,14 +15,15 @@ class Signup extends React.Component {
     }
 
     handleInput(type) {
-
-
-
+        return (e) => {
+            this.setState({ [type]: e.target.value });
+        }
     }
 
     handleSubmit(e) {
-
-
+        e.preventDefault();
+        this.props.createNewUser(this.state)
+            .then(() => this.props.history.push('/portfolio'));
     }
 
     render() {
