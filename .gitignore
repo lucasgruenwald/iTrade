@@ -19,6 +19,7 @@
 
 /node_modules
 /yarn-error.log
+/yarn-error.log/public/assets
 
 /public/assets
 .byebug_history
@@ -33,3 +34,4 @@ bundle.js.map
 .byebug_history
 .DS_Store
 npm-debug.log
+/config/master.key
