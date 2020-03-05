@@ -42,7 +42,7 @@ class Signup extends React.Component {
                                 type="text"
                                 placeholder={" First Name"}
                                 value={this.state.firstName}
-                                // onChange={this.update('firstName')} 
+                                onChange={this.update('firstName')} 
                                 required 
                                 />
                         </label>
@@ -51,7 +51,7 @@ class Signup extends React.Component {
                                 type="text"
                                 placeholder={" Last Name"}
                                 value={this.state.lastName}
-                                // onChange={this.update('lastName')}
+                                onChange={this.update('lastName')}
                                 required
                                 />
                         </label>
@@ -62,7 +62,7 @@ class Signup extends React.Component {
                                 type="text"
                                 placeholder={" Email address"}
                                 value={this.state.email}
-                                // onChange={this.handleInput('email')} 
+                                onChange={this.update('email')} 
                                 />
                         </label>
                         <br />
@@ -72,7 +72,7 @@ class Signup extends React.Component {
                                 type="text"
                                 placeholder={" Password - Minimum 8 characters"}
                                 value={this.state.password}
-                                onChange={this.handleInput('password')} 
+                                onChange={this.update('password')} 
                                 />
                         </label>
                         <br/>
