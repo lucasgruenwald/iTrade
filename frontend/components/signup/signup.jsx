@@ -33,29 +33,43 @@ class Signup extends React.Component {
                     <h3>iTrade lets you invest in companies you love, commission-free.</h3>
                     <form>
                         <div id="signup-names">
-                        <label>First name:
-                            <input type="last-name"
-                                value={this.state.username}
-                                onChange={this.handleInput('username')} />
+                        <label>
+                            <input 
+                                type="text"
+                                placeholder={" First Name"}
+                                value={this.state.firstName}
+                                // onChange={this.update('firstName')} 
+                                required 
+                                />
                         </label>
-                        <label>Last Name:
-                            <input type="last-name"
-                                value={this.state.username}
-                                onChange={this.handleInput('username')} />
+                        <label>
+                            <input 
+                                type="text"
+                                placeholder={" Last Name"}
+                                value={this.state.lastName}
+                                // onChange={this.update('lastName')}
+                                required
+                                />
                         </label>
                         </div>
-                        <label>Email:
+                        <label>
                             <br/>
-                            <input type="text"
-                                value={this.state.username}
-                                onChange={this.handleInput('username')} />
+                            <input 
+                                type="text"
+                                placeholder={" Email address"}
+                                value={this.state.email}
+                                // onChange={this.handleInput('email')} 
+                                />
                         </label>
                         <br />
-                        <label>Password:
+                        <label>
                             <br/>
-                            <input type="password"
+                            <input 
+                                type="text"
+                                placeholder={" Password - Minimum 8 characters"}
                                 value={this.state.password}
-                                onChange={this.handleInput('password')} />
+                                onChange={this.handleInput('password')} 
+                                />
                         </label>
                         <br/>
                         <button className='sign-up' onClick={this.handleSubmit}>Continue</button>
