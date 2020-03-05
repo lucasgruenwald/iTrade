@@ -47,7 +47,7 @@
     margin-right: 45px;
 }
 
-#head-6 {
+#signup-home {
     transform: translateY(40%);
     font-size: 18px;
     color: black;
@@ -108,6 +108,10 @@
     font-size: 15px;
     border-radius: 8px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#body-sign-up-link {
+    color: white
 }
 
 .break-free {

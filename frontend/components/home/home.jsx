@@ -19,7 +19,7 @@ export default () => (
             <div className="home-left-text">
             <h1>It’s Time to Do Money</h1>
             <h3>iTrade, a pioneer of commission-free investing, gives you more ways to make your money work harder.</h3>
-            <button className="body-sign-up"><Link to="/signup">Sign Up</Link></button>
+            <button className="body-sign-up"><Link to="/signup" id="body-sign-up-link">Sign Up</Link></button>
             </div>
             <img className="home-first-img" src="https://cdn.robinhood.com/assets/robinhood/brand_2/2d98ce66a6fc8e2a3e403064eefb81a1-2x.png" />
         </div>
