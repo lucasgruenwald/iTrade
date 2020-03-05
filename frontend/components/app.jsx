@@ -9,7 +9,6 @@ import GreetingContainer from "./greeting/greeting_container";
 export default () => (
     <div>
         <header>
-            <h1> iTrade </h1>
             <GreetingContainer />
         </header>
         

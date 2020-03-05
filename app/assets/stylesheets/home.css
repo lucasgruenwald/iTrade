@@ -1,8 +1,8 @@
-.home > .home-header {
+.home-header {
     display: flex;
 }
 
-.home > .home-header > h1 {
+.home-header > h1 {
     margin-left: 40px;
     margin-top: 10px;
     padding-left: 10px;

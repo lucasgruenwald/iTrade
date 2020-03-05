@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default () => (
     <div className="home">
-        <header className="home-header">
+        {/* <header className="home-header">
             <h1 id="head-1">iTrade</h1>
             <img src="https://images.squarespace-cdn.com/content/53fe4a70e4b0a2293ab0e42a/1409174396100-ZOPXZKUNVM31K4NZHVK0/Robinhood_Glyph_green.png?content-type=image%2Fpng" className="feather-img"/>
             <h1 id="head-2">Products</h1>
@@ -13,7 +13,7 @@ export default () => (
                 <h1><Link to="/login" id="sign-in-home">Log In</Link></h1>
                 <h1><Link to="/signup" id="signup-home">Sign Up</Link></h1>
             </div>
-        </header>
+        </header> */}
 
         <div className="home-img">
             <div className="home-left-text">
