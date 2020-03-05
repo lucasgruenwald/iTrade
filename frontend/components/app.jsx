@@ -8,7 +8,7 @@ import { Route } from 'react-router-dom';
 export default () => (
     <div>
         <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <AuthRoute path="/login" component={Login} />
+        <AuthRoute path="/signup" component={Signup} />
     </div>
 );
