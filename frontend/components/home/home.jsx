@@ -26,7 +26,7 @@ export default () => (
 
         <div className="break-free">
             <h2>Break Free from Commission Fees</h2>
-            <p>Make unlimited commission-free stock trades with Robinhood Financial.</p>
+            <p>Make unlimited commission-free stock trades with iTrade Financial.</p>
             <p><Link to="/" id="com-disclosure">Commissions Disclosure</Link></p>
         </div>
         <img className="home-temp-img" src="https://www.stupidgag.com/wp-content/uploads/2019/09/wolf-of-wall-street-movie-poster.jpg" />

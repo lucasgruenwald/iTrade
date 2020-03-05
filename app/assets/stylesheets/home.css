@@ -25,6 +25,10 @@
     transform: translateY(0%);
 }
 
+.feather-img:hover {
+    background-color: whitesmoke;
+}
+
 
 #head-2 {
     transform: translateY(29%);
@@ -59,12 +63,27 @@
     text-decoration: none;
 }
 
+#sign-in-home:hover {
+    color: darkslategray
+}
+
 #signup-home {
     transform: translateY(40%);
     font-size: 18px;
     color: black;
     text-align: right;
     text-decoration: none;
+    background-color: #21CE99;
+    border-radius: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+#signup-home:hover {
+    color: white;
+    background-color:darkslategray;
 }
 
 .home-temp-img {
@@ -124,6 +143,10 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.body-sign-up:hover {
+    background-color: black;
+}
+
 #body-sign-up-link {
     color: white;
     text-decoration: none;
@@ -135,4 +158,14 @@
 
 .break-free > * {
     text-align: center;
+}
+
+#com-disclosure {
+    text-decoration: none;
+    color: darkslategray;
+}
+
+#com-disclosure:hover{
+    text-decoration: none;
+    color: gray
 }

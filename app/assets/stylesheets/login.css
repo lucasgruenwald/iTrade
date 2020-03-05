@@ -50,6 +50,7 @@
     font-size: 12px;
     border-radius: 4px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 80px;
 }
 
 .login-right > form > label > input {
@@ -61,3 +62,4 @@
     border-radius: 4px;
     padding: 5px;
 }
+

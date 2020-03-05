@@ -23,7 +23,9 @@ export const Greeting = ({ currentUser, logout }) => {
                         className="feather-img" /></a>
                     <h1 id="head-2">Products</h1>
                     <h1 id="head-3">Learn</h1>
-                    <a href="https://linkedin.com/in/lukegruenwald"><img id="head-4" src="https://img.icons8.com/plasticine/2x/linkedin.png"/></a>
+                    <a href="https://linkedin.com/in/lukegruenwald" target="_blank">
+                        <img id="head-4" src="https://img.icons8.com/plasticine/2x/linkedin.png"/>
+                    </a>
                     <div className="header-session">
                         <h1><Link to="/login" id="sign-in-home">Sign In</Link></h1>
                         <h1><Link to="/signup" id="signup-home">Sign Up</Link></h1>
