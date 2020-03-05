@@ -9,29 +9,39 @@
 }
 
 #head-1 {
-    transform: translateY(3%);
+    transform: translateY(15%);
+}
+
+#home-link {
+    color:black;
+    text-decoration: none;
+    background-color: #21CE99;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .feather-img {
-    max-height: 60px
+    max-height: 70px;
+    transform: translateY(0%);
 }
 
 #head-2 {
     transform: translateY(29%);
     font-size: 18px;
-    color: black
+    color: black;
+    text-decoration: line-through;
 }
 
 #head-3 {
     transform: translateY(29%);
     font-size: 17px;
-    color: black
+    color: black;
+    text-decoration: line-through;
 }
 
 #head-4 {
-    transform: translateY(29%);
-    font-size: 17px;
-    color: black
+    max-width: 70px;
+    transform: translateX(40%);
 }
 
 .header-session {
@@ -45,6 +55,7 @@
     font-size: 18px;
     color: black;
     margin-right: 45px;
+    text-decoration: none;
 }
 
 #signup-home {
@@ -52,6 +63,7 @@
     font-size: 18px;
     color: black;
     text-align: right;
+    text-decoration: none;
 }
 
 .home-temp-img {

@@ -14,6 +14,12 @@ class Signup extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    update(field) {
+        return e => {
+            this.setState({ [field]: e.target.value })
+        }
+    }
+
     handleInput(type) {
         return (e) => {
             this.setState({ [type]: e.target.value });
