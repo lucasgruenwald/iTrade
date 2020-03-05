@@ -94,6 +94,7 @@
     display: flex;
     background-color: #21CE99;
     padding-bottom: 20px;
+    box-shadow:  inset 0 0 3px #000000;
 }
 
 .home-left-text {
@@ -124,7 +125,8 @@
 }
 
 #body-sign-up-link {
-    color: white
+    color: white;
+    text-decoration: none;
 }
 
 .break-free {
