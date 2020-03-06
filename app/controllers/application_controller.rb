@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-
+    
+    skip_before_action :verify_authenticity_token
     helper_method :logged_in?, :current_user
 
     def current_user
@@ -10,7 +11,7 @@ class ApplicationController < ActionController::Base
         redirect_to api_session_url unless logged_in?
     end
 
-    def log_in(user)
+    def login!(user)
         session[:session_token] = user.reset_session_token!
     end
 
