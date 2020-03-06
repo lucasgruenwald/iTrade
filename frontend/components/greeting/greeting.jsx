@@ -17,7 +17,7 @@ export const Greeting = ({ currentUser, logout }) => {
             // <div className="greet-no">
                 <header className="home-header">
                     <h1 id="head-1"><Link to="/" id="home-link">iTrade</Link></h1>
-                    <a href="https://giphy.com/gifs/deal-with-it-oALtlsKnoRtNS/fullscreen"
+                    <a href="https://i.giphy.com/media/oALtlsKnoRtNS/giphy.webp"
                         target="_blank">
                         <img src="https://images.squarespace-cdn.com/content/53fe4a70e4b0a2293ab0e42a/1409174396100-ZOPXZKUNVM31K4NZHVK0/Robinhood_Glyph_green.png?content-type=image%2Fpng" 
                         className="feather-img" /></a>

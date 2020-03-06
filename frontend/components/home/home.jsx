@@ -24,11 +24,35 @@ export default () => (
             <img className="home-first-img" src="https://cdn.robinhood.com/assets/robinhood/brand_2/2d98ce66a6fc8e2a3e403064eefb81a1-2x.png" />
         </div>
 
+
         <div className="break-free">
             <h2>Break Free from Commission Fees</h2>
             <p>Make unlimited commission-free stock trades with iTrade Financial.</p>
             <p><Link to="/" id="com-disclosure">Commissions Disclosure</Link></p>
         </div>
+
+        <div className="marquee">
+        </div>
+       
+        <div className="global-section">
+            <h1 className="global-title">
+                <p>Invest in global companies</p>  
+                <p>in a whole new way.</p> 
+            </h1>
+
+            <div className="global-companies">
+                <div className="global-1">
+                    <p></p>
+                </div>
+                <div className="global-2">
+                    <p></p>
+                </div>
+                <div className="global-3">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
         <img className="home-temp-img" src="https://www.stupidgag.com/wp-content/uploads/2019/09/wolf-of-wall-street-movie-poster.jpg" />
     </div>
 )
