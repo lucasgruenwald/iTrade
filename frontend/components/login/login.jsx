@@ -12,14 +12,12 @@ class Login extends React.Component {
     }
 
     handleInput(type) {
-        
- 
-
+        return e => this.setState({ [type]: e.target.value });
     }
 
     handleSubmit(e) {
-
-
+        e.preventDefault();
+        this.props.login(this.state).then(() => this.props.history.push("/dashboard"));
     }
 
     render() {
@@ -41,9 +39,10 @@ class Login extends React.Component {
                         <br/>
                         <input type="password"
                             value={this.state.password}
-                            onChange={this.handleInput('password')} />
-                            <p>Forgot your password?</p>
-                            <p>Demo User Login</p>
+                            onChange={this.handleInput('password')} 
+                        />
+                        <p>Forgot your password?</p>
+                        <p>Demo User Login</p>
                         <br/>
                         <button className='sign-in' onClick={this.handleSubmit}>Sign In</button>
                     </label>
