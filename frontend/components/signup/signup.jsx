@@ -75,7 +75,7 @@ class Signup extends React.Component {
                         <label>
                             <br/>
                             <input 
-                                type="text"
+                                type="password"
                                 placeholder={" Password - Minimum 8 characters"}
                                 value={this.state.password}
                                 onChange={this.update('password')} 
