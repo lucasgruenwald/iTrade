@@ -7,7 +7,7 @@ import { Greeting } from './greeting';
 
 const mSTP = (state) => {
     let userId = state.session.id;
-    return { currentUser: state.entities.users[userId] }
+    return { currentUser: state.entities.users[state.session.currentUser] }
 }
 
 const mDTP = dispatch => ({

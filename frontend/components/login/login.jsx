@@ -12,7 +12,7 @@ class Login extends React.Component {
     }
 
     handleInput(type) {
-        return e => this.setState({ [type]: e.target.defaultValue });
+        return e => this.setState({ [type]: e.target.value });
     }
 
     handleSubmit(e) {
@@ -31,14 +31,14 @@ class Login extends React.Component {
                     <label >Email
                         <br/>
                     <input type="text"
-                        defaultValue={this.state.email}
+                        value={this.state.email}
                         onChange={this.handleInput('email')} />
                     </label>
                     <br/>
                     <label>Password
                         <br/>
                         <input type="password"
-                            defaultValue={this.state.password}
+                            value={this.state.password}
                             onChange={this.handleInput('password')} 
                         />
                         <p>Forgot your password?</p>
