@@ -5,8 +5,8 @@ class Signup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             email: "",
             password: "",
         };
@@ -29,7 +29,7 @@ class Signup extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.signup(this.state)
-            .then(() => this.props.history.push('/portfolio'));
+            .then(() => this.props.history.push('/dashboard'));
     }
 
     render() {
@@ -47,8 +47,8 @@ class Signup extends React.Component {
                             <input 
                                 type="text"
                                 placeholder={" First Name"}
-                                value={this.state.firstName}
-                                onChange={this.update('firstName')} 
+                                value={this.state.first_name}
+                                onChange={this.update('first_name')} 
                                 required 
                                 />
                         </label>
@@ -56,8 +56,8 @@ class Signup extends React.Component {
                             <input 
                                 type="text"
                                 placeholder={" Last Name"}
-                                value={this.state.lastName}
-                                onChange={this.update('lastName')}
+                                value={this.state.last_name}
+              
                                 required
                                 />
                         </label>
@@ -69,6 +69,7 @@ class Signup extends React.Component {
                                 placeholder={" Email address"}
                                 value={this.state.email}
                                 onChange={this.update('email')} 
+                                required
                                 />
                         </label>
                         <br />

@@ -6,7 +6,7 @@ export const Greeting = ({ currentUser, logout }) => {
     const loggedGreet = () => {
         return (
             <div className="greet-yes">
-                <h2 className="greet-name">Hi, {currentUser.firstName}!</h2>
+                <h2 className="greet-name">Hi, {currentUser.first_name}!</h2>
                 <button className="greet-logout" onClick={logout}>Log Out</button>
             </div>
         )

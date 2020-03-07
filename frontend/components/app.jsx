@@ -2,7 +2,7 @@ import React from 'react';
 import Home from './home/home';
 import Login from './login/login_container';
 import Signup from './signup/signup_container';
-// import Dash from './dashboard/dashboard'
+// import Dash from './dashboard/dashboard_container'
 import { Route } from 'react-router-dom';
 import GreetingContainer from "./greeting/greeting_container";
 
