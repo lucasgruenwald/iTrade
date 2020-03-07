@@ -57,7 +57,7 @@ class Signup extends React.Component {
                                 type="text"
                                 placeholder={" Last Name"}
                                 value={this.state.last_name}
-              
+                                onChange={this.update('last_name')}
                                 required
                                 />
                         </label>
