@@ -4,12 +4,14 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            email: "",
             password: "",
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    
 
     handleInput(type) {
         return e => this.setState({ [type]: e.target.value });
@@ -20,6 +22,18 @@ class Login extends React.Component {
         this.props.login(this.state).then(() => this.props.history.push("/dashboard"));
     }
 
+    // componentWillUnmount() {
+    //     this.props.clearErrors()
+    // }
+
+    // renderErrors() {
+    //     if (Object.values(this.props.errors).length > 0) {
+    //         return <div className="login-errors"><img className="error-icon" src={window.warningIcon}/>Incorrect username/password</div>
+    //     } else {
+    //         return null;
+    //     }
+    // };
+
     render() {
   
         return (
@@ -28,6 +42,7 @@ class Login extends React.Component {
                 <div className='login-right'>
                 <h2>Welcome to iTrade</h2>
                     <form>
+                      {/* {this.renderErrors()} */}
                     <label >Email
                         <br/>
                     <input type="text"
