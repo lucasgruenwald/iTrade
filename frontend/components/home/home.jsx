@@ -53,8 +53,8 @@ export default () => (
             </div>
         </div>
 
-        <div className="home-temp-img">
-        <img src="https://www.stupidgag.com/wp-content/uploads/2019/09/wolf-of-wall-street-movie-poster.jpg" />
+        <div>
+            <img src="https://www.stupidgag.com/wp-content/uploads/2019/09/wolf-of-wall-street-movie-poster.jpg" className="home-temp-img"/>
         </div>
     </div>
 )
