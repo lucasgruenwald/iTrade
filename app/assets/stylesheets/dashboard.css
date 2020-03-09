@@ -1,0 +1,28 @@
+.portfolio {
+    display: flex;
+    margin-top: 5%;
+}
+
+.dash-graph {
+    margin-left: 5%;
+    outline: 1px solid black;
+    padding: 10px;
+    padding-bottom: 300px;
+    padding-right: 200px;
+}
+
+.dash-holdings {
+    margin-left: 30%;
+    outline: 1px solid black;
+    padding: 10px;
+    padding-bottom: 300px
+}
+
+.dash-news {
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 30%;
+    outline: 1px solid black;
+    padding: 10px;
+    padding-bottom: 50px;
+}

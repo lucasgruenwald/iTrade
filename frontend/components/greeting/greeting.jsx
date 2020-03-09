@@ -7,7 +7,7 @@ export const Greeting = ({ currentUser, logout }) => {
         return (
             <div className="greet-yes">
                 <h2 className="greet-name">Welcome back!</h2>
-                <button className="greet-logout" onClick={logout}>Log Out</button>
+                <button className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></button>
             </div>
         )
     }
