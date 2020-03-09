@@ -7,7 +7,7 @@ class Dashboard extends React.Component {
 
         return (
             <div className="dashboard">
-                <p>Hello, this is the dashboard!</p>
+                <p>  User dashboard components start here!</p>
                 <div className="portfolio">
                     <p className="dash-graph">graph goes here</p>
                     <p className="dash-holdings">holdings go here</p>

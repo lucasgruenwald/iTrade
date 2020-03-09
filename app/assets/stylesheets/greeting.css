@@ -1,23 +1,24 @@
 .greet-yes {
-    background-color:#21CE99;
     display: flex;
+
 }
 
-.greet-name {
-    background-color: black;
-    color: white;
+.search-bar {
+    background-color: white;
+    color:black;
+    margin-left: 10%;
 }
 
 
 .greet-logout {
-    background-color: black;
-    font-size: 20px;
-    margin-left: 70%;
-
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    margin-left: 40%;
 }
 
 .logout-link {
     text-decoration: none;
-    color: white
+    color: black;
 }
 

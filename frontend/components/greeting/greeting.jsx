@@ -6,8 +6,8 @@ export const Greeting = ({ currentUser, logout }) => {
     const loggedGreet = () => {
         return (
             <div className="greet-yes">
-                {/* put black feather */}
-                <h2 className="greet-name">Welcome back!</h2>
+                <p>  *Feather*</p>
+                <h2 className="search-bar">Search bar goes here</h2>
                 <button className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></button>
             </div>
         )
