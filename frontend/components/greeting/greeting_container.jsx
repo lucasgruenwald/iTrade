@@ -6,9 +6,8 @@ import { Greeting } from './greeting';
 
 
 const mSTP = (state) => {
-    // let userId = state.session.id;
-    // return { currentUser: state.entities.users[state.session.currentUser] }
-    return { currentUser: state.entities.users[state.session.id] }
+    // return { currentUser: state.entities.users[state.session.id] }
+    return { currentUser: state.entities.users[state.session.currentUser] }
 }
 // above is part of issue keeping track of currentUser 
 
