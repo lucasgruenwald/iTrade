@@ -14,7 +14,7 @@ export default () => (
             <GreetingContainer />
         </header>
         
-        <Route exact path="/" component={Home} />
+        <AuthRoute exact path="/" component={Home} />
         <AuthRoute path="/login" component={Login} />
         <AuthRoute path="/signup" component={Signup} />
         <ProtectedRoute path="/dashboard" component={Dash} />
