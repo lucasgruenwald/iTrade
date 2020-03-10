@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchStockProfile } from '../../util/ticker_data_api_util';
+import { fetchStockProfile } from '../../util/stock_show_util';
 
 class StockInfo extends React.Component {
 
