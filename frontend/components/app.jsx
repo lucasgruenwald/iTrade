@@ -3,8 +3,8 @@ import Home from './home/home';
 import Login from './login/login_container';
 import Signup from './signup/signup_container';
 import Dash from './dashboard/dashboard_container'
-import Stock from './stock/stock_container';
-import { Route } from 'react-router-dom';
+import Stock from './stock/stock_page_container';
+// import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 import GreetingContainer from "./greeting/greeting_container";
 

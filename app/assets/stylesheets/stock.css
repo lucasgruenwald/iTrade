@@ -1,11 +1,51 @@
 .stock-page {
-    margin-left: 10%;
+    margin-left: 5%;
 }
 
 .stock-page-graph {
-    padding-top: 15px;
+    padding-bottom: 5px;
+    max-width: 60%;
 }
 
-.stock-page-info {
-    padding-top: 40px;
+.stock-title {
+    display: flex;
+    margin-bottom: -10px;
+    margin-top: -15px;
 }
+
+.stock-title > * {
+    padding-right: 10px;
+}
+
+.ticker-text {
+    display: flex;
+}
+
+.ticker-text > * {
+    font-size: 18px;
+    padding-right: 35px;
+}
+
+
+.ticker-text > div > h6 {
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+.ticker-text > div > h5 {
+    margin-top: 10px;
+}
+
+.ticker-about {
+    margin-right: 40%;
+}
+
+.ticker-about > h4 {
+    margin-bottom: 8px;
+}
+
+.ticker-about > p {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+

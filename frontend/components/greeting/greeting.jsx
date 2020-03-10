@@ -7,7 +7,7 @@ export const Greeting = ({ currentUser, logout }) => {
         return (
             <div className="greet-yes">
                 <p>  *Feather*</p>
-                <h2 className="search-bar">Search bar goes here</h2>
+                <h4 className="search-bar">Search bar goes here</h4>
                 <button className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></button>
             </div>
         )
