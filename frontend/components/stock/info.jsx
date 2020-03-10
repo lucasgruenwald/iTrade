@@ -22,10 +22,11 @@ class StockInfo extends React.Component {
             <div className="stock-info">
 
                 <div className="info">
+    
                     <div className="ticker-about">
                         <h4>About</h4>
                         <p>{this.props.profile.description}</p>
-                    </div>
+                    </div>     
 
                     <div className="ticker-text">
                         <div>

@@ -4,12 +4,21 @@
 
 .stock-page-graph {
     padding-bottom: 5px;
-    max-width: 60%;
+    width: 700px;
+    height: 400px;
+}
+
+.holding-data {
+    outline: 1px solid black;
+    width: 550px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 150px;
 }
 
 .stock-title {
     display: flex;
-    margin-bottom: -10px;
+    margin-bottom: -35px;
     margin-top: -15px;
 }
 
@@ -49,3 +58,7 @@
     margin-top: 5px;
 }
 
+.stock-right {
+    right: 5%;
+    margin-left: 50%;
+}

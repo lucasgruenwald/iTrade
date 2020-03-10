@@ -3,25 +3,48 @@
 }
 
 .dash-graph {
-    margin-left: 5%;
+    margin-left: 20%;
     outline: 1px solid black;
     padding: 10px;
-    padding-bottom: 300px;
-    padding-right: 200px;
+    padding-bottom: 250px;
+    padding-right: 550px;
 }
 
 .dash-holdings {
-    margin-left: 30%;
+    margin-left: 10%;
     outline: 1px solid black;
     padding: 10px;
-    padding-bottom: 300px
+    padding-bottom: 100px
 }
 
 .dash-news {
     margin-top: 5%;
-    margin-left: 15%;
+    margin-left: 20%;
     margin-right: 40%;
     outline: 1px solid black;
     padding: 10px;
     padding-bottom: 50px;
+}
+
+.dashboard > h1 {
+    padding-left: 12%;
+}
+
+.dash-stocks > * {
+    border-top: 1px solid slategray;
+    border-bottom: 1px solid slategray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: inherit;
+    /* padding-top: 11px;
+    margin-bottom: -10px; */
+}
+
+.stock-link {
+   text-decoration: none;
+    color: black;
+}
+
+.dash-stocks > *:hover {
+    background-color:lightgray;
 }
