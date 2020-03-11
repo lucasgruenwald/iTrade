@@ -38,11 +38,12 @@
 
 .ticker-text > div > h6 {
     margin-bottom: 8px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .ticker-text > div > h5 {
     margin-top: 10px;
+    padding-bottom: 100px;
 }
 
 .ticker-about {

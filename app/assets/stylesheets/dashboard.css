@@ -4,15 +4,21 @@
 
 .dash-graph {
     margin-left: 20%;
-    outline: 1px solid black;
+    outline: 1px solid darkgreen;
     padding: 10px;
     padding-bottom: 250px;
     padding-right: 550px;
 }
 
+.dash-cash {
+    margin-top: 4px;
+}
+
 .dash-holdings {
+    margin-top: 5px;
     margin-left: 10%;
-    outline: 1px solid black;
+    width: 240px;
+    outline: 1px solid blue;
     padding: 10px;
     padding-bottom: 100px
 }
@@ -20,9 +26,10 @@
 .dash-news {
     margin-top: 5%;
     margin-left: 20%;
-    margin-right: 40%;
-    outline: 1px solid black;
+    outline: 1px solid orangered;
     padding: 10px;
+    padding-left: 300px;
+    padding-right: 300px;
     padding-bottom: 50px;
 }
 
@@ -36,8 +43,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     width: inherit;
-    /* padding-top: 11px;
-    margin-bottom: -10px; */
+
 }
 
 .stock-link {
@@ -47,4 +53,17 @@
 
 .dash-stocks > *:hover {
     background-color:lightgray;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex > p {
+    /* transform: translate(40px, 7px) */
+    padding-left: 5%
+}
+
+.dash-numshares{
+    margin-top: -15px;
 }

@@ -46,7 +46,7 @@ class StockInfo extends React.Component {
 
                         <div>
                             <h6>Average Volume</h6>
-                            <h5>{this.props.profile.volAvg}</h5>
+                            <h5>{(parseInt(this.props.profile.volAvg)).toLocaleString()}</h5>
                         </div>
                     </div>
                 </div>
