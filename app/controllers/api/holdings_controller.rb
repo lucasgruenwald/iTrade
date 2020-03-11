@@ -8,16 +8,17 @@ class Api::HoldingsController < ApplicationController
         @found_record = @user_holdings.find_by(ticker: params[:holding][:ticker])
 
             if true #need to check if purchase is within avail cash limit 
-                if @found_record
-                    prev = @found_record.share_count 
-                    change = params[:holding][:share_count]
-                    @found_record.update (quantity: (prev + change))
-                    render :show 
-                else
+                # if @found_record
+                #     need to add this update feature later
+                #     prev = @found_record.share_count 
+                #     change = params[:holding][:share_count]
+                #     @found_record.update (share_count: (prev + change))
+                #     render :show 
+                # else
                     @holding = Holding.new(holdings_params)
                     @holding.save
                     render :show
-                end
+                # end
             end 
         # end
     end 
@@ -28,7 +29,7 @@ class Api::HoldingsController < ApplicationController
         if @holdings
             render :index
         else
-            render json: ['No holdings!'], status: 404
+            render json: ['Error. No holdings?'], status: 404
         end
     end
 
