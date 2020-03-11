@@ -1,7 +1,7 @@
 class Api::HoldingsController < ApplicationController
 
     def create 
-        if available_cash >= 0 
+        # if available_cash >= 0 
         #need to determine if this is a new holding 
         # or a change to an existing holding 
         @user_holdings = Holding.where(user_id: params[:holding][:user_id])
@@ -19,7 +19,7 @@ class Api::HoldingsController < ApplicationController
                     render :show
                 end
             end 
-        end
+        # end
     end 
 
 

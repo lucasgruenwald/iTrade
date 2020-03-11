@@ -13,3 +13,4 @@ export const fetchHolding = (holding) => (
         data: { holding }
     })
 );
+
