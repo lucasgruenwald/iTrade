@@ -10,7 +10,7 @@ class StockPage extends React.Component {
             ticker: ""
         } 
     }
-   
+    
     componentDidMount() {
         this.props.receiveInfo(this.props.ticker);
         this.props.findHoldings(this.props.currentUser)

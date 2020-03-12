@@ -15,7 +15,7 @@ class StockInfo extends React.Component {
 
     render() {
 
-        let that = (this.props.profile.mktCap);
+        let mktCap = (this.props.profile.mktCap);
 
         return (      
 
@@ -41,7 +41,7 @@ class StockInfo extends React.Component {
 
                         <div>
                             <h6>Market Cap (Billion)</h6>
-                            <h5>{(Number(that).toPrecision()/1000000000).toFixed(3)}</h5>
+                            <h5>{(Number(mktCap).toPrecision()/1000000000).toFixed(3)}</h5>
                         </div>
 
                         <div>

@@ -2,6 +2,7 @@
 import Dashboard from './dashboard';
 import { logoutUser } from '../../actions/session';
 import { receiveHolding, findHoldings } from '../../actions/holding';
+import { receiveInfo } from '../../actions/stock';
 import { connect } from 'react-redux';
 
 const mSTP = (state) => {
@@ -13,6 +14,7 @@ const mSTP = (state) => {
 
 const mDTP = dispatch => ({
     logout: () => dispatch(logoutUser()),
+    receiveInfo: (ticker) => dispatch(receiveInfo(ticker)),
     receiveHolding: (holding) => dispatch(receiveHolding(holding)),
     findHoldings: (user_id) => dispatch(findHoldings(user_id))
 })

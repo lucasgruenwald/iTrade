@@ -1,4 +1,3 @@
-import React from 'react';
 import StockPage from './stock_page'
 import { connect } from 'react-redux';
 import { receiveInfo } from '../../actions/stock';

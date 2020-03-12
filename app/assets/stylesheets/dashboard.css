@@ -67,3 +67,10 @@
 .dash-numshares{
     margin-top: -15px;
 }
+
+.indiv-stock {
+    border: 1px solid black;
+}
+.indiv-stock > *{
+    font-size: 16px;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import StockInfo from '../stock/info'
+import DashInfo from './dash_stock'
 
 class Dashboard extends React.Component {
 
@@ -11,18 +11,51 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount(){
-        this.props.findHoldings(this.props.currentUser) 
-        
+        this.props.findHoldings(this.props.currentUser)
     }
-
+ 
     render() {
-        // debugger
+     
         if (Object.values(this.props.holdings).length === 0) return null;
+      
+        // getting the tickers from props below 
+        let hold = (Object.values(this.props.holdings))
+        let arr = []
+        hold.forEach((obj) => {
+            arr.push(Object.values(obj))
+        })
+        let tickers = []
+        arr.forEach((subarr) => {
+            subarr.forEach((ele) => {
+                if (typeof ele === 'string'){
+                    tickers.push(ele)
+                }
+            })
+        })
+        // getting tickers from props above saved to 'tickers' array
+
+        // getting the share_count from props below 
+        let hold2 = (Object.values(this.props.holdings))
+        let share_counts = []
+ 
+        hold2.forEach((pair) => {
+                for (var key in pair) {
+                    if(key === "share_count"){
+                        share_counts.push(pair[key])
+                    }
+                }
+        })
+        // getting share_count from props above saved to 'share_counts' array
+
+        
         return (
             <div className="dashboard">
                 <h1>$147,361.19</h1>
-                <h1>You own shares in {(this.props.holdings.length)-1} companies!</h1>
-                {/* <div className="dash-ticker">{<StockInfo profile={this.props.holdings} />}</div>  */}
+                
+                {/* <h1>{tickers.map((ticker) => 
+                    <li>{this.props.receiveInfo(ticker).profile.price}</li>
+                )}</h1> */}
+ 
                 <div className="portfolio">
                     <div className="port-left">
                     <p className="dash-graph">graph goes here</p>
@@ -33,38 +66,12 @@ class Dashboard extends React.Component {
 
                         <div className="dash-stocks">
 
-                            {/* insert holding data here */}
 
-
-                        <div className="indiv-stock">
-                            <div className="flex">
-                                <h3><Link to="/stock/TSLA" className="stock-link">TSLA (Tesla)</Link></h3>
-                                <p>$658.12</p>
-                            </div>
-                            <p className="dash-numshares">80 Shares</p> 
-                        {/* <p>{<Info profile={this.props.info.profile.price.toLocaleString()}/>}</p> */}
-                        </div>
-
-                        <div className="indiv-stock">
-                            <div className="flex">
-                                <h3><Link to="/stock/AAPL" className="stock-link">AAPL (Apple)</Link></h3>
-                                <p>$289.81</p>
-                            </div>
-                            <p className="dash-numshares">45 Shares</p>
-                        </div>
-
-                        <div className="indiv-stock">
-                            <div className="flex">
-                                <h3><Link to="/stock/AMZN" className="stock-link">AMZN (Amazon)</Link></h3>
-                                <p>$1,107.64</p>
-                            </div>
-                            <p className="dash-numshares">20 Shares</p>
-                        </div>
-
-                        
-                        <h3><Link to="/stock/FB" className="stock-link">FB (Facebook)</Link></h3>
-                        <h3><Link to="/stock/GOOG" className="stock-link">GOOG (Alphabet)</Link></h3>
-                        <h3><Link to="/stock/MSFT" className="stock-link">MSFT (Microsoft)</Link></h3>
+                        <h3>You currently own:</h3>
+                         
+                        {tickers.map((tick, idx) =>
+                            <div className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]}/>}</div>
+                        )}
 
                         </div>
                     </div>

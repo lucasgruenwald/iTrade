@@ -14,7 +14,7 @@ const holdingsReducer = (state = {}, action) => {
             // debugger
             return action.holdings;
         default: 
-            return "Hello!"
+            return {}
     }
 };
 
