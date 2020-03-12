@@ -11,6 +11,15 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def index 
+        @user = User.where(id: currentUser)
+        if @user 
+            render :index 
+        else
+            render json: ['Not found!'], status 404
+        end
+    end 
+
     private 
     def user_params
         params.require(:user).permit(:email, :password, :first_name, :last_name)

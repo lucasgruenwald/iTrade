@@ -1,14 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Info from '../stock/info'
+// import StockInfo from '../stock/info'
 
 class Dashboard extends React.Component {
 
-    render() {
+    constructor(props) {
 
+        super(props);
+        this.state = {}
+    }
+
+    componentDidMount(){
+        this.props.findHoldings(this.props.currentUser) 
+        
+    }
+
+    render() {
+        // debugger
+        if (Object.values(this.props.holdings).length === 0) return null;
         return (
             <div className="dashboard">
                 <h1>$147,361.19</h1>
+                <h1>You own shares in {(this.props.holdings.length)-1} companies!</h1>
+                {/* <div className="dash-ticker">{<StockInfo profile={this.props.holdings} />}</div>  */}
                 <div className="portfolio">
                     <div className="port-left">
                     <p className="dash-graph">graph goes here</p>
@@ -18,6 +32,9 @@ class Dashboard extends React.Component {
                         <h2 className="dash-cash">$27,708.52</h2>
 
                         <div className="dash-stocks">
+
+                            {/* insert holding data here */}
+
 
                         <div className="indiv-stock">
                             <div className="flex">
