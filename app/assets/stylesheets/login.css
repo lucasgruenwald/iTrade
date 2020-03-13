@@ -20,7 +20,7 @@
 }
 
 .login-right > h2 {
-    margin-top: 41%;
+    margin-top: 35%;
     font-size: 25px;
 }
 
@@ -41,7 +41,7 @@
 
 .sign-in {
     position: absolute;
-    top: 65%;
+    /* top: 65%; */
     left: inherit;
     background-color: #21CE99;
     color: white;
@@ -50,7 +50,8 @@
     font-size: 12px;
     border-radius: 4px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-top: 80px;
+    /* margin-top: 80px; */
+    cursor: pointer;
 }
 
 .login-right > form > label > input {
@@ -63,3 +64,18 @@
     padding: 5px;
 }
 
+.login-right > button {
+    color: black;
+    background-color: #21CE99;
+    border-radius: 4px;
+    width: 140px;
+    height: 50px;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-color: rgb(118, 172, 172);
+    cursor: pointer
+}
+
+.login-right > form > p {
+    cursor: pointer;
+}

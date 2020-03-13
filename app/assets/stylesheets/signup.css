@@ -12,6 +12,7 @@
     border-radius: 4px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 #signup-names {

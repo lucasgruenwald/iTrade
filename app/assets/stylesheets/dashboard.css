@@ -74,3 +74,8 @@
 .indiv-stock > *{
     font-size: 16px;
 }
+
+.graph-img {
+    width: 80%;
+    margin-left: 17%;
+}
