@@ -7,6 +7,7 @@ class Api::HoldingsController < ApplicationController
         @user_holdings = Holding.where(user_id: params[:holding][:user_id])
         @found_record = @user_holdings.find_by(ticker: params[:holding][:ticker])
 
+        
             if true #need to check if purchase is within avail cash limit 
                 # if @found_record
                 #     need to add this update feature later

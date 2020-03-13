@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
     def current_user
         @current_user ||= User.find_by(session_token: session[:session_token])
-    end
+    end 
 
     def require_login
         redirect_to api_session_url unless logged_in?
