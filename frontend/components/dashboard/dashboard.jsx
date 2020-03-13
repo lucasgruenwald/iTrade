@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import { Link } from 'react-router-dom';
-import DashInfo from './dash_stock'
+import DashInfo from './dash_stock';
+import {fetchInfo} from '../../util/stock_show_util'
+import {receiveInfo} from '../../actions/stock'
+
+// import News from './news/news';
 
 class Dashboard extends React.Component {
 
@@ -13,8 +17,11 @@ class Dashboard extends React.Component {
     componentDidMount(){
         this.props.findHoldings(this.props.currentUser)
     }
- 
+
+   
+
     render() {
+        
      
         if (Object.values(this.props.holdings).length === 0) return null;
       
@@ -47,10 +54,18 @@ class Dashboard extends React.Component {
         })
         // getting share_count from props above saved to 'share_counts' array
 
+        // let prices = []
+        // tickers.forEach((ticker) => {
+        //     // let obj = 
+        //     prices.push
+
+        // })
+        
+
         
         return (
             <div className="dashboard">
-                <h1>$147,361.19</h1>
+                <h1>$87,361.19</h1>
                 
                 {/* <h1>{tickers.map((ticker) => 
                     <li>{this.props.receiveInfo(ticker).profile.price}</li>
@@ -62,7 +77,7 @@ class Dashboard extends React.Component {
                     <div className="dash-news">news articles go here</div>
                     </div>
                     <div className="dash-holdings">Cash 
-                        <h2 className="dash-cash">$27,708.52</h2>
+                        <h2 className="dash-cash">$23,708.52</h2>
 
                         <div className="dash-stocks">
 
@@ -76,8 +91,9 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
                 </div>
-                
+      
             </div>
+            
         )
     }
 }

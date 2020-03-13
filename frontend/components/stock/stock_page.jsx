@@ -28,14 +28,10 @@ class StockPage extends React.Component {
             <div className="stock-title">
                 <h2>{this.props.info.profile.companyName}</h2>
             </div>
+
             {/* <h2>{this.props.holdings}</h2> */}
 
             <h1>${this.props.info.profile.price.toLocaleString()}</h1>
-
-            <div className="holdings-bar">
-                <h4>Holdings</h4>
-                <p>Show your holdings here!</p>
-            </div>
 
             <img src="https://melmagazine.com/wp-content/uploads/2019/07/Screen-Shot-2019-07-31-at-5.47.12-PM.png" 
             alt="" className="stock-page-graph"/>
@@ -45,8 +41,14 @@ class StockPage extends React.Component {
             <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
 
             </div>
+            
 
-        
+                <div className="holdings-bar">
+                    <h4>Buy / Sell</h4>
+                    <input type="text" placeholder="Number of Shares"/>
+                </div>
+
+               
             </div>
         )
     }

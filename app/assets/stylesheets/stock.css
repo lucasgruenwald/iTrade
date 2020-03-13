@@ -1,5 +1,6 @@
 .stock-page {
     margin-left: 5%;
+    display: flex;
 }
 
 .stock-page-graph {
@@ -62,4 +63,15 @@
 .stock-right {
     right: 5%;
     margin-left: 50%;
+}
+
+.holdings-bar{
+    margin-right: 10%;
+    margin-top: 10%;
+    border: 1px solid grey;
+    width: 450px;
+}
+
+.holdings-bar{
+    text-align: center;
 }

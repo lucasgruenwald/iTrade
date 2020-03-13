@@ -7,9 +7,12 @@ export const Greeting = ({ currentUser, logout }) => {
         return (
             <div className="greet-yes">
                 <p>  *Feather*</p>
-                <h4 className="search-bar">Search bar goes here</h4>
-                <button className="dash-button" ><Link to="/dashboard" className="dash-link">Portfolio</Link></button>
-                <button className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></button>
+                <input className="search-bar" 
+                        type="text" 
+                        placeholder="Search for stocks..."
+                ></input>
+                <h1 className="dash-button" ><Link to="/dashboard" className="dash-link">Portfolio</Link></h1>
+                <h1 className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></h1>
             </div>
         )
     }

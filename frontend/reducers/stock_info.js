@@ -11,3 +11,4 @@ const stockInfoReducer = (state = {}, action) => {
 };
 
 export default stockInfoReducer;
+
