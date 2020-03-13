@@ -52,6 +52,7 @@ class Dashboard extends React.Component {
                     }
                 }
         })
+         
         // getting share_count from props above saved to 'share_counts' array
 
         // let prices = []
