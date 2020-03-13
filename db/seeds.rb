@@ -9,19 +9,19 @@
 # User.destroy_all
 # Holding.destroy_all 
 
-# DemoUser = User.create(
-#     email: "DemoUser@gmail.com", 
-#     password: "password",
-#     first_name: "Demo",
-#     last_name: "User",
-# )
+DemoUser = User.create(
+    email: "DemoUser@gmail.com", 
+    password: "password",
+    first_name: "Demo",
+    last_name: "User",
+)
 
-# Demo = User.create(
-#     email: "iTradeDemoUser@gmail.com", 
-#     password: "password",
-#     first_name: "Demo",
-#     last_name: "User",
-# )
+Demo = User.create(
+    email: "iTradeDemoUser@gmail.com", 
+    password: "password",
+    first_name: "Demo",
+    last_name: "User",
+)
 
 Holding1 = Holding.create(
     user_id: "16",
