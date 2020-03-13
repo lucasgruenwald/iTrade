@@ -70,6 +70,7 @@
 
 .indiv-stock {
     border: 1px solid black;
+    padding-left: 20px;
 }
 .indiv-stock > *{
     font-size: 16px;

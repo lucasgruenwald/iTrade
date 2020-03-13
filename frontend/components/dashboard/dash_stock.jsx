@@ -23,7 +23,7 @@ class DashInfo extends React.Component {
                 <div className="flex">
                 
                 <h3><Link to={`/stock/${this.props.ticker}`} className="stock-link">{this.props.ticker}</Link></h3>
-                    <p>${}</p>
+                    <p>{}</p>
                 </div>
                 <p className="dash-numshares">{this.props.shares} Shares</p>
   
