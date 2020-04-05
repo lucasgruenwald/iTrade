@@ -29,7 +29,25 @@ export default () => (
             <h2>Break Free from Commission Fees</h2>
             <p>Make unlimited commission-free stock trades with iTrade Financial.</p>
             <p><Link to="/" id="com-disclosure">Commissions Disclosure</Link></p>
+            {/* <button id="com-disclosure">Commissions Disclosure</button> */}
+
+            <div class="modal-disclosure">
+                <button class="close-modal">&times;</button>
+                <div class="modal-title">Commissions Disclosure
+                </div>
+               
+                <div class="modal-body">
+                    <p>Commission-free trading means $0 commission trades placed 
+                        on self-directed accounts via mobile devices or web. Keep 
+                        in mind, other fees may still apply. Please see the 
+                        Robinhood Financial Fee Schedule to learn more.
+                    </p>
+                </div>
+
+            </div>
         </div>
+
+        <div id="modal-overlay"></div>
 
         <div className="marquee">
         </div>
@@ -56,5 +74,7 @@ export default () => (
         <div>
             <img src="https://www.stupidgag.com/wp-content/uploads/2019/09/wolf-of-wall-street-movie-poster.jpg" className="home-temp-img"/>
         </div>
+
+
     </div>
 )

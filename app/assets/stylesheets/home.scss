@@ -168,6 +168,46 @@
     color: gray;
 }
 
+.modal-disclosure{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    border-radius: 2px;
+    z-index: 10;
+    background-color: white;
+    width: 600px;
+    height: 250px;
+    max-width: 65%;
+}
+
+.modal-title{
+    padding-left: 75px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.close-modal{
+    cursor: pointer;
+    border: none;
+    text-align: right;
+    padding-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.modal-body > p{
+    text-align: left;
+    padding-left: 75px;
+    padding-right: 70px;
+    font-size: 0.9rem;
+}
+
 .global-section {
     box-shadow:  inset 0 0 3px #000000;
     background-color: black;
