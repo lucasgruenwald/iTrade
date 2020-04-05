@@ -155,30 +155,42 @@
     text-align: center;
 }
 
+.break-free > h2 {
+    font-size: 2em;
+}
+
 
 
 .disclosure-button {
+    margin-top: 20px;
+    margin-bottom: 40px;
     text-decoration: none;
+    background-color: transparent;
+    border: none;
     color: darkslategray;
     text-align: center;
+    font-size: 0.9em;
+    font-style: italic;
+    font-weight: bold;
 }
 
 .disclosure-button:hover{
-    text-decoration: none;
-    color: gray;
+    color: rgb(39, 72, 42);
     cursor: pointer;
 }
 
 .modal-disclosure{
-    position: fixed;
-    top: 20%;
-    left: 20%;
+    position: absolute;
+    width: 600px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    margin-left: -300px;
+    margin-top: -125px;
     border: 1px solid black;
     border-radius: 2px;
     z-index: 10;
     background-color: white;
-    width: 600px;
-    height: 250px;
     max-width: 65%;
     transition: 500ms ease-in-out;
 }
@@ -196,17 +208,19 @@
 .close-modal{
     cursor: pointer;
     border: none;
-    margin-left: 450px;
-    padding-top: 20px;
+    margin-left: 500px;
+    padding-top: 30px;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
 .modal-body > p{
     text-align: left;
+    margin-top: 22px;
     padding-left: 75px;
     padding-right: 70px;
     font-size: 0.9rem;
+    font-style: italic;
 }
 
 

@@ -2,7 +2,9 @@
 
 Welcome to iTrade!
 
-Clone of Robinhood (in-progress)
+Clone of Robinhood 
+
+(heroku does not yet reflect the current state)
 
 http://i-trade.herokuapp.com
 

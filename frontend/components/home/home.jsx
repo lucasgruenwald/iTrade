@@ -36,9 +36,17 @@ function Home (){
 
       <Modal
         isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
         className="modal-disclosure"
         id="modal-disclosure"
         ariaHideApp = { false }
+        style={
+            {
+                overlay: {
+                    backgroundColor: 'rgba(1,0,0,0.5)'
+                }
+            }
+        }
       >
 
         <button onClick={() => setModalIsOpen(false)} className="close-modal">&times;</button>
