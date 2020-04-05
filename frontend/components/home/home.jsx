@@ -43,7 +43,7 @@ function Home (){
         style={
             {
                 overlay: {
-                    backgroundColor: 'rgba(1,0,0,0.5)'
+                    backgroundColor: 'rgba(1,0,0,0.8)'
                 }
             }
         }
@@ -89,6 +89,17 @@ function Home (){
         className="home-temp-img"
       />
     </div>
+
+    <footer>
+        <div>
+            <p>Website by Luke Gruenwald</p>
+            <p>lgruenwald@ucdavis.edu</p>
+            <p>(415) 260-4991</p>
+        </div>
+        <div>
+
+        </div>
+    </footer>
   </div>
 )};
 

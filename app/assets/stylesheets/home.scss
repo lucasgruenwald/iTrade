@@ -182,12 +182,11 @@
 .modal-disclosure{
     position: absolute;
     width: 600px;
-    height: 250px;
-    top: 50%;
+    height: 270px;
+    top: 30%;
     left: 50%;
     margin-left: -300px;
     margin-top: -125px;
-    border: 1px solid black;
     border-radius: 2px;
     z-index: 10;
     background-color: white;
@@ -210,7 +209,7 @@
     border: none;
     margin-left: 500px;
     padding-top: 30px;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
 }
 
@@ -222,7 +221,6 @@
     font-size: 0.9rem;
     font-style: italic;
 }
-
 
 .global-section {
     box-shadow:  inset 0 0 3px #000000;
@@ -274,4 +272,14 @@
   100% {
     background-position: 0px;
   }
+}
+
+footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    margin-top: 25px;
+    padding-left: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
