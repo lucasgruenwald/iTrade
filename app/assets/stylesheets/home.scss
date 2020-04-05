@@ -38,10 +38,10 @@
 }
 
 #head-3 {
-    transform: translateY(29%);
-    font-size: 17px;
-    color: black;
-    text-decoration: line-through;
+    max-width: 60px;
+    margin-left: 80px;
+    padding-top: 5px;
+    margin-bottom: -10px;
 }
 
 #head-4 {
@@ -282,4 +282,17 @@ footer {
     padding-left: 100px;
     padding-top: 50px;
     padding-bottom: 50px;
+}
+
+#foot-1{
+    margin-left: 25px;
+    max-width: 85px;
+}
+
+#foot-2{
+    max-width: 50px;
+    transform: translateY(-14px);
+    border-radius: 5px;
+    background-color: white;
+    padding: 2px
 }
