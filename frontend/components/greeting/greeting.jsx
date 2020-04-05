@@ -26,8 +26,8 @@ export const Greeting = ({ currentUser, logout }) => {
                         target="_blank">
                         <img src="https://images.squarespace-cdn.com/content/53fe4a70e4b0a2293ab0e42a/1409174396100-ZOPXZKUNVM31K4NZHVK0/Robinhood_Glyph_green.png?content-type=image%2Fpng" 
                         className="feather-img" /></a>
-                    <h1 id="head-2">Products</h1>
-                    <h1 id="head-3">Learn</h1>
+                    {/* <h1 id="head-2">Products</h1>
+                    <h1 id="head-3">Learn</h1> */}
                     <a href="https://linkedin.com/in/lukegruenwald" target="_blank">
                         <img id="head-4" src="https://img.icons8.com/plasticine/2x/linkedin.png"/>
                     </a>
