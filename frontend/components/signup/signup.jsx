@@ -48,10 +48,11 @@ class Signup extends React.Component {
             iTrade lets you invest in companies you love, commission-free.
           </h3>
 
-          <a href="/#/login" id="signup-demo">
-            Want to use a demo account or other existing account? Click here
-          </a>
-          
+          <div id="signup-demo">
+            <p>Want to use a demo account or an existing account? &nbsp; </p>
+            <a href="/#/login" id="click-here">Click Here</a>
+          </div>
+
           <form>
             <div id="signup-names">
               <label>

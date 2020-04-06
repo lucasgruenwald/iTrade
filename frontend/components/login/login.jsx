@@ -65,8 +65,6 @@ class Login extends React.Component {
                         />
                     </label>
                     
-                    <p>Forgot your password?</p>
-                        {/* <p>Demo User Login</p> */}
                     <button className='sign-in' onClick={this.handleSubmit}>Sign In</button>
                     
 

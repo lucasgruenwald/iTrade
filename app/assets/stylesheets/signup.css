@@ -1,5 +1,19 @@
 #signup-demo {
-    margin-top: 50px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+    display: flex;
+}
+
+#signup-demo > * {
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+}
+
+#signup-demo > #click-here {
+    margin-top: 16px;
     text-decoration: none;
     color: black;
     text-decoration: underline;
@@ -64,6 +78,6 @@
 }
 
 .signup-left {
-    max-height: 400px;
     margin-top: 80px;
+    max-width: 30%;
 }
