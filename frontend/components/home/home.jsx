@@ -71,6 +71,7 @@ function Home (){
         </div>
 
         <div className="marquee"></div>
+
         <div className="global-section">
           <h1 className="global-title">
             <p>Invest in global companies in a whole new way.</p>
@@ -90,6 +91,7 @@ function Home (){
             </div>
           </div>
         </div>
+
         <div>
           <img
             src="https://www.stupidgag.com/wp-content/uploads/2019/09/wolf-of-wall-street-movie-poster.jpg"
