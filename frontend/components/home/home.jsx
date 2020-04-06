@@ -106,7 +106,7 @@ function Home (){
             <p>(415) 260-4991</p>
           </div>
           <div>
-            <a href="https://linkedin.com/in/lukegruenwald" target="_blank">
+            <a href="https://linkedin.com/in/lucasgruenwald" target="_blank">
               <img
                 id="foot-1"
                 src="https://img.icons8.com/plasticine/2x/linkedin.png"

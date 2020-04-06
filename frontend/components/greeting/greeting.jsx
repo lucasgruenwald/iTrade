@@ -41,7 +41,7 @@ export const Greeting = ({ currentUser, logout }) => {
                 src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
               />
             </a>
-            <a href="https://linkedin.com/in/lukegruenwald" target="_blank">
+            <a href="https://linkedin.com/in/lucasgruenwald" target="_blank">
               <img
                 id="head-4"
                 src="https://img.icons8.com/plasticine/2x/linkedin.png"
