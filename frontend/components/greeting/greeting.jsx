@@ -35,8 +35,6 @@ export const Greeting = ({ currentUser, logout }) => {
                 className="feather-img"
               />
             </a>
-            {/* <h1 id="head-2">Products</h1>
-                    <h1 id="head-3">Learn</h1> */}
             <a href="https://github.com/lucasgruenwald" target="_blank">
               <img
                 id="head-3"

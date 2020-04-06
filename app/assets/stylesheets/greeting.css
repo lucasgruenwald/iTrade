@@ -43,3 +43,15 @@
     padding-top: 10px;
     transform: translateX(50px);
 }
+
+#head-3 {
+    max-width: 60px;
+    margin-left: 80px;
+    padding-top: 5px;
+    margin-bottom: -10px;
+}
+
+#head-4 {
+    max-width: 70px;
+    transform: translateX(40%);
+}

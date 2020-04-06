@@ -37,17 +37,7 @@
     text-decoration: line-through;
 }
 
-#head-3 {
-    max-width: 60px;
-    margin-left: 80px;
-    padding-top: 5px;
-    margin-bottom: -10px;
-}
 
-#head-4 {
-    max-width: 70px;
-    transform: translateX(40%);
-}
 
 .header-session {
     display: flex;
@@ -228,17 +218,20 @@
 }
 
 .global-companies > * {
-    width: 200px;
+    width: 30%;
     color: white;
+    padding-left: 3.4%;
+    font-size: 1rem;
 }
 
 .global-companies {
-    padding-top: 50px;
     display: flex;
-    padding-left: 18%;
+    padding-top: 10px; 
+    padding-bottom: 20px;
     align-content: center;
     align-items: center;
     text-align: center;
+    margin-left: -3%;
 }
 
 .global-title > * {
@@ -250,7 +243,6 @@
 
 .global-title {
     padding-top: 30px;
-    margin-bottom: 60px;
     line-height: 50px;
 }
 

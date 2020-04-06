@@ -73,19 +73,20 @@ function Home (){
         <div className="marquee"></div>
         <div className="global-section">
           <h1 className="global-title">
-            <p>Invest in global companies</p>
-            <p>in a whole new way.</p>
+            <p>Invest in global companies in a whole new way.</p>
           </h1>
-
           <div className="global-companies">
-            <div className="global-1">
-              <p></p>
-            </div>
             <div className="global-2">
-              <p></p>
+              <h1>No account minimums.</h1>
+              <p>Get into the market with as little as $1.</p>
+            </div>
+            <div className="global-1">
+              <h1>No commission or foreign exchange fees.</h1>
+              <p>We take care of them—so you don’t have to.</p>
             </div>
             <div className="global-3">
-              <p></p>
+              <h1>No manual needed.</h1>
+              <p>Intuitively designed for newcomers and experts alike.</p>
             </div>
           </div>
         </div>
