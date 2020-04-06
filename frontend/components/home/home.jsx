@@ -63,8 +63,8 @@ function Home (){
               <p>
                 Commission-free trading means $0 commission trades placed on
                 self-directed accounts via mobile devices or web. Keep in mind,
-                other fees may still apply. Please see the Robinhood Financial
-                Fee Schedule to learn more.
+                other fees may still apply. Please see the iTrade Financial
+                Fee Schedule to learn more. Thank you for visiting this popup!
               </p>
             </div>
           </Modal>
