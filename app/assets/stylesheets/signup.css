@@ -1,5 +1,9 @@
 #signup-demo {
     margin-top: 50px;
+    text-decoration: none;
+    color: black;
+    text-decoration: underline;
+    font-style: italic;
 }
 
 .sign-up {
