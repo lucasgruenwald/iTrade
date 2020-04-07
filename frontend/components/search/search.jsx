@@ -5,10 +5,13 @@ class Search extends React.Component {
 
     render(){
         return(
+
             <input className="search-bar"
                 type="text"
-                placeholder="Search for stocks..."
-            ></input>
+                placeholder="change url  e.g.  #/stock/AAPL"    
+            >
+            </input>
+
         )
     }
 }
