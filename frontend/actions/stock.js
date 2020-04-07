@@ -1,4 +1,3 @@
-
 import { fetchInfo } from '../util/stock_show_util';
 
 export const RECEIVE_INFO = 'RECEIVE_INFO';
