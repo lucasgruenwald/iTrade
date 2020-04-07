@@ -102,7 +102,7 @@ function Home (){
         <footer>
           <div>
             <p>Website by Luke Gruenwald</p>
-            <p>lgruenwald@ucdavis.edu</p>
+            <p>lgruenwald@sbcglobal.net</p>
             <p>(415) 260-4991</p>
           </div>
           <div>
