@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Search from '../search/search'
+import SearchBar from '../search/search'
 
 export const Greeting = ({ currentUser, logout }) => {
 
@@ -8,7 +8,7 @@ export const Greeting = ({ currentUser, logout }) => {
         return (
             <div className="greet-yes">
                 <p>  *Feather*</p>
-                <Search/>
+                <SearchBar/>
                 <h1 className="dash-button" ><Link to="/dashboard" className="dash-link">Portfolio</Link></h1>
                 <h1 className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></h1>
             </div>

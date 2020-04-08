@@ -9,19 +9,21 @@ class SearchBar extends React.Component {
             results: []
         }
 
-        this.handleClearBar = this.handleClearBar.bind(this)
+        this.handleClick = this.handleClick.bind(this)
         this.update = this.update.bind(this)
     }
 
-    handleClearBar() {
-        this.setState({ search: '' });
+    handleClick(e) {
+        this.setState({ search: '' })
+
     }
 
     update(entry) {
         return e => {
             this.setState({
                 [entry]: e.currentTarget.value,
-            })
+            }),
+            this.update(this.state.search)
         }
     }
 
@@ -30,20 +32,23 @@ class SearchBar extends React.Component {
         let suggestions = []
 
         return(
+            <div className="search-bar-container">
+                <div className="search-bar">
 
-            <div className="search-bar">
-                <input 
-                    className='search-input' 
-                    type="text" 
-                    placeholder="url e.g. #/stock/AAPL"
-                    value={this.state.search} 
-                    onChange={this.update("search")} 
-                />
-                <div className="dropdown">
-                    {suggestions}
+                    <input 
+                        className='search-input' 
+                        type="text" 
+                        placeholder="url e.g. #/stock/AAPL"
+                        value={this.state.search} 
+                        onChange={this.update("search")} 
+                    />
+
+                    <div className="dropdown">
+                        {suggestions}
+                    </div>
+
                 </div>
             </div>
-
         )
     }
 }

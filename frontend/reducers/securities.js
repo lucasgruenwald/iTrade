@@ -1,6 +1,6 @@
 import { RECEIVE_STOCKS } from "../actions/securities";
 
-export const securitiesReducer = (state = [], action) => {
+export const securitiesReducer = (state = ["hello"], action) => {
     Object.freeze(state);
     let obj = {}
     switch (action.type) {
