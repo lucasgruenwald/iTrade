@@ -7,7 +7,7 @@ export const Greeting = ({ currentUser, logout }) => {
     const loggedGreet = () => {
         return (
             <div className="greet-yes">
-                <p>  *Feather*</p>
+            <img src="http://www.pngmart.com/files/7/Cash-PNG-Image.png" class="feather-img"/>
                 <SearchBar/>
                 <h1 className="dash-button" ><Link to="/dashboard" className="dash-link">Portfolio</Link></h1>
                 <h1 className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></h1>
