@@ -7,11 +7,9 @@
     background-color: white;
     color:black;
     margin-left: 10%;
-    margin-top: 5px;
-    max-height: 40px;
-    width: 200px;
-}
+    margin-top: 10px;
 
+}
 
 .greet-logout {
     background-color: white;
