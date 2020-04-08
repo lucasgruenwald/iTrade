@@ -38,6 +38,7 @@ class SearchBar extends React.Component {
                     <input 
                         className='search-input' 
                         type="text" 
+                        style={{fontSize:"20px"}}
                         placeholder="url e.g. #/stock/AAPL"
                         value={this.state.search} 
                         onChange={this.update("search")} 
