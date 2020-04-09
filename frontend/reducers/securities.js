@@ -1,6 +1,6 @@
 import { RECEIVE_STOCKS } from "../actions/securities";
 
-export const securitiesReducer = (state = ["hello"], action) => {
+const securitiesReducer = (state = [], action) => {
     Object.freeze(state);
     let obj = {}
     switch (action.type) {
@@ -12,3 +12,4 @@ export const securitiesReducer = (state = ["hello"], action) => {
     }
 }
 
+export default securitiesReducer;

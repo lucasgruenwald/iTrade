@@ -11,10 +11,9 @@ const holdingsReducer = (state = {}, action) => {
         // case FIND_HOLDING:
         //     return Object.assign(nextState, { [action.holding.id]: action.holding });
         case FIND_HOLDINGS:
-         
             return action.holdings;
         default: 
-            return {}
+            return state;
     }
 };
 

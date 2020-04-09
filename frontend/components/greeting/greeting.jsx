@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import SearchBar from '../search/search'
+import NavBar from '../nav/nav_container'
 
 export const Greeting = ({ currentUser, logout }) => {
 
@@ -8,7 +8,7 @@ export const Greeting = ({ currentUser, logout }) => {
         return (
             <div className="greet-yes">
             <img src="http://www.pngmart.com/files/7/Cash-PNG-Image.png" className="feather-img"/>
-                <SearchBar/>
+                <NavBar/>
                 <h1 className="dash-button" ><Link to="/dashboard" className="dash-link">Portfolio</Link></h1>
                 <h1 className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></h1>
             </div>

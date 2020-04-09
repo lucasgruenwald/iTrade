@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 // import { receiveStocks } from '../../actions/securities';
-import SearchBar from './search';
+import Nav from './nav';
 
-const mapStateToProps = state => ({
+const mSTP = state => ({
     stocks: state.entities.stocks
 })
 
-const mapDispatchToProps = dispatch => ({
+const mDTP = dispatch => ({
     // receiveStocks: () => dispatch(receiveStocks()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(mSTP, mDTP)(Nav);

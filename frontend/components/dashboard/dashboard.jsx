@@ -1,29 +1,31 @@
 import React, { Profiler } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import DashInfo from './dash_stock';
-import {fetchInfo} from '../../util/stock_show_util'
-import {receiveInfo} from '../../actions/stock'
+// import {fetchInfo} from '../../util/stock_show_util'
+// import {receiveInfo} from '../../actions/stock'
+// import NavContainer from '../nav/nav_container'
 
 // import News from './news/news';
 
 class Dashboard extends React.Component {
 
     constructor(props) {
-
         super(props);
         this.state = {}
     }
 
     componentDidMount(){
-        this.props.findHoldings(this.props.currentUser)
+        this.props.receiveStocks();
+        this.props.findHoldings(this.props.currentUser);
+
     }
 
-   
 
     render() {
         
      
         if (Object.values(this.props.holdings).length === 0) return null;
+        if (Object.values(this.props.stocks).length === 0) return null;
       
         // getting the tickers from props below 
         let hold = (Object.values(this.props.holdings))
@@ -56,6 +58,7 @@ class Dashboard extends React.Component {
         
         return (
             <div className="dashboard">
+                {/* <NavContainer /> */}
                 <h1>$ Portfolio Balance</h1>
                 <h5>+/- $___ (__%) today</h5>
                 {/* <h1>{tickers.map((ticker) => 
