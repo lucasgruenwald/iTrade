@@ -53,21 +53,11 @@ class Dashboard extends React.Component {
                 }
         })
          
-        // getting share_count from props above saved to 'share_counts' array
-
-        // let prices = []
-        // tickers.forEach((ticker) => {
-        //     // let obj = 
-        //     prices.push
-
-        // })
-        
-
         
         return (
             <div className="dashboard">
-                <h1>$87,361.19</h1>
-                
+                <h1>$ Portfolio Balance</h1>
+                <h5>+/- $___ (__%) today</h5>
                 {/* <h1>{tickers.map((ticker) => 
                     <li>{this.props.receiveInfo(ticker).profile.price}</li>
                 )}</h1> */}
@@ -82,12 +72,12 @@ class Dashboard extends React.Component {
                     <div className="dash-news">news articles go here</div>
                     </div>
                     <div className="dash-holdings">Cash 
-                        <h2 className="dash-cash">$23,708.52</h2>
-
+                        <h2 className="dash-cash">$ Cash Balance</h2>
+                        
                         <div className="dash-stocks">
 
 
-                        <h3>You currently own:</h3>
+                        <h3>Holdings:</h3>
                          
                         {tickers.map((tick, idx) =>
                             <div className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]}/>}</div>

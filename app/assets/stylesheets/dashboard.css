@@ -37,6 +37,10 @@
     padding-left: 12%;
 }
 
+.dashboard > h5 {
+    padding-left: 12%;
+}
+
 .dash-stocks > * {
     border-top: 1px solid slategray;
     border-bottom: 1px solid slategray;

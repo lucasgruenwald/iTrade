@@ -12,3 +12,4 @@ const receiveTheStocks = (stocks) => ({
 
 export const receiveStocks = () => dispatch => Promise.all([fetchNYSE(), fetchNasdaq()])
     .then(stocks => dispatch(receiveTheStocks(stocks.flat())));
+    
