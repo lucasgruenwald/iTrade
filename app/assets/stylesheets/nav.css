@@ -3,56 +3,6 @@
     box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
-.search-form {
-    background-color: white;
-    color:black;
-    margin-left: 25%;
-    margin-top: 17px;
-}
-
-.search-form:hover ul{
-    display: block;
-    background-color: white;
-    box-shadow: 0 0 1px lightslategray;
-}
-
-.search-field {
-    width: 30vw;
-    font-size: 20px;
-}
-
-.search-field:hover {
-    box-shadow: 0 0 2px slategray;
-    font-size: 20px;
-    outline: none;
-}
-
-.search-field:focus + ul{
-    display: block;
-    background-color: white;
-    font-size: 18px;
-}
-
-.suggestion-box {
-    display: none;
-    position: absolute;
-    z-index: 1;
-}
-
-.suggestion-item {
-    padding: 8px;
-}
-
-.suggestion-link {
-    text-decoration: none;
-    color: black;
-}
-
-.suggestion-link:hover {
-    text-decoration: none;
-    color: #21ce99;
-    text-shadow: 0.2px 1px black;
-}
 
 .greet-logout {
     background-color: white;
