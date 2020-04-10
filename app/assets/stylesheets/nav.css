@@ -14,12 +14,11 @@
     display: block;
     background-color: white;
     box-shadow: 0 0 1px lightslategray;
-    font-size: 18px;
 }
 
 .search-field {
-    position: relative;
-    width: 25vw;
+    width: 30vw;
+    font-size: 20px;
 }
 
 .search-field:hover {
@@ -27,7 +26,6 @@
     font-size: 20px;
     outline: none;
 }
-
 
 .search-field:focus + ul{
     display: block;
