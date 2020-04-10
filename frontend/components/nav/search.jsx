@@ -42,9 +42,9 @@ class SearchBar extends React.Component {
                             <Link
                                 to={`/stock/${ticker.symbol}`}
                                 key={idx}
-                                className="suggestion-item-link"
+                                className="suggestion-link"
                                 onClick={this.handleClearForm}>
-                                {ticker.symbol}  {ticker.name}
+                                {ticker.symbol} · {ticker.name}
                             </Link>
                         </li>
                     )
