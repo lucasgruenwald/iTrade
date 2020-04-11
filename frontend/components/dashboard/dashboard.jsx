@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
                             </div>
                             <p key={idx + 60} className="news-desc">{this.props.news[idx].description}</p>
                         </div>
-                        <img className="news-img" src={`${this.props.news[idx].urlToImage}`} alt="" />
+                        <img className="news-img" src={`${this.props.news[idx].urlToImage}`} />
                     </div>
                 </a>
             )
