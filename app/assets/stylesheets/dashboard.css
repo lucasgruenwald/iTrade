@@ -58,7 +58,6 @@
 }
 
 .indiv-stock {
-    border: 1px solid black;
     padding-left: 20px;
 }
 .indiv-stock > *{
@@ -86,6 +85,10 @@
     display: flex;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+}
+
+.news-div:hover{
+    background-color: lightgray;
 }
 
 .news-img {
