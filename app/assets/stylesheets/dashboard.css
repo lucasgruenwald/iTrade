@@ -16,6 +16,10 @@
     padding-bottom: 100px
 }
 
+.dash-stocks > h4 {
+   padding: 5px
+}
+
 
 .dashboard > h1 {
     padding-left: 12%;

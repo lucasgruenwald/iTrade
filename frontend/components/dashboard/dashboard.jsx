@@ -99,7 +99,7 @@ class Dashboard extends React.Component {
                         <div className="dash-stocks">
 
 
-                        <h3>Holdings:</h3>
+                        <h4>Stocks</h4>
                          
                         {tickers.map((tick, idx) =>
                             <div className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]}/>}</div>
