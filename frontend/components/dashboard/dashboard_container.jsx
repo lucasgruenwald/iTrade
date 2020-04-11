@@ -11,7 +11,8 @@ const mSTP = (state) => {
     return {
         currentUser: state.session.currentUser,
         holdings: state.entities.holdings,
-        stocks: state.entities.stocks
+        stocks: state.entities.stocks,
+        news: state.entities.news
     }
 }
 

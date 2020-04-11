@@ -25,6 +25,7 @@ class Dashboard extends React.Component {
         
         if (Object.values(this.props.holdings).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;
+        if (Object.values(this.props.stocks).length === 0) return null;
       
         let hold = (Object.values(this.props.holdings))
         let arr = []
@@ -51,6 +52,25 @@ class Dashboard extends React.Component {
         })
 
         let newsList = []
+
+        this.props.news.forEach((item, idx) => {
+            if (idx < 8){
+            newsList.push(
+                <a target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
+                    <div className="news-div">
+                        <div className="news-content">
+                            <div className="news-text">
+                                <h3 key={idx + 30} className="news-title">{this.props.news[idx].title}</h3>
+                                {/* <p key={idx} className="news-site">{this.props.news[idx].source.name}</p> */}
+                            </div>
+                            <p key={idx + 60} className="news-desc">{this.props.news[idx].description}</p>
+                        </div>
+                        <img className="news-img" src={`${this.props.news[idx].urlToImage}`} alt="" />
+                    </div>
+                </a>
+            )
+            }
+        })
          
         
         return (
@@ -68,7 +88,7 @@ class Dashboard extends React.Component {
                         alt=""
                         className="graph-img"
                         />
-                        <p>Top News:</p>
+                        <h3 className="news-header">Top News:</h3>
                         <div className="dash-news">
                             {newsList}
                         </div>

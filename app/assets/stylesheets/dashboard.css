@@ -2,13 +2,6 @@
     display: flex;
 }
 
-.dash-graph {
-    margin-left: 20%;
-    outline: 1px solid darkgreen;
-    padding: 10px;
-    padding-bottom: 250px;
-    padding-right: 550px;
-}
 
 .dash-cash {
     margin-top: 4px;
@@ -23,15 +16,6 @@
     padding-bottom: 100px
 }
 
-.dash-news {
-    /* margin-top: 5%;
-    margin-left: 20%;
-    outline: 1px solid orangered;
-    padding: 10px;
-    padding-left: 300px;
-    padding-right: 300px;
-    padding-bottom: 50px; */
-}
 
 .dashboard > h1 {
     padding-left: 12%;
@@ -39,6 +23,7 @@
 
 .dashboard > h5 {
     padding-left: 12%;
+    margin-top: -7px;
 }
 
 .dash-stocks > * {
@@ -80,7 +65,51 @@
     font-size: 16px;
 }
 
+.port-left {
+    width: 70%;
+}
+
 .graph-img {
-    width: 80%;
+    width: 70%;
     margin-left: 17%;
+}
+
+.news-header{
+    margin-left: 17%;
+    margin-top: 4%;
+}
+
+.news-div{
+    margin-left: 17%;
+    margin-bottom: 2%;
+    width: 80%;
+    display: flex;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.news-img {
+    max-width: 30%;
+    max-height: 50%;
+    padding: 5%;
+    /* border: 0.1px solid black; */
+    border-radius: 25%;
+}
+
+.news-title {
+    text-decoration: none;
+    margin-top: 9%;
+    margin-left: 3%;
+    font-size: 16px;
+    color: black;
+}
+
+.news-link {
+    text-decoration: none;
+}
+
+.news-desc {
+    font-size: 14px;
+    color: black;
+    margin-left: 3%;
 }
