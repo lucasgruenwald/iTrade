@@ -23,11 +23,9 @@ class Dashboard extends React.Component {
 
     render() {
         
-     
         if (Object.values(this.props.holdings).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;
       
-        // getting the tickers from props below 
         let hold = (Object.values(this.props.holdings))
         let arr = []
         hold.forEach((obj) => {
@@ -41,12 +39,9 @@ class Dashboard extends React.Component {
                 }
             })
         })
-        // getting tickers from props above saved to 'tickers' array
 
-        // getting the share_count from props below 
         let hold2 = (Object.values(this.props.holdings))
         let share_counts = []
- 
         hold2.forEach((pair) => {
                 for (var key in pair) {
                     if(key === "share_count"){
@@ -54,6 +49,8 @@ class Dashboard extends React.Component {
                     }
                 }
         })
+
+        let newsList = []
          
         
         return (
@@ -67,12 +64,14 @@ class Dashboard extends React.Component {
  
                 <div className="portfolio">
                     <div className="port-left">
-                    {/* <p className="dash-graph">graph goes here</p> */}
                         <img src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/s960x960/89853789_10158012842043427_7164842251091181568_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQn8d5XZLyw9yTFHBxSwuQoCkWR_5ds_yEvXMyXgzQmIb0PFiUWRJyS3YFLqa6wWj9c&_nc_ht=scontent-sjc3-1.xx&_nc_tp=7&oh=1cb29fa250d69a11f3e6063a35f1e1e3&oe=5E93175A" 
                         alt=""
                         className="graph-img"
-                    />
-                    <div className="dash-news">news articles go here</div>
+                        />
+                        <p>Top News:</p>
+                        <div className="dash-news">
+                            {newsList}
+                        </div>
                     </div>
                     <div className="dash-holdings">Cash 
                         <h2 className="dash-cash">$ Cash Balance</h2>
