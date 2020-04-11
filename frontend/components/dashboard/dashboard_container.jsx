@@ -5,6 +5,7 @@ import { receiveHolding, findHoldings } from '../../actions/holding';
 import { receiveInfo } from '../../actions/stock';
 import { connect } from 'react-redux';
 import { receiveStocks } from '../../actions/securities';
+import { receiveNews } from '../../actions/news'
 
 const mSTP = (state) => {
     return {
@@ -20,6 +21,7 @@ const mDTP = dispatch => ({
     receiveHolding: (holding) => dispatch(receiveHolding(holding)),
     findHoldings: (user_id) => dispatch(findHoldings(user_id)),
     receiveStocks: () => dispatch(receiveStocks()),
+    receiveNews: () => dispatch(receiveNews())
 })
 
 export default connect(mSTP, mDTP)(Dashboard);
