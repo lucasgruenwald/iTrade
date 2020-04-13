@@ -14,15 +14,15 @@ class StockGraph extends React.Component {
 
   render() {
 
-    // const tickerGraph = (
-    //     <div>
-    //         <p>graph goes here</p>
-    //     </div>
-    // )
+        const renderGraph = (
+            <LineChart >
+
+            </LineChart>
+        );
 
     return (
     <div className="stock-graph-holder">
-        {/* {tickerGraph} */}
+        {renderGraph}
     </div>
     )
   };

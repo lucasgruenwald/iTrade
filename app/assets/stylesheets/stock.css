@@ -3,14 +3,10 @@
     display: flex;
 }
 
-.stock-page-graph {
-    padding-bottom: 5px;
-    width: 700px;
-    height: 400px;
-}
 
 .holding-data {
-    outline: 1px solid black;
+    border: 1px solid black;
+    border-radius: 3px;
     width: 550px;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -60,18 +56,22 @@
     margin-top: 5px;
 }
 
-.stock-right {
-    right: 5%;
-    margin-left: 50%;
-}
 
 .holdings-bar{
-    margin-right: 10%;
+    margin-right: 15%;
     margin-top: 10%;
     border: 1px solid grey;
-    width: 450px;
+    border-radius: 3px;
+    width: 500px;
 }
 
 .holdings-bar{
     text-align: center;
+}
+
+.stock-graph-holder{
+    background-color: lightsteelblue;
+    height: 500px;
+    width: 700px;
+    margin-bottom: 5px;
 }
