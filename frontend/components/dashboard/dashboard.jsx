@@ -76,7 +76,7 @@ class Dashboard extends React.Component {
         
         return (
             <div className="dashboard">
-                {/* <NavContainer /> */}
+            
                 <h1>$ Portfolio Balance</h1>
                 <h5>+/- $___ (__%) today</h5>
                 {/* <h1>{tickers.map((ticker) => 
@@ -89,7 +89,9 @@ class Dashboard extends React.Component {
                         alt=""
                         className="graph-img"
                         /> */}
-                        {DashGraphContainer}
+                        <h3>---Graph goes here---</h3>
+
+                        <DashGraphContainer/>
 
                         <h3 className="news-header">Top News:</h3>
                         <div className="dash-news">

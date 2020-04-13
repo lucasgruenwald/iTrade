@@ -4,8 +4,8 @@ import DashGraph from './dash_graph';
 
 const mSTP = (state) => {
     return {
-        // currentUser: state.session.currentUser,
-        // holdings: state.entities.holdings,
+        currentUser: state.session.currentUser,
+        holdings: state.entities.holdings,
         // receive graph data
     }
 };
