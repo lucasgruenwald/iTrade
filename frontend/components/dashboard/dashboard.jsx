@@ -100,11 +100,10 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="dash-holdings">Cash 
                         <h2 className="dash-cash">$ Cash Balance</h2>
-                        
-                        <div className="dash-stocks">
-
 
                         <h4>Stocks</h4>
+                        
+                        <div className="dash-stocks">
                          
                         {tickers.map((tick, idx) =>
                             <div className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]}/>}</div>

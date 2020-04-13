@@ -11,9 +11,15 @@
     margin-top: 5px;
     margin-left: 5%;
     width: 240px;
-    outline: 1px solid blue;
+    border: 1px solid slategray;
+    border-radius: 3px;
+    background: snow;
     padding: 10px;
     padding-bottom: 100px
+}
+
+.dash-stocks{
+    margin-top: -15px;
 }
 
 .dash-stocks > h4 {
