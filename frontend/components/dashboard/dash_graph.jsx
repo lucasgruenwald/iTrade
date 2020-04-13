@@ -1,4 +1,5 @@
 import React from 'react';
+// import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
 // import graph tools
 
 class DashGraph extends React.Component{
@@ -18,7 +19,7 @@ class DashGraph extends React.Component{
     render(){
 
 
-        // const stockGraph = (
+        // const mainGraph = (
         //     <div>
         //         <p>graph goes here</p>
         //     </div>
@@ -27,7 +28,7 @@ class DashGraph extends React.Component{
 
         return(
             <div className="dash-graph-holder">
-                {/* {stockGraph} */}
+                {/* {mainGraph} */}
             </div>
         )
     }
