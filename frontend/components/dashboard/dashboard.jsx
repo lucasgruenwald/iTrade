@@ -89,7 +89,7 @@ class Dashboard extends React.Component {
                         alt=""
                         className="graph-img"
                         /> */}
-                        <h3>---Graph goes here---</h3>
+                        <h3 className="graph-placeholder">---Graph goes here---</h3>
 
                         <DashGraphContainer/>
 
