@@ -1,6 +1,7 @@
 import React from 'react';
 import StockInfo from './info'
-import StockGraphContainer from './stock_graph_container';
+import StockGraph from './stock_graph';
+import { fetchDailyPrices, fetchPrices } from '../../util/graph_api_util';
 
 class StockPage extends React.Component {
     
@@ -35,7 +36,7 @@ class StockPage extends React.Component {
 
             <h1>${this.props.info.profile.price.toLocaleString()}</h1>
 
-            <StockGraphContainer/>
+            <StockGraph/>
 
             <div className="holding-data">Your equity & average cost will be displayed here</div>
 
