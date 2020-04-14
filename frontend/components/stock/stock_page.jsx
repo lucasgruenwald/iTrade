@@ -115,9 +115,19 @@ class StockPage extends React.Component {
         });
     }
 
+    updatePrices(period) {
+        if (this.state.period !== period) {
+            return e => {
+                period === "1D" ? fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response)) : fetchPrices(this.props.ticker, period).then(response => this.renderPrices(response, period))
+            }
+
+        }
+    }
+
     render(){
        
         if (Object.values(this.props.info).length === 0) return null;
+        let data = this.state[this.state.period]
 
         return(
             <div className="stock-page">
@@ -128,11 +138,19 @@ class StockPage extends React.Component {
                 <h2>{this.props.info.profile.companyName}</h2>
             </div>
 
-            {/* <h2>{this.props.holdings}</h2> */}
-
             <h1>${this.props.info.profile.price.toLocaleString()}</h1>
 
-            <StockGraph/>
+            <StockGraph
+                oldTicker={this.state.oldTicker}
+                tickerSymbol={this.props.ticker}
+                ticker={data}
+                period={this.state.period}
+                open={this.state.open}
+                close={this.state.close}
+                change={this.state.change}
+                changePercent={this.state.changePercent}
+                color={this.state.color}
+            />
 
             <div className="holding-data">Your equity & average cost will be displayed here</div>
 
