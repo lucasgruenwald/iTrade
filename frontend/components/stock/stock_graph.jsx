@@ -1,64 +1,99 @@
 import React from "react";
 import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
+import { withRouter } from 'react-router-dom';
 
-// import numeral from 'numeral';
 
 class StockGraph extends React.Component {
   constructor(props) {
     super(props);
-    // add more here
     this.state = {
-      timePeriod: "1d",
-      price: 0,
-      change: 0,
-      percentageChange: 0,
-      chartData: this.props.info.profile.price,
+      ticker: this.props.ticker,
+      closePrice: this.props.close,
+      change: parseFloat(this.props.close - this.props.open).toFixed(2),
+      percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
+      open: this.props.open,
+      period: this.props.period,
     };
-    // and add to state
-    this.handleOneDay = this.handleOneDay.bind(this);
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseOut = this.handleMouseOut.bind(this);
   }
 
-  handleOneDay() {
-    console.log(this.oneDayColor);
-    this.removeHighlight();
-
+  componentDidMount() {
     this.setState({
-      chartData: this.props.info.profile.price
+      period: this.props.period,
+      open: this.props.open,
+      change: parseFloat(this.props.close - this.props.open).toFixed(2),
+      percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
     });
   }
 
+  componentDidUpdate() {
+    if (this.state.period !== this.props.period) {
+      this.setState({
+        period: this.props.period,
+        change: parseFloat(this.props.close - this.props.open).toFixed(2),
+        percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2)
+      });
+
+    };
+  }
+
+  handleMouseOver(e) {
+    if (e && e.activePayload !== undefined) {
+      let openPrice = this.state.open;
+      let hoverPrice = e.activePayload[0].payload.price;
+
+      let change = hoverPrice - openPrice;
+      let divChange = (change / hoverPrice) * 100
+
+      this.setState({
+        closePrice: parseFloat(e.activePayload[0].payload.price).toFixed(2),
+        change: parseFloat(change.toFixed(2)),
+        percentChange: parseFloat(divChange).toFixed(2)
+      })
+    }
+  }
+
+  handleMouseOut(e) {
+    let dollarChange = (this.props.close - this.props.open)
+    let divisionChange = ((dollarChange / this.props.close) * 100)
+
+    this.setState({
+      closePrice: this.props.close,
+      change: parseFloat(dollarChange).toFixed(2),
+      percentChange: parseFloat(divisionChange).toFixed(2)
+    })
+  }
+
+
   render() {
-    // add functions here
-    // add periods (snapshots)
-
-    // let data = [];
-
-    let dateFull = new Date();
-    // let dayIdx = dateFull.getDay();
-    // let isWeekend = (dayIdx === 0) || (dayIdx === 6)
-    let color = "blue";
-
-  
-
-    const renderGraph = (
-      <LineChart
-        width={800}
-        height={400}
-        // data={data}
-      >
-        <YAxis domain={["dataMin", "dataMax"]} axisLine={false} hide={true} />
-        <XAxis dataKey="created_at" hide={true} />
-        <Line type="monotone" dataKey="valuation" stroke={color} dot={false} />
-        <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-      </LineChart>
-    );
+    let data = this.props.ticker || [];
+    const label = "label"
 
     return (
-      <div className="stock-graph-holder">
-        <p>renderGraph is below this line</p>
-        {renderGraph}
+      <div className="stock-chart-holder">
+
+        <p>{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
+
+        <p>1 day chart:</p>
+
+        <LineChart
+          width={650}
+          height={350}
+          data={data}
+          margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
+          onMouseOver={this.handleMouseOver}
+          onMouseLeave={this.handleMouseOut}
+        >
+          <XAxis dataKey={label} hide={true} />
+          <YAxis hide={true} domain={['dataMin', 'dataMax']} />
+          <Tooltip className='tooltip'
+            isAnimationActive={false} cursor={{ stroke: "black", strokeWidth: 0.5 }} />
+
+          <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={1} />
+        </LineChart>
       </div>
-    );
+    )
   }
 };
 
