@@ -30,14 +30,14 @@ class StockPage extends React.Component {
     componentDidMount() {
         this.props.receiveInfo(this.props.ticker);
         this.props.findHoldings(this.props.currentUser);
-        fetchDailyPrices(this.props.ticker).then(response => this.renderDaily(response));
+        fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
     };
 
     componentDidUpdate(prevProps) {
         let prev = prevProps.ticker || prevProps.match.params.ticker
         if (this.props.ticker !== prev) {
             this.setState({ done: false })
-            fetchDailyPrices(this.props.ticker).then(response => this.renderDaily(response));
+            fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
         };
     };
 
