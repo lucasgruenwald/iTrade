@@ -19,7 +19,7 @@ class StockInfo extends React.Component {
 
         return (      
 
-            <div className="stock-info">
+            <div className="info-wrap">
 
                 <div className="info">
     

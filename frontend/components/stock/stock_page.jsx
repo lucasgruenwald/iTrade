@@ -152,7 +152,7 @@ class StockPage extends React.Component {
                 color={this.state.color}
             />
 
-            <div className="holding-data">Your equity & average cost will be displayed here</div>
+            {/* <div className="holding-data">Your equity & average cost will be displayed here</div> */}
 
             <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
 

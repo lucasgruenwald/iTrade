@@ -29,7 +29,7 @@
 
 .ticker-text > * {
     font-size: 18px;
-    padding-right: 35px;
+    padding-right: 50px;
 }
 
 
@@ -44,7 +44,7 @@
 }
 
 .ticker-about {
-    margin-right: 40%;
+    margin-right: 14%;
 }
 
 .ticker-about > h4 {
@@ -55,6 +55,7 @@
     margin-bottom: 5px;
     margin-top: 5px;
 }
+
 
 
 .holdings-bar{
@@ -75,3 +76,4 @@
     width: 700px;
     margin-bottom: 5px;
 }
+
