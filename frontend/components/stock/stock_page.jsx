@@ -22,12 +22,13 @@ class StockPage extends React.Component {
             change: 0,
             changePercent: 0,
             done: false,
-            isLoading: true
+            isLoading: true,
         }; 
         this.updatePrices = this.updatePrices.bind(this);
     };
     
     componentDidMount() {
+        this.props.receiveOneNews(this.props.ticker);
         this.props.receiveInfo(this.props.ticker);
         this.props.findHoldings(this.props.currentUser);
         fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
@@ -124,37 +125,70 @@ class StockPage extends React.Component {
         }
     }
 
+    
+
     render(){
        
         if (Object.values(this.props.info).length === 0) return null;
+        // if (Object.values(this.props.news).length === 0) return null;
+        console.log(this.props)
+        if (this.props.news === undefined) return null;
+
         let data = this.state[this.state.period]
+
+        let newsList = newsList || []
+
+        this.props.news.forEach((item, idx) => {
+            if (idx < 8) {
+                newsList.push(
+                    <a target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
+                        <div className="news-div">
+                            <div className="news-content">
+                                <div className="news-text">
+                                    <h3 key={idx + 30} className="news-title">{this.props.news[idx].title}</h3>
+                                    {/* <p key={idx} className="news-site">{this.props.news[idx].source.name}</p> */}
+                                </div>
+                                <p key={idx + 60} className="news-desc">{this.props.news[idx].description}</p>
+                            </div>
+                            <img className="news-img" src={`${this.props.news[idx].urlToImage}`} />
+                        </div>
+                    </a>
+                )
+            }
+        });
+        
 
         return(
             <div className="stock-page">
                 
             <div className="stock-left">
 
-            <div className="stock-title">
-                <h2>{this.props.info.profile.companyName}</h2>
-            </div>
+                <div className="stock-title">
+                    <h2>{this.props.info.profile.companyName}</h2>
+                </div>
 
-            <h1>${this.props.info.profile.price.toLocaleString()}</h1>
+              <h1>${this.props.info.profile.price.toLocaleString()}</h1>
 
-            <StockGraph
-                oldTicker={this.state.oldTicker}
-                tickerSymbol={this.props.ticker}
-                ticker={data}
-                period={this.state.period}
-                open={this.state.open}
-                close={this.state.close}
-                change={this.state.change}
-                changePercent={this.state.changePercent}
-                color={this.state.color}
-            />
+                <StockGraph
+                    oldTicker={this.state.oldTicker}
+                    tickerSymbol={this.props.ticker}
+                    ticker={data}
+                    period={this.state.period}
+                    open={this.state.open}
+                    close={this.state.close}
+                    change={this.state.change}
+                    changePercent={this.state.changePercent}
+                    color={this.state.color}
+                />
 
-            {/* <div className="holding-data">Your equity & average cost will be displayed here</div> */}
+              {/* <div className="holding-data">Your equity & average cost will be displayed here</div> */}
 
-            <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
+                <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
+
+                <h3 className="news-header">Top News:</h3>
+                <div className="dash-news">
+                    {newsList}
+                </div>
 
             </div>
             
