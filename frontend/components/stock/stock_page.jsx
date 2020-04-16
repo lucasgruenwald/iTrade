@@ -130,8 +130,6 @@ class StockPage extends React.Component {
     render(){
        
         if (Object.values(this.props.info).length === 0) return null;
-        // if (Object.values(this.props.news).length === 0) return null;
-        console.log(this.props)
         if (this.props.news === undefined) return null;
 
         let data = this.state[this.state.period]
@@ -139,10 +137,10 @@ class StockPage extends React.Component {
         let newsList = newsList || []
 
         this.props.news.forEach((item, idx) => {
-            if (idx < 8) {
+            if (idx < 5) {
                 newsList.push(
                     <a target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
-                        <div className="news-div">
+                        <div className="news-div-indiv">
                             <div className="news-content">
                                 <div className="news-text">
                                     <h3 key={idx + 30} className="news-title">{this.props.news[idx].title}</h3>
@@ -185,7 +183,7 @@ class StockPage extends React.Component {
 
                 <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
 
-                <h3 className="news-header">Top News:</h3>
+                <h3 className="news-header-indiv">Top News:</h3>
                 <div className="dash-news">
                     {newsList}
                 </div>
