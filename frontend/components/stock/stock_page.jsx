@@ -139,14 +139,14 @@ class StockPage extends React.Component {
         this.props.news.forEach((item, idx) => {
             if (idx < 5) {
                 newsList.push(
-                    <a target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
+                    <a key={idx} target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
                         <div className="news-div-indiv">
                             <div className="news-content">
                                 <div className="news-text">
-                                    <h3 key={idx + 30} className="news-title">{this.props.news[idx].title}</h3>
+                                    <h3 key={idx * 10} className="news-title">{this.props.news[idx].title}</h3>
                                     {/* <p key={idx} className="news-site">{this.props.news[idx].source.name}</p> */}
                                 </div>
-                                <p key={idx + 60} className="news-desc">{this.props.news[idx].description}</p>
+                                <p key={idx * 100} className="news-desc">{this.props.news[idx].description}</p>
                             </div>
                             <img className="news-img" src={`${this.props.news[idx].urlToImage}`} />
                         </div>
