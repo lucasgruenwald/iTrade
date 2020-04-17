@@ -15,7 +15,6 @@ class StockPage extends React.Component {
             "1M": [],
             "3M": [],
             "1Y": [],
-            "5Y": [],
             period: "",
             open: null,
             close: null,
@@ -90,12 +89,12 @@ class StockPage extends React.Component {
 
     }
 
-    renderPrices(response, timeFrame) {
+    renderPrices(response, time) {
         const data = response.map(price => {
 
             return {
                 price: price.close,
-                date: new Date(Date.parse(`${price.date} ${price.label}`)).toLocaleString('en-US'),
+                date: (time === "3M" || time === "1Y") ? price.date : new Date(Date.parse(`${price.date} ${price.label}`)).toLocaleString('en-US'),
                 open: price.open,
                 change: price.change,
                 changePercent: price.changePercent
@@ -104,8 +103,8 @@ class StockPage extends React.Component {
 
         this.setState({
             ticker: this.props.ticker,
-            [timeFrame]: data,
-            period: timeFrame,
+            [time]: data,
+            period: time,
             open: response[0].open,
             close: response[response.length - 1].close,
             change: response[response.length - 1].change,
@@ -132,9 +131,15 @@ class StockPage extends React.Component {
         if (Object.values(this.props.info).length === 0) return null;
         if (this.props.news === undefined) return null;
 
-        let data = this.state[this.state.period]
+        const period = Object.keys(this.state).map(key => {
+            if (key === "1D" || key === "5D" || key === "1M" || key === "3M" || key === "1Y" ) {
+                return <button className={`period ${this.state.period === key ? this.state.colorClass : ''}`} key={`${key}-id`} onClick={this.updatePrices(key)} >{key.slice(0, 2).toUpperCase()}</button>
+            };
+        });
 
-        let newsList = newsList || []
+        let data = this.state[this.state.period];
+
+        let newsList = newsList || [];
 
         this.props.news.forEach((item, idx) => {
             if (idx < 5) {
@@ -178,6 +183,9 @@ class StockPage extends React.Component {
                     changePercent={this.state.changePercent}
                     color={this.state.color}
                 />
+
+                <p>{this.state.period} chart</p>
+                <div>{period}</div>
 
               {/* <div className="holding-data">Your equity & average cost will be displayed here</div> */}
 
