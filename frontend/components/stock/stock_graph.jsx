@@ -75,8 +75,6 @@ class StockGraph extends React.Component {
 
         <p>{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
 
-        <p>1 day chart:</p>
-
         <LineChart
           width={650}
           height={350}
