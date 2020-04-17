@@ -102,8 +102,8 @@
 }
 
 .news-img {
-    max-width: 30%;
-    max-height: 50%;
+    width: 30%;
+    max-height: 150px;
     padding: 5%;
     /* border: 0.1px solid black; */
     border-radius: 25%;
