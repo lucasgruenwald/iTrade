@@ -24,8 +24,6 @@ class Dashboard extends React.Component {
                         if (obj !== 'FIND_HOLDINGS') {
                             Object.keys(obj).forEach((key, idx3) => {
                                 if (key === "stock_ticker") {
-                                    console.log(obj[key])
-                                    console.log(idx2)
                                     this.props.receiveCurrentPrice(obj[key])
                                 }
                             });
@@ -38,10 +36,14 @@ class Dashboard extends React.Component {
 
 
     render() {
+
+        console.log(this.props.price)
         
         if (Object.values(this.props.holdings).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;
+        if (Object.values(this.props.price).length === 0) return null;
+
 
         let hold = (Object.values(this.props.holdings))
         let arr = []
@@ -66,6 +68,8 @@ class Dashboard extends React.Component {
                     }
                 }
         })
+
+        let priceObj = this.props.price
 
         let newsList = []
 
@@ -96,16 +100,10 @@ class Dashboard extends React.Component {
             
                 <h1>$ Portfolio Balance</h1>
                 <h5>+/- $___ (__%) today</h5>
-                {/* <h1>{tickers.map((ticker) => 
-                    <li>{this.props.receiveInfo(ticker).profile.price}</li>
-                )}</h1> */}
  
                 <div className="portfolio">
                     <div className="port-left">
-                        {/* <img src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/s960x960/89853789_10158012842043427_7164842251091181568_o.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_oc=AQn8d5XZLyw9yTFHBxSwuQoCkWR_5ds_yEvXMyXgzQmIb0PFiUWRJyS3YFLqa6wWj9c&_nc_ht=scontent-sjc3-1.xx&_nc_tp=7&oh=1cb29fa250d69a11f3e6063a35f1e1e3&oe=5E93175A" 
-                        alt=""
-                        className="graph-img"
-                        /> */}
+
                         <h3 className="graph-placeholder">---For now, see individual stock pages for graphs---</h3>
 
                         <DashGraphContainer/>
@@ -123,7 +121,7 @@ class Dashboard extends React.Component {
                         <div className="dash-stocks">
                          
                         {tickers.map((tick, idx) =>
-                            <div key={idx*50} className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]}/>}</div>
+                            <div key={idx*50} className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]} prices={priceObj} />}</div>
                         )}
 
                         </div>

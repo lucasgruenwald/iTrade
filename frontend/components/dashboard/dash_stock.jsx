@@ -14,18 +14,31 @@ class DashInfo extends React.Component {
     }
 
     render() {
-       
+        let priceMap = this.props.prices
+        let price = 0
+        priceMap.forEach((obj) => {
+            if (obj.symbol === this.props.ticker){
+                price = obj.price
+            }
+        })
 
         return (
             
             <div className="stock-info">
 
                 <div className="flex">
+
+                <div>
                 
-                <h3><Link to={`/stock/${this.props.ticker}`} className="stock-link">{this.props.ticker}</Link></h3>
-                    <p>{}</p>
+                    <h3><Link to={`/stock/${this.props.ticker}`} className="stock-link">{this.props.ticker}</Link></h3>
+                
+                    <p className="dash-numshares">{this.props.shares} Shares</p>
+
                 </div>
-                <p className="dash-numshares">{this.props.shares} Shares</p>
+                
+                <p className="dash-price">${price}</p>
+
+                </div>
   
             </div>
         )
