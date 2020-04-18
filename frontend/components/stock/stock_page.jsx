@@ -153,7 +153,9 @@ class StockPage extends React.Component {
                                 </div>
                                 <p key={idx * 100} className="news-desc">{this.props.news[idx].description}</p>
                             </div>
+                            <div className="news-img-holder">
                             <img className="news-img" src={`${this.props.news[idx].urlToImage}`} />
+                            </div>
                         </div>
                     </a>
                 )
