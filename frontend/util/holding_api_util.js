@@ -11,7 +11,8 @@ export const fetchHoldings = (user_id) => {
     
     return $.ajax({
         url: `/api/users/${user_id}/holdings/`,
-        method: "GET"
+        method: "GET",
+        data: {user_id}
     })
 };
 

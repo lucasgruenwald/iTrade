@@ -18,7 +18,24 @@ class Dashboard extends React.Component {
     componentDidMount(){
         this.props.receiveStocks();
         this.props.findHoldings(this.props.currentUser)
-            // add .then to find prices
+            .then(holdings => {
+                Object.values(holdings).forEach((row, idx) => {
+                    Object.values(row).forEach((obj, idx) => {
+                        if (obj !== 'FIND_HOLDINGS'){
+                            Object.keys(obj).forEach((key, idx) => {
+                                if (key === "stock_ticker") {
+                                    console.log(obj[key])
+                                    let i = 1
+                                    if (this.props.receiveCurrentPrice(obj[key])){
+                                        i += 1;
+                                        console.log(i)
+                                    }
+                                }  
+                            });
+                        }
+                    });
+                });
+            });
         this.props.receiveNews();
     }
 
@@ -28,7 +45,7 @@ class Dashboard extends React.Component {
         if (Object.values(this.props.holdings).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;
-      
+
         let hold = (Object.values(this.props.holdings))
         let arr = []
         hold.forEach((obj) => {
@@ -58,14 +75,14 @@ class Dashboard extends React.Component {
         this.props.news.forEach((item, idx) => {
             if (idx < 8){
             newsList.push(
-                <a target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
+                <a key={idx} target="_blank"  href={`${this.props.news[idx].url}`} className="news-link">
                     <div className="news-div">
                         <div className="news-content">
                             <div className="news-text">
-                                <h3 key={idx + 30} className="news-title">{this.props.news[idx].title}</h3>
+                                <h3 key={idx * 100} className="news-title">{this.props.news[idx].title}</h3>
                                 {/* <p key={idx} className="news-site">{this.props.news[idx].source.name}</p> */}
                             </div>
-                            <p key={idx + 60} className="news-desc">{this.props.news[idx].description}</p>
+                            <p key={idx * 1000} className="news-desc">{this.props.news[idx].description}</p>
                         </div>
                         <div className="news-img-holder">
                         <img className="news-img" src={`${this.props.news[idx].urlToImage}`} />
@@ -109,7 +126,7 @@ class Dashboard extends React.Component {
                         <div className="dash-stocks">
                          
                         {tickers.map((tick, idx) =>
-                            <div className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]}/>}</div>
+                            <div key={idx*50} className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]}/>}</div>
                         )}
 
                         </div>

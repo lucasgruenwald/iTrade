@@ -5,7 +5,7 @@ import {
 } from "../util/securities_api_util";
 
 export const RECEIVE_STOCKS = "RECEIVE_STOCKS";
-export const RECEIVE_CURRENT = "RECEIVE_CURRENT"
+export const RECEIVE_CURRENT = "RECEIVE_CURRENT";
 
 const receiveTheStocks = (stocks) => ({
     type: RECEIVE_STOCKS,
@@ -20,5 +20,5 @@ const receiveTheCurrentPrice = price => ({
 export const receiveStocks = () => dispatch => Promise.all([fetchNYSE(), fetchNasdaq()])
     .then(stocks => dispatch(receiveTheStocks(stocks.flat())));
 
-export const receiveCurrent = (ticker) => dispatch => fetchCurrentPrice(ticker)
+export const receiveCurrentPrice = (ticker) => dispatch => fetchCurrentPrice(ticker)
     .then(price => dispatch(receiveTheCurrentPrice(price)));
