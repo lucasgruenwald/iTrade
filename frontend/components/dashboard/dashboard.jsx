@@ -17,7 +17,8 @@ class Dashboard extends React.Component {
 
     componentDidMount(){
         this.props.receiveStocks();
-        this.props.findHoldings(this.props.currentUser);
+        this.props.findHoldings(this.props.currentUser)
+            // add .then to find prices
         this.props.receiveNews();
     }
 

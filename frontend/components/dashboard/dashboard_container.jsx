@@ -4,7 +4,7 @@ import { logoutUser } from '../../actions/session';
 import { receiveHolding, findHoldings } from '../../actions/holding';
 import { receiveInfo } from '../../actions/stock';
 import { connect } from 'react-redux';
-import { receiveStocks } from '../../actions/securities';
+import { receiveStocks, receiveCurrent } from '../../actions/securities';
 import { receiveNews } from '../../actions/news'
 
 const mSTP = (state) => {
@@ -12,7 +12,8 @@ const mSTP = (state) => {
         currentUser: state.session.currentUser,
         holdings: state.entities.holdings,
         stocks: state.entities.stocks,
-        news: state.entities.news
+        news: state.entities.news,
+        prices: state.entities.prices
     }
 }
 
@@ -22,7 +23,8 @@ const mDTP = dispatch => ({
     receiveHolding: (holding) => dispatch(receiveHolding(holding)),
     findHoldings: (user_id) => dispatch(findHoldings(user_id)),
     receiveStocks: () => dispatch(receiveStocks()),
-    receiveNews: () => dispatch(receiveNews())
+    receiveCurrent: (ticker) => dispatch(receiveCurrent(ticker)),
+    receiveNews: () => dispatch(receiveNews()),
 })
 
 export default connect(mSTP, mDTP)(Dashboard);

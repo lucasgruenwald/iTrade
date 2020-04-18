@@ -12,3 +12,11 @@ export const fetchNasdaq = () => (
     })
 );
 
+export const fetchCurrentPrice = (ticker) => (
+    $.ajax({
+        url: `https://financialmodelingprep.com/api/v3/stock/real-time-price/${ticker}`,
+        method: "GET"
+    })
+);
+
+
