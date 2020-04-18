@@ -6,7 +6,15 @@ const currentPriceReducer = (state = [], action) => {
     switch (action.type) {
         case RECEIVE_CURRENT:
             nextState[action.price.ticker] = action.price;
-            return nextState;
+            let filter = Object.values(nextState)
+            if (filter.pairs) {
+                const pairs = filter.pairs.concat(filter.pairs);
+                return {
+                    pairs
+                };
+            } else {
+                return filter;
+            }
         default:
             return state;
     };

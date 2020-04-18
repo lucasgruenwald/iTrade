@@ -20,17 +20,14 @@ class Dashboard extends React.Component {
         this.props.findHoldings(this.props.currentUser)
             .then(holdings => {
                 Object.values(holdings).forEach((row, idx) => {
-                    Object.values(row).forEach((obj, idx) => {
-                        if (obj !== 'FIND_HOLDINGS'){
-                            Object.keys(obj).forEach((key, idx) => {
+                    Object.values(row).forEach((obj, idx2) => {
+                        if (obj !== 'FIND_HOLDINGS') {
+                            Object.keys(obj).forEach((key, idx3) => {
                                 if (key === "stock_ticker") {
                                     console.log(obj[key])
-                                    let i = 1
-                                    if (this.props.receiveCurrentPrice(obj[key])){
-                                        i += 1;
-                                        console.log(i)
-                                    }
-                                }  
+                                    console.log(idx2)
+                                    this.props.receiveCurrentPrice(obj[key])
+                                }
                             });
                         }
                     });
