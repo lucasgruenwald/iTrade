@@ -67,6 +67,11 @@
     margin-top: -15px;
 }
 
+.dash-price{
+    margin-left: auto;
+    margin-right: 20px;
+}
+
 .indiv-stock {
     padding-left: 20px;
 }
