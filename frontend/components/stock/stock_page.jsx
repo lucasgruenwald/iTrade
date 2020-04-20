@@ -1,7 +1,7 @@
 import React from 'react';
 import StockInfo from './info'
 import StockGraph from './stock_graph';
-import { fetchDailyPrices, fetch5D } from '../../util/graph_api_util';
+import { fetchDailyPrices, fetch5D, fetch1M } from '../../util/graph_api_util';
 
 class StockPage extends React.Component {
     
@@ -117,32 +117,107 @@ class StockPage extends React.Component {
 
     }
 
-    renderPrices(response, time) {
-        const data = response.map(price => {
+    render1M(response) {
 
-            return {
-                price: price.close,
-                // date: (time === "3M" || time === "1Y") ? price.date : new Date(Date.parse(`${price.date} ${price.label}`)).toLocaleString('en-US'),
-                date: (time === "3M" || time === "1Y") ? price.date : new Date(Date.parse(`${price.date}`)).toLocaleString('en-US'),
-                open: price.open,
-                change: price.change,
-                changePercent: price.changePercent
-            }
+        let day = response.values.map(price => {
+            return { time: price.datetime, price: price.close };
         })
 
+        day = day.reverse()
+        let lastClose = response.values[response.values.length - 1].previous_close
+        let firstValidIdx = response.values.length - 1
+        let firstOpen = response.values[firstValidIdx].open
+        let minuteNow = response.values[0].datetime.split(" ")[1]
+        let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
+        let closeTime = "12:59:00"
+        let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
+
+        while (dateNow < closeDate) {
+            dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+        }
+
         this.setState({
+            "1M": day,
+            period: "1M",
             ticker: this.props.ticker,
-            [time]: data,
-            period: time,
-            open: response[0].open,
-            close: response[response.length - 1].close,
-            change: response[response.length - 1].change,
-            changePercent: response[response.length - 1].changePercent,
-            backgroundColor: response[0].open < response[response.length - 1].close ? "activeGreenBackground" : "activeRedBackground",
-            colorClass: response[0].open < response[response.length - 1].close ? "activeGreen" : "activeRed",
-            color: response[0].open < response[response.length - 1].close ? "#21ce99" : "#f45531",
-        });
+            open: firstOpen,
+            close: lastClose,
+            change: parseFloat(lastClose - firstOpen).toFixed(2),
+            changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
+            done: true,
+            colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
+            color: firstOpen < lastClose ? "#21ce99" : "orangered",
+            backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
+        })
+
     }
+
+    // render5D(response) {
+
+    //     let day = response.values.map(price => {
+    //         return { time: price.datetime, price: price.close };
+    //     })
+
+    //     day = day.reverse()
+    //     let lastClose = response.values[response.values.length - 1].previous_close
+    //     let firstValidIdx = response.values.length - 1
+    //     let firstOpen = response.values[firstValidIdx].open
+    //     let minuteNow = response.values[0].datetime.split(" ")[1]
+    //     let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
+    //     let closeTime = "12:59:00"
+    //     let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
+
+    //     while (dateNow < closeDate) {
+    //         dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+    //         day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+    //     }
+
+    //     this.setState({
+    //         "5D": day,
+    //         period: "5D",
+    //         ticker: this.props.ticker,
+    //         open: firstOpen,
+    //         close: lastClose,
+    //         change: parseFloat(lastClose - firstOpen).toFixed(2),
+    //         changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
+    //         done: true,
+    //         colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
+    //         color: firstOpen < lastClose ? "#21ce99" : "orangered",
+    //         backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
+    //     })
+
+    // }
+
+    // render5D(response) {
+    //     const data = response.values.map((price, idx) => {
+            
+    //         let prevClose = response.values[response.values.length-1].previous_close
+    //         let changeVal = price.close - prevClose
+    //         let changePercent = (price.close - prevClose)/prevClose
+
+    //         return {
+    //             price: price.close,
+    //             date: price.datetime.split(" ")[0],
+    //             open: price.open,
+    //             change: changeVal,
+    //             changePercent: changePercent
+    //         }
+    //     })
+
+    //     this.setState({
+    //         ticker: this.props.ticker,
+    //         [time]: data,
+    //         period: time,
+    //         open: response[0].open,
+    //         close: response[response.length - 1].close,
+    //         change: response[response.length - 1].change,
+    //         changePercent: response[response.length - 1].changePercent,
+    //         backgroundColor: response[0].open < response[response.length - 1].close ? "activeGreenBackground" : "activeRedBackground",
+    //         colorClass: response[0].open < response[response.length - 1].close ? "activeGreen" : "activeRed",
+    //         color: response[0].open < response[response.length - 1].close ? "#21ce99" : "#f45531",
+    //     });
+    // }
 
     updatePrices(period) {
         if (this.state.period !== period) {
@@ -154,7 +229,7 @@ class StockPage extends React.Component {
                     case '5D':  
                         fetch5D(this.props.ticker).then(response => this.render5D(response))
                     case '1M': 
-
+                        fetch1M(this.props.ticker).then(response => this.render1M(response))
                     case '3M': 
 
                     case '1Y': 

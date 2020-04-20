@@ -29,7 +29,7 @@ export const fetch5D = (symbol) => {
 export const fetch1M = (symbol) => {
     return $.ajax({
         method: "GET",
-        url: ``,
+        url: `https://api.twelvedata.com/time_series?symbol=${symbol}&interval=30min&type=stock&outputsize=390&format=JSON&dp=2&timezone=America/Los_Angeles&previous_close=true&apikey=${window.twelveAPIKey}`,
     })
 }
 
