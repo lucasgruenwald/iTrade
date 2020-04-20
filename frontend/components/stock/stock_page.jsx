@@ -1,7 +1,7 @@
 import React from 'react';
 import StockInfo from './info'
 import StockGraph from './stock_graph';
-import { fetchDailyPrices, fetchPrices } from '../../util/graph_api_util';
+import { fetchDailyPrices, fetch5D } from '../../util/graph_api_util';
 
 class StockPage extends React.Component {
     
@@ -81,6 +81,42 @@ class StockPage extends React.Component {
 
     }
 
+    render5D(response) {
+
+        let day = response.values.map(price => {
+            return { time: price.datetime, price: price.close };
+        })
+
+        day = day.reverse()
+        let lastClose = response.values[response.values.length - 1].previous_close
+        let firstValidIdx = response.values.length - 1
+        let firstOpen = response.values[firstValidIdx].open
+        let minuteNow = response.values[0].datetime.split(" ")[1]
+        let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
+        let closeTime = "12:59:00"
+        let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
+
+        while (dateNow < closeDate) {
+            dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+        }
+
+        this.setState({
+            "5D": day,
+            period: "5D",
+            ticker: this.props.ticker,
+            open: firstOpen,
+            close: lastClose,
+            change: parseFloat(lastClose - firstOpen).toFixed(2),
+            changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
+            done: true,
+            colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
+            color: firstOpen < lastClose ? "#21ce99" : "orangered",
+            backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
+        })
+
+    }
+
     renderPrices(response, time) {
         const data = response.map(price => {
 
@@ -111,7 +147,19 @@ class StockPage extends React.Component {
     updatePrices(period) {
         if (this.state.period !== period) {
             return e => {
-                period === "1D" ? fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response)) : fetchPrices(this.props.ticker, period).then(response => this.renderPrices(response, period))
+                // if (period === "1D") ? fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response)) 
+                switch (period) {
+                    case '1D':  
+                        fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response)) 
+                    case '5D':  
+                        fetch5D(this.props.ticker).then(response => this.render5D(response))
+                    case '1M': 
+
+                    case '3M': 
+
+                    case '1Y': 
+                          
+                }
             }
 
         }
@@ -126,7 +174,7 @@ class StockPage extends React.Component {
 
         const period = Object.keys(this.state).map(key => {
             if (key === "1D" || key === "5D" || key === "1M" || key === "3M" || key === "1Y" ) {
-                return <button className={`period ${this.state.period === key ? this.state.colorClass : ''}`} key={`${key}-id`} onClick={this.updatePrices(key)} >{key.slice(0, 2).toUpperCase()}</button>
+                return <button className={`period ${this.state.period === key ? this.state.colorClass : ''}`} key={`${key}-id`} onClick={this.updatePrices(key)} >{key}</button>
             };
         });
 
