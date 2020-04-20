@@ -16,6 +16,7 @@ class StockGraph extends React.Component {
     };
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
+    this.customTooltip = this.customTooltip.bind(this)
   }
 
   componentDidMount() {
@@ -65,6 +66,14 @@ class StockGraph extends React.Component {
     })
   }
 
+  customTooltip(e) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{e.label}</p>
+        </div>
+      );
+  }
+
 
   render() {
     let data = this.props.ticker || [];
@@ -73,7 +82,7 @@ class StockGraph extends React.Component {
     return (
       <div className="stock-chart-holder">
 
-        <p>{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
+        <p className="change-counter">{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
 
         <LineChart
           className="line-chart"
@@ -86,8 +95,14 @@ class StockGraph extends React.Component {
         >
           <XAxis dataKey={label} hide={true} />
           <YAxis hide={true} domain={['dataMin', 'dataMax']} />
-          <Tooltip className='tooltip'
-            isAnimationActive={false} cursor={{ stroke: "black", strokeWidth: 0.5 }} />
+          <Tooltip 
+            className='tooltip'
+            isAnimationActive={false} 
+            content={this.customTooltip}
+            cursor={{ stroke: "black", strokeWidth: 0.7 }}
+            // formatter={(value) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+            position={{ y: -40 }} 
+          />
 
           <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={3} />
         </LineChart>

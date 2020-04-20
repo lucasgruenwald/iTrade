@@ -71,6 +71,10 @@
     text-align: center;
 }
 
+.change-counter{
+    margin-bottom: 40px;
+}
+
 .line-chart {
     margin-bottom: 5px;
     border-top: 1px dotted black;
