@@ -101,7 +101,8 @@
     background-color: white;
     border: none;
     font-size: 15px;
-    padding: 5px
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .periods{
@@ -109,6 +110,8 @@
 }
 
 .activeRed, .activeGreen{
+    margin-left: 10px;
+    margin-right: 10px;
     color: darkblue;
     background-color: white;
     border: none;

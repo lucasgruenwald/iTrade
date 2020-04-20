@@ -1,7 +1,7 @@
 import React from 'react';
 import StockInfo from './info'
 import StockGraph from './stock_graph';
-import { fetchDailyPrices, fetch5D, fetch1M } from '../../util/graph_api_util';
+import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
 
 class StockPage extends React.Component {
     
@@ -21,7 +21,6 @@ class StockPage extends React.Component {
             change: 0,
             changePercent: 0,
             done: false,
-            isLoading: true,
         }; 
         this.updatePrices = this.updatePrices.bind(this);
     };
@@ -52,9 +51,9 @@ class StockPage extends React.Component {
         })
 
         day = day.reverse()
-        let lastClose = response.values[response.values.length - 1].previous_close
+        let lastClose = response.values[0].close
         let firstValidIdx = response.values.length-1
-        let firstOpen = response.values[firstValidIdx].open
+        let firstOpen = response.values[firstValidIdx].previous_close
         let minuteNow = response.values[0].datetime.split(" ")[1]
         let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
         let closeTime = "12:59:00"
@@ -64,6 +63,9 @@ class StockPage extends React.Component {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
             day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
+
+        // console.log(firstOpen)
+        // console.log(lastClose)
 
         this.setState({
             "1D": day,
@@ -88,9 +90,9 @@ class StockPage extends React.Component {
         })
 
         day = day.reverse()
-        let lastClose = response.values[response.values.length - 1].previous_close
+        let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
-        let firstOpen = response.values[firstValidIdx].open
+        let firstOpen = response.values[firstValidIdx].previous_close
         let minuteNow = response.values[0].datetime.split(" ")[1]
         let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
         let closeTime = "12:59:00"
@@ -100,6 +102,9 @@ class StockPage extends React.Component {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
             day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
+
+        // console.log(firstOpen)
+        // console.log(lastClose)
 
         this.setState({
             "5D": day,
@@ -124,9 +129,9 @@ class StockPage extends React.Component {
         })
 
         day = day.reverse()
-        let lastClose = response.values[response.values.length - 1].previous_close
+        let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
-        let firstOpen = response.values[firstValidIdx].open
+        let firstOpen = response.values[firstValidIdx].previous_close
         let minuteNow = response.values[0].datetime.split(" ")[1]
         let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
         let closeTime = "12:59:00"
@@ -136,6 +141,9 @@ class StockPage extends React.Component {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
             day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
+
+        // console.log(firstOpen)
+        // console.log(lastClose)
 
         this.setState({
             "1M": day,
@@ -153,76 +161,86 @@ class StockPage extends React.Component {
 
     }
 
-    // render5D(response) {
+    render3M(response) {
 
-    //     let day = response.values.map(price => {
-    //         return { time: price.datetime, price: price.close };
-    //     })
+        let day = response.values.map(price => {
+            return { time: price.datetime, price: price.close };
+        })
 
-    //     day = day.reverse()
-    //     let lastClose = response.values[response.values.length - 1].previous_close
-    //     let firstValidIdx = response.values.length - 1
-    //     let firstOpen = response.values[firstValidIdx].open
-    //     let minuteNow = response.values[0].datetime.split(" ")[1]
-    //     let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
-    //     let closeTime = "12:59:00"
-    //     let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
+        day = day.reverse()
+        let lastClose = response.values[0].close
+        let firstValidIdx = response.values.length - 1
+        let firstOpen = response.values[firstValidIdx].previous_close
+        let minuteNow = response.values[0].datetime.split(" ")[1]
+        let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
+        let closeTime = "12:59:00"
+        let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-    //     while (dateNow < closeDate) {
-    //         dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-    //         day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-    //     }
+        while (dateNow < closeDate) {
+            dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+        }
+        // console.log(firstOpen)
+        // console.log(lastClose)
 
-    //     this.setState({
-    //         "5D": day,
-    //         period: "5D",
-    //         ticker: this.props.ticker,
-    //         open: firstOpen,
-    //         close: lastClose,
-    //         change: parseFloat(lastClose - firstOpen).toFixed(2),
-    //         changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-    //         done: true,
-    //         colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
-    //         color: firstOpen < lastClose ? "#21ce99" : "orangered",
-    //         backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
-    //     })
+        this.setState({
+            "3M": day,
+            period: "3M",
+            ticker: this.props.ticker,
+            open: firstOpen,
+            close: lastClose,
+            change: parseFloat(lastClose - firstOpen).toFixed(2),
+            changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
+            done: true,
+            colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
+            color: firstOpen < lastClose ? "#21ce99" : "orangered",
+            backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
+        })
 
-    // }
+    }
 
-    // render5D(response) {
-    //     const data = response.values.map((price, idx) => {
-            
-    //         let prevClose = response.values[response.values.length-1].previous_close
-    //         let changeVal = price.close - prevClose
-    //         let changePercent = (price.close - prevClose)/prevClose
+    render1Y(response) {
 
-    //         return {
-    //             price: price.close,
-    //             date: price.datetime.split(" ")[0],
-    //             open: price.open,
-    //             change: changeVal,
-    //             changePercent: changePercent
-    //         }
-    //     })
+        let day = response.values.map(price => {
+            return { time: price.datetime, price: price.close };
+        })
 
-    //     this.setState({
-    //         ticker: this.props.ticker,
-    //         [time]: data,
-    //         period: time,
-    //         open: response[0].open,
-    //         close: response[response.length - 1].close,
-    //         change: response[response.length - 1].change,
-    //         changePercent: response[response.length - 1].changePercent,
-    //         backgroundColor: response[0].open < response[response.length - 1].close ? "activeGreenBackground" : "activeRedBackground",
-    //         colorClass: response[0].open < response[response.length - 1].close ? "activeGreen" : "activeRed",
-    //         color: response[0].open < response[response.length - 1].close ? "#21ce99" : "#f45531",
-    //     });
-    // }
+        day = day.reverse()
+        let lastClose = response.values[0].close
+        let firstValidIdx = response.values.length - 1
+        let firstOpen = response.values[firstValidIdx].previous_close
+        let minuteNow = response.values[0].datetime.split(" ")[1]
+        let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
+        let closeTime = "12:59:00"
+        let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
+
+        while (dateNow < closeDate) {
+            dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+        }
+
+        // console.log(firstOpen)
+        // console.log(lastClose)
+
+        this.setState({
+            "1Y": day,
+            period: "1Y",
+            ticker: this.props.ticker,
+            open: firstOpen,
+            close: lastClose,
+            change: parseFloat(lastClose - firstOpen).toFixed(2),
+            changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
+            done: true,
+            colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
+            color: firstOpen < lastClose ? "#21ce99" : "orangered",
+            backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
+        })
+
+    }
 
     updatePrices(period) {
         if (this.state.period !== period) {
             return e => {
-                // if (period === "1D") ? fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response)) 
                 switch (period) {
                     case '1D':  
                         fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response)) 
@@ -231,9 +249,9 @@ class StockPage extends React.Component {
                     case '1M': 
                         fetch1M(this.props.ticker).then(response => this.render1M(response))
                     case '3M': 
-
+                        fetch3M(this.props.ticker).then(response => this.render3M(response))
                     case '1Y': 
-                          
+                        fetch1Y(this.props.ticker).then(response => this.render1Y(response))
                 }
             }
 
@@ -241,7 +259,6 @@ class StockPage extends React.Component {
     }
 
     
-
     render(){
        
         if (Object.values(this.props.info).length === 0) return null;
@@ -278,7 +295,6 @@ class StockPage extends React.Component {
             }
         });
         
-
         return(
             <div className="stock-page">
                 
@@ -314,19 +330,15 @@ class StockPage extends React.Component {
                 </div>
 
             </div>
-            
 
                 <div className="holdings-bar">
                     <h4>Buy / Sell</h4>
                     <input type="text" placeholder="Number of Shares"/>
                 </div>
 
-               
             </div>
         )
     }
-
-    
 }
 
 export default StockPage;
