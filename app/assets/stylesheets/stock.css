@@ -76,7 +76,6 @@
 }
 
 .line-chart {
-    margin-bottom: 5px;
     border-top: 1px dotted black;
 }
 
@@ -98,10 +97,9 @@
 }
 
 .period{
-    color: darkblue;
+    color:black;
     background-color: white;
     border: none;
-    border-left: 1px solid gray;
     font-size: 15px;
     padding: 5px
 }
@@ -111,9 +109,8 @@
 }
 
 .activeRed, .activeGreen{
-    color: black;
-    font-weight: bold;
+    color: darkblue;
     background-color: white;
     border: none;
-    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
 }

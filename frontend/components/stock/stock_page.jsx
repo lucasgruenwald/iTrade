@@ -46,31 +46,23 @@ class StockPage extends React.Component {
     };
 
     renderDay(response) {
-        const day = response.map(price => {
-            return { label: price.label, price: price.close }
+
+        let day = response.values.map(price => {
+            return { time: price.datetime, price: price.close };
         })
 
-        let prevIdx = response.length - 1
-        while (response[prevIdx].close === null) {
-            prevIdx -= 1
-        }
-        let lastClose = response[prevIdx].close
-
-        let firstValidIdx = 0
-        while (response[firstValidIdx].close === null) {
-            firstValidIdx += 1
-        }
-        let firstOpen = response[firstValidIdx].open
-
-
-        let minuteNow = response[prevIdx].minute
-        let dateNow = new Date(Date.parse(`${response[prevIdx].date} ${minuteNow}`))
-        let closeTime = "16:00"
-        let closeDate = new Date(Date.parse(`${response[prevIdx].date} ${closeTime}`))
+        day = day.reverse()
+        let lastClose = response.values[response.values.length - 1].previous_close
+        let firstValidIdx = response.values.length-1
+        let firstOpen = response.values[firstValidIdx].open
+        let minuteNow = response.values[0].datetime.split(" ")[1]
+        let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
+        let closeTime = "12:59:00"
+        let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
         while (dateNow < closeDate) {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            day.push({ label: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
 
         this.setState({
@@ -94,7 +86,8 @@ class StockPage extends React.Component {
 
             return {
                 price: price.close,
-                date: (time === "3M" || time === "1Y") ? price.date : new Date(Date.parse(`${price.date} ${price.label}`)).toLocaleString('en-US'),
+                // date: (time === "3M" || time === "1Y") ? price.date : new Date(Date.parse(`${price.date} ${price.label}`)).toLocaleString('en-US'),
+                date: (time === "3M" || time === "1Y") ? price.date : new Date(Date.parse(`${price.date}`)).toLocaleString('en-US'),
                 open: price.open,
                 change: price.change,
                 changePercent: price.changePercent
