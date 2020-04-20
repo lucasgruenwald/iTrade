@@ -172,7 +172,7 @@ class StockPage extends React.Component {
                     <h2>{this.props.info.profile.companyName}</h2>
                 </div>
 
-              <h1>${this.props.info.profile.price.toLocaleString()}</h1>
+                    <h1>{this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
 
                 <StockGraph
                     oldTicker={this.state.oldTicker}
@@ -186,8 +186,7 @@ class StockPage extends React.Component {
                     color={this.state.color}
                 />
 
-                <p>{this.state.period} chart</p>
-                <div>{period}</div>
+                <div className="periods">{period}</div>
 
               {/* <div className="holding-data">Your equity & average cost will be displayed here</div> */}
 

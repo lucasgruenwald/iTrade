@@ -71,11 +71,9 @@
     text-align: center;
 }
 
-.stock-graph-holder{
-    background-color: lightsteelblue;
-    height: 500px;
-    width: 700px;
+.line-chart {
     margin-bottom: 5px;
+    border-top: 1px dotted black;
 }
 
 .news-header-indiv{
@@ -93,4 +91,25 @@
 
 .news-div-indiv:hover{
     background-color: lightgray;
+}
+
+.period{
+    color: darkblue;
+    background-color: white;
+    border: none;
+    border-left: 1px solid gray;
+    font-size: 15px;
+    padding: 5px
+}
+
+.periods{
+    margin-bottom: 50px;
+}
+
+.activeRed, .activeGreen{
+    color: black;
+    font-weight: bold;
+    background-color: white;
+    border: none;
+    border-left: 1px solid gray;
 }

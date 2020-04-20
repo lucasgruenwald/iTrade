@@ -8,10 +8,12 @@
 }
 
 .dash-holdings {
-    margin-top: 5px;
-    margin-left: 5%;
+    position: fixed;
+    margin-top: -80px;
+    right: 10%;
     width: 240px;
     border: 1px solid slategray;
+    box-shadow: 0 0 5px black;
     border-radius: 3px;
     background: snow;
     padding: 10px;
@@ -96,7 +98,7 @@
 .news-div{
     margin-left: 17%;
     margin-bottom: 2%;
-    width: 80%;
+    width: 60%;
     display: flex;
     border-top: 1px solid black;
     border-bottom: 1px solid black;

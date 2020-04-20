@@ -76,6 +76,7 @@ class StockGraph extends React.Component {
         <p>{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
 
         <LineChart
+          className="line-chart"
           width={650}
           height={350}
           data={data}
@@ -88,7 +89,7 @@ class StockGraph extends React.Component {
           <Tooltip className='tooltip'
             isAnimationActive={false} cursor={{ stroke: "black", strokeWidth: 0.5 }} />
 
-          <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={1} />
+          <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={3} />
         </LineChart>
       </div>
     )
