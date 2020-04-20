@@ -23,6 +23,10 @@ class StockPage extends React.Component {
             done: false,
         }; 
         this.updatePrices = this.updatePrices.bind(this);
+        this.renderDay = this.renderDay.bind(this);
+        this.render5D = this.render5D.bind(this);
+        this.render1M = this.render1M.bind(this);
+        this.render1Y = this.render1Y.bind(this);
     };
     
     componentDidMount() {
@@ -238,10 +242,10 @@ class StockPage extends React.Component {
 
     }
 
-    updatePrices(period) {
-        if (this.state.period !== period) {
+    updatePrices(key) {
+        if (this.state.period !== key) {
             return e => {
-                switch (period) {
+                switch (key) {
                     case '1D':  
                         fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response)) 
                     case '5D':  
@@ -263,12 +267,6 @@ class StockPage extends React.Component {
        
         if (Object.values(this.props.info).length === 0) return null;
         if (this.props.news === undefined) return null;
-
-        const period = Object.keys(this.state).map(key => {
-            if (key === "1D" || key === "5D" || key === "1M" || key === "3M" || key === "1Y" ) {
-                return <button className={`period ${this.state.period === key ? this.state.colorClass : ''}`} key={`${key}-id`} onClick={this.updatePrices(key)} >{key}</button>
-            };
-        });
 
         let data = this.state[this.state.period];
 
@@ -318,9 +316,13 @@ class StockPage extends React.Component {
                     color={this.state.color}
                 />
 
-                <div className="periods">{period}</div>
-
-              {/* <div className="holding-data">Your equity & average cost will be displayed here</div> */}
+                <div className="periods">
+                    <button className={`period ${this.state.period === "1D" ? this.state.colorClass : ''}`} key={`1D-id`} onClick={this.updatePrices("1D")} >1D</button>
+                    <button className={`period ${this.state.period === "5D" ? this.state.colorClass : ''}`} key={`5D-id`} onClick={this.updatePrices("5D")} >5D</button>
+                    <button className={`period ${this.state.period === "1M" ? this.state.colorClass : ''}`} key={`1M-id`} onClick={this.updatePrices("1M")} >1M</button>
+                    <button className={`period ${this.state.period === "3M" ? this.state.colorClass : ''}`} key={`3M-id`} onClick={this.updatePrices("3M")} >3M</button>
+                    <button className={`period ${this.state.period === "1Y" ? this.state.colorClass : ''}`} key={`1Y-id`} onClick={this.updatePrices("1Y")} >1Y</button>
+                </div>
 
                 <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
 
