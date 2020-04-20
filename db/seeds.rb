@@ -9,13 +9,6 @@
 User.destroy_all
 Holding.destroy_all 
 
-DemoUser = User.create(
-    email: "DemoUser@gmail.com", 
-    password: "password",
-    first_name: "Demo",
-    last_name: "User",
-)
-
 Demo = User.create(
     email: "iTradeDemoUser@gmail.com", 
     password: "password",
@@ -24,37 +17,37 @@ Demo = User.create(
 )
 
 Holding1 = Holding.create(
-    user_id: 2,
+    user_id: 5,
     stock_ticker: "FB",
     share_count: 200
 )
 
 Holding2 = Holding.create(
-    user_id: 2,
-    stock_ticker: "NVTA",
-    share_count: 1400
+    user_id: 5,
+    stock_ticker: "AMD",
+    share_count: 800
 )
 
 Holding3 = Holding.create(
-    user_id: 2,
-    stock_ticker: "SSYS",
+    user_id: 5,
+    stock_ticker: "AAPL",
     share_count: 1000
 )
 
 Holding4 = Holding.create(
-    user_id: 2,
+    user_id: 5,
     stock_ticker: "GOOG",
     share_count: 5
 )
 
 Holding5 = Holding.create(
-    user_id: 2,
+    user_id: 5,
     stock_ticker: "TSLA",
     share_count: 7
 )
 
 Holding6 = Holding.create(
-    user_id: 1,
+    user_id: 6,
     stock_ticker: "NCL",
     share_count: 10000
 )
