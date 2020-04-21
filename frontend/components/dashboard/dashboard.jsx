@@ -36,8 +36,6 @@ class Dashboard extends React.Component {
 
 
     render() {
-
-        console.log(this.props.price)
         
         if (Object.values(this.props.holdings).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;

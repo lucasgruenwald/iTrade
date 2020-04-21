@@ -68,9 +68,6 @@ class StockPage extends React.Component {
             day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
 
-        // console.log(firstOpen)
-        // console.log(lastClose)
-
         this.setState({
             "1D": day,
             period: "1D",
@@ -106,9 +103,6 @@ class StockPage extends React.Component {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
             day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
-
-        // console.log(firstOpen)
-        // console.log(lastClose)
 
         this.setState({
             "5D": day,
@@ -146,9 +140,6 @@ class StockPage extends React.Component {
             day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
 
-        // console.log(firstOpen)
-        // console.log(lastClose)
-
         this.setState({
             "1M": day,
             period: "1M",
@@ -184,8 +175,6 @@ class StockPage extends React.Component {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
             day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
-        // console.log(firstOpen)
-        // console.log(lastClose)
 
         this.setState({
             "3M": day,
@@ -222,9 +211,6 @@ class StockPage extends React.Component {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
             day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
-
-        // console.log(firstOpen)
-        // console.log(lastClose)
 
         this.setState({
             "1Y": day,
@@ -280,7 +266,6 @@ class StockPage extends React.Component {
                             <div className="news-content">
                                 <div className="news-text">
                                     <h3 key={idx * 10} className="news-title">{this.props.news[idx].title}</h3>
-                                    {/* <p key={idx} className="news-site">{this.props.news[idx].source.name}</p> */}
                                 </div>
                                 <p key={idx * 100} className="news-desc">{this.props.news[idx].description}</p>
                             </div>
@@ -317,11 +302,11 @@ class StockPage extends React.Component {
                 />
 
                 <div className="periods">
-                    <button className={`period ${this.state.period === "1D" ? this.state.colorClass : ''}`} key={`1D-id`} onClick={this.updatePrices("1D")} >1D</button>
-                    <button className={`period ${this.state.period === "5D" ? this.state.colorClass : ''}`} key={`5D-id`} onClick={this.updatePrices("5D")} >5D</button>
-                    <button className={`period ${this.state.period === "1M" ? this.state.colorClass : ''}`} key={`1M-id`} onClick={this.updatePrices("1M")} >1M</button>
-                    <button className={`period ${this.state.period === "3M" ? this.state.colorClass : ''}`} key={`3M-id`} onClick={this.updatePrices("3M")} >3M</button>
-                    <button className={`period ${this.state.period === "1Y" ? this.state.colorClass : ''}`} key={`1Y-id`} onClick={this.updatePrices("1Y")} >1Y</button>
+                    <button className={`period ${this.state.period === "1D" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1D")} >1D</button>
+                    <button className={`period ${this.state.period === "5D" ? this.state.colorClass : ''}`} onClick={this.updatePrices("5D")} >5D</button>
+                    <button className={`period ${this.state.period === "1M" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1M")} >1M</button>
+                    <button className={`period ${this.state.period === "3M" ? this.state.colorClass : ''}`} onClick={this.updatePrices("3M")} >3M</button>
+                    <button className={`period ${this.state.period === "1Y" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1Y")} >1Y</button>
                 </div>
 
                 <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
