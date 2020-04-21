@@ -36,25 +36,25 @@ class StockPage extends React.Component {
         fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
     };
 
-    componentDidUpdate(prevProps) {
-        let prev = prevProps.ticker || prevProps.match.params.ticker
-        if (this.props.ticker !== prev) {
-            this.setState({ done: false })
-            fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
-        };
-    };
+    // componentDidUpdate(prevProps) {
+    //     let prev = prevProps.ticker || prevProps.match.params.ticker
+    //     if (this.props.ticker !== prev) {
+    //         this.setState({ done: false })
+    //         fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
+    //     };
+    // };
 
-    componentWillUnmount() {
-        this.setState({ done: false })
-    };
+    // componentWillUnmount() {
+    //     this.setState({ done: false })
+    // };
 
     renderDay(response) {
 
-        let day = response.values.map(price => {
+        let timesPrices = response.values.map(price => {
             return { time: price.datetime, price: price.close };
         })
 
-        day = day.reverse()
+        timesPrices = timesPrices.reverse()
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length-1
         let firstOpen = response.values[firstValidIdx].previous_close
@@ -65,11 +65,11 @@ class StockPage extends React.Component {
 
         while (dateNow < closeDate) {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
 
         this.setState({
-            "1D": day,
+            "1D": timesPrices,
             period: "1D",
             ticker: this.props.ticker,
             open: firstOpen,
@@ -85,12 +85,12 @@ class StockPage extends React.Component {
     }
 
     render5D(response) {
-
-        let day = response.values.map(price => {
+        // debugger
+        let timesPrices = response.values.map(price => {
             return { time: price.datetime, price: price.close };
         })
 
-        day = day.reverse()
+        timesPrices = timesPrices.reverse()
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
         let firstOpen = response.values[firstValidIdx].previous_close
@@ -101,11 +101,11 @@ class StockPage extends React.Component {
 
         while (dateNow < closeDate) {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
 
         this.setState({
-            "5D": day,
+            "5D": timesPrices,
             period: "5D",
             ticker: this.props.ticker,
             open: firstOpen,
@@ -121,12 +121,12 @@ class StockPage extends React.Component {
     }
 
     render1M(response) {
-
-        let day = response.values.map(price => {
+        // debugger
+        let timesPrices = response.values.map(price => {
             return { time: price.datetime, price: price.close };
         })
 
-        day = day.reverse()
+        timesPrices = timesPrices.reverse()
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
         let firstOpen = response.values[firstValidIdx].previous_close
@@ -137,11 +137,11 @@ class StockPage extends React.Component {
 
         while (dateNow < closeDate) {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
 
         this.setState({
-            "1M": day,
+            "1M": timesPrices,
             period: "1M",
             ticker: this.props.ticker,
             open: firstOpen,
@@ -157,12 +157,12 @@ class StockPage extends React.Component {
     }
 
     render3M(response) {
-
-        let day = response.values.map(price => {
+        // debugger
+        let timesPrices = response.values.map(price => {
             return { time: price.datetime, price: price.close };
         })
 
-        day = day.reverse()
+        timesPrices = timesPrices.reverse()
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
         let firstOpen = response.values[firstValidIdx].previous_close
@@ -173,11 +173,12 @@ class StockPage extends React.Component {
 
         while (dateNow < closeDate) {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+            console.log(dateNow)
+            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
 
         this.setState({
-            "3M": day,
+            "3M": timesPrices,
             period: "3M",
             ticker: this.props.ticker,
             open: firstOpen,
@@ -194,11 +195,11 @@ class StockPage extends React.Component {
 
     render1Y(response) {
 
-        let day = response.values.map(price => {
+        let timesPrices = response.values.map(price => {
             return { time: price.datetime, price: price.close };
         })
 
-        day = day.reverse()
+        timesPrices = timesPrices.reverse()
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
         let firstOpen = response.values[firstValidIdx].previous_close
@@ -209,11 +210,11 @@ class StockPage extends React.Component {
 
         while (dateNow < closeDate) {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            day.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
 
         this.setState({
-            "1Y": day,
+            "1Y": timesPrices,
             period: "1Y",
             ticker: this.props.ticker,
             open: firstOpen,
@@ -234,14 +235,19 @@ class StockPage extends React.Component {
                 switch (key) {
                     case '1D':  
                         fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response)) 
+                        break;
                     case '5D':  
                         fetch5D(this.props.ticker).then(response => this.render5D(response))
+                        break;
                     case '1M': 
                         fetch1M(this.props.ticker).then(response => this.render1M(response))
+                        break;
                     case '3M': 
                         fetch3M(this.props.ticker).then(response => this.render3M(response))
+                        break;
                     case '1Y': 
                         fetch1Y(this.props.ticker).then(response => this.render1Y(response))
+                        break;
                 }
             }
 
@@ -253,6 +259,7 @@ class StockPage extends React.Component {
        
         if (Object.values(this.props.info).length === 0) return null;
         if (this.props.news === undefined) return null;
+        if (this.state.period === undefined) return null;
 
         let data = this.state[this.state.period];
 
@@ -302,11 +309,11 @@ class StockPage extends React.Component {
                 />
 
                 <div className="periods">
-                    <button className={`period ${this.state.period === "1D" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1D")} >1D</button>
-                    <button className={`period ${this.state.period === "5D" ? this.state.colorClass : ''}`} onClick={this.updatePrices("5D")} >5D</button>
-                    <button className={`period ${this.state.period === "1M" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1M")} >1M</button>
-                    <button className={`period ${this.state.period === "3M" ? this.state.colorClass : ''}`} onClick={this.updatePrices("3M")} >3M</button>
-                    <button className={`period ${this.state.period === "1Y" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1Y")} >1Y</button>
+                    <button type="button" className={`period ${this.state.period === "1D" ? this.state.colorClass : ''}`} onClick={ this.updatePrices("1D") }>1D</button>
+                    <button type="button" className={`period ${this.state.period === "5D" ? this.state.colorClass : ''}`} onClick={ this.updatePrices("5D") }>5D</button>
+                    <button type="button" className={`period ${this.state.period === "1M" ? this.state.colorClass : ''}`} onClick={ this.updatePrices("1M") }>1M</button>
+                    <button type="button" className={`period ${this.state.period === "3M" ? this.state.colorClass : ''}`} onClick={ this.updatePrices("3M") }>3M</button>
+                    <button type="button" className={`period ${this.state.period === "1Y" ? this.state.colorClass : ''}`} onClick={ this.updatePrices("1Y") }>1Y</button>
                 </div>
 
                 <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
