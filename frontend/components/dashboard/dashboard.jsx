@@ -107,7 +107,7 @@ class Dashboard extends React.Component {
                 <div className="portfolio">
                     <div className="port-left">
 
-                        <h3 className="graph-placeholder">---For now, see individual stock pages for graphs---</h3>
+                        <h3 className="graph-placeholder"></h3>
 
                         <DashGraphContainer/>
 

@@ -327,7 +327,7 @@ class StockPage extends React.Component {
 
                 <div className="holdings-bar">
                     <h4>Buy / Sell</h4>
-                    <input type="text" placeholder="Number of Shares"/>
+                    {/* <input type="text" placeholder="Number of Shares"/> */}
                 </div>
 
             </div>

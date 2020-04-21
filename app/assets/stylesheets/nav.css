@@ -1,12 +1,14 @@
 .greet-yes {
     display: flex;
     box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+    color: white;
+    background-color: #1b1b1d;
 }
 
 
 .greet-logout {
     background-color: white;
-    color: black;
+    color: #1b1b1d;
     font-size: 15px;
     margin-left: 10%;
     margin-right: 5%;
@@ -15,7 +17,7 @@
 
 .logout-link {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .dash-button {
@@ -28,12 +30,14 @@
 
 .dash-link {
     text-decoration: none;
-    color: black;
+    color: white
 }
 
 .greet-yes > h1 {
     padding-top: 10px;
     transform: translateX(50px);
+    color: white;
+    background-color: #1b1b1d;
 }
 
 #head-3 {
@@ -46,4 +50,9 @@
 #head-4 {
     max-width: 70px;
     transform: translateX(40%);
+}
+
+.feather-img-session{
+    max-width: 62px;
+    margin-left: 50px;
 }

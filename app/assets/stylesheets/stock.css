@@ -1,6 +1,7 @@
 .stock-page {
-    margin-left: 5%;
+    padding-left: 5%;
     display: flex;
+    background-color: #1b1b1d;
 }
 
 
@@ -17,14 +18,17 @@
     display: flex;
     margin-bottom: -35px;
     margin-top: -15px;
+    color: white;
 }
 
 .stock-title > * {
     padding-right: 10px;
+    color: white;
 }
 
 .ticker-text {
     display: flex;
+    color: white;
 }
 
 .ticker-text > * {
@@ -36,24 +40,29 @@
 .ticker-text > div > h6 {
     margin-bottom: 8px;
     margin-top: 25px;
+    color: white;
 }
 
 .ticker-text > div > h5 {
     margin-top: 10px;
     padding-bottom: 15px;
+    color: white
 }
 
 .ticker-about {
     margin-right: 14%;
+    color: white;
 }
 
 .ticker-about > h4 {
     margin-bottom: 8px;
+    color: white;
 }
 
 .ticker-about > p {
     margin-bottom: 5px;
     margin-top: 5px;
+    color: white
 }
 
 
@@ -61,7 +70,8 @@
 .holdings-bar{
     margin-right: 15%;
     margin-top: 10%;
-    border: 1px solid grey;
+    border: 1px solid black;
+    box-shadow: 0 0 5px black;
     border-radius: 3px;
     width: 500px;
     height: 500px;
@@ -69,6 +79,10 @@
 
 .holdings-bar{
     text-align: center;
+}
+
+.holdings-bar > h4{
+    color: white;
 }
 
 .change-counter{
@@ -81,6 +95,7 @@
 
 .news-header-indiv{
     margin-left: 5%;
+    color: white;
 }
 
 .news-div-indiv{
@@ -90,19 +105,21 @@
     display: flex;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    background-color: #1b1b1d;
 }
 
 .news-div-indiv:hover{
-    background-color: lightgray;
+    background-color: black;
 }
 
 .period{
-    color:black;
+    color:white;
     background-color: white;
     border: none;
     font-size: 15px;
     margin-left: 10px;
     margin-right: 10px;
+    background-color: #1b1b1d;
 }
 
 .periods{

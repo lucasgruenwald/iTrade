@@ -1,5 +1,12 @@
+
 .portfolio {
     display: flex;
+    color: white;
+    background-color: #1b1b1d;
+}
+
+.dashboard{
+   background-color: #1b1b1d;
 }
 
 .dash-holdings {
@@ -8,56 +15,72 @@
     right: 17%;
     width: 240px;
     border: 1px solid slategray;
-    box-shadow: 0 0 5px black;
+    box-shadow: 0 0 8px black;
+    border-color: black;
     border-radius: 3px;
-    background: snow;
+    /* background: snow; */
+    color: white;
+    background-color: #1b1b1d;
 }
 
 .dash-holdings > h3 {
     margin-left: 14px;
     margin-top: 2px;
+    color: white;
 }
 
 .cash-header {
     margin-left: 14px;
     margin-bottom: 5px;
+    color: white;
 }
 
 .stock-header{
     margin-top: 35px;
     margin-bottom: 25px;
     margin-left: 14px;
+    color: white;
 }
 
 .dash-stocks{
     margin-top: -15px;
+    background-color: #323232;
+    color:#1b1b1d
 }
 
 .dashboard > h1 {
     padding-left: 12%;
+    color: white;
+    background-color: #1b1b1d;
+    margin-top: 0px;
+    padding-top: 25px;
 }
 
 .dashboard > h5 {
     padding-left: 12%;
     margin-top: -7px;
+    color: white;
+    background-color: #1b1b1d;
 }
 
 .dash-stocks > * {
-    border-top: 1px solid slategray;
-    border-bottom: 1px solid slategray;
+    border-top: 1px solid rgb(0, 0, 0);
     margin-top: 10px;
     margin-bottom: 10px;
     width: inherit;
-
+    background-color: #1b1b1d;
+    color: white;
 }
 
 .stock-link {
    text-decoration: none;
-    color: black;
+    color: white;
+    background-color: #1b1b1d;
 }
 
 .dash-stocks > *:hover {
-    background-color:lightgray;
+    background-color: rgb(12, 12, 12);
+    color: white;
 }
 
 .flex {
@@ -81,6 +104,7 @@
 
 .indiv-stock {
     padding-left: 20px;
+    margin: 0;
 }
 .indiv-stock > *{
     font-size: 16px;
@@ -98,6 +122,7 @@
 .news-header{
     margin-left: 17%;
     margin-top: 4%;
+    color: white;
 }
 
 .news-div{
@@ -105,20 +130,23 @@
     margin-bottom: 2%;
     width: 60%;
     display: flex;
-    border-top: 1px solid black;
+    border-top: 1px solid gray;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid gray;
+    color: white;
 }
 
 .news-div:hover{
-    background-color: lightgray;
+    background-color: rgb(12, 12, 12);
+    color: white;
 }
 .news-img-holder{
     text-align: right;
     width: 300px;
     margin-left: auto;
     margin-right: 10px;
+    color: white;
 }
 
 .news-img {
@@ -134,7 +162,7 @@
     margin-top: 9%;
     margin-left: 3%;
     font-size: 16px;
-    color: black;
+    color: white;
 }
 
 .news-link {
@@ -143,7 +171,7 @@
 
 .news-desc {
     font-size: 14px;
-    color: black;
+    color: white;
     margin-left: 3%;
 }
 
