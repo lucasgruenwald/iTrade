@@ -26,17 +26,17 @@ class DashInfo extends React.Component {
             
             <div className="stock-info">
 
-                <div className="flex">
+                <Link to={`/stock/${this.props.ticker}`} className="stock-link"><div className="flex">
 
                 <div>
                 
-                    <h3><Link to={`/stock/${this.props.ticker}`} className="stock-link">{this.props.ticker}</Link></h3>
+                    <h3>{this.props.ticker}</h3>
                 
                     <p className="dash-numshares">{this.props.shares} Shares</p>
 
                 </div>
                     <p className="dash-price">{(price).toLocaleString('en-US', { style: 'currency', currency: 'USD'})}</p>
-                </div>
+                </div></Link>
   
             </div>
         )
