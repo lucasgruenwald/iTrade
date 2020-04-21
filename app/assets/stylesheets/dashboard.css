@@ -2,32 +2,36 @@
     display: flex;
 }
 
-
-.dash-cash {
-    margin-top: 4px;
-}
-
 .dash-holdings {
     position: fixed;
     margin-top: -80px;
-    right: 10%;
+    right: 17%;
     width: 240px;
     border: 1px solid slategray;
     box-shadow: 0 0 5px black;
     border-radius: 3px;
     background: snow;
-    padding: 10px;
-    padding-bottom: 100px
+}
+
+.dash-holdings > h3 {
+    margin-left: 14px;
+    margin-top: 2px;
+}
+
+.cash-header {
+    margin-left: 14px;
+    margin-bottom: 5px;
+}
+
+.stock-header{
+    margin-top: 35px;
+    margin-bottom: 25px;
+    margin-left: 14px;
 }
 
 .dash-stocks{
     margin-top: -15px;
 }
-
-.dash-stocks > h4 {
-   padding: 5px
-}
-
 
 .dashboard > h1 {
     padding-left: 12%;
@@ -72,6 +76,7 @@
 .dash-price{
     margin-left: auto;
     margin-right: 20px;
+    margin-top: 18px;
 }
 
 .indiv-stock {
@@ -101,6 +106,8 @@
     width: 60%;
     display: flex;
     border-top: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid black;
 }
 

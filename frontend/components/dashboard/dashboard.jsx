@@ -116,10 +116,12 @@ class Dashboard extends React.Component {
                             {newsList}
                         </div>
                     </div>
-                    <div className="dash-holdings">Cash 
-                        <h2 className="dash-cash">{this.state.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h2>
+                    <div className="dash-holdings">
 
-                        <h4>Stocks</h4>
+                        <h4 className="cash-header">Cash</h4> 
+                        <h3 className="dash-cash">{this.state.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h3>
+
+                        <h4 className="stock-header">Stocks</h4>
                         
                         <div className="dash-stocks">
                          
