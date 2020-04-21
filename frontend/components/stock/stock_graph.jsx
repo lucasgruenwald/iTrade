@@ -91,21 +91,24 @@ class StockGraph extends React.Component {
           data={data}
           margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
           onMouseOver={this.handleMouseOver}
-          onMouseLeave={this.handleMouseOut}
-        >
+          onMouseLeave={this.handleMouseOut}>
+          
           <XAxis dataKey={label} hide={true} />
           <YAxis hide={true} domain={['dataMin', 'dataMax']} />
+
           <Tooltip 
-            className='tooltip'
+            // className='tooltip'
+            position={{ y: 0 }} 
             isAnimationActive={false} 
             content={this.customTooltip}
             cursor={{ stroke: "black", strokeWidth: 0.7 }}
             // formatter={(value) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
             position={{ y: -40 }} 
           />
-
+        
           <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={3} />
         </LineChart>
+        
       </div>
     )
   }

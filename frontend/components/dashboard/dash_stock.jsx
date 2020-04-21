@@ -35,9 +35,7 @@ class DashInfo extends React.Component {
                     <p className="dash-numshares">{this.props.shares} Shares</p>
 
                 </div>
-                {/* <div className="align-right"> */}
                     <p className="dash-price">{(price).toLocaleString('en-US', { style: 'currency', currency: 'USD'})}</p>
-                {/* </div> */}
                 </div>
   
             </div>

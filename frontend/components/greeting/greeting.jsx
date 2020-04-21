@@ -7,7 +7,8 @@ export const Greeting = ({ currentUser, logout }) => {
     const loggedGreet = () => {
         return (
             <div className="greet-yes">
-            <img src="http://www.pngmart.com/files/7/Cash-PNG-Image.png" className="feather-img"/>
+            <img src="https://images.squarespace-cdn.com/content/53fe4a70e4b0a2293ab0e42a/1409174396100-ZOPXZKUNVM31K4NZHVK0/Robinhood_Glyph_green.png?content-type=image%2Fpng" 
+            className="feather-img"/>
                 <NavBar/>
                 <h1 className="dash-button" ><Link to="/dashboard" className="dash-link">Portfolio</Link></h1>
                 <h1 className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></h1>

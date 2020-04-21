@@ -13,7 +13,8 @@ const mSTP = (state) => {
         holdings: state.entities.holdings,
         stocks: state.entities.stocks,
         news: state.entities.news,
-        price: state.entities.price
+        price: state.entities.price,
+        user: state.entities.users
     }
 }
 

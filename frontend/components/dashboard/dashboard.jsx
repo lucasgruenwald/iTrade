@@ -1,18 +1,15 @@
 import React, { Profiler } from 'react';
-// import { Link } from 'react-router-dom';
 import DashInfo from './dash_stock';
 import DashGraphContainer from './dash_graph_container.jsx'
-// import {fetchInfo} from '../../util/stock_show_util'
-// import {receiveInfo} from '../../actions/stock'
-// import NavContainer from '../nav/nav_container'
 
-// import News from './news/news';
 
 class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            cash: this.props.user[this.props.currentUser].available_cash
+        }
     }
 
     componentDidMount(){
@@ -39,7 +36,6 @@ class Dashboard extends React.Component {
         
         if (Object.values(this.props.holdings).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;
-        if (Object.values(this.props.stocks).length === 0) return null;
         if (Object.values(this.props.price).length === 0) return null;
 
 
@@ -48,11 +44,11 @@ class Dashboard extends React.Component {
         hold.forEach((obj) => {
             arr.push(Object.values(obj))
         })
-        let tickers = []
+        let myTickers = []
         arr.forEach((subarr) => {
             subarr.forEach((ele) => {
                 if (typeof ele === 'string'){
-                    tickers.push(ele)
+                    myTickers.push(ele)
                 }
             })
         })
@@ -67,7 +63,15 @@ class Dashboard extends React.Component {
                 }
         })
 
-        let priceObj = this.props.price
+        let sum = 0 + this.state.cash
+        // let priceMap = this.props.prices
+        // priceMap.forEach((ele, idx) => {
+        //     let price = obj.price 
+        //     let count = share_counts[idx]
+        //     sum += (obj.price * count)
+        // })
+
+
 
         let newsList = []
 
@@ -79,7 +83,6 @@ class Dashboard extends React.Component {
                         <div className="news-content">
                             <div className="news-text">
                                 <h3 key={idx * 100} className="news-title">{this.props.news[idx].title}</h3>
-                                {/* <p key={idx} className="news-site">{this.props.news[idx].source.name}</p> */}
                             </div>
                             <p key={idx * 1000} className="news-desc">{this.props.news[idx].description}</p>
                         </div>
@@ -91,12 +94,14 @@ class Dashboard extends React.Component {
             )
             }
         })
+
+
          
         
         return (
             <div className="dashboard">
             
-                <h1>$ Portfolio Balance</h1>
+                <h1>{sum.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
                 <h5>+/- $___ (__%) today</h5>
  
                 <div className="portfolio">
@@ -112,14 +117,14 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
                     <div className="dash-holdings">Cash 
-                        <h2 className="dash-cash">$ Cash Balance</h2>
+                        <h2 className="dash-cash">{this.state.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h2>
 
                         <h4>Stocks</h4>
                         
                         <div className="dash-stocks">
                          
-                        {tickers.map((tick, idx) =>
-                            <div key={idx*50} className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]} prices={priceObj} />}</div>
+                        {myTickers.map((tick, idx) =>
+                            <div key={idx * 50} className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]} prices={this.props.price} />}</div>
                         )}
 
                         </div>
