@@ -3,17 +3,18 @@ import React from 'react';
 
 class FullPageLoading extends React.Component{
 
-    // state = {}
-
     render(){
 
         return(
-            <div className="load-container">
-                <div className="load">
-                    <img src="https://i.imgur.com/FEDTpyE.gif" className="spinner"/>
-                </div>
-            </div>
+            <React.Fragment>
 
+                (<div className="load-container">
+                    <div className="load">
+                        <img src="https://i.imgur.com/FEDTpyE.gif" className="spinner"/>
+                    </div>
+                </div>)
+
+            </React.Fragment>
         );
     };
 

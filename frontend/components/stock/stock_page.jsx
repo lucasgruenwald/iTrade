@@ -2,6 +2,7 @@ import React from 'react';
 import StockInfo from './info'
 import StockGraph from './stock_graph';
 import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
+import FullPageLoading from "../loader/full_page.jsx"
 
 class StockPage extends React.Component {
     
@@ -36,17 +37,17 @@ class StockPage extends React.Component {
         fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
     };
 
-    // componentDidUpdate(prevProps) {
-    //     let prev = prevProps.ticker || prevProps.match.params.ticker
-    //     if (this.props.ticker !== prev) {
-    //         this.setState({ done: false })
-    //         fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
-    //     };
-    // };
+    componentDidUpdate(prevProps) {
+        let prev = prevProps.ticker || prevProps.match.params.ticker
+        if (this.props.ticker !== prev) {
+            this.setState({ done: false })
+            fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
+        };
+    };
 
-    // componentWillUnmount() {
-    //     this.setState({ done: false })
-    // };
+    componentWillUnmount() {
+        this.setState({ done: false })
+    };
 
     renderDay(response) {
 
@@ -284,7 +285,11 @@ class StockPage extends React.Component {
                 )
             }
         });
-        
+
+        if (!this.state.done){
+            return <FullPageLoading/>
+        }
+
         return(
             <div className="stock-page">
                 
