@@ -4,6 +4,10 @@
     background-color: #1b1b1d;
 }
 
+.stock-page-price{
+    color: white;
+}
+
 
 .holding-data {
     border: 1px solid black;
@@ -87,6 +91,7 @@
 
 .change-counter{
     margin-bottom: 40px;
+    color: white
 }
 
 .line-chart {
@@ -109,7 +114,7 @@
 }
 
 .news-div-indiv:hover{
-    background-color: black;
+    background-color: rgb(12, 12, 12);
 }
 
 .period{

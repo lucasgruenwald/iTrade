@@ -1,12 +1,11 @@
+.dashboard{
+   background-color: #1b1b1d;
+}
 
 .portfolio {
     display: flex;
     color: white;
     background-color: #1b1b1d;
-}
-
-.dashboard{
-   background-color: #1b1b1d;
 }
 
 .dash-holdings {

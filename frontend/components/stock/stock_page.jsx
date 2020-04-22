@@ -294,7 +294,9 @@ class StockPage extends React.Component {
                     <h2>{this.props.info.profile.companyName}</h2>
                 </div>
 
-                    <h1>{this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
+                    <h1 className="stock-page-price">
+                        {this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+                    </h1>
 
                 <StockGraph
                     oldTicker={this.state.oldTicker}
