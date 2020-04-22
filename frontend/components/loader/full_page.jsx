@@ -8,11 +8,11 @@ class FullPageLoading extends React.Component{
         return(
             <React.Fragment>
 
-                (<div className="load-container">
+                <div className="load-container">
                     <div className="load">
                         <img src="https://i.imgur.com/FEDTpyE.gif" className="spinner"/>
                     </div>
-                </div>)
+                </div>
 
             </React.Fragment>
         );

@@ -1,14 +1,15 @@
 import React, { Profiler } from 'react';
 import DashInfo from './dash_stock';
 import DashGraphContainer from './dash_graph_container.jsx'
-
+// import FullPageLoading from '../loader/full_page.jsx'
 
 class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            cash: this.props.user[this.props.currentUser].available_cash
+            cash: this.props.user[this.props.currentUser].available_cash,
+            // done: false
         }
     }
 
@@ -22,8 +23,8 @@ class Dashboard extends React.Component {
                             Object.keys(obj).forEach((key, idx3) => {
                                 if (key === "stock_ticker") {
                                     this.props.receiveCurrentPrice(obj[key])
-                                }
-                            });
+                                } 
+                            })
                         }
                     });
                 });
@@ -96,7 +97,9 @@ class Dashboard extends React.Component {
         })
 
 
-         
+        // if (!this.state.done) {
+        //     return <FullPageLoading />
+        // }
         
         return (
             <div className="dashboard">
