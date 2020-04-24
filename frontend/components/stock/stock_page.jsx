@@ -31,17 +31,19 @@ class StockPage extends React.Component {
     };
     
     componentDidMount() {
+        fetchDailyPrices(this.props.ticker).then((response) => this.renderDay(response));
         this.props.receiveOneNews(this.props.ticker);
         this.props.receiveInfo(this.props.ticker);
         this.props.findHoldings(this.props.currentUser);
-        fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
     };
 
     componentDidUpdate(prevProps) {
         let prev = prevProps.ticker || prevProps.match.params.ticker
         if (this.props.ticker !== prev) {
             this.setState({ done: false })
-            fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response));
+            fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response))
+                // .then (this.props.receiveOneNews(this.props.ticker))
+                // .then (this.props.receiveInfo(this.props.ticker));
         };
     };
 
@@ -86,7 +88,6 @@ class StockPage extends React.Component {
     }
 
     render5D(response) {
-        // debugger
         let timesPrices = response.values.map(price => {
             return { time: price.datetime, price: price.close };
         })
@@ -122,7 +123,6 @@ class StockPage extends React.Component {
     }
 
     render1M(response) {
-        // debugger
         let timesPrices = response.values.map(price => {
             return { time: price.datetime, price: price.close };
         })
@@ -158,7 +158,6 @@ class StockPage extends React.Component {
     }
 
     render3M(response) {
-        // debugger
         let timesPrices = response.values.map(price => {
             return { time: price.datetime, price: price.close };
         })
@@ -174,7 +173,6 @@ class StockPage extends React.Component {
 
         while (dateNow < closeDate) {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            console.log(dateNow)
             timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         }
 
