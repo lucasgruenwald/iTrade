@@ -338,6 +338,14 @@ class StockPage extends React.Component {
                         <p className="shares-text">Shares</p>
                         <input type="text" placeholder="" className="shares-input"></input>
                     </div>
+                    <div className="flex">
+                        <p className="shares-text">Market Price</p>
+
+                    </div>
+                    <div className="flex">
+                        <p className="shares-text">Estimated Cost</p>
+
+                    </div>
                 </div>
 
             </div>

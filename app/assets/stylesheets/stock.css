@@ -72,12 +72,12 @@
 
 
 .holdings-bar{
-    margin-right: 15%;
+    margin-right: 10%;
     margin-top: 10%;
     border: 1px solid black;
     box-shadow: 0 0 5px black;
     border-radius: 3px;
-    width: 500px;
+    width: 550px;
     height: 500px;
 }
 
@@ -149,6 +149,7 @@
     color: white;
     cursor: pointer;
     border: none;
+    border-bottom: 1px solid lightgrey;
 }
 
 .sell {
@@ -160,11 +161,16 @@
     color: white;
     cursor: pointer;
     border: none;
+    border-bottom: 1px solid lightgrey;
+}
+
+.holdings-bar:first-child{
+    border-bottom: 1px solid lightgrey;
 }
 
 .shares-text{
     color: white;
-    margin-top: 15%;
+    margin-top: 19%;
     margin-left: 10%;
 }
 
@@ -172,7 +178,7 @@
     color: white;
     margin-top: 15%;
     margin-left: auto;
-    margin-right: 12%;
-    height: 10px;
-    width: 20px;
+    margin-right: 10%;
+    height: 25px;
+    width: 60px;
 }
