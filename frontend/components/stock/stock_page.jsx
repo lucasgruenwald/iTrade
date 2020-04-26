@@ -252,13 +252,13 @@ class StockPage extends React.Component {
 
         }
     }
-
-    
+ 
     render(){
        
         if (Object.values(this.props.info).length === 0) return null;
         if (this.props.news === undefined) return null;
         if (this.state.period === undefined) return null;
+        if (this.state.buySell === undefined) return null;
 
         let data = this.state[this.state.period];
 
@@ -331,7 +331,10 @@ class StockPage extends React.Component {
             </div>
 
                 <div className="holdings-bar">
-                    <h4>Buy / Sell</h4>
+                    <div className="flex">
+                        <button type="button" className={`buy ${}`} onClick={}>Buy {this.props.info.symbol}</button>
+                        <button type="button" className={`sell ${}`} onClick={}>Sell {this.props.info.symbol}</button>
+                    </div>
                     {/* <input type="text" placeholder="Number of Shares"/> */}
                 </div>
 

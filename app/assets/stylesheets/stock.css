@@ -139,3 +139,25 @@
     border: none;
     border-bottom: 1px solid gray;
 }
+
+.buy {
+    margin-top: 40px;
+    font-size: 17px;
+    margin-right: inherit;
+    margin-left: 12%;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.sell {
+    margin-top: 40px;
+    font-size: 17px;
+    margin-left: auto;
+    margin-right: 12%;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
