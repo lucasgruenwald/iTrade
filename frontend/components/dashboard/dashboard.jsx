@@ -64,18 +64,25 @@ class Dashboard extends React.Component {
                 }
         })
 
-        let valueCounts = 0;
-        let prices = this.props.price
+        let prices = this.props.price;
+        let holdLength = Object.values(this.props.holdings).length 
 
-        myTickers.forEach((tick, idx) => {
-            prices.forEach((pair) => {
-                if (pair.symbol === tick){
-                    valueCounts += (pair.price * share_counts[idx])
-                }
+        function stockValues(tot){
+            myTickers.forEach((tick, idx) => {
+                prices.forEach((pair, idx2) => {
+                    if(idx2 > holdLength - 1){
+                        return tot;
+                    }
+                    if (pair.symbol === tick) {
+                        tot += (pair.price * share_counts[idx])
+                        console.log(tot)
+                    }
+                })
             })
-        });
-
-        let sum = valueCounts + this.state.cash;
+            return tot;
+        };
+       
+        let sum = stockValues(0) + this.state.cash;
 
         let newsList = []
 
