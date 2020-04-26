@@ -10,7 +10,7 @@
 #  updated_at   :datetime         not null
 #
 class Holding < ApplicationRecord
-    validates :stock_ticker, :share_count, presence: true 
+    validates :stock_ticker, :share_count, :user_id, presence: true 
     
     belongs_to :user, 
     foreign_key: :user_id, 

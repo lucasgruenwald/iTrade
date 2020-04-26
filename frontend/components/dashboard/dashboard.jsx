@@ -64,15 +64,18 @@ class Dashboard extends React.Component {
                 }
         })
 
-        let sum = 0 + this.state.cash
-        // let priceMap = this.props.prices
-        // priceMap.forEach((ele, idx) => {
-        //     let price = obj.price 
-        //     let count = share_counts[idx]
-        //     sum += (obj.price * count)
-        // })
+        let valueCounts = 0;
+        let prices = this.props.price
 
+        myTickers.forEach((tick, idx) => {
+            prices.forEach((pair) => {
+                if (pair.symbol === tick){
+                    valueCounts += (pair.price * share_counts[idx])
+                }
+            })
+        });
 
+        let sum = valueCounts + this.state.cash;
 
         let newsList = []
 

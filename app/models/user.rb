@@ -15,23 +15,22 @@
 #
 class User < ApplicationRecord
 
+    attr_reader :password
+
     validates :first_name, :last_name, :password_digest, presence: true
     validates :session_token, :email, presence: true, uniqueness: true 
     validates :password, length: { minimum: 8, allow_nil: true }
 
-    attr_reader :password
     after_initialize :ensure_session_token
 
     has_many :holdings,
     foreign_key: :user_id,
-    class_name: :Holding 
-
-    # has_many: watchings 
-    # has_many: transactions 
+    class_name: :Holding,
+    dependent: :destroy
 
     def self.find_by_credentials(email, password)
-        user = User.find_by(email: email)
-        user && user.is_password?(password) ? user : nil
+        @user = User.find_by(email: email)
+        @user && @user.is_password?(password) ? @user : nil
     end
 
     def password=(password)

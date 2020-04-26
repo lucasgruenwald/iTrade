@@ -17,39 +17,39 @@ Demo = User.create(
 )
 
 Holding1 = Holding.create(
-    user_id: 5,
+    user_id: 1,
     stock_ticker: "FB",
     share_count: 200
 )
 
 Holding2 = Holding.create(
-    user_id: 5,
+    user_id: 1,
     stock_ticker: "AMD",
     share_count: 800
 )
 
 Holding3 = Holding.create(
-    user_id: 5,
+    user_id: 1,
     stock_ticker: "AAPL",
     share_count: 1000
 )
 
 Holding4 = Holding.create(
-    user_id: 5,
+    user_id: 1,
     stock_ticker: "GOOG",
     share_count: 5
 )
 
 Holding5 = Holding.create(
-    user_id: 5,
+    user_id: 1,
     stock_ticker: "TSLA",
     share_count: 7
 )
 
 Holding6 = Holding.create(
-    user_id: 6,
-    stock_ticker: "NCL",
-    share_count: 10000
+    user_id: 1,
+    stock_ticker: "LUV",
+    share_count: 125
 )
 
 
