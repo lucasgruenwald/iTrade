@@ -24,12 +24,21 @@ class TransactionForm extends React.Component {
 
     }
 
-    handleClick(val){
-
+    handleClick(dir) {
+        this.setState({ buySell: dir });
+        this.changeUnderline(dir);
+        // this.props.clearErrors();
     }
 
-    handleSubmit(e){
-
+    changeUnderline(dir) {
+        let dirs = Array.prototype.slice.call(document.querySelectorAll('.buy, .sell'));
+        dirs.forEach((way) => {
+            let dirList = Array.prototype.slice.call(way.classList);
+            way.classList.remove("selected")
+            if (dirList.includes(dir)) {
+                way.classList.add("selected")
+            }
+        })
     }
 
     render(){
@@ -40,8 +49,8 @@ class TransactionForm extends React.Component {
 
             <div className="holdings-bar">
                 <div className="flex-transaction">
-                    <button type="button" className="buy selected">Buy {this.props.profile}</button>
-                    <button type="button" className="sell">Sell {this.props.profile}</button>
+                    <button type="button" onClick={() => this.handleClick('buy')} className="buy selected">Buy {this.props.profile}</button>
+                    <button type="button" onClick={() => this.handleClick('sell')} className="sell">Sell {this.props.profile}</button>
                 </div>
                 <div className="flex-transaction">
                     <p className="shares-text">Shares</p>
