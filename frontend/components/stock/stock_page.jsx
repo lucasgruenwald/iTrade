@@ -330,7 +330,7 @@ class StockPage extends React.Component {
 
             </div>
 
-                <TransactionContainer/>
+                <TransactionContainer profile={this.props.ticker}/>
 
             </div>
         )

@@ -7,7 +7,8 @@ class TransactionForm extends React.Component {
         super(props);
         this.state = {
 
-        };
+        }
+
         this.handleClick = this.handleClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -23,6 +24,14 @@ class TransactionForm extends React.Component {
 
     }
 
+    handleClick(val){
+
+    }
+
+    handleSubmit(e){
+
+    }
+
     render(){
 
 
@@ -31,8 +40,8 @@ class TransactionForm extends React.Component {
 
             <div className="holdings-bar">
                 <div className="flex">
-                    <button type="button" className="buy">Buy {this.props.info.symbol}</button>
-                    <button type="button" className="sell">Sell {this.props.info.symbol}</button>
+                    <button type="button" className="buy">Buy {this.props.profile}</button>
+                    <button type="button" className="sell">Sell {this.props.profile}</button>
                 </div>
                 <div className="flex">
                     <p className="shares-text">Shares</p>
