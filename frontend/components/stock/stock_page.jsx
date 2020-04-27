@@ -1,6 +1,7 @@
 import React from 'react';
 import StockInfo from './info'
 import StockGraph from './stock_graph';
+import TransactionContainer from './transaction_container';
 import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
 import FullPageLoading from "../loader/full_page.jsx"
 
@@ -329,24 +330,7 @@ class StockPage extends React.Component {
 
             </div>
 
-                <div className="holdings-bar">
-                    <div className="flex">
-                        <button type="button" className="buy">Buy {this.props.info.symbol}</button>
-                        <button type="button" className="sell">Sell {this.props.info.symbol}</button>
-                    </div>
-                    <div className="flex">
-                        <p className="shares-text">Shares</p>
-                        <input type="text" placeholder="" className="shares-input"></input>
-                    </div>
-                    <div className="flex">
-                        <p className="shares-text">Market Price</p>
-
-                    </div>
-                    <div className="flex">
-                        <p className="shares-text">Estimated Cost</p>
-
-                    </div>
-                </div>
+                <TransactionContainer/>
 
             </div>
         )
