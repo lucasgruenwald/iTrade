@@ -77,7 +77,7 @@
     border: 1px solid black;
     box-shadow: 0 0 5px black;
     border-radius: 3px;
-    width: 550px;
+    min-width: 250px;
     height: 500px;
 }
 
@@ -144,7 +144,7 @@
     margin-top: 40px;
     font-size: 17px;
     margin-right: inherit;
-    margin-left: 12%;
+    margin-left: 20%;
     background-color: transparent;
     color: white;
     cursor: pointer;
@@ -156,7 +156,7 @@
     margin-top: 40px;
     font-size: 17px;
     margin-left: auto;
-    margin-right: 12%;
+    margin-right: 20%;
     background-color: transparent;
     color: white;
     cursor: pointer;
@@ -164,21 +164,53 @@
     border-bottom: 1px solid lightgrey;
 }
 
+.selected{
+    color: #21ce99;
+    border-bottom: 1px solid #21ce99;
+}
+
 .holdings-bar:first-child{
     border-bottom: 1px solid lightgrey;
+}
+
+.flex-transaction{
+    display: flex;
+    text-align: left;
 }
 
 .shares-text{
     color: white;
     margin-top: 19%;
-    margin-left: 10%;
+    width: 120px;
+    margin-left: 20px;
+}
+
+.market-text{
+    color: white;
+    margin-top: 14%;
+    width: 120px;
+    margin-left: 20px;
+}
+
+.cost-text{
+    color: white;
+    margin-top: 14%;
+    width: 120px;
+    margin-left: 20px;
 }
 
 .shares-input{
     color: white;
-    margin-top: 15%;
+    margin-top: 14%;
     margin-left: auto;
-    margin-right: 10%;
+    margin-right: 12%;
     height: 25px;
-    width: 60px;
+    width: 70px;
+}
+
+.mkt-price-text{
+    color: white;
+    margin-top: 14%;
+    margin-left: auto;
+    margin-right: 14%;
 }

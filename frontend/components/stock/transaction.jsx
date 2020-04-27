@@ -39,20 +39,20 @@ class TransactionForm extends React.Component {
         return(
 
             <div className="holdings-bar">
-                <div className="flex">
-                    <button type="button" className="buy">Buy {this.props.profile}</button>
+                <div className="flex-transaction">
+                    <button type="button" className="buy selected">Buy {this.props.profile}</button>
                     <button type="button" className="sell">Sell {this.props.profile}</button>
                 </div>
-                <div className="flex">
+                <div className="flex-transaction">
                     <p className="shares-text">Shares</p>
                     <input type="text" placeholder="" className="shares-input"></input>
                 </div>
-                <div className="flex">
-                    <p className="shares-text">Market Price</p>
-
+                <div className="flex-transaction">
+                    <p className="market-text">Market Price</p>
+                    <p className="mkt-price-text">{this.props.price}</p>
                 </div>
-                <div className="flex">
-                    <p className="shares-text">Estimated Cost</p>
+                <div className="flex-transaction">
+                    <p className="cost-text">Estimated Cost</p>
 
                 </div>
             </div>

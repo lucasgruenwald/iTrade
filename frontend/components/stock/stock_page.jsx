@@ -330,7 +330,7 @@ class StockPage extends React.Component {
 
             </div>
 
-                <TransactionContainer profile={this.props.ticker}/>
+                <TransactionContainer profile={this.props.ticker} price={this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} />
 
             </div>
         )
