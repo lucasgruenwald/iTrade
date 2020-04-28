@@ -1,6 +1,6 @@
 import React from "react";
 import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 
 
 class StockGraph extends React.Component {

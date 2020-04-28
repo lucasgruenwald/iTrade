@@ -1,6 +1,6 @@
 import React, { Profiler } from 'react';
 import DashInfo from './dash_stock';
-import DashGraphContainer from './dash_graph_container.jsx'
+import DashGraph from './dash_graph.jsx'
 // import FullPageLoading from '../loader/full_page.jsx'
 
 class Dashboard extends React.Component {
@@ -122,7 +122,7 @@ class Dashboard extends React.Component {
 
                         <h3 className="graph-placeholder"></h3>
 
-                        <DashGraphContainer/>
+                        <DashGraph/>
 
                         <h3 className="news-header">Top News:</h3>
                         <div className="dash-news">
