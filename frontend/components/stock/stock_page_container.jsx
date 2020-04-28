@@ -11,6 +11,7 @@ const mSTP = (state, ownProps) => ({
     info: state.entities.stockInfo,
     holdings: state.entities.holdings,
     news: state.entities.news,
+    user: state.entities.users,
 })
 
 const mDTP = (dispatch) => {

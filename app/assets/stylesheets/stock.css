@@ -79,7 +79,7 @@
     box-shadow: 0 0 5px black;
     border-radius: 3px;
     min-width: 250px;
-    height: 500px;
+    height: 415px;
     position: fixed;
 }
 
@@ -200,23 +200,33 @@
 }
 
 .cost-text{
-    color: white;
+    color:  rgb(235, 235, 235);
     margin-top: 14%;
     width: 120px;
     margin-left: 20px;
 }
 
 .shares-input{
-    color: white;
-    margin-top: 14%;
+    background-color: #0d0d0e;
+    color: rgb(235, 235, 235);
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 17px;
+    text-align: right;
+    margin-top: 17%;
     margin-left: auto;
     margin-right: 12%;
     height: 25px;
     width: 70px;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   -webkit-appearance: "Always Show Up/Down Arrows";
+}
+
 .mkt-price-text{
-    color: white;
+    color:  rgb(235, 235, 235);
     margin-top: 14%;
     margin-left: auto;
     margin-right: 14%;
@@ -224,4 +234,26 @@
 
 button:focus{
     outline:0;
+}
+
+.place-order{
+    margin-top: 14px;
+    font-size: 15px;
+    color: white;
+    background-color: black;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buy-avail-cash{
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border: none;
+    border-top: 1px solid gray;
 }

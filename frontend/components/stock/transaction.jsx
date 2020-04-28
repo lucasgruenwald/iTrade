@@ -6,7 +6,7 @@ class TransactionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            cash: this.props.currentUser.available_cash
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -54,16 +54,18 @@ class TransactionForm extends React.Component {
                 </div>
                 <div className="flex-transaction">
                     <p className="shares-text">Shares</p>
-                    <input type="text" placeholder="" className="shares-input"></input>
+                    <input type="number" placeholder="" className="shares-input"></input>
                 </div>
                 <div className="flex-transaction">
                     <p className="market-text">Market Price</p>
                     <p className="mkt-price-text">{this.props.price}</p>
                 </div>
                 <div className="flex-transaction">
-                    <p className="cost-text">Estimated Cost</p>
-
-                </div>
+                    <p className="cost-text">Estimated Value</p>
+                    
+                </div>           
+                <button className="place-order">Place Order</button>
+                <p className="buy-avail-cash">{this.state.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}&nbsp; Buying Power Available</p>
             </div>
 
         );

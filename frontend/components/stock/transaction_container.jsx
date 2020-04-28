@@ -4,8 +4,9 @@ import { receiveHolding, findHoldings } from '../../actions/holding';
 
 
 const mapStateToProps = (state) => ({
-    currentUser: state.entities.users[state.session.id],
+    currentUser: state.entities.users[state.session.currentUser],
     holdings: state.entities.holdings,
+    user: state.entities.users
 });
 
 const mapDispatchToProps = dispatch => ({
