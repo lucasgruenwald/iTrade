@@ -80,7 +80,7 @@ class DashGraph extends React.Component{
         return(
             <div className="dash-graph-holder">
 
-                <p className="change-counter">{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
+                {/* <p className="change-counter">{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p> */}
 
                 {/* <LineChart
                     className="line-chart"
