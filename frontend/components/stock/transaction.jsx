@@ -72,6 +72,7 @@ class TransactionForm extends React.Component {
                         className="shares-input"
                         value={this.state.purchase_shares}
                         onChange={this.updateShares()} 
+                        min="0"
                     />
                 </div>
                 <div className="flex-transaction">
