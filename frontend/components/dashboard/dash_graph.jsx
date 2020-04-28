@@ -1,37 +1,86 @@
 import React from 'react';
 import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
-import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
+// import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
 import FullPageLoading from "../loader/full_page.jsx"
-// import graph tools
 
 class DashGraph extends React.Component{
 
     constructor(props) {
         super(props);
-        // add more here
         this.state = {
+            open: this.props.open,
+            period: this.props.period,
+            change: parseFloat(this.props.close - this.props.open).toFixed(2),
+            percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
         };
-        // and add to state
+        this.handleMouseOver = this.handleMouseOver.bind(this);
+        this.handleMouseOut = this.handleMouseOut.bind(this);
+        this.customTooltip = this.customTooltip.bind(this)
+    }
+
+    componentDidMount() {
+        this.setState({
+            period: this.props.period,
+            open: this.props.open,
+            change: parseFloat(this.props.close - this.props.open).toFixed(2),
+            percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
+        });
+    }
+
+    componentDidUpdate() {
+        if (this.state.period !== this.props.period) {
+            this.setState({
+                period: this.props.period,
+                change: parseFloat(this.props.close - this.props.open).toFixed(2),
+                percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2)
+            });
+
+        };
+    }
+
+    handleMouseOver(e) {
+        if (e && e.activePayload !== undefined) {
+            let openPrice = this.state.open;
+            let hoverPrice = e.activePayload[0].payload.price;
+
+            let change = hoverPrice - openPrice;
+            let divChange = (change / hoverPrice) * 100
+
+            this.setState({
+                closePrice: parseFloat(e.activePayload[0].payload.price).toFixed(2),
+                change: parseFloat(change.toFixed(2)),
+                percentChange: parseFloat(divChange).toFixed(2)
+            })
+        }
+    }
+
+    handleMouseOut(e) {
+        let dollarChange = (this.props.close - this.props.open)
+        let divisionChange = ((dollarChange / this.props.close) * 100)
+
+        this.setState({
+            closePrice: this.props.close,
+            change: parseFloat(dollarChange).toFixed(2),
+            percentChange: parseFloat(divisionChange).toFixed(2)
+        })
     }
 
 
-    // add functions here 
-
+    customTooltip(e) {
+        return (
+            <div className="custom-tooltip">
+                {/* <p className="label">{e.label}</p> */}
+            </div>
+        );
+    }
 
     render(){
-
-
-        // const mainGraph = (
-        //     <div>
-        //         <p>graph goes here</p>
-        //     </div>
-        // )
 
 
         return(
             <div className="dash-graph-holder">
 
-                {/* <p className="change-counter">{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p> */}
+                <p className="change-counter">{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
 
                 {/* <LineChart
                     className="line-chart"
