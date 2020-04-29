@@ -39,12 +39,12 @@ class StockPage extends React.Component {
     };
 
     componentDidUpdate(prevProps) {
-        let prev = prevProps.ticker || prevProps.match.params.ticker
-        if (this.props.ticker !== prev) {
+        if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
             this.setState({ done: false })
-            fetchDailyPrices(this.props.ticker).then(response => this.renderDay(response))
-                // .then (this.props.receiveOneNews(this.props.ticker))
-                // .then (this.props.receiveInfo(this.props.ticker));
+            this.props.receiveOneNews(this.props.ticker);
+            this.props.receiveInfo(this.props.ticker);
+            fetchDailyPrices(this.props.ticker)
+                .then(response => this.renderDay(response))
         };
     };
 
