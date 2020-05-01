@@ -1,13 +1,15 @@
 import React from 'react';
 import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
 // import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
-import FullPageLoading from "../loader/full_page.jsx"
+// import FullPageLoading from "../loader/full_page.jsx"
 
 class DashGraph extends React.Component{
 
     constructor(props) {
         super(props);
         this.state = {
+            ticker: "",
+            closePrice: this.props.close,
             open: this.props.open,
             period: this.props.period,
             change: parseFloat(this.props.close - this.props.open).toFixed(2),
@@ -41,7 +43,9 @@ class DashGraph extends React.Component{
     handleMouseOver(e) {
         if (e && e.activePayload !== undefined) {
             let openPrice = this.state.open;
-            let hoverPrice = e.activePayload[0].payload.price;
+            // let hoverPrice = e.activePayload[0].payload.price;
+            // temporarily replacing with fixed number 1
+            let hoverPrice = 1;
 
             let change = hoverPrice - openPrice;
             let divChange = (change / hoverPrice) * 100
@@ -69,20 +73,22 @@ class DashGraph extends React.Component{
     customTooltip(e) {
         return (
             <div className="custom-tooltip">
-                {/* <p className="label">{e.label}</p> */}
+                <p className="label">{e.label}</p>
             </div>
         );
     }
 
     render(){
 
+        let data = this.props.ticker || [];
+        const label = "label"
 
         return(
             <div className="dash-graph-holder">
 
                 {/* <p className="change-counter">{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p> */}
-
-                {/* <LineChart
+                <p>Dashboard graph in progress</p>
+                <LineChart
                     className="line-chart"
                     width={650}
                     height={350}
@@ -95,17 +101,17 @@ class DashGraph extends React.Component{
                     <YAxis hide={true} domain={['dataMin', 'dataMax']} />
 
                     <Tooltip
-                        className='tooltip'
+                        // className='tooltip'
                         position={{ y: 0 }}
                         isAnimationActive={false}
                         content={this.customTooltip}
                         cursor={{ stroke: "black", strokeWidth: 0.7 }}
-                        formatter={(value) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+                        // formatter={(value) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
                         position={{ y: -40 }}
                     />
 
                     // <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={3} />
-                </LineChart> */}
+                </LineChart>
             </div>
         )
     }
