@@ -71,22 +71,35 @@ class Dashboard extends React.Component {
     };
 
     renderDay(response) {
-        // console.log(response)
-        // console.log(response[0])
-        console.log(response["FB"])
+        let ticks = Object.keys(response) 
+        console.log(ticks)
         console.log(response["FB"].values)
-        let timesPrices = response["FB"].values.map(price => {
-            return { time: price.datetime, price: price.close };
+
+        let defaultValue = 0;
+        let proxyHandler = {
+            get: (target, name) => name in target ? target[name] : defaultValue
+        };
+        let underlyingObject = {};
+        let priceSums = new Proxy(underlyingObject, proxyHandler);
+        let arrConvert = []
+        ticks.forEach((sym) => {
+            response[sym].values.forEach((entry) => {
+                priceSums[entry.datetime] += parseFloat(entry.close)
+            })
+        })
+
+        let timesPrices = response[ticks[0]].values.map(price => {
+            return { time: price.datetime, price: priceSums[price.datetime]}
         })
 
         timesPrices = timesPrices.reverse()
-        let lastClose = response["FB"].values[0].close
-        let firstValidIdx = response["FB"].values.length - 1
-        let firstOpen = response["FB"].values[firstValidIdx].previous_close
-        let minuteNow = response["FB"].values[0].datetime.split(" ")[1]
-        let dateNow = new Date(Date.parse(`${response["FB"].values[0].datetime.split(" ")[0]} ${minuteNow}`))
+        let lastClose = response[ticks[0]].values[0].close
+        let firstValidIdx = response[ticks[0]].values.length - 1
+        let firstOpen = response[ticks[0]].values[firstValidIdx].previous_close
+        let minuteNow = response[ticks[0]].values[0].datetime.split(" ")[1]
+        let dateNow = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${minuteNow}`))
         let closeTime = "12:59:00"
-        let closeDate = new Date(Date.parse(`${response["FB"].values[0].datetime.split(" ")[0]} ${closeTime}`))
+        let closeDate = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${closeTime}`))
 
         while (dateNow < closeDate) {
             dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
