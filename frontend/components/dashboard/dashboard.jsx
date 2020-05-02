@@ -70,7 +70,7 @@ class Dashboard extends React.Component {
         this.setState({ done: false })
     };
 
-    renderDay(response) {
+    renderDay(response, timespan) {
         let ticks = Object.keys(response) 
 
         let defaultValue = 0;
@@ -124,10 +124,11 @@ class Dashboard extends React.Component {
         //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
         //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         // }
-
+        
+        if (timespan === "1Y") {
         this.setState({
-            "1D": timesPrices,
-            period: "1D",
+            "1Y": timesPrices,
+            period: "1Y",
             ticker: this.props.ticker,
             open: firstOpen,
             close: lastClose,
@@ -138,6 +139,63 @@ class Dashboard extends React.Component {
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
         })
+        } else if (timespan === "5D"){
+            this.setState({
+                "5D": timesPrices,
+                period: "5D",
+                ticker: this.props.ticker,
+                open: firstOpen,
+                close: lastClose,
+                change: parseFloat(lastClose - firstOpen).toFixed(2),
+                changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
+                done: true,
+                colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
+                color: firstOpen < lastClose ? "#21ce99" : "orangered",
+                backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
+            })
+        } else if (timespan === "1M") {
+            this.setState({
+                "1M": timesPrices,
+                period: "1M",
+                ticker: this.props.ticker,
+                open: firstOpen,
+                close: lastClose,
+                change: parseFloat(lastClose - firstOpen).toFixed(2),
+                changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
+                done: true,
+                colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
+                color: firstOpen < lastClose ? "#21ce99" : "orangered",
+                backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
+            })
+        } else if (timespan === "3M") {
+            this.setState({
+                "3M": timesPrices,
+                period: "3M",
+                ticker: this.props.ticker,
+                open: firstOpen,
+                close: lastClose,
+                change: parseFloat(lastClose - firstOpen).toFixed(2),
+                changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
+                done: true,
+                colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
+                color: firstOpen < lastClose ? "#21ce99" : "orangered",
+                backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
+            })
+        } else {
+            this.setState({
+                "1D": timesPrices,
+                period: "1D",
+                ticker: this.props.ticker,
+                open: firstOpen,
+                close: lastClose,
+                change: parseFloat(lastClose - firstOpen).toFixed(2),
+                changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
+                done: true,
+                colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
+                color: firstOpen < lastClose ? "#21ce99" : "orangered",
+                backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
+            })
+        }
 
     }
 
@@ -146,19 +204,19 @@ class Dashboard extends React.Component {
             return e => {
                 switch (key) {
                     case '1D':
-                        fetchDailyPricesAll(this.state.queryString).then(response => this.renderDay(response))
+                        fetchDailyPricesAll(this.state.queryString).then(response => this.renderDay(response, "1D"))
                         break;
                     case '5D':
-                        fetch5DAll(this.state.queryString).then(response => this.render5D(response))
+                        fetch5DAll(this.state.queryString).then(response => this.renderDay(response, "5D"))
                         break;
                     case '1M':
-                        fetch1MAll(this.state.queryString).then(response => this.render1M(response))
+                        fetch1MAll(this.state.queryString).then(response => this.renderDay(response, "1M"))
                         break;
                     case '3M':
-                        fetch3MAll(this.state.queryString).then(response => this.render3M(response))
+                        fetch3MAll(this.state.queryString).then(response => this.renderDay(response, "3M"))
                         break;
                     case '1Y':
-                        fetch1YAll(this.state.queryString).then(response => this.render1Y(response))
+                        fetch1YAll(this.state.queryString).then(response => this.renderDay(response, "1Y"))
                         break;
                 }
             }
@@ -268,11 +326,11 @@ class Dashboard extends React.Component {
                         />
 
                         <div className="periods">
-                            {/* <button type="button" className={`period ${this.state.period === "1D" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1D")}>1D</button>
+                            <button type="button" className={`period ${this.state.period === "1D" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1D")}>1D</button>
                             <button type="button" className={`period ${this.state.period === "5D" ? this.state.colorClass : ''}`} onClick={this.updatePrices("5D")}>5D</button>
                             <button type="button" className={`period ${this.state.period === "1M" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1M")}>1M</button>
                             <button type="button" className={`period ${this.state.period === "3M" ? this.state.colorClass : ''}`} onClick={this.updatePrices("3M")}>3M</button>
-                            <button type="button" className={`period ${this.state.period === "1Y" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1Y")}>1Y</button> */}
+                            <button type="button" className={`period ${this.state.period === "1Y" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1Y")}>1Y</button>
                         </div>
 
                         <h3 className="news-header">Top News:</h3>
