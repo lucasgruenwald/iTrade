@@ -2,7 +2,7 @@ import React, { Profiler } from 'react';
 import DashInfo from './dash_stock';
 import DashGraph from './dash_graph.jsx'
 import { fetchDailyPricesAll, fetch5DAll, fetch1MAll, fetch3MAll, fetch1YAll } from '../../util/graph_api_util';
-// import FullPageLoading from '../loader/full_page.jsx'
+import FullPageLoading from '../loader/full_page.jsx'
 
 class Dashboard extends React.Component {
 
@@ -11,6 +11,7 @@ class Dashboard extends React.Component {
         this.state = {
             cash: this.props.user[this.props.currentUser].available_cash,
             queryString: "",
+            holdingCount: {},
             "1D": [],
             "5D": [],
             "1M": [],
@@ -39,6 +40,7 @@ class Dashboard extends React.Component {
                         if (obj !== 'FIND_HOLDINGS') {
                             Object.keys(obj).forEach((key, idx3) => {
                                 if (key === "stock_ticker") {
+                                    this.state.holdingCount[obj.stock_ticker] = obj.share_count
                                     this.props.receiveCurrentPrice(obj[key])
                                     if (idx2 !== 0) {
                                         this.state.queryString += ",%20"
@@ -92,7 +94,8 @@ class Dashboard extends React.Component {
         let idxCounter = {};
         ticks.forEach((sym) => {
             response[sym].values.forEach((entry, idx) => {
-                priceSums[entry.datetime] += parseFloat(entry.close)
+                let totalShareValue = (parseFloat(entry.close) * this.state.holdingCount[sym])
+                priceSums[entry.datetime] += totalShareValue
                 idxHashCount[entry.datetime] += 1
                 if (!dateTimes.includes(entry.datetime)){
                     dateTimes.push(entry.datetime)
@@ -300,16 +303,15 @@ class Dashboard extends React.Component {
         })
 
 
-        // if (!this.state.done) {
-        //     return <FullPageLoading />
-        // }
+        if (!this.state.done) {
+            return <FullPageLoading />
+        }
         
         return (
             <div className="dashboard">
             
                 <h1>{sum.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
-                <h5>+/- $___ (__%) today</h5>
- 
+
                 <div className="portfolio">
                     <div className="port-left">
 
@@ -325,7 +327,7 @@ class Dashboard extends React.Component {
                             color={this.state.color}
                         />
 
-                        <div className="periods">
+                        <div className="periods-dash">
                             <button type="button" className={`period ${this.state.period === "1D" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1D")}>1D</button>
                             <button type="button" className={`period ${this.state.period === "5D" ? this.state.colorClass : ''}`} onClick={this.updatePrices("5D")}>5D</button>
                             <button type="button" className={`period ${this.state.period === "1M" ? this.state.colorClass : ''}`} onClick={this.updatePrices("1M")}>1M</button>
