@@ -72,8 +72,6 @@ class Dashboard extends React.Component {
 
     renderDay(response) {
         let ticks = Object.keys(response) 
-        console.log(ticks)
-        console.log(response["FB"].values)
 
         let defaultValue = 0;
         let proxyHandler = {
@@ -81,15 +79,36 @@ class Dashboard extends React.Component {
         };
         let underlyingObject = {};
         let priceSums = new Proxy(underlyingObject, proxyHandler);
-        let arrConvert = []
+
+        let defaultValue2 = 0;
+        let proxyHandler2 = {
+            get: (target, name) => name in target ? target[name] : defaultValue2
+        };
+        let underlyingObject2 = {};
+        let idxHashCount = new Proxy(underlyingObject2, proxyHandler2);
+
+        let dateTimes = []
+
+        let idxCounter = {};
         ticks.forEach((sym) => {
-            response[sym].values.forEach((entry) => {
+            response[sym].values.forEach((entry, idx) => {
                 priceSums[entry.datetime] += parseFloat(entry.close)
-            })
+                idxHashCount[entry.datetime] += 1
+                if (!dateTimes.includes(entry.datetime)){
+                    dateTimes.push(entry.datetime)
+                }
+            })  
+        })
+        dateTimes.forEach((time) => {
+            if (idxHashCount[time] < ticks.length){
+                // Delete 
+            }
         })
 
-        let timesPrices = response[ticks[0]].values.map(price => {
-            return { time: price.datetime, price: priceSums[price.datetime]}
+        let timesPrices = response[ticks[0]].values.map((price, idx) => {
+            if (idxHashCount[price.datetime] === ticks.length) {
+                return { time: price.datetime, price: priceSums[price.datetime] }
+            }
         })
 
         timesPrices = timesPrices.reverse()
@@ -101,10 +120,10 @@ class Dashboard extends React.Component {
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-        while (dateNow < closeDate) {
-            dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        }
+        // while (dateNow < closeDate) {
+        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+        // }
 
         this.setState({
             "1D": timesPrices,
