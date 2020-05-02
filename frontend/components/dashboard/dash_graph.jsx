@@ -87,7 +87,7 @@ class DashGraph extends React.Component{
             <div className="dash-graph-holder">
 
                 {/* <p className="change-counter">{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p> */}
-                <p>Dashboard graph in progress</p>
+                <p>Dashboard graph in progress, currently price-weighted</p>
                 <LineChart
                     className="line-chart"
                     width={650}
