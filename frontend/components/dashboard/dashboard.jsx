@@ -46,7 +46,7 @@ class Dashboard extends React.Component {
                                         this.state.queryString += ",%20"
                                     }
                                     this.state.queryString += (obj[key])
-                                    if (idx2 === 5) {
+                                    if (idx2 === (Object.keys(obj).length -1)) {
                                         fetchDailyPricesAll(this.state.queryString).then((response) => this.renderDay(response))
                                     }
                                 } 
