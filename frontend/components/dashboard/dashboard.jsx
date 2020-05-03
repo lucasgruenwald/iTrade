@@ -102,11 +102,11 @@ class Dashboard extends React.Component {
                 }
             })  
         })
-        dateTimes.forEach((time) => {
-            if (idxHashCount[time] < ticks.length){
-                // Delete 
-            }
-        })
+        // dateTimes.forEach((time) => {
+        //     if (idxHashCount[time] < ticks.length){
+        //         // Delete 
+        //     }
+        // })
 
         let timesPrices = response[ticks[0]].values.map((price, idx) => {
             if (idxHashCount[price.datetime] === ticks.length) {
