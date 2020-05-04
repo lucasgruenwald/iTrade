@@ -17,11 +17,7 @@ const receiveTheCurrentPrice = price => ({
     price
 });
 
-export const receiveStocks = () => dispatch => Promise.all([fetchNYSE().catch(e => {
-    console.log(e);
-}), fetchNasdaq().catch(e => {
-    console.log(e);
-})])
+export const receiveStocks = () => dispatch => Promise.all([fetchNYSE(), fetchNasdaq()])
     .catch(e => {
         console.log(e);
     })
