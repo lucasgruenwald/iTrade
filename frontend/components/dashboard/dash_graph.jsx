@@ -84,7 +84,7 @@ class DashGraph extends React.Component{
         // (e.label) ? time = e.label.split(" ")[1] : time = null
         (e.label) ? time = e.label : time = null
         if (e.label) {
-            time.slice(0,2) < 12 ? time = time + " AM" : time = time + " PM"
+            time.split(" ")[1].slice(0,2) < 12 ? time = time + " AM" : time = time + " PM"
         }
         return (
             <div className="custom-tooltip">

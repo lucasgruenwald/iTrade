@@ -67,11 +67,19 @@ class StockGraph extends React.Component {
   }
 
   customTooltip(e) {
-      return (
-        <div className="custom-tooltip">
-          <p className="label">{e.label}</p>
-        </div>
-      );
+    console.log(e)
+    console.log(e.label)
+    let time
+    // (e.label) ? time = e.label.split(" ")[1] : time = null
+    (e.label) ? time = e.label : time = null
+    if (e.label) {
+      time.split(" ")[1].slice(0, 2) < 12 ? time = time + " AM" : time = time + " PM"
+    }
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{time} PST</p>
+      </div>
+    );
   }
 
 
@@ -93,7 +101,7 @@ class StockGraph extends React.Component {
           onMouseOver={this.handleMouseOver}
           onMouseLeave={this.handleMouseOut}>
           
-          <XAxis dataKey={label} hide={true} />
+          <XAxis dataKey={"time"} hide={true} />
           <YAxis hide={true} domain={['dataMin', 'dataMax']} />
 
           <Tooltip 
