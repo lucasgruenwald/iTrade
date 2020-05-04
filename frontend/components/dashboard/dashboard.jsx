@@ -107,8 +107,8 @@ class Dashboard extends React.Component {
         //         // Delete 
         //     }
         // })
-        console.log(response[ticks[0]].values)
-        console.log(response[ticks[0]].values)
+        // console.log(response[ticks[0]].values)
+        // console.log(response[ticks[0]].values)
         let timesPrices = response[ticks[0]].values.map((price, idx) => {
             if (idxHashCount[price.datetime] === ticks.length) {
                 return { time: price.datetime, price: priceSums[price.datetime] }
