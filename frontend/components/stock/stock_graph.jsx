@@ -72,7 +72,7 @@ class StockGraph extends React.Component {
     let time
     // (e.label) ? time = e.label.split(" ")[1] : time = null
     (e.label) ? time = e.label : time = null
-    if (e.label) {
+    if (e.label && time.split(" ")[1]) {
       time.split(" ")[1].slice(0, 2) < 12 ? time = time + " AM" : time = time + " PM"
     }
     return (
