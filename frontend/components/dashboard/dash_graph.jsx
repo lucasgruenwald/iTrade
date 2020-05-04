@@ -1,7 +1,5 @@
 import React from 'react';
 import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
-// import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
-// import FullPageLoading from "../loader/full_page.jsx"
 
 class DashGraph extends React.Component{
 

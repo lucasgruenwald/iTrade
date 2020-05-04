@@ -26,9 +26,6 @@ class Dashboard extends React.Component {
         }
         this.updatePrices = this.updatePrices.bind(this);
         this.renderDay = this.renderDay.bind(this);
-        // this.render5D = this.render5D.bind(this);
-        // this.render1M = this.render1M.bind(this);
-        // this.render1Y = this.render1Y.bind(this);
     }
 
     componentDidMount(){
@@ -102,13 +99,6 @@ class Dashboard extends React.Component {
                 }
             })  
         })
-        // dateTimes.forEach((time) => {
-        //     if (idxHashCount[time] < ticks.length){
-        //         // Delete 
-        //     }
-        // })
-        // console.log(response[ticks[0]].values)
-        // console.log(response[ticks[0]].values)
         let timesPrices = response[ticks[0]].values.map((price, idx) => {
             if (idxHashCount[price.datetime] === ticks.length) {
                 return { time: price.datetime, price: priceSums[price.datetime] }
@@ -119,28 +109,11 @@ class Dashboard extends React.Component {
         let firstOpen = priceSums[response[ticks[0]].values[firstValidIdx].datetime]
 
 
-        // let lastClose = 0
-        // let firstOpen = 0
-        // response[ticks[0]].values.forEach((price, idx) => {
-        //     if (idx === 0) {
-        //         lastClose += priceSums[price.datetime]
-        //     }
-        // })
-        
-
         timesPrices = timesPrices.reverse()
-        // let lastClose = response[ticks[0]].values[0].close
-        // let firstValidIdx = response[ticks[0]].values.length - 1
-        // let firstOpen = response[ticks[0]].values[firstValidIdx].previous_close
         let minuteNow = response[ticks[0]].values[0].datetime.split(" ")[1]
         let dateNow = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${minuteNow}`))
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${closeTime}`))
-
-        // while (dateNow < closeDate) {
-        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        // }
         
         if (timespan === "1Y") {
         this.setState({
@@ -285,7 +258,6 @@ class Dashboard extends React.Component {
                     }
                     if (pair.symbol === tick) {
                         tot += (pair.price * share_counts[idx])
-                        // console.log(tot)
                     }
                 })
             })
