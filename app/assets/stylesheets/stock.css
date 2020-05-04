@@ -120,8 +120,8 @@
 }
 
 .period{
-    color:white;
-    background-color: white;
+    color: rgb(210, 208, 208);;
+    /* background-color: white; */
     border: none;
     font-size: 15px;
     margin-left: 10px;
@@ -137,10 +137,11 @@
 .activeRed, .activeGreen{
     margin-left: 10px;
     margin-right: 10px;
-    color: darkblue;
-    background-color: white;
+    color:  rgb(255, 255, 255);
+    /* background-color: white; */
     border: none;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid rgb(235, 235, 235);
+    padding-bottom: 5px;
     cursor: pointer;
 }
 

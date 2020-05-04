@@ -47,20 +47,23 @@ class DashGraph extends React.Component{
             let closePrice;
             if (e.activePayload[0] != null){
                 hoverPrice = (parseFloat(e.activePayload[0].payload.price) + parseFloat(this.state.cash));
-                closePrice = parseFloat(e.activePayload[0].payload.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                closePrice = parseFloat(e.activePayload[0].payload.price);
             } 
             let change = hoverPrice - openPrice;
             let divChange = (change / openPrice) * 100
 
-            if (divChange[0] !== "-") {
+            if (divChange[0] > 0) {
                 divChange = "+" + parseFloat(divChange).toFixed(2)
             }
-
-            this.setState({
-                closePrice: closePrice,
-                change: parseFloat(change).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
-                percentChange: parseFloat(divChange).toFixed(2)
-            })
+            // console.log(e.activePayload[0].payload.time)
+            if (e.activePayload[0] != null) {
+                this.setState({
+                    closeRaw: closePrice,
+                    closePrice: closePrice.toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
+                    change: parseFloat(change).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
+                    percentChange: parseFloat(divChange).toFixed(2)
+                })
+            } 
         }
     }
 
@@ -77,9 +80,15 @@ class DashGraph extends React.Component{
 
 
     customTooltip(e) {
+        let time
+        // (e.label) ? time = e.label.split(" ")[1] : time = null
+        (e.label) ? time = e.label : time = null
+        if (e.label) {
+            time.slice(0,2) < 12 ? time = time + " AM" : time = time + " PM"
+        }
         return (
             <div className="custom-tooltip">
-                <p className="label">{e.label}</p>
+                <p className="label">{time} PST</p>          
             </div>
         );
     }
@@ -107,16 +116,15 @@ class DashGraph extends React.Component{
                     onMouseOver={this.handleMouseOver}
                     onMouseLeave={this.handleMouseOut}>
 
-                    <XAxis dataKey={label} hide={true} />
+                    <XAxis dataKey={"time"} hide={true} />
                     <YAxis hide={true} domain={['dataMin', 'dataMax']} />
 
                     <Tooltip
                         // className='tooltip'
-                        // position={{ y: 0 }}
                         isAnimationActive={false}
                         content={this.customTooltip}
                         cursor={{ stroke: "black", strokeWidth: 0.7 }}
-                        // formatter={(value) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+                        // formatter={(value) => value}
                         position={{ y: -40 }}
                     />
 

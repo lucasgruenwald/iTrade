@@ -181,3 +181,8 @@
 .periods-dash {
     margin-left: 17%;
 }
+
+.label{
+    font-size: 14px;
+    color: rgb(235, 235, 235);
+}
