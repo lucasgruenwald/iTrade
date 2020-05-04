@@ -17,8 +17,15 @@ const receiveTheCurrentPrice = price => ({
     price
 });
 
-export const receiveStocks = () => dispatch => Promise.all([fetchNYSE(), fetchNasdaq()])
-    .then(stocks => dispatch(receiveTheStocks(stocks.flat())));
+export const receiveStocks = () => dispatch => Promise.all([fetchNYSE().catch(e => {
+    console.log(e);
+}), fetchNasdaq().catch(e => {
+    console.log(e);
+})])
+    .catch(e => {
+        console.log(e);
+    })
+    .then(stocks => dispatch(receiveTheStocks(stocks.flat())))
 
 export const receiveCurrentPrice = (ticker) => dispatch => fetchCurrentPrice(ticker)
     .then(price => dispatch(receiveTheCurrentPrice(price)));
