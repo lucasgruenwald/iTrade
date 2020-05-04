@@ -1,13 +1,13 @@
 export const fetchNYSE = () => (
     $.ajax({
-        url: `https://financialmodelingprep.com/api/v3/search?query=&limit=&exchange=nyse`,
+        url: `https://financialmodelingprep.com/api/v3/search?query=&limit=2200&exchange=NYSE`,
         method: "GET"
     })
 );
 
 export const fetchNasdaq = () => (
     $.ajax({
-        url: `https://financialmodelingprep.com/api/v3/search?query=&limit=&exchange=NASDAQ`,
+        url: `https://financialmodelingprep.com/api/v3/search?query=&limit=2000&exchange=NASDAQ`,
         method: "GET"
     })
 );

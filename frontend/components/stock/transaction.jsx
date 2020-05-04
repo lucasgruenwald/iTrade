@@ -49,8 +49,6 @@ class TransactionForm extends React.Component {
 
     render(){
 
-        console.log(this.props.price)
-        console.log(this.state.purchase_shares)
         let estCost = this.state.purchase_shares ? 
             (this.state.purchase_shares * Number((this.props.price).replace(/[^0-9\.-]+/g, ""))).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
             : "$0"
