@@ -12,7 +12,7 @@ class DashGraph extends React.Component{
             closePrice: this.props.close,
             open: this.props.open,
             period: this.props.period,
-            change: parseFloat(this.props.close - this.props.open).toFixed(2),
+            change: parseFloat(this.props.close - this.props.open).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
             percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
         };
         this.handleMouseOver = this.handleMouseOver.bind(this);
@@ -24,7 +24,7 @@ class DashGraph extends React.Component{
         this.setState({
             period: this.props.period,
             open: this.props.open,
-            change: parseFloat(this.props.close - this.props.open).toFixed(2),
+            change: parseFloat(this.props.close - this.props.open).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
             percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
         });
     }
@@ -33,7 +33,7 @@ class DashGraph extends React.Component{
         if (this.state.period !== this.props.period) {
             this.setState({
                 period: this.props.period,
-                change: parseFloat(this.props.close - this.props.open).toFixed(2),
+                change: parseFloat(this.props.close - this.props.open).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
                 percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2)
             });
 
@@ -51,9 +51,9 @@ class DashGraph extends React.Component{
             let divChange = (change / hoverPrice) * 100
 
             this.setState({
-                closePrice: parseFloat(e.activePayload[0].payload.price).toFixed(2),
-                change: parseFloat(change.toFixed(2)),
-                percentChange: parseFloat(divChange).toFixed(2)
+                closePrice: parseFloat(e.activePayload[0].payload.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
+                change: parseFloat(change.toLocaleString('en-US', { style: 'currency', currency: 'USD' })),
+                percentChange: parseFloat(divChange).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
             })
         }
     }
@@ -64,7 +64,7 @@ class DashGraph extends React.Component{
 
         this.setState({
             closePrice: this.props.close,
-            change: parseFloat(dollarChange).toFixed(2),
+            change: parseFloat(dollarChange).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
             percentChange: parseFloat(divisionChange).toFixed(2)
         })
     }
@@ -83,10 +83,14 @@ class DashGraph extends React.Component{
         let data = this.props.ticker || [];
         const label = "label"
 
+        if (this.state.change[0] !== "-"){
+            this.state.change = "+" + this.state.change
+        }
+
         return(
             <div className="dash-graph-holder">
 
-                <p className="change-counter">{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
+                <p className="change-counter">{`${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
 
                 <LineChart
                     className="line-chart"

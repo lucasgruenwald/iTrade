@@ -107,17 +107,31 @@ class Dashboard extends React.Component {
         //         // Delete 
         //     }
         // })
-
+        console.log(response[ticks[0]].values)
+        console.log(response[ticks[0]].values)
         let timesPrices = response[ticks[0]].values.map((price, idx) => {
             if (idxHashCount[price.datetime] === ticks.length) {
                 return { time: price.datetime, price: priceSums[price.datetime] }
             }
         })
+        let lastClose = priceSums[response[ticks[0]].values[0].datetime]
+        let firstValidIdx = response[ticks[0]].values.length - 1
+        let firstOpen = priceSums[response[ticks[0]].values[firstValidIdx].datetime]
+
+
+        // let lastClose = 0
+        // let firstOpen = 0
+        // response[ticks[0]].values.forEach((price, idx) => {
+        //     if (idx === 0) {
+        //         lastClose += priceSums[price.datetime]
+        //     }
+        // })
+        
 
         timesPrices = timesPrices.reverse()
-        let lastClose = response[ticks[0]].values[0].close
-        let firstValidIdx = response[ticks[0]].values.length - 1
-        let firstOpen = response[ticks[0]].values[firstValidIdx].previous_close
+        // let lastClose = response[ticks[0]].values[0].close
+        // let firstValidIdx = response[ticks[0]].values.length - 1
+        // let firstOpen = response[ticks[0]].values[firstValidIdx].previous_close
         let minuteNow = response[ticks[0]].values[0].datetime.split(" ")[1]
         let dateNow = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${minuteNow}`))
         let closeTime = "12:59:00"
