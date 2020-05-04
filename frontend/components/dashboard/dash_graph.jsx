@@ -9,6 +9,7 @@ class DashGraph extends React.Component{
             ticker: "",
             closePrice: this.props.close,
             open: this.props.open,
+            cash: this.props.cash,
             period: this.props.period,
             change: parseFloat(this.props.close - this.props.open).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
             percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
@@ -39,19 +40,26 @@ class DashGraph extends React.Component{
     }
 
     handleMouseOver(e) {
-        if (e && e.activePayload !== undefined) {
-            let openPrice = this.state.open;
-            // let hoverPrice = e.activePayload[0].payload.price;
-            // temporarily replacing with fixed number 1
-            let hoverPrice = 1;
+        if ((e != undefined ) && (e.activePayload != undefined)) {
 
+            let openPrice = (parseFloat(this.state.open) + parseFloat(this.state.cash));
+            let hoverPrice;
+            let closePrice;
+            if (e.activePayload[0] != null){
+                hoverPrice = (parseFloat(e.activePayload[0].payload.price) + parseFloat(this.state.cash));
+                closePrice = parseFloat(e.activePayload[0].payload.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            } 
             let change = hoverPrice - openPrice;
-            let divChange = (change / hoverPrice) * 100
+            let divChange = (change / openPrice) * 100
+
+            if (divChange[0] !== "-") {
+                divChange = "+" + parseFloat(divChange).toFixed(2)
+            }
 
             this.setState({
-                closePrice: parseFloat(e.activePayload[0].payload.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
-                change: parseFloat(change.toLocaleString('en-US', { style: 'currency', currency: 'USD' })),
-                percentChange: parseFloat(divChange).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+                closePrice: closePrice,
+                change: parseFloat(change).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
+                percentChange: parseFloat(divChange).toFixed(2)
             })
         }
     }
@@ -104,7 +112,7 @@ class DashGraph extends React.Component{
 
                     <Tooltip
                         // className='tooltip'
-                        position={{ y: 0 }}
+                        // position={{ y: 0 }}
                         isAnimationActive={false}
                         content={this.customTooltip}
                         cursor={{ stroke: "black", strokeWidth: 0.7 }}

@@ -305,6 +305,7 @@ class Dashboard extends React.Component {
                             oldTicker={this.state.oldTicker}
                             tickerSymbol={this.props.ticker}
                             ticker={data}
+                            cash={this.state.cash}
                             period={this.state.period}
                             open={this.state.open}
                             close={this.state.close}
