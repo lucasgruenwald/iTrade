@@ -16,7 +16,13 @@ class TransactionForm extends React.Component {
     }
 
     componentDidUpdate(previousProps) {
-
+        if (previousProps.ticker !== this.props.ticker) {
+            let positionKey = {
+                userId: this.state.userId,
+                ticker: this.props.ticker
+            } 
+            this.props.getPosition(positionKey)
+        };
     }
 
     componentDidMount(){
@@ -37,8 +43,7 @@ class TransactionForm extends React.Component {
 
     handleClick(dir) {
         this.setState({ buySell: dir });
-        this.changeUnderline(dir);
-        // this.props.clearErrors();
+        this.applyUnderline(dir);
     }
     
     updateShares() {
@@ -47,7 +52,7 @@ class TransactionForm extends React.Component {
         }
     }
 
-    changeUnderline(dir) {
+    applyUnderline(dir) {
         let dirs = Array.prototype.slice.call(document.querySelectorAll('.buy, .sell'));
         dirs.forEach((way) => {
             let dirList = Array.prototype.slice.call(way.classList);
@@ -67,6 +72,8 @@ class TransactionForm extends React.Component {
     
         // console.log(this.state.cash)
         // console.log(this.state.userId)
+        // console.log(estCost < this.state.cash)
+ 
 
         return(
 
