@@ -67,8 +67,8 @@ class StockGraph extends React.Component {
   }
 
   customTooltip(e) {
-    console.log(e)
-    console.log(e.label)
+    // console.log(e)
+    // console.log(e.label)
     let time
     // (e.label) ? time = e.label.split(" ")[1] : time = null
     (e.label) ? time = e.label : time = null

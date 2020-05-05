@@ -103,7 +103,7 @@ class DashGraph extends React.Component{
         let data = this.props.ticker || [];
         const label = "label"
 
-        if (this.state.change[0] !== "-"){
+        if ((this.state.change[0] !== "-") && (this.state.change[0] !==  "+")){
             this.state.change = "+" + this.state.change
         }
 
