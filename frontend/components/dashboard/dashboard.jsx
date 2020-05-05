@@ -105,16 +105,8 @@ class Dashboard extends React.Component {
             }
         })
         let lastClose = priceSums[response[ticks[0]].values[0].datetime]
-        // console.log(lastClose)
         let firstValidIdx = response[ticks[0]].values.length - 1
-        let firstOpen = (priceSums[response[ticks[0]].values[firstValidIdx - 3].datetime])
-        // console.log(priceSums)
-        // console.log(response[ticks[0]].values[firstValidIdx - 3].datetime)
-        // console.log(priceSums[response[ticks[0]].values[firstValidIdx - 3].datetime])
-        // console.log(firstOpen)
-        // 
-        // firstOpen above is not always finding the total sums for all stocks at exact given datetime 
-        // 
+        let firstOpen = (priceSums[response[ticks[0]].values[firstValidIdx - 2].datetime])
 
 
         timesPrices = timesPrices.reverse()
@@ -228,11 +220,6 @@ class Dashboard extends React.Component {
         if (Object.values(this.props.holdings).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;
         if (Object.values(this.props.price).length === 0) return null;
-
-        // console.log(this.state.open)
-        // console.log(this.state.close)
-        // console.log(this.state.change)
-        // console.log(this.state.changePercent)
 
         let data = this.state[this.state.period];
 
