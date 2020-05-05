@@ -6,21 +6,32 @@ class TransactionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cash: this.props.currentUser.available_cash
+            userId: this.props.currentUser.id,
+            cash: this.props.currentUser.available_cash,
+            numShares: 0,
+            tranType: "buy"
         }
-
         this.handleClick = this.handleClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidUpdate( ) {
+    componentDidUpdate(previousProps) {
+
     }
 
     componentDidMount(){
+        let positionKey ={
+            userId: this.state.userId,
+            ticker: this.props.ticker
+        }
+        this.props.getPosition(positionKey)
 
     }
 
     handleSubmit(e){
+        e.preventDefault()
+
+
 
     }
 
@@ -50,16 +61,19 @@ class TransactionForm extends React.Component {
     render(){
 
         let estCost = this.state.purchase_shares ? 
-            (this.state.purchase_shares * Number((this.props.price).replace(/[^0-9\.-]+/g, ""))).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+            (this.state.purchase_shares * Number((this.props.price).replace(/[^0-9\.-]+/g, ""))).toLocaleString(
+            'en-US', { style: 'currency', currency: 'USD' })
             : "$0"
     
+        console.log(this.state.cash)
+        console.log(this.state.userId)
 
         return(
 
             <div className="holdings-bar">
                 <div className="flex-transaction">
-                    <button type="button" onClick={() => this.handleClick('buy')} className="buy selected">Buy {this.props.profile}</button>
-                    <button type="button" onClick={() => this.handleClick('sell')} className="sell">Sell {this.props.profile}</button>
+                    <button type="button" onClick={() => this.handleClick('buy')} className="buy selected">Buy {this.props.ticker}</button>
+                    <button type="button" onClick={() => this.handleClick('sell')} className="sell">Sell {this.props.ticker}</button>
                 </div>
                 <div className="flex-transaction">
                     <p className="shares-text">Shares</p>

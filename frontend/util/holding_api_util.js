@@ -8,7 +8,6 @@ export const createHolding = (holding) => (
 
 
 export const fetchHoldings = (user_id) => {
-    
     return $.ajax({
         url: `/api/users/${user_id}/holdings/`,
         method: "GET",
@@ -17,10 +16,10 @@ export const fetchHoldings = (user_id) => {
 };
 
 
-// export const fetchHolding = (holding) => (
-//     $.ajax({
-//         url: `/api/holdings/`,
-//         method: "GET",
-//         data: { holding }
-//     })
-// );
+export const fetchHolding = (holding) => (
+    $.ajax({
+        url: `/api/holdings/`,
+        method: "GET",
+        data: { holding }
+    })
+);
