@@ -65,8 +65,8 @@ class TransactionForm extends React.Component {
             'en-US', { style: 'currency', currency: 'USD' })
             : "$0"
     
-        console.log(this.state.cash)
-        console.log(this.state.userId)
+        // console.log(this.state.cash)
+        // console.log(this.state.userId)
 
         return(
 

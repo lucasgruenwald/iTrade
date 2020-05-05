@@ -16,7 +16,7 @@ export const fetchHoldings = (user_id) => {
 };
 
 
-export const fetchHolding = (holding) => (
+export const findPosition = (holding) => (
     $.ajax({
         url: `/api/holdings/`,
         method: "GET",

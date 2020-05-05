@@ -1,7 +1,7 @@
 import {
     createHolding, 
     fetchHoldings,
-    fetchHolding
+    findPosition
 } from '../util/holding_api_util.js'
 
 export const RECEIVE_HOLDING = "RECEIVE_HOLDING";
@@ -31,5 +31,5 @@ export const receiveHolding = (holding) => dispatch => createHolding(holding)
 export const findHoldings = (user_id) => dispatch => fetchHoldings(user_id)
     .then(holdings => dispatch(findTheHoldings(holdings)))
 
-export const getPosition = (holding) => dispatch => fetchHolding(holding)
+export const getPosition = (holding) => dispatch => findPosition(holding)
     .then(holding => dispatch(getThePosition(holding)))
