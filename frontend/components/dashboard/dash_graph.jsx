@@ -11,8 +11,9 @@ class DashGraph extends React.Component{
             open: this.props.open,
             cash: this.props.cash,
             period: this.props.period,
-            change: parseFloat(this.props.close - this.props.open).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
-            percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
+            change: parseFloat(parseFloat(this.props.close) - parseFloat(this.props.open)).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
+            // percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
+            percentChange: this.props.changePercent
         };
         this.handleMouseOver = this.handleMouseOver.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
@@ -20,6 +21,8 @@ class DashGraph extends React.Component{
     }
 
     componentDidMount() {
+        // console.log(this.props.open)
+        // console.log(this.props.close)
         this.setState({
             period: this.props.period,
             open: this.props.open,
@@ -42,13 +45,15 @@ class DashGraph extends React.Component{
     handleMouseOver(e) {
         if ((e != undefined ) && (e.activePayload != undefined)) {
 
-            let openPrice = (parseFloat(this.state.open) + parseFloat(this.state.cash));
+            let openPrice = (parseFloat(this.props.open));
+            let hoverValue;
             let hoverPrice;
-            let closePrice;
             if (e.activePayload[0] != null){
-                hoverPrice = (parseFloat(e.activePayload[0].payload.price) + parseFloat(this.state.cash));
-                closePrice = parseFloat(e.activePayload[0].payload.price);
+                hoverValue = (parseFloat(e.activePayload[0].payload.price) + parseFloat(this.state.cash));
+                hoverPrice = parseFloat(e.activePayload[0].payload.price);
             } 
+            // console.log(hoverPrice)
+            // console.log(openPrice)
             let change = hoverPrice - openPrice;
             let divChange = (change / openPrice) * 100
 
@@ -58,8 +63,8 @@ class DashGraph extends React.Component{
             // console.log(e.activePayload[0].payload.time)
             if (e.activePayload[0] != null) {
                 this.setState({
-                    closeRaw: closePrice,
-                    closePrice: closePrice.toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
+                    closeRaw: hoverPrice,
+                    closePrice: hoverPrice.toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
                     change: parseFloat(change).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
                     percentChange: parseFloat(divChange).toFixed(2)
                 })
@@ -83,12 +88,12 @@ class DashGraph extends React.Component{
         let time
         // (e.label) ? time = e.label.split(" ")[1] : time = null
         (e.label) ? time = e.label : time = null
-        if (e.label && time.split(" ")[1]) {
-            time.split(" ")[1].slice(0,2) < 12 ? time = time + " AM" : time = time + " PM"
+        if (e.label && time.split(" ")[1] && this.state.period != "1Y") {
+            time.split(" ")[1].slice(0,2) < 12 ? time = time + " AM PST" : time = time + " PM PST"
         }
         return (
             <div className="custom-tooltip">
-                <p className="label">{time} PST</p>          
+                <p className="label">{time}</p>          
             </div>
         );
     }
