@@ -36,8 +36,21 @@ class TransactionForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault()
+        let submitData = {
+            userId: this.state.userId,
+            ticker: this.props.ticker,
+            numShares: this.state.numShares,
+            cash: this.state.cash
+        }
 
-
+        if (submitData.numShares === 0) {
+            return;
+        } else if ( this.state.tranType === "buy"){
+            // buy actions
+        } else {
+            // sell actions
+        }
+ 
 
     }
 
@@ -48,7 +61,7 @@ class TransactionForm extends React.Component {
     
     updateShares() {
         return e => {
-            this.setState({ purchase_shares: parseInt(e.target.value) })
+            this.setState({ numShares: parseInt(e.target.value) })
         }
     }
 
@@ -65,8 +78,8 @@ class TransactionForm extends React.Component {
 
     render(){
 
-        let estCost = this.state.purchase_shares ? 
-            (this.state.purchase_shares * Number((this.props.price).replace(/[^0-9\.-]+/g, ""))).toLocaleString(
+        let estCost = this.state.numShares ? 
+            (this.state.numShares * Number((this.props.price).replace(/[^0-9\.-]+/g, ""))).toLocaleString(
             'en-US', { style: 'currency', currency: 'USD' })
             : "$0"
     
@@ -89,7 +102,7 @@ class TransactionForm extends React.Component {
                         placeholder="0" 
                         id="shares-input" 
                         className="shares-input"
-                        value={this.state.purchase_shares}
+                        value={this.state.numShares}
                         onChange={this.updateShares()} 
                         min="0"
                     />
