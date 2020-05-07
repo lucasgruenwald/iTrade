@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    // receiveHolding: (holding) => dispatch(receiveHolding(holding)),
+    receiveHolding: (holding) => dispatch(receiveHolding(holding)),
     findHoldings: (user_id) => dispatch(findHoldings(user_id)),
     getPosition: (positionKey) => dispatch(getPosition(positionKey)),
     receiveCash: (submitData) => dispatch(receiveCash(submitData)),

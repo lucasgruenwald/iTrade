@@ -7,13 +7,12 @@ import { receiveOneNews } from '../../actions/news';
 
 const mSTP = (state, ownProps) => ({
     ticker: ownProps.match.params.ticker,
-    // currentUser: state.entities.users[state.session.id],
     currentUser: state.session.currentUser,
     info: state.entities.stockInfo,
     holdings: state.entities.holdings,
+    holding: state.entities.holding,
     news: state.entities.news,
     user: state.entities.users,
-    holdings: state.entities.holdings
 })
 
 const mDTP = (dispatch) => {

@@ -55,7 +55,7 @@ class TransactionForm extends React.Component {
     }
 
     handleClick(dir) {
-        this.setState({ buySell: dir });
+        this.setState({ tranType: dir });
         this.applyUnderline(dir);
     }
     
