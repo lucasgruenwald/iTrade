@@ -8,6 +8,7 @@ class TransactionForm extends React.Component {
         this.state = {
             userId: this.props.currentUser.id,
             cash: this.props.currentUser.available_cash,
+            holding: this.props.holding,
             numShares: 0,
             tranType: "buy"
         }
@@ -83,10 +84,11 @@ class TransactionForm extends React.Component {
             'en-US', { style: 'currency', currency: 'USD' })
             : "$0"
     
-        // console.log(this.state.cash)
-        // console.log(this.state.userId)
-        // console.log(estCost < this.state.cash)
- 
+        console.log(this.state.userId)
+        console.log(this.state.cash)
+        console.log(Number(estCost.replace(/[^0-9.-]+/g, "")))
+        console.log(parseInt(Number(estCost.replace(/[^0-9.-]+/g, ""))) < parseInt(this.state.cash))
+        console.log(this.state.holding)
 
         return(
 
@@ -115,7 +117,7 @@ class TransactionForm extends React.Component {
                     <p className="cost-text">Estimated Value</p>
                     <p className="cost-value">{estCost}</p>
                 </div>           
-                <button className="place-order">Place Order</button>
+                <button className="place-order" type="submit" value={this.state.tranType}>Place Order</button>
                 <p className="buy-avail-cash">{this.state.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}&nbsp; Buying Power Available</p>
             </div>
 
