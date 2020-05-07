@@ -46,7 +46,7 @@ class TransactionForm extends React.Component {
         if (submitData.numShares === 0) {
             return;
         } else if ( this.state.tranType === "buy"){
-            // buy actions
+            // this.props.receiveHolding(submitData)
         } else {
             // sell actions
         }

@@ -29,7 +29,7 @@ const getThePosition = (holding) => ({
 
 const receiveTheCash = (submitData) => ({
     type: UPDATE_CASH,
-    cash
+    submitData
 })
 
 export const receiveHolding = (holding) => dispatch => createHolding(holding)

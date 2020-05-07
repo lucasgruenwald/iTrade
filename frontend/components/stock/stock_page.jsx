@@ -35,7 +35,22 @@ class StockPage extends React.Component {
         fetchDailyPrices(this.props.ticker).then((response) => this.renderDay(response));
         this.props.receiveOneNews(this.props.ticker);
         this.props.receiveInfo(this.props.ticker);
-        this.props.findHoldings(this.props.currentUser);
+        // this.props.findHoldings(this.props.currentUser);
+        this.props.findHoldings(this.props.currentUser)
+            .then(holdings => {
+                Object.values(holdings).forEach((row, idx) => {
+                    Object.values(row).forEach((obj, idx2) => {
+                        if (obj !== 'FIND_HOLDINGS') {
+                            Object.keys(obj).forEach((key, idx3) => {
+                                if (key === "stock_ticker") {
+                                    this.state.holdingCount[obj.stock_ticker] = obj.share_count
+                                    this.props.receiveCurrentPrice(obj[key])
+                                }
+                            })
+                        }
+                    });
+                });
+            });
     };
 
     componentDidUpdate(prevProps) {
