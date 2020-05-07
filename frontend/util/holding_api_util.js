@@ -6,7 +6,6 @@ export const createHolding = (holding) => (
     })
 );
 
-
 export const fetchHoldings = (user_id) => {
     return $.ajax({
         url: `/api/users/${user_id}/holdings/`,
@@ -15,7 +14,6 @@ export const fetchHoldings = (user_id) => {
     })
 };
 
-
 export const findPosition = (holding) => (
     $.ajax({
         url: `/api/holdings/`,
@@ -23,3 +21,12 @@ export const findPosition = (holding) => (
         data: { holding }
     })
 );
+
+export const updateCash = (submitData) => (
+    $.ajax({
+        url: `/api/users/${submitData.user_id}`,
+        method: "PATCH",
+        data: { submitData }
+    })
+);
+
