@@ -12,7 +12,7 @@ class StockPage extends React.Component {
         super(props);
         this.state = {
             ticker: this.props.ticker,
-            holding: "",
+            holdingId: "",
             "1D": [],
             "5D": [],
             "1M": [],
@@ -294,6 +294,8 @@ class StockPage extends React.Component {
             return <FullPageLoading/>
         }
 
+        // console.log(this.props.holdings)
+        // console.log(this.props.holdings.id)
         return(
             <div className="stock-page">
                 
@@ -336,7 +338,7 @@ class StockPage extends React.Component {
 
             </div>
 
-                <TransactionContainer ticker={this.props.ticker} holding={this.state.holding} price={this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} />
+                <TransactionContainer ticker={this.props.ticker} holdingId={this.props.holdings.id} price={this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} />
 
             </div>
         )
