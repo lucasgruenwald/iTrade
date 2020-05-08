@@ -2,13 +2,13 @@ import {
     createHolding, 
     fetchHoldings,
     findPosition,
-    updateCash
+    // updateCash
 } from '../util/holding_api_util.js'
 
 export const RECEIVE_HOLDING = "RECEIVE_HOLDING";
 export const FIND_HOLDINGS = "FIND_HOLDINGS";
 export const GET_POSITION = "GET_POSITION";
-export const UPDATE_CASH = "UPDATE_CASH";
+// export const UPDATE_CASH = "UPDATE_CASH";
 
 const receiveTheHolding = holding => {
     return {
@@ -24,13 +24,13 @@ const findTheHoldings = (holdings) => ({
 
 const getThePosition = (holding) => ({
     type: GET_POSITION,
-    holding: holding
+    holding
 })
 
-const receiveTheCash = (submitData) => ({
-    type: UPDATE_CASH,
-    submitData
-})
+// const receiveTheCash = (submitData) => ({
+//     type: UPDATE_CASH,
+//     submitData
+// })
 
 export const receiveHolding = (holding) => dispatch => createHolding(holding)
     .then(holding => dispatch(receiveTheHolding(holding)))
@@ -41,5 +41,5 @@ export const findHoldings = (user_id) => dispatch => fetchHoldings(user_id)
 export const getPosition = (holding) => dispatch => findPosition(holding)
     .then(holding => dispatch(getThePosition(holding)))
 
-export const receiveCash = (submitData) => dispatch => updateCash(submitData)
-    .then(submitData => dispatch(receiveTheCash(submitData)));
+// export const receiveCash = (submitData) => dispatch => updateCash(submitData)
+//     .then(submitData => dispatch(receiveTheCash(submitData)));

@@ -18,21 +18,22 @@ class TransactionForm extends React.Component {
 
     componentDidUpdate(previousProps) {
         if (previousProps.ticker !== this.props.ticker) {
-            let positionKey = {
-                userId: this.state.userId,
-                ticker: this.props.ticker
-            } 
-            this.props.getPosition(positionKey)
+            // let positionKey = {
+            //     user_id: this.props.currentUser.id,
+            //     ticker: this.props.ticker
+            // } 
+            // this.props.getPosition(positionKey)
         };
     }
 
     componentDidMount(){
-        let positionKey ={
-            userId: this.state.userId,
-            ticker: this.props.ticker
-        }
-        this.props.getPosition(positionKey)
-
+        // console.log(this.props.currentUser.id)
+        // console.log(this.props.ticker)
+        // let positionKey = {
+        //     user_id: this.props.currentUser.id,
+        //     ticker: this.props.ticker
+        // }
+        // this.props.getPosition(positionKey)
     }
 
     handleSubmit(e){

@@ -1,10 +1,10 @@
-export const createHolding = (holding) => (
-    $.ajax({
-        url: '/api/holdings',
-        method: "POST",
-        data: { holding }
-    })
-);
+// export const createHolding = (holding) => (
+//     $.ajax({
+//         url: '/api/holdings',
+//         method: "POST",
+//         data: { holding }
+//     })
+// );
 
 export const fetchHoldings = (user_id) => {
     return $.ajax({
@@ -16,17 +16,17 @@ export const fetchHoldings = (user_id) => {
 
 export const findPosition = (holding) => (
     $.ajax({
-        url: `/api/holdings/`,
+        url: `/api/holdings/:id`,
         method: "GET",
-        data: { holding }
+        data: holding
     })
 );
 
-export const updateCash = (submitData) => (
-    $.ajax({
-        url: `/api/users/${submitData.user_id}`,
-        method: "PATCH",
-        data: { submitData }
-    })
-);
+// export const updateCash = (submitData) => (
+//     $.ajax({
+//         url: `/api/users/${submitData.user_id}`,
+//         method: "PATCH",
+//         data: { submitData }
+//     })
+// );
 

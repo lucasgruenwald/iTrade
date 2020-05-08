@@ -24,11 +24,19 @@ class Api::HoldingsController < ApplicationController
         # end
     end 
 
+    def show
+        @holdings = Holding.where(user_id: params[:user_id].to_i)
+        @holding = @holdings.find_by(stock_ticker: params[:ticker])
+        if @holding
+            render :show
+        else
+            render json: ["Error. Stock not owned?"]
+        end
+    end
+
 
     def index 
-      
         @holdings = Holding.where(user_id: params[:user_id])
-    
         if @holdings
             render :index
         else

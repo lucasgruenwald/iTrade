@@ -9,7 +9,7 @@ const receiveTheNews = news => ({
 })
 
 const receiveTheOneNews = news => ({
-    type: RECEIVE_NEWS,
+    type: RECEIVE_ONE_NEWS,
     news
 })
 

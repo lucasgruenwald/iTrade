@@ -36,22 +36,12 @@ class StockPage extends React.Component {
         fetchDailyPrices(this.props.ticker).then((response) => this.renderDay(response));
         this.props.receiveOneNews(this.props.ticker);
         this.props.receiveInfo(this.props.ticker);
-        this.props.findHoldings(this.props.currentUser)
-            .then(holdings => {
-                Object.values(holdings).forEach((row, idx) => {
-                    Object.values(row).forEach((obj, idx2) => {
-                        if (obj !== 'FIND_HOLDINGS') {
-                            Object.keys(obj).forEach((key, idx3) => {
-                                if ((key === "stock_ticker") && (obj.stock_ticker === this.state.ticker )) {
-                                    this.setState({
-                                        holding: obj
-                                    });
-                                }
-                            })
-                        }
-                    });
-                });
-            });
+        let holding = {
+            user_id: this.props.currentUser,
+            ticker: this.props.ticker
+        }
+        // console.log(holding)
+        this.props.getPosition(holding)
     };
 
     componentDidUpdate(prevProps) {
@@ -118,10 +108,10 @@ class StockPage extends React.Component {
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-        while (dateNow < closeDate) {
-            dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        }
+        // while (dateNow < closeDate) {
+        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+        // }
 
         this.setState({
             "5D": timesPrices,
@@ -153,10 +143,10 @@ class StockPage extends React.Component {
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-        while (dateNow < closeDate) {
-            dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        }
+        // while (dateNow < closeDate) {
+        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+        // }
 
         this.setState({
             "1M": timesPrices,
@@ -188,10 +178,10 @@ class StockPage extends React.Component {
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-        while (dateNow < closeDate) {
-            dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        }
+        // while (dateNow < closeDate) {
+        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+        // }
 
         this.setState({
             "3M": timesPrices,
@@ -224,10 +214,10 @@ class StockPage extends React.Component {
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-        while (dateNow < closeDate) {
-            dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-            timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        }
+        // while (dateNow < closeDate) {
+        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
+        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
+        // }
 
         this.setState({
             "1Y": timesPrices,

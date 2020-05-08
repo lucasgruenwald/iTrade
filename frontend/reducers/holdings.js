@@ -1,4 +1,4 @@
-import { RECEIVE_HOLDING, FIND_HOLDINGS} from '../actions/holding'
+import { RECEIVE_HOLDING, FIND_HOLDINGS, GET_POSITION} from '../actions/holding'
 
 const holdingsReducer = (state = {}, action) => {
     Object.freeze(state)
@@ -12,6 +12,8 @@ const holdingsReducer = (state = {}, action) => {
         //     return Object.assign(nextState, { [action.holding.id]: action.holding });
         case FIND_HOLDINGS:
             return action.holdings;
+        case GET_POSITION:
+            return action.holding;
         default: 
             return state;
     }
