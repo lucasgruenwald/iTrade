@@ -47,23 +47,29 @@ class TransactionForm extends React.Component {
             return;
         } else if ( this.state.tranType === "buy"){
             // first check if user has enough cash
-
-            // actions to delete previous holding & add new holding
-            // e.g. deleteHolding && receiveHolding
-            //      adds to share_count in prev holding
-            // cash action
-            //      subtracts relevant amount from cash bal
+            if ((this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))) < (this.state.cash)) {
+                // actions to delete previous holding & add new holding
+                // e.g. deleteHolding && receiveHolding
+                //      adds to share_count in prev holding
+                // cash action
+                //      subtracts relevant amount from cash bal
+                console.log("yes, you can buy this amount")
+            } else {
+                console.log("you don't have enough cash to buy this")
+            }
         } else {
             // first check if user has enough shares to sell
-
-            // actions to delete previous holding & add new holding
-            // e.g. deleteHolding && receiveHolding
-            //      subtracts from share_count in prev holding
-            // cash action
-            //      adds relevant amount to cash bal
+            if (this.state.share_count <= this.props.holdings.share_count){
+                // actions to delete previous holding & add new holding
+                // e.g. deleteHolding && receiveHolding
+                //      subtracts from share_count in prev holding
+                // cash action
+                //      adds relevant amount to cash bal
+                console.log("yes, you can sell this amount")
+            } else {
+                console.log("you don't have enough shares to sell")
+            }
         }
- 
-
     }
     
     updateShares() {
@@ -100,7 +106,7 @@ class TransactionForm extends React.Component {
 
         return(
 
-            <div className="holdings-bar">
+            <form className="holdings-bar" onSubmit={this.handleSubmit}>
                 <div className="flex-transaction">
                     <button type="button" onClick={() => this.handleClick('buy')} className="buy selected">Buy {this.props.stock_ticker}</button>
                     <button type="button" onClick={() => this.handleClick('sell')} className="sell">Sell {this.props.stock_ticker}</button>
@@ -127,7 +133,7 @@ class TransactionForm extends React.Component {
                 </div>           
                 <button className="place-order" type="submit" value={this.state.tranType}>Place Order</button>
                 <p className="buy-avail-cash">{this.state.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}&nbsp; Buying Power Available</p>
-            </div>
+            </form>
 
         );
     };

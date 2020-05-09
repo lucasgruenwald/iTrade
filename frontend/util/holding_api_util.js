@@ -7,7 +7,13 @@ export const createHolding = (holding) => (
 );
 
 // add deleteHolding 
-
+export const deleteHolding = (holding) => (
+    $.ajax({
+        url: `/api/holdings/:id`,
+        method: "DELETE",
+        data: holding
+    })
+)
 
 export const fetchHoldings = (user_id) => {
     return $.ajax({
