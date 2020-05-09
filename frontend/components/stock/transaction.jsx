@@ -46,13 +46,19 @@ class TransactionForm extends React.Component {
         if (newHoldingData.share_count === 0) {
             return;
         } else if ( this.state.tranType === "buy"){
-            // this.props.receiveHolding(newHoldingData)
-            //      adds to share_count in holding
+            // first check if user has enough cash
+
+            // actions to delete previous holding & add new holding
+            // e.g. deleteHolding && receiveHolding
+            //      adds to share_count in prev holding
             // cash action
             //      subtracts relevant amount from cash bal
         } else {
-            // action to receive holding change
-            //      subtracts from share_count in holding
+            // first check if user has enough shares to sell
+
+            // actions to delete previous holding & add new holding
+            // e.g. deleteHolding && receiveHolding
+            //      subtracts from share_count in prev holding
             // cash action
             //      adds relevant amount to cash bal
         }

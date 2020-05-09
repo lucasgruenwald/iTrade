@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
     // receiveHolding: (holding) => dispatch(receiveHolding(holding)),
+    // add deleteHolding
     // findHoldings: (user_id) => dispatch(findHoldings(user_id)),
     // getPosition: (positionKey) => dispatch(getPosition(positionKey)),
     // receiveCash: (submitData) => dispatch(receiveCash(submitData)),

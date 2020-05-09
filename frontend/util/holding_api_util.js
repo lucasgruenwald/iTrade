@@ -1,10 +1,13 @@
-// export const createHolding = (holding) => (
-//     $.ajax({
-//         url: '/api/holdings',
-//         method: "POST",
-//         data: { holding }
-//     })
-// );
+export const createHolding = (holding) => (
+    $.ajax({
+        url: '/api/holdings',
+        method: "POST",
+        data: { holding }
+    })
+);
+
+// add deleteHolding 
+
 
 export const fetchHoldings = (user_id) => {
     return $.ajax({
