@@ -6,10 +6,10 @@ class TransactionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userId: this.props.currentUser.id,
+            user_id: this.props.currentUser.id,
             cash: this.props.currentUser.available_cash,
             holdingId: this.props.holdingId,
-            numShares: 0,
+            share_count: 0,
             tranType: "buy"
         }
         this.handleClick = this.handleClick.bind(this);
@@ -17,7 +17,7 @@ class TransactionForm extends React.Component {
     }
 
     componentDidUpdate(previousProps) {
-        if (previousProps.ticker !== this.props.ticker) {
+        if (previousProps.stock_ticker !== this.props.stock_ticker) {
             // let positionKey = {
             //     user_id: this.props.currentUser.id,
             //     ticker: this.props.ticker
@@ -27,32 +27,7 @@ class TransactionForm extends React.Component {
     }
 
     componentDidMount(){
-        // console.log(this.props.currentUser.id)
-        // console.log(this.props.ticker)
-        // let positionKey = {
-        //     user_id: this.props.currentUser.id,
-        //     ticker: this.props.ticker
-        // }
-        // this.props.getPosition(positionKey)
-    }
-
-    handleSubmit(e){
-        e.preventDefault()
-        let submitData = {
-            userId: this.state.userId,
-            ticker: this.props.ticker,
-            numShares: this.state.numShares,
-            cash: this.state.cash
-        }
-
-        if (submitData.numShares === 0) {
-            return;
-        } else if ( this.state.tranType === "buy"){
-            // this.props.receiveHolding(submitData)
-        } else {
-            // sell actions
-        }
- 
+        
 
     }
 
@@ -60,10 +35,34 @@ class TransactionForm extends React.Component {
         this.setState({ tranType: dir });
         this.applyUnderline(dir);
     }
+
+    handleSubmit(e){
+        e.preventDefault()
+        let newHoldingData = {
+            user_id: this.state.user_id,
+            stock_ticker: this.props.stock_ticker,
+            share_count: this.state.share_count,
+        }
+        if (newHoldingData.share_count === 0) {
+            return;
+        } else if ( this.state.tranType === "buy"){
+            // this.props.receiveHolding(newHoldingData)
+            //      adds to share_count in holding
+            // cash action
+            //      subtracts relevant amount from cash bal
+        } else {
+            // action to receive holding change
+            //      subtracts from share_count in holding
+            // cash action
+            //      adds relevant amount to cash bal
+        }
+ 
+
+    }
     
     updateShares() {
         return e => {
-            this.setState({ numShares: parseInt(e.target.value) })
+            this.setState({ share_count: parseInt(e.target.value) })
         }
     }
 
@@ -80,23 +79,25 @@ class TransactionForm extends React.Component {
 
     render(){
 
-        let estCost = this.state.numShares ? 
-            (this.state.numShares * Number((this.props.price).replace(/[^0-9\.-]+/g, ""))).toLocaleString(
+        let estCost = this.state.share_count ? 
+            (this.state.share_count * Number((this.props.price).replace(/[^0-9\.-]+/g, ""))).toLocaleString(
             'en-US', { style: 'currency', currency: 'USD' })
             : "$0"
     
-        // console.log(this.state.userId)
-        // console.log(this.state.cash)
-        // console.log(Number(estCost.replace(/[^0-9.-]+/g, "")))
-        // console.log(parseInt(Number(estCost.replace(/[^0-9.-]+/g, ""))) < parseInt(this.state.cash))
-        console.log(this.state.holdingId)
+        console.log("user_id: " + this.state.user_id)
+        console.log("cash: " + this.state.cash)
+        console.log("share_count: " + this.state.share_count)
+        console.log("estCost: " + Number(estCost.replace(/[^0-9.-]+/g, "")))
+        console.log("enough cash? " + (parseInt(Number(estCost.replace(/[^0-9.-]+/g, ""))) < parseInt(this.state.cash)))
+        console.log("holdings: ", this.props.holdings)
+        console.log("holdingId: " + this.state.holdingId)
 
         return(
 
             <div className="holdings-bar">
                 <div className="flex-transaction">
-                    <button type="button" onClick={() => this.handleClick('buy')} className="buy selected">Buy {this.props.ticker}</button>
-                    <button type="button" onClick={() => this.handleClick('sell')} className="sell">Sell {this.props.ticker}</button>
+                    <button type="button" onClick={() => this.handleClick('buy')} className="buy selected">Buy {this.props.stock_ticker}</button>
+                    <button type="button" onClick={() => this.handleClick('sell')} className="sell">Sell {this.props.stock_ticker}</button>
                 </div>
                 <div className="flex-transaction">
                     <p className="shares-text">Shares</p>
@@ -105,7 +106,7 @@ class TransactionForm extends React.Component {
                         placeholder="0" 
                         id="shares-input" 
                         className="shares-input"
-                        value={this.state.numShares}
+                        value={this.state.share_count}
                         onChange={this.updateShares()} 
                         min="0"
                     />
