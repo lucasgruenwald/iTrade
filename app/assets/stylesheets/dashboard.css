@@ -43,6 +43,8 @@
 
 .dash-stocks{
     margin-top: -15px;
+    height: 480px;
+    overflow-y: scroll;
     background-color: #323232;
     color:#1b1b1d
 }
