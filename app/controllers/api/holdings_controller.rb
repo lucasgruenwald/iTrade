@@ -4,11 +4,9 @@ class Api::HoldingsController < ApplicationController
         # if available_cash >= 0 
         #need to determine if this is a new holding 
         # or a change to an existing holding 
-        @user_holdings = Holding.where(user_id: params[:holding][:user_id])
-        @found_record = @user_holdings.find_by(ticker: params[:holding][:ticker])
-
-        
-            if true #need to check if purchase is within avail cash limit 
+        # @user_holdings = Holding.where(user_id: params[:holding][:user_id])
+        # @found_record = @user_holdings.find_by(ticker: params[:holding][:ticker])
+            # if true #need to check if purchase is within avail cash limit 
                 # if @found_record
                 #     need to add this update feature later
                 #     prev = @found_record.share_count 
@@ -16,11 +14,11 @@ class Api::HoldingsController < ApplicationController
                 #     @found_record.update (share_count: (prev + change))
                 #     render :show 
                 # else
-                    @holding = Holding.new(holdings_params)
-                    @holding.save
-                    render :show
+        @holding = Holding.new(holding_params)
+        @holding.save
+        render :show
                 # end
-            end 
+            # end 
         # end
     end 
 
@@ -30,7 +28,7 @@ class Api::HoldingsController < ApplicationController
         if @holding
             render :show
         else
-            render json: ["Error. Stock not owned?"]
+            render json: ["Stock not owned"]
         end
     end
 
@@ -46,6 +44,6 @@ class Api::HoldingsController < ApplicationController
 
     private
     def holding_params 
-        params.require(:holding).permit(:user_id, :ticker, :share_count)
+        params.require(:holding).permit(:user_id, :stock_ticker, :share_count)
     end
 end 

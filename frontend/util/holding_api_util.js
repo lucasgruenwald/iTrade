@@ -1,8 +1,8 @@
 export const createHolding = (holding) => (
     $.ajax({
-        url: '/api/holdings',
+        url: `/api/users/${holding.user_id}/holdings`,
         method: "POST",
-        data: { holding }
+        data: {holding}
     })
 );
 
@@ -31,11 +31,11 @@ export const findPosition = (holding) => (
     })
 );
 
-// export const updateCash = (submitData) => (
-//     $.ajax({
-//         url: `/api/users/${submitData.user_id}`,
-//         method: "PATCH",
-//         data: { submitData }
-//     })
-// );
+export const updateCashPos = (newCash) => (
+    $.ajax({
+        url: `/api/users/${newCash.id}`,
+        method: "PATCH",
+        data: newCash
+    })
+);
 
