@@ -1,26 +1,16 @@
 class Api::HoldingsController < ApplicationController
 
     def create 
-        # if available_cash >= 0 
-        #need to determine if this is a new holding 
-        # or a change to an existing holding 
-        # @user_holdings = Holding.where(user_id: params[:holding][:user_id])
-        # @found_record = @user_holdings.find_by(ticker: params[:holding][:ticker])
-            # if true #need to check if purchase is within avail cash limit 
-                # if @found_record
-                #     need to add this update feature later
-                #     prev = @found_record.share_count 
-                #     change = params[:holding][:share_count]
-                #     @found_record.update (share_count: (prev + change))
-                #     render :show 
-                # else
         @holding = Holding.new(holding_params)
         @holding.save
         render :show
-                # end
-            # end 
-        # end
     end 
+
+    def destroy 
+        Holding.where(stock_ticker: params[:holding][:stock_ticker], user_id: params[:holding][:user_id]).destroy_all
+        # this_one = Holding.where(stock_ticker: params[:holding][:stock_ticker], user_id: params[:holding][:user_id])
+        # render json: [this_one]
+    end
 
     def show
         @holdings = Holding.where(user_id: params[:user_id].to_i)

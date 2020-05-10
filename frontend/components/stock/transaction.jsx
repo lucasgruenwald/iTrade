@@ -53,6 +53,8 @@ class TransactionForm extends React.Component {
         //     email: this.props.email,
         //     available_cash: (this.state.cash - (this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))
         // }
+        console.log(this.state.share_count)
+        console.log(this.props.holdings.share_count)
         
         if (holding.share_count === 0) {
             return;
@@ -62,6 +64,7 @@ class TransactionForm extends React.Component {
 
                 // if (user has existing position) {
                     // this.props.addHolding(holding)
+                    // or delete & recreate
                 // } else -user has no position- {
                     // 
                     this.props.receiveHolding(holding)
@@ -79,13 +82,16 @@ class TransactionForm extends React.Component {
             // first check if user has enough shares to sell
             if (this.state.share_count <= this.props.holdings.share_count){
 
-                // if (this.state.share_count === this.props.holdings.share_count){
-                //     sell all shares 
-                //     this.props.deleteHolding(holding)
-                // } else {
+                if (this.state.share_count === this.props.holdings.share_count){
+                    // sell all shares
+                    this.props.removeHolding(holding)
+                    // add display of change immediately following
+                } 
+                else {
                 //     only sell some shares
                 //     this.props.subtractHolding(holding)
-                // }
+                //  or delete & recreate
+                }
 
                 // add to existing cash (provide new value)
                 // PATCH  /api/users/:id(.:format)  api/users#update
