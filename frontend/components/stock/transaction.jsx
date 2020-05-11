@@ -62,9 +62,16 @@ class TransactionForm extends React.Component {
             if ((this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))) < (this.state.cash)) {
 
                 if (this.state.share_count > 0) {
-                    // user has existing position
+                    let total = holding.share_count + this.props.holdings.share_count
+                    const editedHolding = {
+                        user_id: this.state.user_id,
+                        stock_ticker: tick,
+                        share_count: total
+                    }
+                    console.log("editing to below:")
+                    console.log(editedHolding)
                     // PATCH  /api/users/:user_id/holdings/:id(.:format) 
-                    this.props.updateHolding(holding)
+                    this.props.updateHolding(editedHolding)
                 } else {
                     // user has no existing position
                     this.props.receiveHolding(holding)
@@ -87,11 +94,18 @@ class TransactionForm extends React.Component {
                     // add display of change immediately following
                 } 
                 else {
-                //     only sell some shares
+                    //     only sell some shares
+                    let total = this.props.holdings.share_count - holding.share_count  
+                    const editedHolding = {
+                        user_id: this.state.user_id,
+                        stock_ticker: tick,
+                        share_count: total
+                    }
+                    console.log("editing to below:")
+                    console.log(editedHolding)
                 // PATCH  /api/users/:user_id/holdings/:id(.:format) 
-                    this.props.updateHolding(holding)
+                    this.props.updateHolding(editedHolding)
                 }
-
                 // add to existing cash (provide new value)
                 // PATCH  /api/users/:id(.:format)  api/users#update
                 // this.props.updateCash(this.state.cash + (this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))

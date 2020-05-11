@@ -12,6 +12,14 @@ class Api::HoldingsController < ApplicationController
         # render json: [this_one]
     end
 
+    def update
+        @holdings = Holding.where(user_id: params[:holding][:user_id].to_i)
+        @holding = @holdings.find_by(stock_ticker: params[:holding][:stock_ticker])
+        new_val = params[:holding][:share_count].to_i
+        @holding.update(share_count: new_val)
+        render :show
+    end 
+
     def show
         @holdings = Holding.where(user_id: params[:user_id].to_i)
         @holding = @holdings.find_by(stock_ticker: params[:ticker])
