@@ -8,7 +8,7 @@ export const createHolding = (holding) => (
 
 export const deleteHolding = (holding) => (
     $.ajax({
-        url: `/api/users//holdings/:id`,
+        url: `/api/users/${holding.user_id}/holdings/:id`,
         method: "DELETE",
         data: { holding }
     })
