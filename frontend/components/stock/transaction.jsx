@@ -9,7 +9,6 @@ class TransactionForm extends React.Component {
             user_id: this.props.currentUser.id,
             cash: this.props.currentUser.available_cash,
             holdingId: this.props.holdingId,
-
             share_count: 0,
             tranType: "buy"
         }
@@ -53,8 +52,8 @@ class TransactionForm extends React.Component {
         //     email: this.props.email,
         //     available_cash: (this.state.cash - (this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))
         // }
-        console.log(this.state.share_count)
-        console.log(this.props.holdings.share_count)
+        // console.log(this.state.share_count)
+        // console.log(this.props.holdings.share_count)
         
         if (holding.share_count === 0) {
             return;
@@ -62,14 +61,14 @@ class TransactionForm extends React.Component {
             // first check if user has enough cash
             if ((this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))) < (this.state.cash)) {
 
-                // if (user has existing position) {
-                    // this.props.addHolding(holding)
-                    // or delete & recreate
-                // } else -user has no position- {
-                    // 
+                if (this.state.share_count > 0) {
+                    // user has existing position
+                    // PATCH  /api/users/:user_id/holdings/:id(.:format) 
+                    this.props.updateHolding(holding)
+                } else {
+                    // user has no existing position
                     this.props.receiveHolding(holding)
-                    // 
-                // }
+                }
 
                 // subtract from cash (provide new value)
                 // PATCH  /api/users/:id(.:format)  api/users#update
@@ -89,8 +88,8 @@ class TransactionForm extends React.Component {
                 } 
                 else {
                 //     only sell some shares
-                //     this.props.subtractHolding(holding)
-                //  or delete & recreate
+                // PATCH  /api/users/:user_id/holdings/:id(.:format) 
+                    this.props.updateHolding(holding)
                 }
 
                 // add to existing cash (provide new value)
@@ -123,7 +122,7 @@ class TransactionForm extends React.Component {
     render(){
         // console.log(this.props.stock_ticker)
         // console.log(this.props.stock_ticker)
-
+        
         let estCost = this.state.share_count ? 
             (this.state.share_count * Number((this.props.price).replace(/[^0-9\.-]+/g, ""))).toLocaleString(
             'en-US', { style: 'currency', currency: 'USD' })
@@ -131,9 +130,9 @@ class TransactionForm extends React.Component {
     
         // console.log("user_id: " + this.state.user_id)
         // console.log("cash: " + this.state.cash)
-        console.log("share_count: " + this.state.share_count)
+        // console.log("share_count: " + this.state.share_count)
         // console.log("estCost: " + Number(estCost.replace(/[^0-9.-]+/g, "")))
-        console.log("enough cash? " + (parseInt(Number(estCost.replace(/[^0-9.-]+/g, ""))) < parseInt(this.state.cash)))
+        // console.log("enough cash? " + (parseInt(Number(estCost.replace(/[^0-9.-]+/g, ""))) < parseInt(this.state.cash)))
         console.log("existing holdings: ", this.props.holdings)
         // console.log("holdingId: " + this.state.holdingId)
 

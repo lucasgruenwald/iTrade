@@ -1,4 +1,7 @@
-import { RECEIVE_HOLDING, FIND_HOLDINGS, GET_POSITION, REMOVE_HOLDING} from '../actions/holding'
+import { 
+        RECEIVE_HOLDING, FIND_HOLDINGS, GET_POSITION,
+        REMOVE_HOLDING, UPDATE_HOLDING
+        } from '../actions/holding'
 
 const holdingsReducer = (state = {}, action) => {
     Object.freeze(state)
@@ -8,7 +11,9 @@ const holdingsReducer = (state = {}, action) => {
             return action.holding
         case REMOVE_HOLDING:
             return nextState
-            // check this
+            // check these
+        case UPDATE_HOLDING:
+            return action.holding
         case FIND_HOLDINGS:
             return action.holdings;
         case GET_POSITION:
