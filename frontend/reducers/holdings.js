@@ -10,7 +10,7 @@ const holdingsReducer = (state = {}, action) => {
         case RECEIVE_HOLDING:
             return action.holding
         case REMOVE_HOLDING:
-            return nextState
+            return action
             // check these
         case UPDATE_HOLDING:
             return action.holding
