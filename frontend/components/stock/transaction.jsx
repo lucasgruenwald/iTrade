@@ -60,56 +60,41 @@ class TransactionForm extends React.Component {
         } else if ( this.state.tranType === "buy"){
             // first check if user has enough cash
             if ((this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))) < (this.state.cash)) {
-
-                if (this.state.share_count > 0) {
+                if (this.props.holdings.share_count > 0) {
                     let total = holding.share_count + this.props.holdings.share_count
                     const editedHolding = {
                         user_id: this.state.user_id,
                         stock_ticker: tick,
                         share_count: total
                     }
-                    console.log("editing to below:")
-                    console.log(editedHolding)
-                    // PATCH  /api/users/:user_id/holdings/:id(.:format) 
                     this.props.updateHolding(editedHolding)
                 } else {
-                    // user has no existing position
                     this.props.receiveHolding(holding)
                 }
 
                 // subtract from cash (provide new value)
                 // PATCH  /api/users/:id(.:format)  api/users#update
                 // this.props.updateCash(newCash)
-                console.log("yes, you can buy this amount")
             } else {
                 console.log("you don't have enough cash to buy this")
             }
         } else {
-            // first check if user has enough shares to sell
             if (this.state.share_count <= this.props.holdings.share_count){
-
                 if (this.state.share_count === this.props.holdings.share_count){
-                    // sell all shares
                     this.props.removeHolding(holding)
-                    // add display of change immediately following
                 } 
                 else {
-                    //     only sell some shares
                     let total = this.props.holdings.share_count - holding.share_count  
                     const editedHolding = {
                         user_id: this.state.user_id,
                         stock_ticker: tick,
                         share_count: total
                     }
-                    console.log("editing to below:")
-                    console.log(editedHolding)
-                // PATCH  /api/users/:user_id/holdings/:id(.:format) 
                     this.props.updateHolding(editedHolding)
                 }
                 // add to existing cash (provide new value)
                 // PATCH  /api/users/:id(.:format)  api/users#update
                 // this.props.updateCash(this.state.cash + (this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))
-                console.log("yes, you can sell this amount")
             } else {
                 console.log("you don't have enough shares to sell")
             }
@@ -136,19 +121,16 @@ class TransactionForm extends React.Component {
     render(){
         // console.log(this.props.stock_ticker)
         // console.log(this.props.stock_ticker)
+        let shareCounter = this.props.holdings.share_count ? this.props.holdings.share_count : 0
         
         let estCost = this.state.share_count ? 
             (this.state.share_count * Number((this.props.price).replace(/[^0-9\.-]+/g, ""))).toLocaleString(
             'en-US', { style: 'currency', currency: 'USD' })
             : "$0"
     
-        // console.log("user_id: " + this.state.user_id)
-        // console.log("cash: " + this.state.cash)
-        // console.log("share_count: " + this.state.share_count)
-        // console.log("estCost: " + Number(estCost.replace(/[^0-9.-]+/g, "")))
-        // console.log("enough cash? " + (parseInt(Number(estCost.replace(/[^0-9.-]+/g, ""))) < parseInt(this.state.cash)))
+
         console.log("existing holdings: ", this.props.holdings)
-        // console.log("holdingId: " + this.state.holdingId)
+        console.log("number shares existing: ", this.props.holdings.share_count)
 
         return(
 
@@ -179,6 +161,7 @@ class TransactionForm extends React.Component {
                 </div>           
                 <button className="place-order" type="submit" value={this.state.tranType}>Place Order</button>
                 <p className="buy-avail-cash">{this.state.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}&nbsp; Buying Power Available</p>
+                <p className="shares-show">You currently own {shareCounter} shares</p>
             </form>
 
         );
