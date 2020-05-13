@@ -238,7 +238,7 @@ button:focus{
     outline:0;
 }
 
-.place-order{
+.place-orderP{
     margin-top: 14px;
     font-size: 15px;
     color: white;
@@ -246,6 +246,21 @@ button:focus{
     padding: 10px;
     padding-left: 50px;
     padding-right: 50px;
+    max-width: 200px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.place-orderO{
+    margin-top: 14px;
+    font-size: 15px;
+    color: black;
+    background-color: #21ce99;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 200px;
     border: none;
     border-radius: 5px;
     cursor: pointer;

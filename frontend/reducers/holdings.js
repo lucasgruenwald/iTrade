@@ -11,7 +11,7 @@ const holdingsReducer = (state = {}, action) => {
             return action.holding
         case REMOVE_HOLDING:
             return action
-            // check these
+            //
         case UPDATE_HOLDING:
             return action.holding
         case FIND_HOLDINGS:

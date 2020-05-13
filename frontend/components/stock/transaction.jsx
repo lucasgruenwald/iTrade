@@ -10,10 +10,12 @@ class TransactionForm extends React.Component {
             cash: this.props.currentUser.available_cash,
             holdingId: this.props.holdingId,
             share_count: 0,
-            tranType: "buy"
+            tranType: "buy",
+            buttonText: "Place Order"
         }
         this.handleClick = this.handleClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.changeButton = this.changeButton.bind(this);
     }
 
     componentDidUpdate(previousProps) {
@@ -24,11 +26,11 @@ class TransactionForm extends React.Component {
             // } 
             // this.props.getPosition(positionKey)
         };
+        
     }
 
     componentDidMount(){
         
-
     }
 
     handleClick(dir) {
@@ -68,8 +70,12 @@ class TransactionForm extends React.Component {
                         share_count: total
                     }
                     this.props.updateHolding(editedHolding)
+                    this.state.share_count = 0
+                    this.state.buttonText = "Order Complete"
                 } else {
                     this.props.receiveHolding(holding)
+                    this.state.share_count = 0
+                    this.state.buttonText = "Order Complete"
                 }
 
                 // subtract from cash (provide new value)
@@ -82,6 +88,8 @@ class TransactionForm extends React.Component {
             if (this.state.share_count <= this.props.holdings.share_count){
                 if (this.state.share_count === this.props.holdings.share_count){
                     this.props.removeHolding(holding)
+                    this.state.share_count = 0
+                    this.state.buttonText = "Order Complete"
                 } 
                 else {
                     let total = this.props.holdings.share_count - holding.share_count  
@@ -91,6 +99,8 @@ class TransactionForm extends React.Component {
                         share_count: total
                     }
                     this.props.updateHolding(editedHolding)
+                    this.state.share_count = 0
+                    this.state.buttonText = "Order Complete"
                 }
                 // add to existing cash (provide new value)
                 // PATCH  /api/users/:id(.:format)  api/users#update
@@ -99,6 +109,13 @@ class TransactionForm extends React.Component {
                 console.log("you don't have enough shares to sell")
             }
         }
+        this.changeButton()
+    }
+
+    changeButton(){
+        setTimeout(() => this.setState({ buttonText: "Place Order"}), 2000);
+
+        return this.props.changeButton();
     }
     
     updateShares() {
@@ -159,7 +176,7 @@ class TransactionForm extends React.Component {
                     <p className="cost-text">Estimated Value</p>
                     <p className="cost-value">{estCost}</p>
                 </div>           
-                <button className="place-order" type="submit" value={this.state.tranType}>Place Order</button>
+                <button className={"place-order" + this.state.buttonText[0]} type="submit" value={this.state.tranType}>{this.state.buttonText}</button>
                 <p className="buy-avail-cash">{this.state.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}&nbsp; Buying Power Available</p>
                 <p className="shares-show">You currently own {shareCounter} shares</p>
             </form>
