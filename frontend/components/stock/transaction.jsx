@@ -41,7 +41,6 @@ class TransactionForm extends React.Component {
     handleSubmit(e){
         e.preventDefault()
         let tick = this.props.stock_ticker
-        // console.log(tick)
         const holding = {
             user_id: this.state.user_id,
             stock_ticker: tick,
@@ -54,13 +53,11 @@ class TransactionForm extends React.Component {
         //     email: this.props.email,
         //     available_cash: (this.state.cash - (this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))
         // }
-        // console.log(this.state.share_count)
-        // console.log(this.props.holdings.share_count)
+        let prevShares = this.state.share_count
         
         if (holding.share_count === 0) {
             return;
         } else if ( this.state.tranType === "buy"){
-            // first check if user has enough cash
             if ((this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))) < (this.state.cash)) {
                 if (this.props.holdings.share_count > 0) {
                     let total = holding.share_count + this.props.holdings.share_count
@@ -78,6 +75,11 @@ class TransactionForm extends React.Component {
                     this.state.buttonText = "Order Complete"
                 }
 
+                let newCashVal = parseFloat(this.state.cash) - (prevShares * parseFloat((this.props.price).replace(/[^0-9\.-]+/g, "")))
+                console.log(newCashVal)
+                // this.setState({
+                //     cash: newCashVal
+                // })
                 // subtract from cash (provide new value)
                 // PATCH  /api/users/:id(.:format)  api/users#update
                 // this.props.updateCash(newCash)
@@ -102,6 +104,12 @@ class TransactionForm extends React.Component {
                     this.state.share_count = 0
                     this.state.buttonText = "Order Complete"
                 }
+
+                let newCashVal = parseFloat(this.state.cash) + (prevShares * parseFloat((this.props.price).replace(/[^0-9\.-]+/g, "")))
+                console.log(newCashVal)
+                // this.setState({
+                //     cash: newCashVal
+                // })
                 // add to existing cash (provide new value)
                 // PATCH  /api/users/:id(.:format)  api/users#update
                 // this.props.updateCash(this.state.cash + (this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))
@@ -114,8 +122,6 @@ class TransactionForm extends React.Component {
 
     changeButton(){
         setTimeout(() => this.setState({ buttonText: "Place Order"}), 2000);
-
-        return this.props.changeButton();
     }
     
     updateShares() {
