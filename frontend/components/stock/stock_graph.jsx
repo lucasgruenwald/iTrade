@@ -39,6 +39,10 @@ class StockGraph extends React.Component {
     };
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    this.setState({ open: nextProps.open });
+  }
+
   handleMouseOver(e) {
     if (e && e.activePayload !== undefined) {
       let openPrice = this.state.open;
@@ -46,6 +50,10 @@ class StockGraph extends React.Component {
 
       let change = hoverPrice - openPrice;
       let divChange = (change / hoverPrice) * 100
+
+      console.log(openPrice)
+      console.log(hoverPrice)
+      console.log(change)
 
       this.setState({
         closePrice: parseFloat(e.activePayload[0].payload.price).toFixed(2),

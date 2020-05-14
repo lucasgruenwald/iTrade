@@ -112,6 +112,8 @@ class StockPage extends React.Component {
         //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
         //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         // }
+        console.log(firstOpen)
+        console.log(lastClose)
 
         this.setState({
             "5D": timesPrices,
@@ -147,6 +149,8 @@ class StockPage extends React.Component {
         //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
         //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         // }
+        console.log(firstOpen)
+        console.log(lastClose)
 
         this.setState({
             "1M": timesPrices,
@@ -182,6 +186,8 @@ class StockPage extends React.Component {
         //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
         //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         // }
+        console.log(firstOpen)
+        console.log(lastClose)
 
         this.setState({
             "3M": timesPrices,
@@ -218,6 +224,8 @@ class StockPage extends React.Component {
         //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
         //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
         // }
+        console.log(firstOpen)
+        console.log(lastClose)
 
         this.setState({
             "1Y": timesPrices,
