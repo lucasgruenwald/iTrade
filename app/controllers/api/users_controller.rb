@@ -21,8 +21,16 @@ class Api::UsersController < ApplicationController
         end
     end 
 
+    def update
+        @user = User.where(id: params[:id])
+        new_cash = params[:available_cash]
+        @user.update(available_cash: new_cash)
+        render :show
+    end
+
     private 
     def user_params
-        params.require(:user).permit(:email, :password, :first_name, :last_name)
+        # params.require(:user).permit(:email, :password, :first_name, :last_name)
+        params.require(:user).permit(:email, :password, :first_name, :last_name, :id, :available_cash)
     end
 end 

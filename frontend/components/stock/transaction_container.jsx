@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import TransactionForm from './transaction';
-import { receiveHolding, updateHolding, removeHolding } from '../../actions/holding';
+import { receiveHolding, updateHolding, removeHolding, updateCash } from '../../actions/holding';
 
 // import { receiveHolding, findHoldings, getPosition, receiveCash } from '../../actions/holding';
 
@@ -15,10 +15,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
     receiveHolding: (holding) => dispatch(receiveHolding(holding)),
     removeHolding: (holding) => dispatch(removeHolding(holding)),
-    updateHolding: (holding) => dispatch(updateHolding(holding))
+    updateHolding: (holding) => dispatch(updateHolding(holding)),
+    updateCash: (newCash) => dispatch(updateCash(newCash)),
     // findHoldings: (user_id) => dispatch(findHoldings(user_id)),
     // getPosition: (positionKey) => dispatch(getPosition(positionKey)),
-    // updateCash: (newCash) => dispatch(updateCash(newCash)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);

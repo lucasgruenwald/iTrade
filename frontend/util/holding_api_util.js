@@ -38,11 +38,11 @@ export const findPosition = (holding) => (
     })
 );
 
-export const updateCashPos = (newCash) => (
+export const updateCashPos = (user) => (
     $.ajax({
-        url: `/api/users/${newCash.id}`,
+        url: `/api/users/:id`,
         method: "PATCH",
-        data: newCash
+        data: user
     })
 );
 

@@ -41,20 +41,14 @@ class TransactionForm extends React.Component {
     handleSubmit(e){
         e.preventDefault()
         let tick = this.props.stock_ticker
+        let prevShares = this.state.share_count
         const holding = {
             user_id: this.state.user_id,
             stock_ticker: tick,
             share_count: this.state.share_count,
         }
-        console.log("new holding for submit: ")
-        console.log(holding)
-        // let newCash = {
-        //     id: this.state.user_id,
-        //     email: this.props.email,
-        //     available_cash: (this.state.cash - (this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))
-        // }
-        let prevShares = this.state.share_count
         
+       
         if (holding.share_count === 0) {
             return;
         } else if ( this.state.tranType === "buy"){
@@ -76,13 +70,15 @@ class TransactionForm extends React.Component {
                 }
 
                 let newCashVal = parseFloat(this.state.cash) - (prevShares * parseFloat((this.props.price).replace(/[^0-9\.-]+/g, "")))
-                console.log(newCashVal)
-                // this.setState({
-                //     cash: newCashVal
-                // })
-                // subtract from cash (provide new value)
+                // console.log(newCashVal)
+                let newCashHash = {
+                    id: this.state.user_id,
+                    email: this.props.email,
+                    available_cash: newCashVal
+                }
+                // console.log(newCashHash)
                 // PATCH  /api/users/:id(.:format)  api/users#update
-                // this.props.updateCash(newCash)
+                this.props.updateCash(newCashHash)
             } else {
                 console.log("you don't have enough cash to buy this")
             }
@@ -106,13 +102,16 @@ class TransactionForm extends React.Component {
                 }
 
                 let newCashVal = parseFloat(this.state.cash) + (prevShares * parseFloat((this.props.price).replace(/[^0-9\.-]+/g, "")))
-                console.log(newCashVal)
-                // this.setState({
-                //     cash: newCashVal
-                // })
-                // add to existing cash (provide new value)
+                // console.log(newCashVal)
+                // console.log(this.props.email)
+                let newCashHash = {
+                    id: this.state.user_id,
+                    email: this.props.email,
+                    available_cash: (this.state.cash - (prevShares * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))
+                }
+                // console.log(newCashHash)
                 // PATCH  /api/users/:id(.:format)  api/users#update
-                // this.props.updateCash(this.state.cash + (this.state.share_count * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))
+                this.props.updateCash(newCashHash)
             } else {
                 console.log("you don't have enough shares to sell")
             }
@@ -142,8 +141,10 @@ class TransactionForm extends React.Component {
     }
 
     render(){
-        // console.log(this.props.stock_ticker)
-        // console.log(this.props.stock_ticker)
+        
+        // console.log(this.props.user[this.state.user_id])
+        // console.log(this.props.user[this.state.user_id].email)
+
         let shareCounter = this.props.holdings.share_count ? this.props.holdings.share_count : 0
         
         let estCost = this.state.share_count ? 
@@ -152,8 +153,8 @@ class TransactionForm extends React.Component {
             : "$0"
     
 
-        console.log("existing holdings: ", this.props.holdings)
-        console.log("number shares existing: ", this.props.holdings.share_count)
+        // console.log("existing holdings: ", this.props.holdings)
+        // console.log("number shares existing: ", this.props.holdings.share_count)
 
         return(
 

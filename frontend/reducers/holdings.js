@@ -1,6 +1,6 @@
 import { 
         RECEIVE_HOLDING, FIND_HOLDINGS, GET_POSITION,
-        REMOVE_HOLDING, UPDATE_HOLDING
+    REMOVE_HOLDING, UPDATE_HOLDING
         } from '../actions/holding'
 
 const holdingsReducer = (state = {}, action) => {
