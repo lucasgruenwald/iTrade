@@ -40,7 +40,6 @@ class StockPage extends React.Component {
             user_id: this.props.currentUser,
             ticker: this.props.ticker
         }
-        // console.log(holding)
         this.props.getPosition(holding)
     };
 
@@ -108,13 +107,6 @@ class StockPage extends React.Component {
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-        // while (dateNow < closeDate) {
-        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        // }
-        console.log(firstOpen)
-        console.log(lastClose)
-
         this.setState({
             "5D": timesPrices,
             period: "5D",
@@ -145,13 +137,6 @@ class StockPage extends React.Component {
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-        // while (dateNow < closeDate) {
-        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        // }
-        console.log(firstOpen)
-        console.log(lastClose)
-
         this.setState({
             "1M": timesPrices,
             period: "1M",
@@ -181,13 +166,6 @@ class StockPage extends React.Component {
         let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
-
-        // while (dateNow < closeDate) {
-        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        // }
-        console.log(firstOpen)
-        console.log(lastClose)
 
         this.setState({
             "3M": timesPrices,
@@ -220,12 +198,6 @@ class StockPage extends React.Component {
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-        // while (dateNow < closeDate) {
-        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        // }
-        console.log(firstOpen)
-        console.log(lastClose)
 
         this.setState({
             "1Y": timesPrices,
@@ -302,8 +274,6 @@ class StockPage extends React.Component {
             return <FullPageLoading/>
         }
 
-        // console.log(this.props.holdings)
-        // console.log(this.props.holdings.id)
         return(
             <div className="stock-page">
                 

@@ -51,10 +51,6 @@ class StockGraph extends React.Component {
       let change = hoverPrice - openPrice;
       let divChange = (change / hoverPrice) * 100
 
-      console.log(openPrice)
-      console.log(hoverPrice)
-      console.log(change)
-
       this.setState({
         closePrice: parseFloat(e.activePayload[0].payload.price).toFixed(2),
         change: parseFloat(change.toFixed(2)),
@@ -75,8 +71,7 @@ class StockGraph extends React.Component {
   }
 
   customTooltip(e) {
-    // console.log(e)
-    // console.log(e.label)
+
     let time
     // (e.label) ? time = e.label.split(" ")[1] : time = null
     (e.label) ? time = e.label : time = null
