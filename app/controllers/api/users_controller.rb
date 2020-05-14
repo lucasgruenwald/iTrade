@@ -22,7 +22,7 @@ class Api::UsersController < ApplicationController
     end 
 
     def update
-        @user = User.where(id: params[:id])
+        @user = User.find_by(email: params[:email])
         new_cash = params[:available_cash]
         @user.update(available_cash: new_cash)
         render :show
