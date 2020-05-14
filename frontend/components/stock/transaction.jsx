@@ -76,7 +76,10 @@ class TransactionForm extends React.Component {
                     available_cash: newCashVal
                 }
                 this.props.updateCash(newCashHash)
-                this.updateShares()
+
+                this.setState({
+                    cash: newCashHash.available_cash,
+                })
             } else {
                 console.log("you don't have enough cash to buy this")
             }
@@ -106,7 +109,10 @@ class TransactionForm extends React.Component {
                     available_cash: newCashVal
                 }
                 this.props.updateCash(newCashHash)
-                this.updateShares()
+
+                this.setState({
+                    cash: newCashHash.available_cash,
+                })
             } else {
                 console.log("you don't have enough shares to sell")
             }
