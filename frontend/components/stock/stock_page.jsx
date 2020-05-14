@@ -72,11 +72,6 @@ class StockPage extends React.Component {
         let closeTime = "12:59:00"
         let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
-        // while (dateNow < closeDate) {
-        //     dateNow = new Date(dateNow.setMinutes(dateNow.getMinutes() + 1))
-        //     timesPrices.push({ time: dateNow.toLocaleTimeString([], { timeStyle: 'short' }), price: null })
-        // }
-
         this.setState({
             "1D": timesPrices,
             period: "1D",
