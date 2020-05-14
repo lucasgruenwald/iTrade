@@ -101,7 +101,7 @@ class StockGraph extends React.Component {
           height={350}
           data={data}
           margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
-          onMouseOver={this.handleMouseOver}
+          onMouseMove={this.handleMouseOver}
           onMouseLeave={this.handleMouseOut}>
           
           <XAxis dataKey={"time"} hide={true} />
