@@ -8,7 +8,7 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_CURRENT_USER:
             return Object.assign({}, state, { [action.currentUser.id]: action.currentUser });
         case UPDATE_CASH:
-            return action.newCash
+            return {1: action.newCash}
         // case UPDATE_CASH:
         //     return action.newCash
         default:

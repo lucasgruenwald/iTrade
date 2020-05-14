@@ -70,15 +70,13 @@ class TransactionForm extends React.Component {
                 }
 
                 let newCashVal = parseFloat(this.state.cash) - (prevShares * parseFloat((this.props.price).replace(/[^0-9\.-]+/g, "")))
-                // console.log(newCashVal)
                 let newCashHash = {
                     id: this.state.user_id,
                     email: this.props.email,
                     available_cash: newCashVal
                 }
-                // console.log(newCashHash)
-                // PATCH  /api/users/:id(.:format)  api/users#update
                 this.props.updateCash(newCashHash)
+                this.updateShares()
             } else {
                 console.log("you don't have enough cash to buy this")
             }
@@ -102,16 +100,13 @@ class TransactionForm extends React.Component {
                 }
 
                 let newCashVal = parseFloat(this.state.cash) + (prevShares * parseFloat((this.props.price).replace(/[^0-9\.-]+/g, "")))
-                // console.log(newCashVal)
-                // console.log(this.props.email)
                 let newCashHash = {
                     id: this.state.user_id,
                     email: this.props.email,
-                    available_cash: (this.state.cash - (prevShares * Number((this.props.price).replace(/[^0-9.-]+/g, ""))))
+                    available_cash: newCashVal
                 }
-                // console.log(newCashHash)
-                // PATCH  /api/users/:id(.:format)  api/users#update
                 this.props.updateCash(newCashHash)
+                this.updateShares()
             } else {
                 console.log("you don't have enough shares to sell")
             }
@@ -141,10 +136,6 @@ class TransactionForm extends React.Component {
     }
 
     render(){
-        
-        // console.log(this.props.user[this.state.user_id])
-        // console.log(this.props.user[this.state.user_id].email)
-
         let shareCounter = this.props.holdings.share_count ? this.props.holdings.share_count : 0
         
         let estCost = this.state.share_count ? 
@@ -152,10 +143,6 @@ class TransactionForm extends React.Component {
             'en-US', { style: 'currency', currency: 'USD' })
             : "$0"
     
-
-        // console.log("existing holdings: ", this.props.holdings)
-        // console.log("number shares existing: ", this.props.holdings.share_count)
-
         return(
 
             <form className="holdings-bar" onSubmit={this.handleSubmit}>
