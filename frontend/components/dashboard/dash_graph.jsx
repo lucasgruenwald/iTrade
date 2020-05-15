@@ -13,7 +13,8 @@ class DashGraph extends React.Component{
             period: this.props.period,
             change: parseFloat(parseFloat(this.props.close) - parseFloat(this.props.open)).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
             // percentChange: parseFloat(((this.props.close - this.props.open) / this.props.open) * 100).toFixed(2),
-            percentChange: this.props.changePercent
+            percentChange: this.props.changePercent,
+            hoverPrice: this.props.close
         };
         this.handleMouseOver = this.handleMouseOver.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
@@ -21,8 +22,6 @@ class DashGraph extends React.Component{
     }
 
     componentDidMount() {
-        // console.log(this.props.open)
-        // console.log(this.props.close)
         this.setState({
             period: this.props.period,
             open: this.props.open,
@@ -52,18 +51,18 @@ class DashGraph extends React.Component{
                 hoverValue = (parseFloat(e.activePayload[0].payload.price) + parseFloat(this.state.cash));
                 hoverPrice = parseFloat(e.activePayload[0].payload.price);
             } 
-            // console.log(hoverPrice)
-            // console.log(openPrice)
+            console.log(hoverPrice)
             let change = hoverPrice - openPrice;
             let divChange = (change / openPrice) * 100
 
             if (divChange[0] > 0) {
                 divChange = "+" + parseFloat(divChange).toFixed(2)
             }
-            // console.log(e.activePayload[0].payload.time)
+
             if (e.activePayload[0] != null) {
+          
                 this.setState({
-                    closeRaw: hoverPrice,
+                    hoverPrice: hoverPrice,
                     closePrice: hoverPrice.toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
                     change: parseFloat(change).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
                     percentChange: parseFloat(divChange).toFixed(2)
@@ -102,14 +101,23 @@ class DashGraph extends React.Component{
 
         let data = this.props.ticker || [];
         const label = "label"
+        // let topPrice
+        // if (hoverPrice === undefined){
+        //     topPrice = this.props.close
+        // } else{
+        //     topPrice = hoverPrice
+        // }
 
         if ((this.state.change[0] !== "-") && (this.state.change[0] !==  "+")){
             this.state.change = "+" + this.state.change
         }
 
+        console.log((this.state.hoverPrice))
+        console.log(parseFloat(this.state.cash))
+
         return(
             <div className="dash-graph-holder">
-
+                <h1>{(parseFloat(this.state.hoverPrice) + parseFloat(this.state.cash)).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
                 <p className="change-counter">{`${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
 
                 <LineChart
@@ -118,7 +126,7 @@ class DashGraph extends React.Component{
                     height={350}
                     data={data}
                     margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
-                    onMouseOver={this.handleMouseOver}
+                    onMouseMove={this.handleMouseOver}
                     onMouseLeave={this.handleMouseOut}>
 
                     <XAxis dataKey={"time"} hide={true} />

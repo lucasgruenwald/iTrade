@@ -4,6 +4,7 @@ import StockGraph from './stock_graph';
 import TransactionContainer from './transaction_container';
 import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
 import FullPageLoading from "../loader/full_page.jsx"
+import Odometer from 'react-odometerjs';
 
 class StockPage extends React.Component {
     
@@ -278,9 +279,7 @@ class StockPage extends React.Component {
                     <h2>{this.props.info.profile.companyName}</h2>
                 </div>
 
-                    <h1 className="stock-page-price">
-                        {this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
-                    </h1>
+                    
 
                 <StockGraph
                     oldTicker={this.state.oldTicker}

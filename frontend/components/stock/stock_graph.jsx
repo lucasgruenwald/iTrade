@@ -1,5 +1,6 @@
 import React from "react";
 import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
+import Odometer from "react-odometerjs";
 // import { withRouter } from 'react-router-dom';
 
 
@@ -90,10 +91,17 @@ class StockGraph extends React.Component {
     let data = this.props.ticker || [];
     const label = "label"
 
+    let odomVal = (parseFloat(this.state.closePrice).toFixed(2));
+
+
     return (
       <div className="stock-chart-holder">
 
-        <p className="change-counter">{`$${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
+        <h1 className="stock-page-price">${odomVal}</h1>
+
+        <p className="change-counter">
+          {`$${this.state.change}`} {`(${this.state.percentChange}%)`}
+        </p>
 
         <LineChart
           className="line-chart"
@@ -102,26 +110,32 @@ class StockGraph extends React.Component {
           data={data}
           margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
           onMouseMove={this.handleMouseOver}
-          onMouseLeave={this.handleMouseOut}>
-          
+          onMouseLeave={this.handleMouseOut}
+        >
           <XAxis dataKey={"time"} hide={true} />
-          <YAxis hide={true} domain={['dataMin', 'dataMax']} />
+          <YAxis hide={true} domain={["dataMin", "dataMax"]} />
 
-          <Tooltip 
+          <Tooltip
             // className='tooltip'
-            position={{ y: 0 }} 
-            isAnimationActive={false} 
+            position={{ y: 0 }}
+            isAnimationActive={false}
             content={this.customTooltip}
             cursor={{ stroke: "black", strokeWidth: 0.7 }}
             // formatter={(value) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
-            position={{ y: -40 }} 
+            position={{ y: -40 }}
           />
-        
-          <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={3} />
+
+          <Line
+            connectNulls
+            type="linear"
+            dataKey="price"
+            dot={false}
+            stroke={this.props.color}
+            strokeWidth={3}
+          />
         </LineChart>
-        
       </div>
-    )
+    );
   }
 };
 

@@ -250,21 +250,21 @@ class Dashboard extends React.Component {
         let prices = this.props.price;
         let holdLength = Object.values(this.props.holdings).length 
 
-        function stockValues(tot){
-            myTickers.forEach((tick, idx) => {
-                prices.forEach((pair, idx2) => {
-                    if(idx2 > holdLength - 1){
-                        return tot;
-                    }
-                    if (pair.symbol === tick) {
-                        tot += (pair.price * share_counts[idx])
-                    }
-                })
-            })
-            return tot;
-        };
+        // function stockValues(tot){
+        //     myTickers.forEach((tick, idx) => {
+        //         prices.forEach((pair, idx2) => {
+        //             if(idx2 > holdLength - 1){
+        //                 return tot;
+        //             }
+        //             if (pair.symbol === tick) {
+        //                 tot += (pair.price * share_counts[idx])
+        //             }
+        //         })
+        //     })
+        //     return tot;
+        // };
        
-        let sum = stockValues(0) + this.state.cash;
+        // let sum = stockValues(0) + this.state.cash;
 
         let newsList = []
 
@@ -296,7 +296,7 @@ class Dashboard extends React.Component {
         return (
             <div className="dashboard">
             
-                <h1>{sum.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
+                {/* <h1>{sum.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1> */}
 
                 <div className="portfolio">
                     <div className="port-left">
