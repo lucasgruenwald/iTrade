@@ -1,5 +1,6 @@
 #signup-demo {
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    margin-left: 3%;
     text-decoration: none;
     color: black;
     font-style: italic;
@@ -80,4 +81,16 @@
 .signup-left {
     margin-top: 80px;
     max-width: 30%;
+}
+
+.signup-demo{
+    color: black;
+    background-color: #21CE99;
+    border-radius: 4px;
+    width: 140px;
+    height: 50px;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-color: rgb(118, 172, 172);
+    cursor: pointer
 }

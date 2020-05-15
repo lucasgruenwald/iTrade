@@ -15,11 +15,11 @@ function Home (){
               iTrade, a pioneer of commission-free investing, gives you more
               ways to make your money work harder.
             </h3>
-            <button className="body-sign-up">
-              <Link to="/signup" id="body-sign-up-link">
-                Sign Up
-              </Link>
-            </button>
+            <Link to="/signup" id="body-sign-up-link">
+              <button className="body-sign-up">
+                  Sign Up
+              </button>
+            </Link>
           </div>
           <img
             className="home-first-img"

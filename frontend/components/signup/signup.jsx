@@ -12,6 +12,13 @@ class Signup extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    const demoUser = { email: "iTradeDemoUser@gmail.com", password: "password" }
+    this.props.login(demoUser)
   }
 
   update(field) {
@@ -47,10 +54,13 @@ class Signup extends React.Component {
           <h3>
             iTrade lets you invest in companies you love, commission-free.
           </h3>
+          <div className="flex">
+            <button onClick={this.handleDemo} className="signup-demo">Demo User Login</button>
 
-          <div id="signup-demo">
-            <p>Want to use a demo account or an existing account? &nbsp; </p>
-            <a href="/#/login" id="click-here">Click Here</a>
+            <div id="signup-demo">
+              <p>Have an existing account? &nbsp; </p>
+              <a href="/#/login" id="click-here">Click Here</a>
+            </div>
           </div>
 
           <form>
