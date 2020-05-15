@@ -42,7 +42,7 @@ class Login extends React.Component {
   
         return (
             <div className="session-form">
-                <img className='login-left' src="https://cdn.robinhood.com/assets/generated_assets/94977d34f99015525dcd0fc9987fcbe6.png" />
+                <img className='login-left' src="https://cdn.robinhood.com/assets/mobius_generated_assets/798d9c619b33d8eeee5f06c1b809cc06.jpg" />
                 <div className='login-right'>
                 <h2>Welcome to iTrade</h2>
 
