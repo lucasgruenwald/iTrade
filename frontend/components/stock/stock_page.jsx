@@ -51,6 +51,7 @@ class StockPage extends React.Component {
             this.props.receiveInfo(this.props.ticker);
             fetchDailyPrices(this.props.ticker)
                 .then(response => this.renderDay(response))
+            this.props.getPosition(this.props.ticker)
         };
     };
 
