@@ -289,3 +289,9 @@ button:focus{
     padding-top: 14px;
     font-size: 15px;
 }
+
+.trade-err{
+    color: red;
+    margin-bottom: -5px;
+    margin-top: 3px;
+}

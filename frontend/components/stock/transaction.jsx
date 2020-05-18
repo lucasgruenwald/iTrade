@@ -11,7 +11,8 @@ class TransactionForm extends React.Component {
             holdingId: this.props.holdingId,
             share_count: 0,
             tranType: "buy",
-            buttonText: "Place Order"
+            buttonText: "Place Order",
+            error: "",
         }
         this.handleClick = this.handleClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,6 +21,7 @@ class TransactionForm extends React.Component {
 
     componentDidUpdate(previousProps) {
         if (previousProps.stock_ticker !== this.props.stock_ticker) {
+            this.clearError()
             // let positionKey = {
             //     user_id: this.props.currentUser.id,
             //     ticker: this.props.ticker
@@ -36,6 +38,7 @@ class TransactionForm extends React.Component {
     handleClick(dir) {
         this.setState({ tranType: dir });
         this.applyUnderline(dir);
+        this.clearError()
     }
 
     handleSubmit(e){
@@ -81,7 +84,9 @@ class TransactionForm extends React.Component {
                     cash: newCashHash.available_cash,
                 })
             } else {
-                console.log("you don't have enough cash to buy this")
+                this.setState({
+                    error: "You don't have enough cash."
+                })
             }
         } else {
             if (this.state.share_count <= this.props.holdings.share_count){
@@ -114,10 +119,16 @@ class TransactionForm extends React.Component {
                     cash: newCashHash.available_cash,
                 })
             } else {
-                console.log("you don't have enough shares to sell")
+                this.setState({
+                    error: "You don't have enough shares."
+                })
             }
         }
         this.changeButton()
+    }
+
+    clearError(){
+        this.state.error = ""
     }
 
     changeButton(){
@@ -127,6 +138,7 @@ class TransactionForm extends React.Component {
     updateShares() {
         return e => {
             this.setState({ share_count: parseInt(e.target.value) })
+            this.clearError()
         }
     }
 
@@ -175,7 +187,8 @@ class TransactionForm extends React.Component {
                 <div className="flex-transaction">
                     <p className="cost-text">Estimated Value</p>
                     <p className="cost-value">{estCost}</p>
-                </div>           
+                </div>      
+                <p className="trade-err">&nbsp;‎‎{this.state.error}</p>     
                 <button className={"place-order" + this.state.buttonText[0]} type="submit" value={this.state.tranType}>{this.state.buttonText}</button>
                 <p className="buy-avail-cash">{this.state.cash.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}&nbsp; Buying Power Available</p>
                 <p className="shares-show">You currently own {shareCounter} shares</p>
