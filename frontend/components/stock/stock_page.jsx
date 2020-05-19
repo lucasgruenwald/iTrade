@@ -62,7 +62,7 @@ class StockPage extends React.Component {
     renderDay(response) {
 
         let timesPrices = response.values.map(price => {
-            return { time: price.datetime, price: price.close };
+            return { time: price.datetime, price: parseFloat(price.close) };
         })
 
         timesPrices = timesPrices.reverse()
@@ -92,7 +92,7 @@ class StockPage extends React.Component {
 
     render5D(response) {
         let timesPrices = response.values.map(price => {
-            return { time: price.datetime, price: price.close };
+            return { time: price.datetime, price: parseFloat(price.close) };
         })
 
         timesPrices = timesPrices.reverse()
@@ -122,7 +122,7 @@ class StockPage extends React.Component {
 
     render1M(response) {
         let timesPrices = response.values.map(price => {
-            return { time: price.datetime, price: price.close };
+            return { time: price.datetime, price: parseFloat(price.close) };
         })
 
         timesPrices = timesPrices.reverse()
@@ -152,7 +152,7 @@ class StockPage extends React.Component {
 
     render3M(response) {
         let timesPrices = response.values.map(price => {
-            return { time: price.datetime, price: price.close };
+            return { time: price.datetime, price: parseFloat(price.close) };
         })
 
         timesPrices = timesPrices.reverse()
@@ -183,7 +183,7 @@ class StockPage extends React.Component {
     render1Y(response) {
 
         let timesPrices = response.values.map(price => {
-            return { time: price.datetime, price: price.close };
+            return { time: price.datetime, price: parseFloat(price.close) };
         })
 
         timesPrices = timesPrices.reverse()
@@ -244,6 +244,7 @@ class StockPage extends React.Component {
         if (this.state.period === undefined) return null;
 
         let data = this.state[this.state.period];
+        console.log(data)
 
         let newsList = newsList || [];
 
@@ -270,7 +271,7 @@ class StockPage extends React.Component {
         if (!this.state.done){
             return <FullPageLoading/>
         }
-
+        
         return(
             <div className="stock-page">
                 
