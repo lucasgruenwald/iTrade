@@ -51,7 +51,7 @@ class DashGraph extends React.Component{
                 hoverValue = (parseFloat(e.activePayload[0].payload.price) + parseFloat(this.state.cash));
                 hoverPrice = parseFloat(e.activePayload[0].payload.price);
             } 
-            console.log(hoverPrice)
+            // console.log(hoverPrice)
             let change = hoverPrice - openPrice;
             let divChange = (change / openPrice) * 100
 
@@ -78,7 +78,8 @@ class DashGraph extends React.Component{
         this.setState({
             closePrice: this.props.close,
             change: parseFloat(dollarChange).toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
-            percentChange: parseFloat(divisionChange).toFixed(2)
+            percentChange: parseFloat(divisionChange).toFixed(2),
+            hoverPrice: this.props.close
         })
     }
 
@@ -112,8 +113,8 @@ class DashGraph extends React.Component{
             this.state.change = "+" + this.state.change
         }
 
-        console.log((this.state.hoverPrice))
-        console.log(parseFloat(this.state.cash))
+        // console.log((this.state.hoverPrice))
+        // console.log(parseFloat(this.state.cash))
 
         return(
             <div className="dash-graph-holder">

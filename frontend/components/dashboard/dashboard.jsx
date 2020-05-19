@@ -26,32 +26,14 @@ class Dashboard extends React.Component {
         }
         this.updatePrices = this.updatePrices.bind(this);
         this.renderDay = this.renderDay.bind(this);
+        this.createQuery = this.createQuery.bind(this);
     }
 
     componentDidMount(){
+       
         this.props.receiveStocks();
         this.props.findHoldings(this.props.currentUser)
-            .then(holdings => {
-                Object.values(holdings).forEach((row, idx) => {
-                    Object.values(row).forEach((obj, idx2) => {
-                        if (obj !== 'FIND_HOLDINGS') {
-                            Object.keys(obj).forEach((key, idx3) => {
-                                if (key === "stock_ticker") {
-                                    this.state.holdingCount[obj.stock_ticker] = obj.share_count
-                                    this.props.receiveCurrentPrice(obj[key])
-                                    if (idx2 !== 0) {
-                                        this.state.queryString += ",%20"
-                                    }
-                                    this.state.queryString += (obj[key])
-                                    if (idx2 === (Object.keys(obj).length -1)) {
-                                        fetchDailyPricesAll(this.state.queryString).then((response) => this.renderDay(response))
-                                    }
-                                } 
-                            })
-                        }
-                    });
-                });
-            });
+            .then((holdings) => this.createQuery(holdings))
         this.props.receiveNews();
     }
 
@@ -68,6 +50,27 @@ class Dashboard extends React.Component {
     componentWillUnmount() {
         this.setState({ done: false })
     };
+
+    createQuery(holdings){
+        Object.values(holdings).forEach((row, idx) => {
+            Object.values(row).forEach((obj, idx2) => {
+                if (obj !== 'FIND_HOLDINGS') {
+                    Object.keys(obj).forEach((key, idx3) => {
+                        if (key === "stock_ticker") {
+                            this.state.holdingCount[obj.stock_ticker] = obj.share_count
+                            this.props.receiveCurrentPrice(obj[key])
+                            if (idx2 !== 0) {
+                                this.state.queryString += ",%20"
+                            }
+                            this.state.queryString += (obj[key])
+                        }
+                    })
+                }
+            });
+        });
+        fetchDailyPricesAll(this.state.queryString)
+            .then((response) => this.renderDay(response))
+    }
 
     renderDay(response, timespan) {
         let ticks = Object.keys(response) 

@@ -17,22 +17,21 @@
 
 ### Dashboard Page
 
-![dashboard](app/assets/images/dashboard.gif)
-
 * Overview of stock holdings (# of shares, current price)
 * Historical stock graph displaying combined value of current holdings 
 * General news section providing recent business-related articles 
+![dashboard](app/assets/images/dashboard.gif)
 
 
 
 ### Stock Page
 
-![stock-page](app/assets/images/stockpage.gif)
-
 * Company data such as market cap, industry, etc. 
 * Historical stock graphs implemented using Recharts & API Data
 * Rule-based transactions to modify holdings in the Rails backend
 * Company news section filtering recent news for relevant articles 
+![stock-page](app/assets/images/stockpage.gif)
+
 
 
 ### Company Search
