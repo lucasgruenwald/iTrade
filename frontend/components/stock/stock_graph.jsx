@@ -79,20 +79,22 @@ class StockGraph extends React.Component {
     if (e.label && time.split(" ")[1]) {
       time.split(" ")[1].slice(0, 2) < 12 ? time = time + " AM" : time = time + " PM"
     }
+    let timeZone = "PST"
+    if (this.state.period === "1Y") {
+      timeZone = ""
+    }
     return (
       <div className="custom-tooltip">
-        <p className="label">{time} PST</p>
+        <p className="label">{time} {timeZone}</p>
       </div>
     );
   }
 
 
   render() {
-    let data = this.props.ticker || [];
-    const label = "label"
 
     let odomVal = (parseFloat(this.state.closePrice).toFixed(2));
-
+    if (this.state.ticker === undefined) return null;
 
     return (
       <div className="stock-chart-holder">
@@ -107,7 +109,7 @@ class StockGraph extends React.Component {
           className="line-chart"
           width={650}
           height={350}
-          data={data}
+          data={this.props.ticker}
           margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
           onMouseMove={this.handleMouseOver}
           onMouseLeave={this.handleMouseOut}

@@ -113,8 +113,6 @@ class DashGraph extends React.Component{
             this.state.change = "+" + this.state.change
         }
 
-        // console.log((this.state.hoverPrice))
-        // console.log(parseFloat(this.state.cash))
 
         return(
             <div className="dash-graph-holder">

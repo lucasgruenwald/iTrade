@@ -18,8 +18,8 @@ class Dashboard extends React.Component {
             "3M": [],
             "1Y": [],
             period: "",
-            open: null,
-            close: null,
+            // open: null,
+            // close: null,
             change: 0,
             changePercent: 0,
             done: false,
@@ -91,7 +91,7 @@ class Dashboard extends React.Component {
 
         let dateTimes = []
 
-        let idxCounter = {};
+        // let idxCounter = {};
         ticks.forEach((sym) => {
             response[sym].values.forEach((entry, idx) => {
                 let totalShareValue = (parseFloat(entry.close) * this.state.holdingCount[sym])
@@ -109,15 +109,18 @@ class Dashboard extends React.Component {
         })
         let lastClose = priceSums[response[ticks[0]].values[0].datetime]
         let firstValidIdx = response[ticks[0]].values.length - 1
-        let firstOpen = (priceSums[response[ticks[0]].values[firstValidIdx - 2].datetime])
+        
+        // graph not showing correct %? Add more conditions here for firstOpen
+        // firstValidIdx - 7 works for now unless API changes
 
+        let firstOpen = (priceSums[timesPrices[firstValidIdx - 7].time])
 
         timesPrices = timesPrices.reverse()
         let minuteNow = response[ticks[0]].values[0].datetime.split(" ")[1]
-        let dateNow = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${minuteNow}`))
+        // let dateNow = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${minuteNow}`))
         let closeTime = "12:59:00"
-        let closeDate = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${closeTime}`))
-        
+        // let closeDate = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${closeTime}`))
+
         if (timespan === "1Y") {
         this.setState({
             "1Y": timesPrices,
@@ -250,24 +253,6 @@ class Dashboard extends React.Component {
                 }
         })
 
-        let prices = this.props.price;
-        let holdLength = Object.values(this.props.holdings).length 
-
-        // function stockValues(tot){
-        //     myTickers.forEach((tick, idx) => {
-        //         prices.forEach((pair, idx2) => {
-        //             if(idx2 > holdLength - 1){
-        //                 return tot;
-        //             }
-        //             if (pair.symbol === tick) {
-        //                 tot += (pair.price * share_counts[idx])
-        //             }
-        //         })
-        //     })
-        //     return tot;
-        // };
-       
-        // let sum = stockValues(0) + this.state.cash;
 
         let newsList = []
 
@@ -298,8 +283,6 @@ class Dashboard extends React.Component {
         
         return (
             <div className="dashboard">
-            
-                {/* <h1>{sum.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1> */}
 
                 <div className="portfolio">
                     <div className="port-left">
@@ -339,11 +322,9 @@ class Dashboard extends React.Component {
                         
                         <div className="dash-stocks">
                          
-                        {/* <div className="holdings-overflow"> */}
                         {myTickers.map((tick, idx) =>
                             <div key={idx * 50} className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]} prices={this.props.price} />}</div>
                         )}
-                        {/* </div> */}
 
                         </div>
                     </div>
