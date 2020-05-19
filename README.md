@@ -9,15 +9,19 @@
 
 ### Features
 
-• Recharts library displays live & historical stock prices using API data
-• Filtered data from News API displays relevant news on selected companies
-• Connection to rails backend allows users to simulate stock trades
-• Stock search feature allows users to find publicly traded companies
+* Recharts library displays live & historical stock prices using API data
+* Filtered data from News API displays relevant news on selected companies
+* Connection to rails backend allows users to simulate stock trades
+* Stock search feature allows users to find publicly traded companies
 
 
 ### Dashboard Page
 
 ![dashboard](app/assets/images/dashboard.gif)
+
+* Overview of stock holdings (# of shares, current price)
+* Historical stock graph displaying combined value of current holdings 
+* General news section providing recent business-related articles 
 
 
 
@@ -25,11 +29,10 @@
 
 ![stock-page](app/assets/images/stockpage.gif)
 
-    Company data
-
-    Dynamic charts
-
-    Rule-based transactions
+* Company data such as market cap, industry, etc. 
+* Historical stock graphs implemented using Recharts & API Data
+* Rule-based transactions to modify holdings in the Rails backend
+* Company news section filtering recent news for relevant articles 
 
 
 ### Company Search
@@ -38,10 +41,10 @@
 
 ### Technologies & Libraries
 
-• Frontend: Javascript | React.js | Redux.js
-• Backend: Ruby on Rails | ActiveRecord | PostgreSQL
-• [Twelvedata API](http://twelvedata.com)
-• [News API](http://newsapi.org)
-• [Financial Modeling Prep API](https://financialmodelingprep.com)
-• [Recharts](http://recharts.org)
+* Frontend: Javascript | React.js | Redux.js
+* Backend: Ruby on Rails | ActiveRecord | PostgreSQL
+* [Twelvedata API](http://twelvedata.com)
+* [News API](http://newsapi.org)
+* [Financial Modeling Prep API](https://financialmodelingprep.com)
+* [Recharts](http://recharts.org)
 
