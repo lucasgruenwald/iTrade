@@ -52,7 +52,28 @@ class SearchBar extends React.Component {
             }
         })
 
-        suggestions = suggestions.slice(0, 5)
+        if (suggestions.length < 5) {
+            companies.forEach((ticker, idx) => {
+                if (entry.length > 0) {
+                    if (ticker.symbol.startsWith(entry) || (ticker.name !== null
+                        && ticker.name.toUpperCase().includes(entry))) {
+                        suggestions.push(
+                            <li key={idx} className="suggestion-item">
+                                <Link
+                                    to={`/stock/${ticker.symbol}`}
+                                    key={idx}
+                                    className="suggestion-link"
+                                    onClick={this.handleClearForm}>
+                                    {ticker.symbol} · {ticker.name}
+                                </Link>
+                            </li>
+                        )
+                    }
+                }
+            })
+        }
+
+        suggestions = (suggestions.slice(0, 5)).reverse()
 
         return (
             <form className="search-form">
