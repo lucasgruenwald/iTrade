@@ -18,8 +18,17 @@
 .search-form:hover ul{
     display: block;
     color: white;
-    background-color: black;
+    background-color: #1b1b1d;
     box-shadow: 0 0 1px lightslategray;
+    width: 500px;
+}
+
+.search-form ul{
+    display: block;
+    color: white;
+    background-color: #1b1b1d;
+    box-shadow: 0 0 1px lightslategray;
+    width: 500px;
 }
 
 .search-field {
@@ -39,7 +48,13 @@
 .search-field:focus + ul{
     display: block;
     color: white;
-    background-color: black;
+    background-color: #1b1b1d;
+    font-size: 18px;
+}
+.search-field + ul{
+    // display: block;
+    // color: white;
+    // background-color: #1b1b1d;
     font-size: 18px;
 }
 

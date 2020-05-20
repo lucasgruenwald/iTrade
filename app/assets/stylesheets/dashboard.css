@@ -10,8 +10,10 @@
 
 .dash-holdings {
     position: fixed;
-    right: 17%;
-    width: 240px;
+    margin-top: 3%;
+    left: 64%;
+    width: 14%;
+    min-width: 240px;
     border: 1px solid slategray;
     box-shadow: 0 0 8px black;
     border-color: black;
@@ -42,7 +44,8 @@
 
 .dash-stocks{
     margin-top: -15px;
-    height: 480px;
+    /* height: 980px; */
+    max-height: 60vh;
     overflow-y: scroll;
     background-color: #323232;
     color:#1b1b1d
