@@ -33,10 +33,12 @@ class SearchBar extends React.Component {
 
         let companies = Object.values(this.props.stocks);
         let entry = this.state.search.toUpperCase()
+        let found = []
         companies.forEach((ticker, idx) => {
             if (entry.length > 0) {
                 if (ticker.symbol.startsWith(entry) || (ticker.name !== null
                     && ticker.name.toUpperCase().startsWith(entry))) {
+                    found.push(ticker.symbol)
                     suggestions.push(
                         <li key={idx} className="suggestion-item">
                             <Link
@@ -54,7 +56,7 @@ class SearchBar extends React.Component {
 
         if (suggestions.length < 5) {
             companies.forEach((ticker, idx) => {
-                if (entry.length > 0) {
+                if (entry.length > 0 && !found.includes(ticker.symbol)) {
                     if (ticker.symbol.startsWith(entry) || (ticker.name !== null
                         && ticker.name.toUpperCase().includes(entry))) {
                         suggestions.push(
