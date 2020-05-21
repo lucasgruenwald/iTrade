@@ -18,8 +18,8 @@ class Dashboard extends React.Component {
             "3M": [],
             "1Y": [],
             period: "",
-            // open: null,
-            // close: null,
+            open: 0,
+            close: 0,
             change: 0,
             changePercent: 0,
             done: false,
@@ -30,10 +30,11 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount(){
-       
         this.props.receiveStocks();
         this.props.findHoldings(this.props.currentUser)
-            .then((holdings) => this.createQuery(holdings))
+            .then((holdings) =>
+            this.createQuery(holdings)
+            )
         this.props.receiveNews();
     }
 
@@ -42,8 +43,10 @@ class Dashboard extends React.Component {
             this.setState({ done: false })
             this.props.receiveOneNews(this.props.ticker);
             this.props.receiveInfo(this.props.ticker);
-            fetchDailyPricesAll(this.props.ticker)
-                .then(response => this.renderDay(response))
+            if ((this.props.holdings).length > 0){
+                fetchDailyPricesAll(this.props.ticker)
+                    .then(response => this.renderDay(response))
+            }
         };
     };
 
@@ -52,24 +55,27 @@ class Dashboard extends React.Component {
     };
 
     createQuery(holdings){
-        Object.values(holdings).forEach((row, idx) => {
-            Object.values(row).forEach((obj, idx2) => {
-                if (obj !== 'FIND_HOLDINGS') {
-                    Object.keys(obj).forEach((key, idx3) => {
-                        if (key === "stock_ticker") {
-                            this.state.holdingCount[obj.stock_ticker] = obj.share_count
-                            this.props.receiveCurrentPrice(obj[key])
-                            if (idx2 !== 0) {
-                                this.state.queryString += ",%20"
+        if (Object.values(this.props.holdings).length > 0){
+            // -prevents forEach error with no holding
+            Object.values(holdings).forEach((row, idx) => {
+                Object.values(row).forEach((obj, idx2) => {
+                    if (obj !== 'FIND_HOLDINGS') {
+                        Object.keys(obj).forEach((key, idx3) => {
+                            if (key === "stock_ticker") {
+                                this.state.holdingCount[obj.stock_ticker] = obj.share_count
+                                this.props.receiveCurrentPrice(obj[key])
+                                if (idx2 !== 0) {
+                                    this.state.queryString += ",%20"
+                                }
+                                this.state.queryString += (obj[key])
                             }
-                            this.state.queryString += (obj[key])
-                        }
-                    })
-                }
+                        })
+                    }
+                });
             });
-        });
-        fetchDailyPricesAll(this.state.queryString)
-            .then((response) => this.renderDay(response))
+            fetchDailyPricesAll(this.state.queryString)
+                .then((response) => this.renderDay(response))
+        } 
     }
 
     renderDay(response, timespan) {
@@ -91,24 +97,52 @@ class Dashboard extends React.Component {
 
         let dateTimes = []
 
-        // let idxCounter = {};
         ticks.forEach((sym) => {
-            response[sym].values.forEach((entry, idx) => {
-                let totalShareValue = (parseFloat(entry.close) * this.state.holdingCount[sym])
-                priceSums[entry.datetime] += totalShareValue
-                idxHashCount[entry.datetime] += 1
-                if (!dateTimes.includes(entry.datetime)){
-                    dateTimes.push(entry.datetime)
-                }
-            })  
-        })
-        let timesPrices = response[ticks[0]].values.map((price, idx) => {
-            if (idxHashCount[price.datetime] === ticks.length) {
-                return { time: price.datetime, price: priceSums[price.datetime] }
+            if (Object.values(this.props.holdings).length > 1){
+                response[sym].values.forEach((entry, idx) => {
+                    let totalShareValue = (parseFloat(entry.close) * this.state.holdingCount[sym])
+                    priceSums[entry.datetime] += totalShareValue
+                    idxHashCount[entry.datetime] += 1
+                    if (!dateTimes.includes(entry.datetime)) {
+                        dateTimes.push(entry.datetime)
+                    }
+                })  
+            } else {
+                response.values.forEach((entry, idx) => {
+                    let totalShareValue = (parseFloat(entry.close) * this.state.holdingCount[sym])
+                    priceSums[entry.datetime] += totalShareValue
+                    idxHashCount[entry.datetime] += 1
+                    if (!dateTimes.includes(entry.datetime)) {
+                        dateTimes.push(entry.datetime)
+                    }
+                })  
             }
+           
         })
-        let lastClose = priceSums[response[ticks[0]].values[0].datetime]
-        let firstValidIdx = response[ticks[0]].values.length - 1
+        let timesPrices
+        let lastClose
+        let firstValidIdx
+        let minuteNow
+        if (Object.values(this.props.holdings).length > 1) {
+            timesPrices = response[ticks[0]].values.map((price, idx) => {
+                if (idxHashCount[price.datetime] === ticks.length) {
+                    return { time: price.datetime, price: priceSums[price.datetime] }
+                }
+            })
+            lastClose = priceSums[response[ticks[0]].values[0].datetime]
+            firstValidIdx = response[ticks[0]].values.length - 1
+            minuteNow = response[ticks[0]].values[0].datetime.split(" ")[1]
+        } else {
+            timesPrices = response.values.map((price, idx) => {
+                if (idxHashCount[price.datetime] === ticks.length) {
+                    return { time: price.datetime, price: priceSums[price.datetime] }
+                }
+            })
+            lastClose = priceSums[response.values[0].datetime]
+            // console.log(lastClose)
+            firstValidIdx = response.values.length - 1
+            minuteNow = response.values[0].datetime.split(" ")[1]
+        }
         
         // graph not showing correct %? Add more conditions here for firstOpen
         // firstValidIdx - 7 works for now unless API changes
@@ -116,7 +150,7 @@ class Dashboard extends React.Component {
         let firstOpen = (priceSums[timesPrices[firstValidIdx - 7].time])
 
         timesPrices = timesPrices.reverse()
-        let minuteNow = response[ticks[0]].values[0].datetime.split(" ")[1]
+        
         // let dateNow = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${minuteNow}`))
         let closeTime = "12:59:00"
         // let closeDate = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${closeTime}`))
@@ -228,31 +262,43 @@ class Dashboard extends React.Component {
         if (Object.values(this.props.price).length === 0) return null;
 
         let data = this.state[this.state.period];
-
-        let hold = (Object.values(this.props.holdings))
-        let arr = []
-        hold.forEach((obj) => {
-            arr.push(Object.values(obj))
-        })
         let myTickers = []
-        arr.forEach((subarr) => {
-            subarr.forEach((ele) => {
-                if (typeof ele === 'string'){
-                    myTickers.push(ele)
-                }
-            })
-        })
-
-        let hold2 = (Object.values(this.props.holdings))
         let share_counts = []
-        hold2.forEach((pair) => {
-                for (var key in pair) {
-                    if(key === "share_count"){
-                        share_counts.push(pair[key])
-                    }
-                }
-        })
 
+        if (Object.values(this.props.holdings).length > 0) {
+
+            let hold = (Object.values(this.props.holdings))
+            let arr = []
+            hold.forEach((obj) => {
+                arr.push(Object.values(obj))
+            })
+
+            arr.forEach((subarr) => {
+                subarr.forEach((ele) => {
+                    if (typeof ele === 'string'){
+                        myTickers.push(ele)
+                    }
+                })
+            })
+
+            let hold2 = (Object.values(this.props.holdings))
+            hold2.forEach((pair) => {
+                    for (var key in pair) {
+                        if(key === "share_count"){
+                            share_counts.push(pair[key])
+                        }
+                    }
+            })
+        } 
+        
+        let myPrices = this.props.price
+        function stockDivs(){
+            if (myTickers.length > 0){
+                return myTickers.map((tick, idx) =>
+                    <div key={idx * 50} className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]} prices={myPrices} />}</div>
+                )
+            }
+        }
 
         let newsList = []
 
@@ -274,13 +320,13 @@ class Dashboard extends React.Component {
                 </a>
             )
             }
+
         })
 
 
         if (!this.state.done) {
             return <FullPageLoading />
         }
-        
         return (
             <div className="dashboard">
 
@@ -321,10 +367,9 @@ class Dashboard extends React.Component {
                         <h4 className="stock-header">Stocks</h4>
                         
                         <div className="dash-stocks">
-                         
-                        {myTickers.map((tick, idx) =>
-                            <div key={idx * 50} className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]} prices={this.props.price} />}</div>
-                        )}
+                        
+                      
+                        {stockDivs()}
 
                         </div>
                     </div>

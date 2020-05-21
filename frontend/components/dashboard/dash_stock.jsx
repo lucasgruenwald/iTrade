@@ -16,11 +16,15 @@ class DashInfo extends React.Component {
     render() {
         let priceMap = this.props.prices
         let price = 0
-        priceMap.forEach((obj) => {
-            if (obj.symbol === this.props.ticker){
-                price = obj.price
-            }
-        })
+        if (priceMap !== []) {
+            priceMap.forEach((obj) => {
+                if (obj.symbol === this.props.ticker){
+                    price = obj.price
+                }
+            })
+        }
+
+        let plural = (this.props.shares > 1) ? "Shares" : "Share"
 
         return (
             
@@ -32,7 +36,7 @@ class DashInfo extends React.Component {
                 
                     <h3>{this.props.ticker}</h3>
                 
-                    <p className="dash-numshares">{this.props.shares} Shares</p>
+                    <p className="dash-numshares">{this.props.shares} {plural}</p>
 
                 </div>
                     <p className="dash-price">{(price).toLocaleString('en-US', { style: 'currency', currency: 'USD'})}</p>

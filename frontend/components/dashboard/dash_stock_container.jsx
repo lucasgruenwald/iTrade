@@ -1,7 +1,7 @@
 import DashStock from './dash_stock'
 import { connect } from 'react-redux';
 import { receiveInfo } from '../../actions/stock';
-import { receiveHolding, findHoldings } from '../../actions/holding';
+// import { receiveHolding, findHoldings } from '../../actions/holding';
 
 
 const mSTP = (state, ownProps) => ({

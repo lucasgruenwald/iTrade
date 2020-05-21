@@ -15,11 +15,23 @@ class Signup extends React.Component {
     this.handleDemo = this.handleDemo.bind(this);
   }
 
+  // componentDidMount() {
+  //   this.props.clearSessionErrors();
+  // }
+
   handleDemo(e) {
     e.preventDefault();
     const demoUser = { email: "iTradeDemoUser@gmail.com", password: "password" }
     this.props.login(demoUser)
   }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const newUser = Object.assign({}, this.state);
+    this.props.signup(newUser)
+      .then(() => this.props.history.push("/first-signup"));
+  }
+
 
   update(field) {
     return (e) => {
@@ -33,15 +45,22 @@ class Signup extends React.Component {
     };
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props
-      .signup(this.state)
-      .then(() => this.props.history.push("/dashboard"));
-  }
+
+  // renderErrors() {
+  //   return (
+  //     <ul>
+  //       {this.props.errors.map((error, idx) => (
+  //         <li className="session-error" key={`error-${idx}`}>
+  //           {error}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
 
   render() {
+
     return (
       <div className="session-form">
         <img
@@ -52,7 +71,8 @@ class Signup extends React.Component {
         <div className="signup-right">
           <h2>Make Your Money Move</h2>
           <h3>
-            iTrade lets you invest in companies you love, commission-free.
+            iTrade lets you trade using an imaginary portfolio. You'll receive a few free stocks and 
+            $100,000 in pseudo cash!
           </h3>
           <div className="flex">
             <button onClick={this.handleDemo} className="signup-demo">Demo User Login</button>
@@ -108,6 +128,7 @@ class Signup extends React.Component {
             <button className="sign-up" onClick={this.handleSubmit}>
               Continue
             </button>
+            {/* {this.renderErrors()} */}
           </form>
         </div>
       </div>
