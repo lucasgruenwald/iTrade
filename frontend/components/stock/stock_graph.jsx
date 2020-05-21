@@ -50,7 +50,7 @@ class StockGraph extends React.Component {
       let hoverPrice = e.activePayload[0].payload.price;
 
       let change = hoverPrice - openPrice;
-      let divChange = (change / hoverPrice) * 100
+      let divChange = (change / openPrice) * 100
 
       this.setState({
         closePrice: parseFloat(e.activePayload[0].payload.price).toFixed(2),
