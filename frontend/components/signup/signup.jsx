@@ -71,8 +71,7 @@ class Signup extends React.Component {
         <div className="signup-right">
           <h2>Make Your Money Move</h2>
           <h3>
-            iTrade lets you trade using an imaginary portfolio. You'll receive a few free stocks and 
-            $100,000 in pseudo cash!
+             You'll start with a few free stocks and $100,000 in pseudo cash!
           </h3>
           <div className="flex">
             <button onClick={this.handleDemo} className="signup-demo">Demo User Login</button>
