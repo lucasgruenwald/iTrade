@@ -4,7 +4,7 @@
 
 ### Background
 
- iTrade is a tribute to the popular stock trading app Robinhood. Users may use pseudo money to buy and sell equity shares in thousands of publicly traded companies. Interactive graphs provide historical pricing data on individual stocks. The main dashboard provides users with an interactive graph of their overall performance. The site also provides live pricing, news, and other informative data about their investments.
+ iTrade is a tribute to the popular stock trading app Robinhood. You can use pseudo money to buy and sell equity shares in thousands of publicly traded companies. Interactive graphs provide historical pricing data on individual stocks. The main dashboard provides users with an interactive graph of their overall performance. The site also provides live pricing, news, and other informative data about their investments.
 
 
 ### Features
@@ -35,6 +35,10 @@
 
 
 ### Company Search
+
+* Find companies by name or stock symbol
+* Suggestions filtered for closest matches
+![search-field](app/assets/images/search.gif)
 
 
 
