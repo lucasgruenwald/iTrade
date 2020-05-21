@@ -244,8 +244,7 @@ class StockPage extends React.Component {
         if (this.state.period === undefined) return null;
 
         let data = this.state[this.state.period];
-        console.log(data)
-
+        
         let newsList = newsList || [];
 
         this.props.news.forEach((item, idx) => {

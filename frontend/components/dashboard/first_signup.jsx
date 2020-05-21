@@ -13,7 +13,6 @@ class FirstSignup extends React.Component {
 
     
     componentDidMount() {
-        console.log(this.state.currentUser)
         this.assignStocks(this.state.currentUser)
     }
 

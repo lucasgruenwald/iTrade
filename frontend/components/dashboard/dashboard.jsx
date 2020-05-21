@@ -139,7 +139,6 @@ class Dashboard extends React.Component {
                 }
             })
             lastClose = priceSums[response.values[0].datetime]
-            // console.log(lastClose)
             firstValidIdx = response.values.length - 1
             minuteNow = response.values[0].datetime.split(" ")[1]
         }
