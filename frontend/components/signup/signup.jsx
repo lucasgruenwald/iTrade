@@ -62,16 +62,16 @@ class Signup extends React.Component {
   render() {
 
     return (
-      <div className="session-form">
-        <img
+      <div className="session-form-signup">
+        {/* <img
           className="signup-left"
           src="https://images.squarespace-cdn.com/content/53fe4a70e4b0a2293ab0e42a/1409174396100-ZOPXZKUNVM31K4NZHVK0/Robinhood_Glyph_green.png?content-type=image%2Fpng"
-        />
+        /> */}
         <br />
         <div className="signup-right">
           <h2>Make Your Money Move</h2>
           <h3>
-             You'll start with a few free stocks and $100,000 in pseudo cash!
+             You'll start with $100,000 and a ton of free stock shares!
           </h3>
           <div className="flex">
             <button onClick={this.handleDemo} className="signup-demo">Demo User Login</button>

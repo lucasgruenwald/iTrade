@@ -24,27 +24,33 @@ class FirstSignup extends React.Component {
         let freeHolding1 = {
             user_id: currentUser,
             stock_ticker: "FB",
-            share_count: 10,
+            share_count: 500,
         }
         let freeHolding2 = {
             user_id: currentUser,
             stock_ticker: "AAPL",
-            share_count: 10,
+            share_count: 500,
         }
         let freeHolding3 = {
             user_id: currentUser,
             stock_ticker: "AMD",
-            share_count: 10,
+            share_count: 500,
         }
         let freeHolding4 = {
             user_id: currentUser,
             stock_ticker: "TSLA",
-            share_count: 10,
+            share_count: 500,
+        }
+        let freeHolding5 = {
+            user_id: currentUser,
+            stock_ticker: "CRM",
+            share_count: 500,
         }
         this.props.receiveHolding(freeHolding1)
         this.props.receiveHolding(freeHolding2)
         this.props.receiveHolding(freeHolding3)
         this.props.receiveHolding(freeHolding4)
+        this.props.receiveHolding(freeHolding5)
         .then(
             this.setState({
             done: true

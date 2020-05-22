@@ -21,7 +21,7 @@ class TransactionForm extends React.Component {
 
     componentDidUpdate(previousProps) {
         if (previousProps.stock_ticker !== this.props.stock_ticker) {
-            this.clearError()
+            // this.clearError()
             // let positionKey = {
             //     user_id: this.props.currentUser.id,
             //     ticker: this.props.ticker
@@ -38,7 +38,7 @@ class TransactionForm extends React.Component {
     handleClick(dir) {
         this.setState({ tranType: dir });
         this.applyUnderline(dir);
-        this.clearError()
+        // this.clearError()
     }
 
     handleSubmit(e){
@@ -127,9 +127,9 @@ class TransactionForm extends React.Component {
         this.changeButton()
     }
 
-    clearError(){
-        this.state.error = ""
-    }
+    // clearError(){
+    //     this.state.error = ""
+    // }
 
     changeButton(){
         setTimeout(() => this.setState({ buttonText: "Place Order"}), 2000);
@@ -138,7 +138,7 @@ class TransactionForm extends React.Component {
     updateShares() {
         return e => {
             this.setState({ share_count: parseInt(e.target.value) })
-            this.clearError()
+            // this.clearError()
         }
     }
 

@@ -48,6 +48,7 @@
 
 .signup-right {
     margin-top: 100px;
+    align-self: center;
 }
 
 .signup-right > form > label > input {
@@ -93,4 +94,8 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-color: rgb(118, 172, 172);
     cursor: pointer
+}
+
+.session-form-signup{
+   padding-left: 25%;
 }

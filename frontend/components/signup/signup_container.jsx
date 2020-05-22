@@ -7,7 +7,7 @@ import Signup from './signup';
 
 const mSTP = (state) => ({
     errors: state.errors.session,
-    currentUser: state.session.currentUser,
+    // currentUser: state.entities.users[state.session.currentUser],
 });
 
 const mDTP = (dispatch) => ({
