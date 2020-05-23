@@ -1,6 +1,5 @@
 // import React from 'react';
-import { signup } from '../../actions/session';
-import { login } from '../../actions/session';
+import { signup, login, clearSessionErrors } from '../../actions/session';
 import { connect } from 'react-redux';
 import Signup from './signup';
 // import { receiveHolding } from '../../actions/holding';
@@ -13,6 +12,7 @@ const mSTP = (state) => ({
 const mDTP = (dispatch) => ({
     signup: user => dispatch(signup(user)),
     login: user => dispatch(login(user)),
+    clearSessionErrors: () => dispatch(clearSessionErrors())
     // receiveHolding: (holding) => dispatch(receiveHolding(holding)),
 })
 

@@ -15,9 +15,9 @@ class Signup extends React.Component {
     this.handleDemo = this.handleDemo.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.clearSessionErrors();
-  // }
+  componentDidMount() {
+    this.props.clearSessionErrors();
+  }
 
   handleDemo(e) {
     e.preventDefault();
@@ -46,24 +46,16 @@ class Signup extends React.Component {
   }
 
   renderErrors() {
-    if (Object.values(this.props.errors).length > 0) {
-      return <div className="login-errors">{Object.values(this.props.errors)}</div>
-    } else {
-      return null;
-    }
-  };
-
-  // renderErrors() {
-  //   return (
-  //     <ul>
-  //       {this.props.errors.map((error, idx) => (
-  //         <li className="session-error" key={`error-${idx}`}>
-  //           {error}
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
+    return (
+      <ul>
+        {Object.values(this.props.errors).map((error, idx) => (
+          <li className="login-errors" key={`error-${idx}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
 
   render() {

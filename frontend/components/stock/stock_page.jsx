@@ -301,7 +301,7 @@ class StockPage extends React.Component {
                     <button type="button" className={`period ${this.state.period === "3M" ? this.state.colorClass : ''}`} onClick={ this.updatePrices("3M") }>3M</button>
                     <button type="button" className={`period ${this.state.period === "1Y" ? this.state.colorClass : ''}`} onClick={ this.updatePrices("1Y") }>1Y</button>
                 </div>
-
+                
                 <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
 
                 <h3 className="news-header-indiv">Top News:</h3>
@@ -310,9 +310,9 @@ class StockPage extends React.Component {
                 </div>
 
             </div>
-
-                <TransactionContainer stock_ticker={this.props.ticker} holdingId={this.props.holdings.id} price={this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} />
-
+                <div className="transaction-margin">
+                    <TransactionContainer stock_ticker={this.props.ticker} holdingId={this.props.holdings.id} price={this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} />
+                </div>
             </div>
         )
     }

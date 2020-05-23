@@ -11,6 +11,14 @@ class Login extends React.Component {
         this.handleDemo = this.handleDemo.bind(this);
     }
 
+    componentDidMount() {
+        this.props.clearSessionErrors();
+    }
+
+    // componentWillUnmount() {
+    //     this.props.clearSessionErrors();
+    // }
+    
     handleDemo(e) {
         e.preventDefault();
         const demoUser = { email: "iTradeDemoUser@gmail.com", password: "password"}
@@ -26,10 +34,7 @@ class Login extends React.Component {
         this.props.login(this.state).then(() => this.props.history.push("/dashboard"));
     }
 
-    componentWillUnmount() {
-        // this.props.clearErrors()
-    }
-
+    
     renderErrors() {
         if (Object.values(this.props.errors).length > 0) {
             return <div className="login-errors">{this.props.errors[0]}</div>

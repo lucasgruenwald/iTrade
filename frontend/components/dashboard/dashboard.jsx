@@ -256,6 +256,10 @@ class Dashboard extends React.Component {
 
     render() {
         
+        if (!this.state.done) {
+            return <FullPageLoading />
+        }
+        
         if (Object.values(this.props.holdings).length === 0) return null;
         if (Object.values(this.props.stocks).length === 0) return null;
         if (Object.values(this.props.price).length === 0) return null;
@@ -321,11 +325,7 @@ class Dashboard extends React.Component {
             }
 
         })
-
-
-        if (!this.state.done) {
-            return <FullPageLoading />
-        }
+ 
         return (
             <div className="dashboard">
 

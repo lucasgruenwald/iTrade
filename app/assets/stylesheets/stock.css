@@ -70,11 +70,20 @@
     color: white
 }
 
-
+.transaction-margin{
+    width: 500px; 
+    height: 1800px; 
+    border: 1px solid blue; 
+    /* float: right;  */
+    /* position: relative; 
+    float: left;
+    margin-left: 10px;
+     */
+}
 
 .holdings-bar{
-    right: 10%;
-    margin-top: 7%;
+    /* right: 10%;
+    margin-top: 7%; */
     border: 1px solid black;
     box-shadow: 0 0 5px black;
     background-color: #1b1b1d;
