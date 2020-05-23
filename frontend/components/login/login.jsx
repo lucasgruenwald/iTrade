@@ -26,19 +26,20 @@ class Login extends React.Component {
         this.props.login(this.state).then(() => this.props.history.push("/dashboard"));
     }
 
-    // componentWillUnmount() {
-    //     this.props.clearErrors()
-    // }
+    componentWillUnmount() {
+        // this.props.clearErrors()
+    }
 
-    // renderErrors() {
-    //     if (Object.values(this.props.errors).length > 0) {
-    //         return <div className="login-errors"><img className="error-icon" src={window.warningIcon}/>Incorrect username/password</div>
-    //     } else {
-    //         return null;
-    //     }
-    // };
+    renderErrors() {
+        if (Object.values(this.props.errors).length > 0) {
+            return <div className="login-errors">{this.props.errors[0]}</div>
+        } else {
+            return null;
+        }
+    };
 
     render() {
+
   
         return (
             <div className="session-form">
@@ -64,7 +65,9 @@ class Login extends React.Component {
                             onChange={this.handleInput('password')} 
                         />
                     </label>
-                    
+
+                    {this.renderErrors()}
+
                     <button className='sign-in' onClick={this.handleSubmit}>Sign In</button>
                     
 

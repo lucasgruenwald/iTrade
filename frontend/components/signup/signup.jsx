@@ -45,6 +45,13 @@ class Signup extends React.Component {
     };
   }
 
+  renderErrors() {
+    if (Object.values(this.props.errors).length > 0) {
+      return <div className="login-errors">{Object.values(this.props.errors)}</div>
+    } else {
+      return null;
+    }
+  };
 
   // renderErrors() {
   //   return (
@@ -124,6 +131,7 @@ class Signup extends React.Component {
               />
             </label>
             <br />
+            {this.renderErrors()}
             <button className="sign-up" onClick={this.handleSubmit}>
               Continue
             </button>

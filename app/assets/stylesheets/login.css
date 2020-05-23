@@ -79,3 +79,8 @@
 .login-right > form > p {
     cursor: pointer;
 }
+
+.login-errors{
+    color: red;
+    margin-bottom: 5px;
+}
