@@ -1,3 +1,7 @@
+.stock-left{
+    width: 70%;
+}
+
 .stock-page {
     padding-left: 5%;
     display: flex;
@@ -71,9 +75,9 @@
 }
 
 .transaction-margin{
-    width: 500px; 
+    width: 275px; 
     height: 1800px; 
-    border: 1px solid blue; 
+    /* border: 1px solid blue;  */
     /* float: right;  */
     /* position: relative; 
     float: left;
@@ -82,15 +86,19 @@
 }
 
 .holdings-bar{
-    /* right: 10%;
-    margin-top: 7%; */
+    /* right: 10%; */
+    margin-top: 7%;
     border: 1px solid black;
     box-shadow: 0 0 5px black;
     background-color: #1b1b1d;
     border-radius: 3px;
-    min-width: 250px;
+    width: 250px;
     /* height: 450px; */
     position: fixed;
+}
+
+.stock-chart-holder{
+    width: 670px;
 }
 
 .holdings-bar{
@@ -157,11 +165,16 @@
     cursor: pointer;
 }
 
+.buy-holder{
+    width: 50%;
+}
+
 .buy {
     margin-top: 40px;
     font-size: 17px;
-    margin-right: 4px;
-    margin-left: 15%;
+    float: left;
+    /* margin-right: 7px; */
+    margin-left: 20%;
     background-color: transparent;
     color: white;
     cursor: pointer;
@@ -173,8 +186,9 @@
 .sell {
     margin-top: 40px;
     font-size: 17px;
-    margin-left: auto;
-    margin-right: 15%;
+    float: right;
+    /* margin-left: auto; */
+    margin-right: 20%;
     background-color: transparent;
     color: white;
     cursor: pointer;
@@ -196,6 +210,12 @@
 .flex-transaction{
     display: flex;
     text-align: left;
+}
+
+.flex-transaction-last{
+    display: flex;
+    text-align: left;
+    height: 100px;
 }
 
 .shares-text{

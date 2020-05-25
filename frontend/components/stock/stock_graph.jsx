@@ -93,13 +93,13 @@ class StockGraph extends React.Component {
 
   render() {
 
-    let odomVal = (parseFloat(this.state.closePrice).toFixed(2));
+    let odomVal = (parseFloat(this.state.closePrice).toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
     if (this.state.ticker === undefined) return null;
 
     return (
       <div className="stock-chart-holder">
 
-        <h1 className="stock-page-price">${odomVal}</h1>
+        <h1 className="stock-page-price">{odomVal}</h1>
 
         <p className="change-counter">
           {`$${this.state.change}`} {`(${this.state.percentChange}%)`}

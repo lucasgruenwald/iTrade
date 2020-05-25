@@ -165,8 +165,12 @@ class TransactionForm extends React.Component {
 
             <form className="holdings-bar" onSubmit={this.handleSubmit}>
                 <div className="flex-transaction">
+                    <div className="buy-holder">
                     <button type="button" onClick={() => this.handleClick('buy')} className="buy selected">Buy {this.props.stock_ticker}</button>
+                    </div>
+                    <div className="buy-holder">
                     <button type="button" onClick={() => this.handleClick('sell')} className="sell">Sell {this.props.stock_ticker}</button>
+                    </div>
                 </div>
                 <div className="flex-transaction">
                     <p className="shares-text">Shares</p>
@@ -184,7 +188,7 @@ class TransactionForm extends React.Component {
                     <p className="market-text">Market Price</p>
                     <p className="mkt-price-text">{this.props.price}</p>
                 </div>
-                <div className="flex-transaction">
+                <div className="flex-transaction-last">
                     <p className="cost-text">Estimated Value</p>
                     <p className="cost-value">{estCost}</p>
                 </div>      

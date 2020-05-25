@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>iTrade</title>
+     <%= favicon_link_tag asset_path('favicon.ico') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,6 +15,9 @@
       window.twelveAPIKeyV2 = "<%= Rails.application.credentials.twelvesecond[:api_key] %>";
       window.modelingAPIKey = "<%= Rails.application.credentials.modeling[:api_key] %>";
       window.iexAPIKey = "<%= Rails.application.credentials.iex[:api_key] %>";
+      window.favicon = "<%= image_url('favicon.ico') %>";
+      window.iphone_empty_pic = "<%= image_url('iphone_empty.png') %>"; 
+      window.iphone_vid = "<%= image_url('iphone.mp4') %>";
     </script>
 
   </head>

@@ -21,10 +21,27 @@ function Home (){
               </button>
             </Link>
           </div>
-          <img
+          {/* <img
             className="home-first-img"
             src="https://cdn.robinhood.com/assets/robinhood/brand_2/2d98ce66a6fc8e2a3e403064eefb81a1-2x.png"
-          />
+          /> */}
+          <div className="home-first-img">
+            <video autoPlay loop muted preload="auto" className="video-cont">
+              <source
+                className="gif-iphone"
+                src={window.iphone_vid}
+                type="video/mp4"
+              />
+            </video>
+            <div className="iphone-holder">
+              <img
+                className="iphone-empty"
+                src={window.iphone_empty_pic}
+                role="presentation"
+                draggable="false"
+              />
+            </div>
+          </div>
         </div>
         <div className="break-free">
           <h2>Break Free from Commission Fees</h2>

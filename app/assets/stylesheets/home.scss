@@ -88,7 +88,7 @@
 }
 
 .home-first-img {
-    margin-top: 9%;
+    margin-top: 5%;
     margin-bottom: 5%;
     display: block;
     max-width: 400px;
@@ -104,7 +104,7 @@
 }
 
 .home-left-text {
-    padding-left: 250px;
+    padding-left: 18%;
     padding-top: 50px;
     max-width: 450px;
     margin-bottom: 5%;
@@ -290,4 +290,35 @@ footer {
     border-radius: 5px;
     background-color: white;
     padding: 2px
+}
+
+
+.iphone-holder {
+    position: absolute;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    pointer-events: none;
+}
+
+.iphone-empty {
+    object-fit: contain;
+    user-select: none;
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+.video-cont {
+    width: 50%;
+    height: 50%;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    object-fit: contain;
+    pointer-events: none;
+    position: absolute;
 }
