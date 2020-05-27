@@ -9,10 +9,10 @@
 
 ### Features
 
-* Recharts library displays live & historical stock prices using API data
-* Filtered data from News API displays relevant news on selected companies
-* Connection to rails backend allows users to simulate stock trades
-* Stock search feature allows users to find publicly traded companies
+* Pages display live & historical stock prices using API data and the Recharts charting library, enabling users to keep track of their investment performance.
+* Filtered data from a News API displays relevant news for selected companies and the overall market, helping provide users with context to potentially explain recent price movements.
+* The connection to the Rails backend allows users to simulate stock trades that persist over time.
+* The stock search feature allows users to find publicly traded companies in an efficient manner.
 
 
 ### Dashboard Page
@@ -23,12 +23,13 @@
 ![dashboard](app/assets/images/dashboard.gif)
 
 
-
 ### Stock Page
 
 * Company data such as market cap, industry, etc. 
-  * Achieved with API calls to [Financial Modeling Prep](https://financialmodelingprep.com)
-* Historical stock graphs populated with price data from custom API calls 
+  * Achieved with custom API calls to [Financial Modeling Prep](https://financialmodelingprep.com)
+* Company news section providing relevant news 
+  * Achieved with custom API calls to [News API](http://newsapi.org)
+* Historical stock graphs populated with price data from custom API calls to [Twelvedata API](http://twelvedata.com)
   ```js
   updatePrices(key) {
         if (this.state.period !== key) {
@@ -73,19 +74,18 @@
                   }
               }
           }
-        // 
         <!-- more conditonal statements cover all buy and sell scenarios -->
   ```
-
-* Company news section providing relevant news using filtered API calls
 ![stock-page](app/assets/images/stockpage.gif)
 
 
 
 ### Company Search
 
-* Find companies by name or stock symbol
-* Suggestions filtered for closest matches
+* Find companies (in either the NASDAQ or NYSE) by name or stock symbol 
+  * Achieved with API calls using [Financial Modeling Prep API](https://financialmodelingprep.com)
+  ![search-field](app/assets/images/search.gif)
+* Conditional statements filter API results for the best suggestions
 ```js
     companies.forEach((ticker, idx) => {
         if (entry.length > 0) {
@@ -107,8 +107,6 @@
         }
     }
   ```
-![search-field](app/assets/images/search.gif)
-
 
 
 ### Technologies & Libraries
