@@ -76,7 +76,7 @@
           }
         <!-- more conditonal statements cover all buy and sell scenarios -->
   ```
-![stock-page](app/assets/images/stockpage.gif)
+  ![stock-page](app/assets/images/stockpage.gif)
 
 
 
