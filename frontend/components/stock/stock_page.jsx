@@ -248,7 +248,8 @@ class StockPage extends React.Component {
         let newsList = newsList || [];
 
         this.props.news.forEach((item, idx) => {
-            if (idx < 5) {
+            console.log(this.props.news[idx].urlToImage)
+            if (idx < 5 && (this.props.news[idx].urlToImage !== null)) {
                 let filterDesc = (this.props.news[idx].description).replace(/<[^>]*>?/gm, '');
                 newsList.push(
                     <a key={idx} target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
