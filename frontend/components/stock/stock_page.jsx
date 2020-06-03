@@ -249,6 +249,7 @@ class StockPage extends React.Component {
 
         this.props.news.forEach((item, idx) => {
             if (idx < 5) {
+                let filterDesc = (this.props.news[idx].description).replace(/<[^>]*>?/gm, '');
                 newsList.push(
                     <a key={idx} target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
                         <div className="news-div-indiv">
@@ -256,7 +257,7 @@ class StockPage extends React.Component {
                                 <div className="news-text">
                                     <h3 key={idx * 10} className="news-title">{this.props.news[idx].title}</h3>
                                 </div>
-                                <p key={idx * 100} className="news-desc">{this.props.news[idx].description}</p>
+                                <p key={idx * 100} className="news-desc">{filterDesc}</p>
                             </div>
                             <div className="news-img-holder">
                             <img className="news-img" src={`${this.props.news[idx].urlToImage}`} />

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     resources :holdings, only: [:index, :show, :create, :update, :destroy]
     resources :news, only: [:index]
+    resources :newsone, only: [:index]
   end
 
   root "static_pages#root"
