@@ -246,11 +246,17 @@ class StockPage extends React.Component {
         let data = this.state[this.state.period];
         
         let newsList = newsList || [];
+        let filterDesc
 
         this.props.news.forEach((item, idx) => {
-            console.log(this.props.news[idx].urlToImage)
+            // console.log(this.props.news[idx].urlToImage)
             if (idx < 5 && (this.props.news[idx].urlToImage !== null)) {
-                let filterDesc = (this.props.news[idx].description).replace(/<[^>]*>?/gm, '');
+                // let filterDesc = (this.props.news[idx].description).replace(/<[^>]*>?/gm, '');
+                if (this.props.news[idx].description !== null) {
+                    filterDesc = (this.props.news[idx].description).replace(/<[^>]*>?/gm, '');
+                } else {
+                    filterDesc = this.props.news[idx].description
+                }
                 newsList.push(
                     <a key={idx} target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
                         <div className="news-div-indiv">

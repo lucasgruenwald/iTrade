@@ -304,10 +304,14 @@ class Dashboard extends React.Component {
         }
 
         let newsList = []
-
+        let filterDesc
         this.props.news.forEach((item, idx) => {
             if (idx < 8 && (this.props.news[idx].urlToImage !== null)){
-                let filterDesc = (this.props.news[idx].description).replace(/<[^>]*>?/gm, '');
+                if (this.props.news[idx].description !== null){
+                    filterDesc = (this.props.news[idx].description).replace(/<[^>]*>?/gm, '');
+                } else {
+                    filterDesc = this.props.news[idx].description
+                }
             newsList.push(
                 <a key={idx} target="_blank"  href={`${this.props.news[idx].url}`} className="news-link">
                     <div className="news-div">

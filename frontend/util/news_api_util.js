@@ -6,7 +6,7 @@ export const fetchNews = () => {
 }
 
 export const fetchOneNews = (ticker) => {
-    console.log(ticker)
+    // console.log(ticker)
     return $.ajax({
         method: "GET",
         url: `/api/newsone`,

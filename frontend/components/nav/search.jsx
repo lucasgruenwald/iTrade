@@ -32,7 +32,7 @@ class SearchBar extends React.Component {
         // if (!this.props.stocks) return null;
 
         let companies = Object.values(this.props.stocks);
-        console.log(companies)
+        // console.log(companies)
         let entry = this.state.search.toUpperCase()
         let found = []
 
