@@ -145,8 +145,18 @@ class Dashboard extends React.Component {
         
         // graph not showing correct %? Add more conditions here for firstOpen
         // firstValidIdx - 7 works for now unless API changes
-
-        let firstOpen = (priceSums[timesPrices[firstValidIdx - 11].time])
+        let firstOpen
+        // if(priceSums[timesPrices[firstValidIdx - 8]]){
+        //     firstOpen = priceSums[timesPrices[firstValidIdx - 8].time]
+        // } else if (priceSums[timesPrices[firstValidIdx - 10]]) {
+        //     firstOpen = priceSums[timesPrices[firstValidIdx - 10].time]
+        // } else if (priceSums[timesPrices[firstValidIdx - 12]]) {
+        //     firstOpen = priceSums[timesPrices[firstValidIdx - 12].time]
+        // } else if (priceSums[timesPrices[firstValidIdx - 15]]) {
+            firstOpen = priceSums[timesPrices[firstValidIdx - 15].time]
+        // } else if (priceSums[timesPrices[firstValidIdx - 20]]) {
+        //     firstOpen = priceSums[timesPrices[firstValidIdx - 20].time]
+        // }
 
         timesPrices = timesPrices.reverse()
         
