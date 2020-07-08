@@ -146,7 +146,7 @@ class Dashboard extends React.Component {
         // graph not showing correct %? Add more conditions here for firstOpen
         // firstValidIdx - 7 works for now unless API changes
 
-        let firstOpen = (priceSums[timesPrices[firstValidIdx - 7].time])
+        let firstOpen = (priceSums[timesPrices[firstValidIdx - 11].time])
 
         timesPrices = timesPrices.reverse()
         
