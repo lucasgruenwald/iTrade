@@ -37,3 +37,7 @@ html, body, div {
   height: 200px;
   border-radius: 100px;
 }
+
+.error-msg{
+  margin: 10%;
+}
