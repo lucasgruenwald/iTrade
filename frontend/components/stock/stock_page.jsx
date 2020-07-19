@@ -34,9 +34,11 @@ class StockPage extends React.Component {
     };
     
     componentDidMount() {
-        fetchDailyPrices(this.props.ticker).then((response) => this.renderDay(response));
-        this.props.receiveOneNews(this.props.ticker);
-        this.props.receiveInfo(this.props.ticker);
+        fetchDailyPrices(this.props.ticker)
+        .then((response) => this.renderDay(response))
+        .then(() => this.props.receiveOneNews(this.props.ticker))
+        .then (() => this.props.receiveInfo(this.props.ticker))
+        .then(() => this.setState({ done: true }))
         let holding = {
             user_id: this.props.currentUser,
             ticker: this.props.ticker
@@ -54,6 +56,10 @@ class StockPage extends React.Component {
             this.props.getPosition(this.props.ticker)
         };
     };
+
+    componentWillMount(){
+        this.setState({ done: false })
+    }
 
     componentWillUnmount() {
         this.setState({ done: false })
@@ -82,7 +88,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            done: true,
+            // done: true, 
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
@@ -112,7 +118,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            done: true,
+            // done: true,
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
@@ -142,7 +148,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            done: true,
+            // done: true,
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
@@ -172,7 +178,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            done: true,
+            // done: true,
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
@@ -204,7 +210,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            done: true,
+            // done: true,
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
@@ -242,6 +248,9 @@ class StockPage extends React.Component {
         if (Object.values(this.props.info).length === 0) return null;
         if (this.props.news === undefined) return null;
         if (this.state.period === undefined) return null;
+        if (!this.state.done) {
+            return <FullPageLoading />
+        }
 
         let data = this.state[this.state.period];
         
@@ -275,9 +284,9 @@ class StockPage extends React.Component {
             }
         });
 
-        if (!this.state.done){
-            return <FullPageLoading/>
-        }
+        // if (!this.state.done){
+        //     return <FullPageLoading/>
+        // }
         
         return(
             <div className="stock-page">
