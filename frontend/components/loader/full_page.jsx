@@ -29,7 +29,8 @@ class FullPageLoading extends React.Component{
                         Hmm... If you're reading this, the twelvedata API is likely sending incomplete pricing data
                         to my site again. Please let me know and I'll make sure it
                         gets fixed. In the meantime, you might still be able to use
-                        the search bar above to view individual stock pages. Thank you!
+                        the search bar above to view individual stock pages. Please
+                        refresh the portfolio page first. Thank you!
                     </div>
                 </div>
             )
