@@ -4,7 +4,6 @@ import StockGraph from './stock_graph';
 import TransactionContainer from './transaction_container';
 import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
 import FullPageLoading from "../loader/full_page.jsx"
-// import Odometer from 'react-odometerjs';
 
 class StockPage extends React.Component {
     
@@ -34,11 +33,11 @@ class StockPage extends React.Component {
     };
     
     componentDidMount() {
+        this.props.receiveOneNews(this.props.ticker)
+        this.props.receiveInfo(this.props.ticker)
         fetchDailyPrices(this.props.ticker)
         .then((response) => this.renderDay(response))
-        .then(() => this.props.receiveOneNews(this.props.ticker))
-        .then (() => this.props.receiveInfo(this.props.ticker))
-        .then(() => this.setState({ done: true }))
+        // .then(() => this.setState({ done: true }))
         let holding = {
             user_id: this.props.currentUser,
             ticker: this.props.ticker
@@ -75,10 +74,6 @@ class StockPage extends React.Component {
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length-1
         let firstOpen = response.values[firstValidIdx].previous_close
-        // let minuteNow = response.values[0].datetime.split(" ")[1]
-        // let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
-        // let closeTime = "12:59:00"
-        // let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
         this.setState({
             "1D": timesPrices,
@@ -88,7 +83,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            // done: true, 
+            done: true, 
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
@@ -105,10 +100,7 @@ class StockPage extends React.Component {
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
         let firstOpen = response.values[firstValidIdx].previous_close
-        // let minuteNow = response.values[0].datetime.split(" ")[1]
-        // let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
-        // let closeTime = "12:59:00"
-        // let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
+        
 
         this.setState({
             "5D": timesPrices,
@@ -118,7 +110,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            // done: true,
+            done: true,
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
@@ -135,10 +127,6 @@ class StockPage extends React.Component {
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
         let firstOpen = response.values[firstValidIdx].previous_close
-        // let minuteNow = response.values[0].datetime.split(" ")[1]
-        // let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
-        // let closeTime = "12:59:00"
-        // let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
 
         this.setState({
             "1M": timesPrices,
@@ -148,7 +136,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            // done: true,
+            done: true,
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
@@ -165,10 +153,7 @@ class StockPage extends React.Component {
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
         let firstOpen = response.values[firstValidIdx].previous_close
-        // let minuteNow = response.values[0].datetime.split(" ")[1]
-        // let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
-        // let closeTime = "12:59:00"
-        // let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
+        
 
         this.setState({
             "3M": timesPrices,
@@ -178,7 +163,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            // done: true,
+            done: true,
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"
@@ -196,11 +181,6 @@ class StockPage extends React.Component {
         let lastClose = response.values[0].close
         let firstValidIdx = response.values.length - 1
         let firstOpen = response.values[firstValidIdx].previous_close
-        // let minuteNow = response.values[0].datetime.split(" ")[1]
-        // let dateNow = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${minuteNow}`))
-        // let closeTime = "12:59:00"
-        // let closeDate = new Date(Date.parse(`${response.values[0].datetime.split(" ")[0]} ${closeTime}`))
-
 
         this.setState({
             "1Y": timesPrices,
@@ -210,7 +190,7 @@ class StockPage extends React.Component {
             close: lastClose,
             change: parseFloat(lastClose - firstOpen).toFixed(2),
             changePercent: parseFloat(((lastClose - firstOpen) / firstOpen) * 100).toFixed(2),
-            // done: true,
+            done: true,
             colorClass: firstOpen < lastClose ? "activeGreen" : "activeRed",
             color: firstOpen < lastClose ? "#21ce99" : "orangered",
             backgroundColor: firstOpen < lastClose ? "activeGreenBackground" : "activeRedBackground"

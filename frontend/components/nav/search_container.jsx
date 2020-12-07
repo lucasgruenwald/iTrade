@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-// import { receiveStocks } from '../../actions/securities';
+import { receiveStocks } from '../../actions/securities';
 import SearchBar from './search';
 
 const mapStateToProps = state => ({
@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    // receiveStocks: () => dispatch(receiveStocks()),
+    receiveStocks: () => dispatch(receiveStocks()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

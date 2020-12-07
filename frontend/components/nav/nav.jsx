@@ -9,13 +9,13 @@ class Nav extends React.Component {
         };
     }
 
-    // componentDidMount() {
-    //     this.props.receiveStocks();
-    // }
+    componentDidMount() {
+        this.props.receiveStocks();
+    }
 
 
     render() {
-        // if (this.props.stocks.length === 0) return null;
+        if (this.props.stocks.length === 0) return null;
        
 
         return (

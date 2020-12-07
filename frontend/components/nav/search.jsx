@@ -28,66 +28,48 @@ class SearchBar extends React.Component {
 
     render() {
         let suggestions = []
-       
-        // if (!this.props.stocks) return null;
-
         let companies = Object.values(this.props.stocks);
-        // console.log(companies)
         let entry = this.state.search.toUpperCase()
         let found = []
 
-        // companies.forEach((ticker, idx) => {
-        //     if (entry.length > 0) {
-        //         if (ticker.symbol === (entry)) {
-        //             found.push(ticker.symbol)
-        //             suggestions.push(
-        //                 <li key={idx} className="suggestion-item">
-        //                     <Link
-        //                         to={`/stock/${ticker.symbol}`}
-        //                         key={idx}
-        //                         className="suggestion-link"
-        //                         onClick={this.handleClearForm}>
-        //                         {ticker.symbol} · {ticker.name}
-        //                     </Link>
-        //                 </li>
-        //             )
-        //         }
-        //     }
-        // })
+        console.log(this.state.search)
+        console.log(suggestions)
+        console.log(companies)
 
-        companies.forEach((ticker, idx) => {
-            if (entry.length > 0) {
-                if (ticker.symbol === entry){
-                    found.push(ticker.symbol)
-                    suggestions.unshift(
-                        <li key={idx} className="suggestion-item">
-                            <Link
-                                to={`/stock/${ticker.symbol}`}
-                                key={idx}
-                                className="suggestion-link"
-                                onClick={this.handleClearForm}>
-                                {ticker.symbol} · {ticker.name}
-                            </Link>
-                        </li>
-                    )
+        if (entry.length > 0) {
+            companies.forEach((ticker, idx) => {
+                    if (ticker.symbol === entry){
+                        found.push(ticker.symbol)
+                        suggestions.unshift(
+                            <li key={idx} className="suggestion-item">
+                                <Link
+                                    to={`/stock/${ticker.symbol}`}
+                                    key={idx}
+                                    className="suggestion-link"
+                                    onClick={this.handleClearForm}>
+                                    {ticker.symbol} · {ticker.name}
+                                </Link>
+                            </li>
+                        )
+                    }
+                    else if (ticker.symbol.startsWith(entry) || (ticker.name !== null
+                        && ticker.name.toUpperCase().startsWith(entry))) {
+                        found.push(ticker.symbol)
+                        suggestions.push(
+                            <li key={idx} className="suggestion-item">
+                                <Link
+                                    to={`/stock/${ticker.symbol}`}
+                                    key={idx}
+                                    className="suggestion-link"
+                                    onClick={this.handleClearForm}>
+                                    {ticker.symbol} · {ticker.name}
+                                </Link>
+                            </li>
+                        )
+                    
                 }
-                else if (ticker.symbol.startsWith(entry) || (ticker.name !== null
-                    && ticker.name.toUpperCase().startsWith(entry))) {
-                    found.push(ticker.symbol)
-                    suggestions.push(
-                        <li key={idx} className="suggestion-item">
-                            <Link
-                                to={`/stock/${ticker.symbol}`}
-                                key={idx}
-                                className="suggestion-link"
-                                onClick={this.handleClearForm}>
-                                {ticker.symbol} · {ticker.name}
-                            </Link>
-                        </li>
-                    )
-                }
-            }
-        })
+            })
+        }
 
         if (suggestions.length < 5) {
             companies.forEach((ticker, idx) => {

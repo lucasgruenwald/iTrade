@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-// import { receiveStocks } from '../../actions/securities';
+import { receiveStocks } from '../../actions/securities';
 import Nav from './nav';
 
 const mSTP = state => ({
@@ -7,7 +7,7 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-    // receiveStocks: () => dispatch(receiveStocks()),
+    receiveStocks: () => dispatch(receiveStocks()),
 })
 
 export default connect(mSTP, mDTP)(Nav);

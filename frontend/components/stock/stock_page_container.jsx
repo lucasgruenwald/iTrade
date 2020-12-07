@@ -1,7 +1,7 @@
 import StockPage from './stock_page'
 import { connect } from 'react-redux';
 import { receiveInfo } from '../../actions/stock';
-import { receiveHolding, findHoldings, getPosition } from '../../actions/holding';
+import { getPosition } from '../../actions/holding';
 import { receiveOneNews } from '../../actions/news';
 
 
@@ -12,15 +12,14 @@ const mSTP = (state, ownProps) => ({
     holdings: state.entities.holdings,
     news: state.entities.news,
     user: state.entities.users,
+    stocks: state.entities.stocks
 })
 
 const mDTP = (dispatch) => {
 
     return {
         receiveInfo: (ticker) => dispatch(receiveInfo(ticker)),
-        // receiveHolding: (holding) => dispatch(receiveHolding(holding)),
         getPosition: (holding) => dispatch(getPosition(holding)),
-        // findHoldings: (user_id) => dispatch(findHoldings(user_id)),
         receiveOneNews: (ticker) => dispatch(receiveOneNews(ticker))
     }
 }
