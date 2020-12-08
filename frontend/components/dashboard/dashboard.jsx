@@ -315,31 +315,41 @@ class Dashboard extends React.Component {
 
         let newsList = []
         let filterDesc
+        
         this.props.news.forEach((item, idx) => {
-            if (idx < 8 && (this.props.news[idx].urlToImage !== null)){
-                if (this.props.news[idx].description !== null){
+            if (idx < 8 && (this.props.news[idx].urlToImage !== null)) {
+                if (this.props.news[idx].description !== null) {
                     filterDesc = (this.props.news[idx].description).replace(/<[^>]*>?/gm, '');
                 } else {
                     filterDesc = this.props.news[idx].description
                 }
-            newsList.push(
-                <a key={idx} target="_blank"  href={`${this.props.news[idx].url}`} className="news-link">
-                    <div className="news-div">
-                        <div className="news-content">
-                            <div className="news-text">
-                                <h3 key={idx * 100} className="news-title">{this.props.news[idx].title}</h3>
+                newsList.push(
+                    <a key={idx} target="_blank" href={`${this.props.news[idx].url}`} className="news-link">
+                        <div className="news-div">
+                            <div className="news-content">
+                                <div className="news-text">
+                                    <h3 key={idx * 100} className="news-title">{this.props.news[idx].title}</h3>
+                                </div>
+                                <p key={idx * 1000} className="news-desc">{filterDesc}</p>
                             </div>
-                            <p key={idx * 1000} className="news-desc">{filterDesc}</p>
+                            <div className="news-img-holder">
+                                <img className="news-img" src={`${this.props.news[idx].urlToImage}`} />
+                            </div>
                         </div>
-                        <div className="news-img-holder">
-                        <img className="news-img" src={`${this.props.news[idx].urlToImage}`} />
-                        </div>
-                    </div>
-                </a>
-            )
+                    </a>
+                )
             }
-
         })
+
+        if (newsList.length < 1){
+            newsList.push(
+            <a key={1} className="news-link">
+                    <h3 key={1 * 100} style={{ paddingLeft: "50px"}} className="news-title">News API Daily Limit Reached</h3>
+                    <p key={1 * 1000} style={{paddingLeft: "50px", paddingBottom: "500px"}} className="news-desc">Sorry about that! -Luke Gruenwald</p>
+            </a>
+            )
+        }
+
  
         return (
             <div className="dashboard">

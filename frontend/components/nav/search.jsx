@@ -32,10 +32,6 @@ class SearchBar extends React.Component {
         let entry = this.state.search.toUpperCase()
         let found = []
 
-        console.log(this.state.search)
-        console.log(suggestions)
-        console.log(companies)
-
         if (entry.length > 0) {
             companies.forEach((ticker, idx) => {
                     if (ticker.symbol === entry){

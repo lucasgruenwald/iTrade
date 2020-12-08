@@ -4,6 +4,7 @@ import StockGraph from './stock_graph';
 import TransactionContainer from './transaction_container';
 import { fetchDailyPrices, fetch5D, fetch1M, fetch3M, fetch1Y } from '../../util/graph_api_util';
 import FullPageLoading from "../loader/full_page.jsx"
+import NoStockWarning from "../loader/no_stock.jsx"
 
 class StockPage extends React.Component {
     
@@ -24,6 +25,7 @@ class StockPage extends React.Component {
             change: 0,
             changePercent: 0,
             done: false,
+            noStock: false
         }; 
         this.updatePrices = this.updatePrices.bind(this);
         this.renderDay = this.renderDay.bind(this);
@@ -36,7 +38,18 @@ class StockPage extends React.Component {
         this.props.receiveOneNews(this.props.ticker)
         this.props.receiveInfo(this.props.ticker)
         fetchDailyPrices(this.props.ticker)
-        .then((response) => this.renderDay(response))
+            .then((response) => {
+                if (response.values) {
+                    this.renderDay(response)
+                    this.setState({
+                        noStock: false
+                    })
+                } else {
+                    this.setState({
+                        noStock: true
+                    })
+                }
+            })
         // .then(() => this.setState({ done: true }))
         let holding = {
             user_id: this.props.currentUser,
@@ -51,7 +64,19 @@ class StockPage extends React.Component {
             this.props.receiveOneNews(this.props.ticker);
             this.props.receiveInfo(this.props.ticker);
             fetchDailyPrices(this.props.ticker)
-                .then(response => this.renderDay(response))
+                .then(response => 
+                    {if (response.values) {
+                        this.renderDay(response)
+                        this.setState({
+                            noStock: false
+                        })
+                    } else {
+                        this.setState({
+                            noStock: true
+                        })
+                    }
+                    }
+                )
             this.props.getPosition(this.props.ticker)
         };
     };
@@ -228,6 +253,9 @@ class StockPage extends React.Component {
         if (Object.values(this.props.info).length === 0) return null;
         if (this.props.news === undefined) return null;
         if (this.state.period === undefined) return null;
+        if (this.state.noStock){
+            return <NoStockWarning />
+        }
         if (!this.state.done) {
             return <FullPageLoading />
         }
@@ -263,6 +291,15 @@ class StockPage extends React.Component {
                 )
             }
         });
+
+        if (newsList.length < 1) {
+            newsList.push(
+                <a key={1} className="news-link">
+                    <h3 key={1 * 100} className="news-title">News API Daily Limit Reached</h3>
+                    <p key={1 * 1000} className="news-desc">Sorry about that! -Luke Gruenwald</p>
+                </a>
+            )
+        }
 
         // if (!this.state.done){
         //     return <FullPageLoading/>
