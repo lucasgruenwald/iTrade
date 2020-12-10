@@ -96,7 +96,6 @@ class Dashboard extends React.Component {
         let idxHashCount = new Proxy(underlyingObject2, proxyHandler2);
 
         let dateTimes = []
-
         ticks.forEach((sym) => {
             if (Object.values(this.props.holdings).length > 1){
                 response[sym].values.forEach((entry, idx) => {

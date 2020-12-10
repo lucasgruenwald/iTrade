@@ -266,7 +266,6 @@ class StockPage extends React.Component {
         let filterDesc
 
         this.props.news.forEach((item, idx) => {
-            // console.log(this.props.news[idx].urlToImage)
             if (idx < 5 && (this.props.news[idx].urlToImage !== null)) {
                 // let filterDesc = (this.props.news[idx].description).replace(/<[^>]*>?/gm, '');
                 if (this.props.news[idx].description !== null) {

@@ -90,11 +90,16 @@
 .home-first-img {
     margin-top: 5%;
     margin-bottom: 5%;
-    display: block;
-    max-width: 400px;
-    max-height: 400px;
-    width: auto;
-    height: auto;
+    display: flex;
+    width: 600px;
+    height: 510px;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 2vw 5% 1vw 5%;
 }
 
 .home-img {
@@ -104,7 +109,7 @@
 }
 
 .home-left-text {
-    padding-left: 18%;
+    padding-left: 15%;
     padding-top: 50px;
     max-width: 450px;
     margin-bottom: 5%;
@@ -300,8 +305,8 @@ footer {
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
-    width: 50%;
-    height: 50%;
+    width: 90%;
+    height: 90%;
     pointer-events: none;
 }
 
@@ -314,8 +319,8 @@ footer {
 }
 
 .video-cont {
-    width: 50%;
-    height: 50%;
+    width: 90%;
+    height: 90%;
     border: 1px solid transparent;
     box-sizing: border-box;
     object-fit: contain;
