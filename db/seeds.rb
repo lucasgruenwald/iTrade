@@ -6,51 +6,51 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
-Holding.destroy_all
+# User.destroy_all
+# Holding.destroy_all
 
-Demo = User.create(
-    email: "iTradeDemoUser@gmail.com", 
-    password: "password",
-    first_name: "Demo",
-    last_name: "User",
-)
+# Demo = User.create(
+#     email: "iTradeDemoUser@gmail.com", 
+#     password: "password",
+#     first_name: "Demo",
+#     last_name: "User",
+# )
 
-Holding1 = Holding.create(
-    user_id: 1,
-    stock_ticker: "FB",
-    share_count: 200
-)
+# Holding1 = Holding.create(
+#     user_id: 1,
+#     stock_ticker: "FB",
+#     share_count: 200
+# )
 
-Holding2 = Holding.create(
-    user_id: 1,
-    stock_ticker: "AMD",
-    share_count: 800
-)
+# Holding2 = Holding.create(
+#     user_id: 1,
+#     stock_ticker: "AMD",
+#     share_count: 800
+# )
 
-Holding3 = Holding.create(
-    user_id: 1,
-    stock_ticker: "AAPL",
-    share_count: 1000
-)
+# Holding3 = Holding.create(
+#     user_id: 1,
+#     stock_ticker: "AAPL",
+#     share_count: 1000
+# )
 
-Holding4 = Holding.create(
-    user_id: 1,
-    stock_ticker: "GOOG",
-    share_count: 5
-)
+# Holding4 = Holding.create(
+#     user_id: 1,
+#     stock_ticker: "GOOG",
+#     share_count: 5
+# )
 
-Holding5 = Holding.create(
-    user_id: 1,
-    stock_ticker: "TSLA",
-    share_count: 7
-)
+# Holding5 = Holding.create(
+#     user_id: 1,
+#     stock_ticker: "TSLA",
+#     share_count: 7
+# )
 
-Holding6 = Holding.create(
-    user_id: 1,
-    stock_ticker: "LUV",
-    share_count: 125
-)
+# Holding6 = Holding.create(
+#     user_id: 1,
+#     stock_ticker: "LUV",
+#     share_count: 125
+# )
 
 
 
