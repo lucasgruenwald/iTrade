@@ -27,6 +27,7 @@ class Dashboard extends React.Component {
         this.updatePrices = this.updatePrices.bind(this);
         this.renderDay = this.renderDay.bind(this);
         this.createQuery = this.createQuery.bind(this);
+        this.stockDivs = this.stockDivs.bind(this);
     }
 
     componentDidMount(){
@@ -38,17 +39,17 @@ class Dashboard extends React.Component {
         this.props.receiveNews();
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.match.params.ticker !== prevProps.match.params.ticker) {
-            this.setState({ done: false })
-            this.props.receiveOneNews(this.props.ticker);
-            this.props.receiveInfo(this.props.ticker);
-            if ((this.props.holdings).length > 0){
-                fetchDailyPricesAll(this.props.ticker)
-                    .then(response => this.renderDay(response))
-            }
-        };
-    };
+    // componentDidUpdate(prevProps) {
+        // if (this.props.match.params.ticker !== prevProps.match.params.ticker){
+        //     this.setState({ done: false })
+        //     // this.props.receiveOneNews(this.props.ticker);
+        //     // this.props.receiveInfo(this.props.ticker);
+        //     if ((this.props.holdings).length > 0){
+        //         fetchDailyPricesAll(this.props.ticker).then((response) => {
+        //             this.renderDay(response)});
+        //     }
+        // };
+    // };
 
     componentWillUnmount() {
         this.setState({ done: false })
@@ -262,6 +263,16 @@ class Dashboard extends React.Component {
         }
     }
 
+    stockDivs(){
+        return Object.values(this.props.holdings).map((hash, idx) =>
+            <div key={idx * 50} className="indiv-stock">{
+                <DashInfo
+                    ticker={hash.stock_ticker}
+                    shares={hash.share_count}
+                    prices={this.props.price} />}
+            </div>
+        )
+    }
 
     render() {
         
@@ -274,44 +285,36 @@ class Dashboard extends React.Component {
         if (Object.values(this.props.price).length === 0) return null;
 
         let data = this.state[this.state.period];
-        let myTickers = []
-        let share_counts = []
+// 
+        // let myTickers = []
+        // let share_counts = []
 
-        if (Object.values(this.props.holdings).length > 0) {
+        // if (Object.values(this.props.holdings).length > 0) {
 
-            let hold = (Object.values(this.props.holdings))
-            let arr = []
-            hold.forEach((obj) => {
-                arr.push(Object.values(obj))
-            })
+        //     let hold = (Object.values(this.props.holdings))
+        //     let arr = []
+        //     hold.forEach((obj) => {
+        //         arr.push(Object.values(obj))
+        //     })
 
-            arr.forEach((subarr) => {
-                subarr.forEach((ele) => {
-                    if (typeof ele === 'string'){
-                        myTickers.push(ele)
-                    }
-                })
-            })
+        //     arr.forEach((subarr) => {
+        //         subarr.forEach((ele) => {
+        //             if (typeof ele === 'string') {
+        //                 myTickers.push(ele)
+        //             }
+        //         })
+        //     })
 
-            let hold2 = (Object.values(this.props.holdings))
-            hold2.forEach((pair) => {
-                    for (var key in pair) {
-                        if(key === "share_count"){
-                            share_counts.push(pair[key])
-                        }
-                    }
-            })
-        } 
+        //     let hold2 = (Object.values(this.props.holdings))
+        //     hold2.forEach((pair) => {
+        //         for (var key in pair) {
+        //             if (key === "share_count") {
+        //                 share_counts.push(pair[key])
+        //             }
+        //         }
+        //     })
+        // } 
         
-        let myPrices = this.props.price
-        function stockDivs(){
-            if (myTickers.length > 0){
-                return myTickers.map((tick, idx) =>
-                    <div key={idx * 50} className="indiv-stock">{<DashInfo ticker={tick} shares={share_counts[idx]} prices={myPrices} />}</div>
-                )
-            }
-        }
-
         let newsList = []
         let filterDesc
         
@@ -392,7 +395,7 @@ class Dashboard extends React.Component {
                         <div className="dash-stocks">
                         
                       
-                        {stockDivs()}
+                        {this.stockDivs()}
 
                         </div>
                     </div>

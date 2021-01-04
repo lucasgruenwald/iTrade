@@ -77,7 +77,11 @@ class StockPage extends React.Component {
                     }
                     }
                 )
-            this.props.getPosition(this.props.ticker)
+            let holding = {
+                user_id: this.props.currentUser,
+                ticker: this.props.ticker
+            }
+            this.props.getPosition(holding)
         };
     };
 
