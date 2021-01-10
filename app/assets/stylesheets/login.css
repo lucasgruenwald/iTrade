@@ -3,12 +3,27 @@
 }
 
 .login-left {
-    width: 50%;
+    height: 100vh;
+    max-width: 50vw;
     object-fit: cover;
 }
 
+
+@media (max-width: 550px) {                  
+    .login-left {
+      display: none;
+    }
+    .login-right {
+        margin-left: 20vw;
+        min-width: 50vw;
+    }
+    .login-right > form > label > input {
+        min-width: 50vw;
+    }
+}
+
 .login-right {
-    width: 400px;
+    width: 30vw;
     top: 40px;
     left: 20px;
 }
@@ -44,10 +59,10 @@
     /* top: 65%; */
     left: inherit;
     background-color: #21CE99;
-    color: white;
+    color: black;
     width: 140px;
     height: 50px;
-    font-size: 12px;
+    font-size: 14px;
     border-radius: 4px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     /* margin-top: 80px; */
@@ -56,7 +71,7 @@
 
 .login-right > form > label > input {
     height: 40px;
-    width: 420px;
+    width: 30vw;
     background-color: #E8F0FE;
     color: black;
     border: 0px;
@@ -68,9 +83,10 @@
     color: black;
     background-color: #21CE99;
     border-radius: 4px;
-    width: 140px;
+    width: 170px;
     height: 50px;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 700;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-color: rgb(118, 172, 172);
     cursor: pointer

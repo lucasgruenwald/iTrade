@@ -1,9 +1,10 @@
 .home-header {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .home-header > h1 {
-    margin-left: 40px;
+    margin-left: 10vw;
     margin-top: 10px;
     padding-left: 10px;
 }
@@ -29,20 +30,12 @@
     background-color: whitesmoke;
 }
 
-
-#head-2 {
-    transform: translateY(29%);
-    font-size: 18px;
-    color: black;
-    text-decoration: line-through;
-}
-
-
-
 .header-session {
     display: flex;
-    position: absolute;
-    right: 50px;
+    min-width: 200px;
+    margin-left: auto;
+    padding-left: 5vw;
+    padding-right: 5vw;
     transform: translateY(-10%);
 }
 
@@ -110,17 +103,17 @@
 
 .home-left-text {
     padding-left: 15%;
-    padding-top: 50px;
-    max-width: 450px;
+    padding-top: 5vw;
+    max-width: 35vw;
     margin-bottom: 5%;
 }
 
 .home-left-text > h1 {
-    font-size: 60px;
+    font-size: 3em;
 }
 
 .home-left-text > h3 {
-    font-size: 29px;
+    font-size: 2em;
     font-family: Calibri, 'Trebuchet MS', sans-serif;
 }
 

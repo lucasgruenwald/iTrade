@@ -62,10 +62,6 @@ class Signup extends React.Component {
 
     return (
       <div className="session-form-signup">
-        {/* <img
-          className="signup-left"
-          src="https://images.squarespace-cdn.com/content/53fe4a70e4b0a2293ab0e42a/1409174396100-ZOPXZKUNVM31K4NZHVK0/Robinhood_Glyph_green.png?content-type=image%2Fpng"
-        /> */}
         <br />
         <div className="signup-right">
           <h2>Make Your Money Move</h2>
@@ -92,6 +88,7 @@ class Signup extends React.Component {
                   required
                 />
               </label>
+              <br/>
               <label>
                 <input
                   type="text"
@@ -103,7 +100,6 @@ class Signup extends React.Component {
               </label>
             </div>
             <label>
-              <br />
               <input
                 type="text"
                 placeholder={" Email address"}

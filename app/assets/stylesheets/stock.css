@@ -325,3 +325,11 @@ button:focus{
     margin-bottom: -5px;
     margin-top: 3px;
 }
+
+.no-stock-container{
+    background-color: black;
+    color: white;
+    padding: 25vw;
+    padding-top: 10vw;
+    padding-bottom: 80vh;
+}

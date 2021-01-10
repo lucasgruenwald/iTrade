@@ -130,6 +130,9 @@ class Dashboard extends React.Component {
                 }
             })
             lastClose = priceSums[response[ticks[0]].values[0].datetime]
+            // console.log("mult holdings found")
+            // console.log(priceSums)
+            // console.log(priceSums[response[ticks[0]].values[0].datetime])
             firstValidIdx = response[ticks[0]].values.length - 1
             minuteNow = response[ticks[0]].values[0].datetime.split(" ")[1]
         } else {
@@ -139,6 +142,8 @@ class Dashboard extends React.Component {
                 }
             })
             lastClose = priceSums[response.values[0].datetime]
+            // console.log("one or fewer holdings found")
+            // console.log(priceSums)
             firstValidIdx = response.values.length - 1
             minuteNow = response.values[0].datetime.split(" ")[1]
         }

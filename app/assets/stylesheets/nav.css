@@ -1,5 +1,6 @@
 .greet-yes {
     display: flex;
+    flex-wrap: wrap;
     box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
     color: white;
     background-color: #1b1b1d;
@@ -10,27 +11,37 @@
     background-color: white;
     color: #1b1b1d;
     font-size: 15px;
-    margin-left: 10%;
-    margin-right: 5%;
+    margin-left: auto;
+    margin-right: 10px;
     margin-bottom: 20px;
 }
 
 .logout-link {
     text-decoration: none;
     color: white;
+    margin-right: 10vw;
+}
+
+.logout-link:hover {
+    color: #21CE99;
 }
 
 .dash-button {
     background-color: white;
     color: black;
     font-size: 15px;
-    margin-left: 30%;
+    margin-left: 25vw;
     margin-bottom: 20px;
+    margin-right: 10vw;
 }
 
 .dash-link {
     text-decoration: none;
-    color: white
+    color: white;
+}
+
+.dash-link:hover{
+    color: #21CE99;
 }
 
 .greet-yes > h1 {
@@ -42,14 +53,14 @@
 
 #head-3 {
     max-width: 60px;
-    margin-left: 80px;
+    margin-left: 10vw;
     padding-top: 5px;
     margin-bottom: -10px;
 }
 
 #head-4 {
     max-width: 70px;
-    transform: translateX(40%);
+    transform: translateX(20%);
 }
 
 .feather-img-session{

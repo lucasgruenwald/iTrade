@@ -85,12 +85,12 @@ class StockPage extends React.Component {
         };
     };
 
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         this.setState({ done: false })
     }
 
     componentWillUnmount() {
-        this.setState({ done: false })
+        // this.setState({ done: false })
     };
 
     renderDay(response) {

@@ -1,10 +1,11 @@
 #signup-demo {
     /* margin-top: 20px; */
-    margin-left: 3%;
+    margin-left: 15px;
     text-decoration: none;
     color: black;
     font-style: italic;
     display: flex;
+    max-width: 40vw;
 }
 
 #signup-demo > * {
@@ -24,46 +25,55 @@
 .sign-up {
     left: inherit;
     background-color: #21CE99;
-    color: white;
-    width: 500px;
+    color: black;
+    width: 50vw;
+    min-width: 200px;
+    max-width: 500px;
     height: 50px;
     font-size: 15px;
     border-radius: 4px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-top: 10px;
+    margin-top: 15px;
     cursor: pointer;
 }
 
 #signup-names {
     display: flex;
-    width: 500px;
+    flex-wrap: wrap;
+    width: 60vw;
+    max-width: 600px;
 }
 #signup-names > * {
     padding-right: 50px;
 }
 
-.signup-right > h3 {
-    width: 800px;
-}
-
 .signup-right {
-    margin-top: 100px;
+    margin-top: 5vh;
     align-self: center;
+    padding-left: 15vw;
 }
 
 .signup-right > form > label > input {
     height: 40px;
-    width: 800px;
+    width: 50vw;
+    min-width: 200px;
+    max-width: 500px;
     background-color: white;
     color: black;
     border: 1px solid darkslategray;
     border-radius: 4px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+}
+
+.signup-right > form {
+    margin-top: 5vh;
 }
 
 #signup-names > label > input {
     height: 40px;
-    width: 373px;
+    width: 50vw;
+    min-width: 200px;
+    max-width: 500px;
     background-color: white;
     color: black;
     border: 1px solid darkslategray;
@@ -72,30 +82,26 @@
 }
 
 #signup-names > label {
-    margin-top: 20px;
+    /* margin-top: 10px; */
 }
 
 .signup-right > form > label {
-    margin-top: 10px;
-}
-
-.signup-left {
-    margin-top: 80px;
-    max-width: 30%;
+    /* margin-top: 2vw; */
 }
 
 .signup-demo{
     color: black;
     background-color: #21CE99;
     border-radius: 4px;
-    width: 140px;
-    height: 50px;
-    font-size: 12px;
+    width: 170px;
+    height: 60px;
+    font-size: 14px;
+    font-weight: 700;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-color: rgb(118, 172, 172);
-    cursor: pointer
+    cursor: pointer;
 }
 
 .session-form-signup{
-   padding-left: 25%;
+   display: flex;
 }
