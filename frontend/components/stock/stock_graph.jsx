@@ -1,5 +1,5 @@
 import React from "react";
-import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import Odometer from "react-odometerjs";
 // import { withRouter } from 'react-router-dom';
 
@@ -104,38 +104,39 @@ class StockGraph extends React.Component {
         <p className="change-counter">
           {`$${this.state.change}`} {`(${this.state.percentChange}%)`}
         </p>
+        <ResponsiveContainer width="80%" height={350}>
+          <LineChart
+            className="line-chart"
+            // width={650}
+            // height={350}
+            data={this.props.ticker}
+            margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
+            onMouseMove={this.handleMouseOver}
+            onMouseLeave={this.handleMouseOut}
+          >
+            <XAxis dataKey={"time"} hide={true} />
+            <YAxis hide={true} domain={["dataMin", "dataMax"]} />
 
-        <LineChart
-          className="line-chart"
-          width={650}
-          height={350}
-          data={this.props.ticker}
-          margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
-          onMouseMove={this.handleMouseOver}
-          onMouseLeave={this.handleMouseOut}
-        >
-          <XAxis dataKey={"time"} hide={true} />
-          <YAxis hide={true} domain={["dataMin", "dataMax"]} />
+            <Tooltip
+              // className='tooltip'
+              position={{ y: 0 }}
+              isAnimationActive={false}
+              content={this.customTooltip}
+              cursor={{ stroke: "black", strokeWidth: 0.7 }}
+              // formatter={(value) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+              position={{ y: -40 }}
+            />
 
-          <Tooltip
-            // className='tooltip'
-            position={{ y: 0 }}
-            isAnimationActive={false}
-            content={this.customTooltip}
-            cursor={{ stroke: "black", strokeWidth: 0.7 }}
-            // formatter={(value) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
-            position={{ y: -40 }}
-          />
-
-          <Line
-            connectNulls
-            type="linear"
-            dataKey="price"
-            dot={false}
-            stroke={this.props.color}
-            strokeWidth={3}
-          />
-        </LineChart>
+            <Line
+              connectNulls
+              type="linear"
+              dataKey="price"
+              dot={false}
+              stroke={this.props.color}
+              strokeWidth={3}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     );
   }

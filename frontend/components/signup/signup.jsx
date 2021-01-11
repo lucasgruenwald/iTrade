@@ -68,7 +68,7 @@ class Signup extends React.Component {
           <h3>
              You'll start with $100,000 and a ton of free stock shares!
           </h3>
-          <div className="flex">
+          <div className="flex-demo">
             <button onClick={this.handleDemo} className="signup-demo">Demo User Login</button>
 
             <div id="signup-demo">
@@ -88,7 +88,7 @@ class Signup extends React.Component {
                   required
                 />
               </label>
-              <br/>
+              {/* <br/> */}
               <label>
                 <input
                   type="text"

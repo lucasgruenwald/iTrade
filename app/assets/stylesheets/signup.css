@@ -5,7 +5,12 @@
     color: black;
     font-style: italic;
     display: flex;
-    max-width: 40vw;
+    max-width: 35vw;
+}
+
+.flex-demo {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #signup-demo > * {

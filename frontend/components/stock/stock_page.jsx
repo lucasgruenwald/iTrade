@@ -317,8 +317,6 @@ class StockPage extends React.Component {
                     <h2>{this.props.info.profile.companyName}</h2>
                 </div>
 
-                    
-
                 <StockGraph
                     oldTicker={this.state.oldTicker}
                     tickerSymbol={this.props.ticker}
@@ -342,14 +340,16 @@ class StockPage extends React.Component {
                 <div className="stock-page-info">{<StockInfo profile={this.props.info.profile}/>}</div>
 
                 <h3 className="news-header-indiv">Top News:</h3>
-                <div className="dash-news">
+                <div className="stock-news">
                     {newsList}
                 </div>
 
             </div>
-                <div className="transaction-margin">
-                    <TransactionContainer stock_ticker={this.props.ticker} holdingId={this.props.holdings.id} price={this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} />
-                </div>
+
+            <div className="transaction-margin">
+                <TransactionContainer stock_ticker={this.props.ticker} holdingId={this.props.holdings.id} price={this.props.info.profile.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} />
+            </div>
+
             </div>
         )
     }

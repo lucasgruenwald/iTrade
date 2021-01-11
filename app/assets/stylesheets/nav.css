@@ -12,14 +12,14 @@
     color: #1b1b1d;
     font-size: 15px;
     margin-left: auto;
-    margin-right: 10px;
+    margin-right: 15px;
     margin-bottom: 20px;
 }
 
 .logout-link {
     text-decoration: none;
     color: white;
-    margin-right: 10vw;
+    margin-right: 15vw;
 }
 
 .logout-link:hover {
@@ -30,7 +30,7 @@
     background-color: white;
     color: black;
     font-size: 15px;
-    margin-left: 25vw;
+    margin-left: 15vw;
     margin-bottom: 20px;
     margin-right: 10vw;
 }
@@ -43,8 +43,12 @@
 .dash-link:hover{
     color: #21CE99;
 }
+.greet-yes > div{
+    display: flex;
+    float: right;
+}
 
-.greet-yes > h1 {
+.greet-yes > div > h1 {
     padding-top: 10px;
     transform: translateX(50px);
     color: white;

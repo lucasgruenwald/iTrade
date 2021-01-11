@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
 class DashGraph extends React.Component{
 
@@ -116,30 +116,31 @@ class DashGraph extends React.Component{
             <div className="dash-graph-holder">
                 <h1>{(parseFloat(this.state.hoverPrice) + parseFloat(this.state.cash)).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
                 <p className="change-counter">{`${this.state.change}`} {`(${this.state.percentChange}%)`}</p>
+                <ResponsiveContainer width="80%" height={350}>
+                    <LineChart
+                        className="line-chart"
+                        // width={650}
+                        // height={350}
+                        data={data}
+                        margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
+                        onMouseMove={this.handleMouseOver}
+                        onMouseLeave={this.handleMouseOut}>
 
-                <LineChart
-                    className="line-chart"
-                    width={650}
-                    height={350}
-                    data={data}
-                    margin={{ top: 10, right: 10, left: 10, bottom: 40 }}
-                    onMouseMove={this.handleMouseOver}
-                    onMouseLeave={this.handleMouseOut}>
+                        <XAxis dataKey={"time"} hide={true} />
+                        <YAxis hide={true} domain={['dataMin', 'dataMax']} />
 
-                    <XAxis dataKey={"time"} hide={true} />
-                    <YAxis hide={true} domain={['dataMin', 'dataMax']} />
+                        <Tooltip
+                            // className='tooltip'
+                            isAnimationActive={false}
+                            content={this.customTooltip}
+                            cursor={{ stroke: "black", strokeWidth: 0.7 }}
+                            // formatter={(value) => value}
+                            position={{ y: -40 }}
+                        />
 
-                    <Tooltip
-                        // className='tooltip'
-                        isAnimationActive={false}
-                        content={this.customTooltip}
-                        cursor={{ stroke: "black", strokeWidth: 0.7 }}
-                        // formatter={(value) => value}
-                        position={{ y: -40 }}
-                    />
-
-                    // <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={3} />
-                </LineChart>
+                        // <Line connectNulls type="linear" dataKey="price" dot={false} stroke={this.props.color} strokeWidth={3} />
+                    </LineChart>
+                </ResponsiveContainer>
             </div>
         )
     }

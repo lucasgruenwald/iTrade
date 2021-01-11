@@ -12,7 +12,6 @@
     color: white;
 }
 
-
 .holding-data {
     border: 1px solid black;
     border-radius: 3px;
@@ -60,7 +59,7 @@
 .ticker-about {
     margin-right: 14%;
     color: white;
-    width: 60%;
+    width: 90%;
 }
 
 .ticker-about > h4 {
@@ -68,7 +67,7 @@
     color: white;
 }
 
-.ticker-about > p {
+.ticker-about > div {
     margin-bottom: 5px;
     margin-top: 5px;
     color: white
@@ -76,7 +75,7 @@
 
 .transaction-margin{
     width: 275px; 
-    height: 1800px; 
+    height: 100vh; 
     /* border: 1px solid blue;  */
     /* float: right;  */
     /* position: relative; 
@@ -98,7 +97,7 @@
 }
 
 .stock-chart-holder{
-    width: 670px;
+    width: 120%;
 }
 
 .holdings-bar{
@@ -332,4 +331,45 @@ button:focus{
     padding: 25vw;
     padding-top: 10vw;
     padding-bottom: 80vh;
+}
+
+.about-text{
+    max-height: 150px;
+    overflow: scroll;
+}
+
+@media (max-width: 800px) { 
+    .stock-page{
+        flex-wrap: wrap;
+    }
+    .holdings-bar{
+        margin-top: 3vw;
+        margin-left: 5vw;
+        position: relative;
+    }
+    .stock-news, .news-header-indiv{
+        display: none;
+    }
+    .stock-chart-holder{
+        width: 150%;
+        margin-left: 5%;
+    }
+    .periods{
+        width: 130%;
+    }
+    .ticker-about {
+        display: none;
+    }
+}
+
+@media (max-width: 450px) { 
+    .avg-vol {
+        display: none;
+    }
+    .feather-img-session{
+        margin-left: 3vw;
+    }
+    .ticker-text > * {
+        padding-right: 4vw;
+    }
 }

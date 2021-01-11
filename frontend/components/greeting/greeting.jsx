@@ -12,8 +12,10 @@ export const Greeting = ({ currentUser, logout }) => {
             className="feather-img-session" />
             </a>
                 <NavBar/>
-                <h1 className="dash-button" ><Link to="/dashboard" className="dash-link">Portfolio</Link></h1>
-                <h1 className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></h1>
+                <div>
+                  <h1 className="dash-button" ><Link to="/dashboard" className="dash-link">Portfolio</Link></h1>
+                  <h1 className="greet-logout" onClick={logout}><Link to="/" className="logout-link">Log Out</Link></h1>
+                </div>
             </div>
         )
     }

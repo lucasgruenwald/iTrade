@@ -25,7 +25,9 @@ class StockInfo extends React.Component {
     
                     <div className="ticker-about">
                         <h4>About</h4>
-                        <p>{this.props.profile.description}</p>
+                        <div className="about-text">
+                            <p>{this.props.profile.description}</p>
+                        </div>
                     </div>     
 
                     <div className="ticker-text">
@@ -44,7 +46,7 @@ class StockInfo extends React.Component {
                             <h5>{(Number(mktCap).toPrecision()/1000000000).toFixed(3)}</h5>
                         </div>
 
-                        <div>
+                        <div className="avg-vol">
                             <h6>Average Volume</h6>
                             <h5>{(parseInt(this.props.profile.volAvg)).toLocaleString()}</h5>
                         </div>
