@@ -271,8 +271,8 @@ footer {
     background-color: black;
     color: white;
     display: flex;
-    margin-top: 25px;
-    padding-left: 100px;
+    flex-wrap: wrap;
+    padding-left: 15vw;
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -319,4 +319,48 @@ footer {
     object-fit: contain;
     pointer-events: none;
     position: absolute;
+}
+
+@media (max-width: 750px) { 
+    .home-left-text{
+        max-width: 70vw;
+        display: inline-block;
+        text-align: center;
+    }                 
+    .home-left-text > h1 {
+        margin-top: 30px;
+        font-size: 6.5vw;
+    }
+    .home-left-text > h3 {
+        font-size: 5vw;
+        font-family: Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .home-first-img{
+        display: none;
+    }
+    .break-free {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+    .break-free > h2 {
+        font-size: 4.5vw;
+    }
+    .break-free > p {
+        font-size: 4vw;
+    }
+    .global-companies > * {
+        display: none;
+    }
+    .global-companies{
+        padding-bottom: 0px;
+    }
+    .global-title > * {
+        font-size: 5vw;
+        text-align: center;
+        color: white;
+        margin: auto;
+        line-height: 6vw;
+    }
 }
