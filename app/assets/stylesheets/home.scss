@@ -283,11 +283,12 @@ footer {
 }
 
 #foot-2{
-    max-width: 50px;
-    transform: translateY(-14px);
+    max-width: 70px;
+    transform: translateY(-6px);
     border-radius: 5px;
     background-color: white;
-    padding: 2px
+    padding: 2px;
+    filter: invert(100%);
 }
 
 

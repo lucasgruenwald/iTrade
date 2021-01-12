@@ -132,7 +132,7 @@ function Home (){
             <a href="https://github.com/lucasgruenwald" target="_blank">
               <img
                 id="foot-2"
-                src="https://toppng.com/uploads/preview/see-all-open-source-repositories-github-logo-11563031735gubsot66ry.png"
+                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
               />
             </a>
           </div>
