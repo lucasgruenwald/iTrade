@@ -39,7 +39,6 @@ class FullPageLoading extends React.Component{
 
                     <div className="load-container">
                         <div className="load">
-                            {/* <img src="https://i.imgur.com/FEDTpyE.gif" className="spinner" /> */}
                             <img src="https://i.imgur.com/FEDTpyE.gif" className="spinner" />
                         </div>
                     </div>
