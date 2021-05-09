@@ -111,6 +111,9 @@ class DashGraph extends React.Component{
         if ((this.state.change[0] !== "-") && (this.state.change[0] !==  "+")){
             this.state.change = "+" + this.state.change
         }
+        console.log(this.state.hoverPrice)
+        console.log(this.state.cash)
+        if (!this.state.hoverPrice) return null;
 
         return(
             <div className="dash-graph-holder">

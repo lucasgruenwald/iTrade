@@ -48,6 +48,15 @@ class StockPage extends React.Component {
                     this.setState({
                         noStock: true
                     })
+                    fetchDailyPrices(this.props.ticker)
+                        .then((response) => {
+                            if (response.values) {
+                                this.renderDay(response)
+                                this.setState({
+                                    noStock: false
+                                })
+                            }
+                        })
                 }
             })
         // .then(() => this.setState({ done: true }))
@@ -257,11 +266,11 @@ class StockPage extends React.Component {
         if (Object.values(this.props.info).length === 0) return null;
         if (this.props.news === undefined) return null;
         if (this.state.period === undefined) return null;
-        if (this.state.noStock){
-            return <NoStockWarning />
-        }
         if (!this.state.done) {
             return <FullPageLoading />
+        }
+        if (this.state.noStock) {
+            return <NoStockWarning />
         }
 
         let data = this.state[this.state.period];

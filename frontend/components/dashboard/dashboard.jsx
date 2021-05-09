@@ -124,7 +124,8 @@ class Dashboard extends React.Component {
         let lastClose
         let firstValidIdx
         let minuteNow
-        if (Object.values(this.props.holdings).length > 1) {
+        let firstOpen
+        if (Object.values(this.props.holdings).length > 1 && response[ticks[0]] && response[ticks[0]].values) {
             timesPrices = response[ticks[0]].values.map((price, idx) => {
                 if (idxHashCount[price.datetime] === ticks.length) {
                     return { time: price.datetime, price: priceSums[price.datetime] }
@@ -136,7 +137,9 @@ class Dashboard extends React.Component {
             // console.log(priceSums[response[ticks[0]].values[0].datetime])
             firstValidIdx = response[ticks[0]].values.length - 1
             minuteNow = response[ticks[0]].values[0].datetime.split(" ")[1]
-        } else {
+            timesPrices = timesPrices.reverse()
+            firstOpen = priceSums[timesPrices[firstValidIdx - 15].time]
+        } else if (response.values){
             timesPrices = response.values.map((price, idx) => {
                 if (idxHashCount[price.datetime] === ticks.length) {
                     return { time: price.datetime, price: priceSums[price.datetime] }
@@ -147,27 +150,16 @@ class Dashboard extends React.Component {
             // console.log(priceSums)
             firstValidIdx = response.values.length - 1
             minuteNow = response.values[0].datetime.split(" ")[1]
+            timesPrices = timesPrices.reverse()
+            firstOpen = priceSums[timesPrices[firstValidIdx - 15].time]
         }
         
         // graph not showing correct %? Add more conditions here for firstOpen
         // firstValidIdx - 7 works for now unless API changes
-        let firstOpen
-        // if(priceSums[timesPrices[firstValidIdx - 8]]){
-        //     firstOpen = priceSums[timesPrices[firstValidIdx - 8].time]
-        // } else if (priceSums[timesPrices[firstValidIdx - 10]]) {
-        //     firstOpen = priceSums[timesPrices[firstValidIdx - 10].time]
-        // } else if (priceSums[timesPrices[firstValidIdx - 12]]) {
-        //     firstOpen = priceSums[timesPrices[firstValidIdx - 12].time]
-        // } else if (priceSums[timesPrices[firstValidIdx - 15]]) {
-            firstOpen = priceSums[timesPrices[firstValidIdx - 15].time]
-        // } else if (priceSums[timesPrices[firstValidIdx - 20]]) {
-        //     firstOpen = priceSums[timesPrices[firstValidIdx - 20].time]
-        // }
 
-        timesPrices = timesPrices.reverse()
         
         // let dateNow = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${minuteNow}`))
-        let closeTime = "12:59:00"
+        // let closeTime = "12:59:00"
         // let closeDate = new Date(Date.parse(`${response[ticks[0]].values[0].datetime.split(" ")[0]} ${closeTime}`))
 
         if (timespan === "1Y") {
@@ -282,7 +274,10 @@ class Dashboard extends React.Component {
 
     render() {
         
-        if (!this.state.done) {
+        if (!this.state.done || !Object.values(this.props.holdings)) {
+            return <FullPageLoading />
+        }
+        if (!this.state.close){
             return <FullPageLoading />
         }
         
