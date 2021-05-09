@@ -97,8 +97,9 @@ class Dashboard extends React.Component {
         let idxHashCount = new Proxy(underlyingObject2, proxyHandler2);
 
         let dateTimes = []
+        // console.log(ticks)
         ticks.forEach((sym) => {
-            if (Object.values(this.props.holdings).length > 1){
+            if (Object.values(this.props.holdings).length > 1 && response[sym].values){
                 response[sym].values.forEach((entry, idx) => {
                     let totalShareValue = (parseFloat(entry.close) * this.state.holdingCount[sym])
                     priceSums[entry.datetime] += totalShareValue
@@ -107,7 +108,7 @@ class Dashboard extends React.Component {
                         dateTimes.push(entry.datetime)
                     }
                 })  
-            } else {
+            } else if (response.values) {
                 response.values.forEach((entry, idx) => {
                     let totalShareValue = (parseFloat(entry.close) * this.state.holdingCount[sym])
                     priceSums[entry.datetime] += totalShareValue
