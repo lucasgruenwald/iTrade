@@ -1,5 +1,7 @@
 ## Welcome to iTrade!
 
+### API limits have been downgraded. Limited functionality
+
 [Click Here - Live Site](http://i-trade-app.herokuapp.com)
 
 ### Background
